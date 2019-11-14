@@ -2,4 +2,4 @@ Options +FollowSymLinks
 RewriteEngine On
 
 RewriteCond %{HTTP_HOST} ^(^.*)\.noodly.io
-RewriteRule (.*) ?publisher=%1
+RewriteRule (.*) index.php?publisher=%1

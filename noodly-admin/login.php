@@ -92,7 +92,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 									Sign To Account
 								</h3>
 								<div class="alert alert-danger" id="error-message" role="alert">
-									<div class="alert-text">A simple danger alert—check it out!</div>
+									<div class="alert-text">Incorrect email or password!</div>
 								</div>
 								<!--begin::Form-->
 								<form class="k-login-v1__body-form k-form" id="login-form" autocomplete="off">

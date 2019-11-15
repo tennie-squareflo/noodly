@@ -1,6 +1,6 @@
 <?php
 
-$env = 'production';
+$env = 'development';
 //$env = 'production';
 
 $configSetting['production'] = array(

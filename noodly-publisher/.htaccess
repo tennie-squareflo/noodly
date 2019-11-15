@@ -1,5 +1,9 @@
 Options +FollowSymLinks
 RewriteEngine On
 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
 RewriteCond %{HTTP_HOST} ^(^.*)\.noodly.io
-RewriteRule (.*) index.php?publisher=%1
+RewriteRule (.*) $1\?publisher=%1

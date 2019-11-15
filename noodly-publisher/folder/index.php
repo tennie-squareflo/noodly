@@ -1,5 +1,5 @@
 <?php
-  echo 'publisher/index.php<br/>';
+  echo 'publisher/folder/index.php<br/>';
   echo 'get:<br/>';
   var_dump($_GET);
   echo 'post:<br/>';

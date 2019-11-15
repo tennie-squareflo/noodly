@@ -37039,8 +37039,15 @@ td>.k-radio.k-radio--single {
     flex-flow: row wrap
 }
 
+.k-login-v1 .k-login-v1__head .k-login-v1__head-logo {
+    width: 300px;
+}
 .k-login-v1 .k-login-v1__head .k-login-v1__head-logo>a {
-    display: inline-block
+    display: inline-block;
+}
+
+.k-login-v1 .k-login-v1__head .k-login-v1__head-logo img {
+    width: 100%;
 }
 
 .k-login-v1 .k-login-v1__head .k-login-v1__head-signup {
@@ -37112,7 +37119,8 @@ td>.k-radio.k-radio--single {
 }
 
 .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper {
-    width: 50%
+    width: 50%;
+    margin: auto;
 }
 
 .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper .k-login-v1__body-container {

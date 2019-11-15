@@ -1,6 +1,6 @@
 <?php
 
-$env = 'development';
+$env = 'production';
 //$env = 'production';
 
 $configSetting['production'] = array(
@@ -20,5 +20,8 @@ $configSetting['development'] = array(
         'database' => 'noodlyad_db',
     ),
 );
+
+$base_url = "/";
+$assets_url = $base_url."assets/";
 
 $config = $configSetting[$env];

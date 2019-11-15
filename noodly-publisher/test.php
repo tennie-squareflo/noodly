@@ -2,6 +2,8 @@
   echo 'publisher/test.php<br/>';
   echo 'get:<br/>';
   var_dump($_GET);
-  echo 'post:<br/>';
+  echo '<br/>post:<br/>';
   var_dump($_POST);
+  echo '<br/>';
+  var_dump($_SERVER);
 ?>

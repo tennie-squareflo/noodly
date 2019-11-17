@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 <!-- begin::Head -->
 <head>
 	<meta charset="utf-8">
-	<title>Keen | Login - v2</title>
+	<title>Noodly.io Admin Login</title>
 	<meta content="User login example" name="description">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible"><!--begin::Web font -->

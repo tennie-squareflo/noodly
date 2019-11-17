@@ -77,11 +77,12 @@ class Database
      * MySQL Where methods
      */
 
-    private static function __where($info, $type = 'AND')
+    private static function __where($info, $type = 'AND', $escape = true)
     {
         self::connection();
         $where = self::$where;
         foreach ($info as $row => $value) {
+            
             if (empty($where)) {
                 $where = sprintf("WHERE `%s`='%s'", $row, mysqli_real_escape_string(self::$link, $value));
             } else {
@@ -91,7 +92,7 @@ class Database
         self::$where = $where;
     }
 
-    public function where($field, $equal = null)
+    public function where($field, $equal = null, $escape = true)
     {
         if (is_array($field)) {
             self::__where($field);
@@ -231,7 +232,7 @@ class Database
             $num_rows = mysqli_num_rows($result);
             self::set('num_rows', $num_rows);
             if ($num_rows === 0) {
-                $data = false;
+                $data = array();
             } elseif (preg_match('/LIMIT 1/', $sql)) {
                 $data = mysqli_fetch_assoc($result);
             } else {

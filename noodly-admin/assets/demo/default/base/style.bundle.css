@@ -86872,7 +86872,7 @@ td>.k-radio.k-radio--single {
 .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper .k-login-v1__body-container {
     max-width: 390px;
     width: 100%;
-    margin-left: 7rem
+    margin: auto;
 }
 
 .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper .k-login-v1__body-container .k-login-v1__body-title {

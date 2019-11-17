@@ -21,7 +21,7 @@ $configSetting['development'] = array(
     ),
 );
 
-$base_url = $env === 'production' ? '/noodly-admin/' : '';
+$base_url = $env === 'development' ? '/noodly-admin/' : '/';
 $assets_url = $base_url.'assets/';
 
 $config = $configSetting[$env];

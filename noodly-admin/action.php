@@ -3,7 +3,6 @@
 
   $get = $_GET;
   $post = $_POST;
-  $db = new Database($config['database']['host'], $config['database']['user'], $config['database']['password'], $config['database']['database']);
 
   switch ($get['action']) {
     case 'login':

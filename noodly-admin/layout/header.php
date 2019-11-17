@@ -52,7 +52,24 @@
     <link
       href="<?php echo $assets_url; ?>media/logos/favicon.ico"
       rel="shortcut icon"
-    /></head
+    />
+    
+    <?php
+      if (isset($style_files)) {
+        foreach ($style_files as $file) {
+          # code...
+    ?>
+    <link
+      href="<?php echo $assets_url.$file; ?>"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <?php
+        }
+      }
+    ?>
+
+    </head
   ><!-- end::Head -->
   <!-- begin::Body -->
   <body

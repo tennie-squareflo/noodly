@@ -38,7 +38,19 @@
 	 
 	<script src="<?php echo $assets_url; ?>app/scripts/bundle/app.bundle.js" type="text/javascript">
 	</script> <!--end::Global App Bundle -->
-	 
+
+<?php
+	if (isset($script_files)) {
+		foreach ($script_files as $file) {
+			# code...
+?>
+			<script src="<?php echo $assets_url.$file; ?>" type="text/javascript">
+			</script>
+<?php
+		}
+	}
+?>
+
 	<script>
 	           var KThemeMode = 'released';
 	</script><!-- end::Body -->

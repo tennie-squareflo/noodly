@@ -57,4 +57,8 @@ function get_contributors_count($db, $publisher = 0) {
   $db->where('role', 'contributor');
   return $db->limit(1)->get('users u', 'count(u.uuid) count')['count'];
 }
+
+function get_publisher_info($db, $publisher_id) {
+  return $db->limit(1)->where('pid', $publisher_id)->get('publishers');
+}
 ?>

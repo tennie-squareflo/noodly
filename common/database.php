@@ -82,11 +82,11 @@ class Database
         self::connection();
         $where = self::$where;
         foreach ($info as $row => $value) {
-            
+            $real_row = $escape ? "`".$row."`" : $row;
             if (empty($where)) {
-                $where = sprintf("WHERE `%s`='%s'", $row, mysqli_real_escape_string(self::$link, $value));
+                $where = sprintf("WHERE %s='%s'", $real_row, mysqli_real_escape_string(self::$link, $value));
             } else {
-                $where .= sprintf(" %s `%s`='%s'", $type, $row, mysqli_real_escape_string(self::$link, $value));
+                $where .= sprintf(" %s %s='%s'", $type, $real_row, mysqli_real_escape_string(self::$link, $value));
             }
         }
         self::$where = $where;

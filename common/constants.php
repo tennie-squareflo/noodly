@@ -250,3 +250,4 @@ define('COUNTRY_NAMES', array(
   "ZM"=>"Zambia",
   "ZW"=>"Zimbabwe"));
 
+var_dump(COUNTRY_NAMES);

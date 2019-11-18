@@ -81,6 +81,7 @@ class Slim {
 
         }
 
+        var_dump('aaa');
 
         if (isset($data->output)) {
 
@@ -105,7 +106,7 @@ class Slim {
         }
 
 
-        var_dump('aaa');
+        var_dump('bbb');
         exit;
 
         if (isset($data->actions)) {

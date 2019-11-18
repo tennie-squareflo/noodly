@@ -24,6 +24,10 @@ catch (Exception $e) {
     return;
 }
 
+
+echo 'aaa';
+exit;
+
 // No image found under the supplied input name
 if ($images === false) {
 
@@ -39,10 +43,6 @@ if ($images === false) {
 
     return;
 }
-
-
-echo 'aaa';
-exit;
 
 // Should always be one image (when posting async), so we'll use the first on in the array (if available)
 $image = array_shift($images);

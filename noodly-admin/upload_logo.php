@@ -5,9 +5,6 @@ header('Access-Control-Allow-Origin: *');
 require_once('../common/libraries/slim.php');
 require_once('../common/config.php');
 
-echo 'aaa';
-exit;
-
 
 // Get posted data, if something is wrong, exit
 try {
@@ -79,6 +76,8 @@ if (!isset($image['output']['data']) && !isset($image['input']['data'])) {
 }
 
 
+echo 'aaa';
+exit;
 
 // if we've received output data save as file
 if (isset($image['output']['data'])) {

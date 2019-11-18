@@ -7,6 +7,7 @@ abstract class SlimStatus {
 
 var_dump('aaa');
 var_dump(DIRECTORY_SEPARATOR);
+exit;
 
 class Slim {
 

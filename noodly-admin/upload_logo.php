@@ -86,6 +86,8 @@ if (isset($image['output']['data'])) {
     $data = $image['output']['data'];
 
     $path = '.'.$base_url.$logo_path;
+    echo $path;
+    exit;
 
     // If you want to store the file in another directory pass the directory name as the third parameter.
     // $output = Slim::saveFile($data, $name, 'my-directory/');
@@ -107,6 +109,8 @@ if (isset($image['input']['data'])) {
     $data = $image['input']['data'];
 
     $path = '.'.$base_url.$logo_path;
+    echo $path;
+    exit;
 
     // If you want to store the file in another directory pass the directory name as the third parameter.
     // $input = Slim::saveFile($data, $name, 'my-directory/');

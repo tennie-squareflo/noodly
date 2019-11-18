@@ -40,6 +40,10 @@ if ($images === false) {
     return;
 }
 
+
+echo 'aaa';
+exit;
+
 // Should always be one image (when posting async), so we'll use the first on in the array (if available)
 $image = array_shift($images);
 
@@ -75,9 +79,6 @@ if (!isset($image['output']['data']) && !isset($image['input']['data'])) {
     return;
 }
 
-
-echo 'aaa';
-exit;
 
 // if we've received output data save as file
 if (isset($image['output']['data'])) {

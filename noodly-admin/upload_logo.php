@@ -1,6 +1,6 @@
 <?php
 // Uncomment if you want to allow posts from other domains
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 
 require_once('../common/libraries/slim.php');
 require_once('../common/config.php');
@@ -84,9 +84,7 @@ if (isset($image['output']['data'])) {
     // get the crop data for the output image
     $data = $image['output']['data'];
 
-    $path = '.'.$base_url.$logo_path;
-    echo $path;
-    exit;
+    $path = '..'.$base_url.$logo_path;
 
     // If you want to store the file in another directory pass the directory name as the third parameter.
     // $output = Slim::saveFile($data, $name, 'my-directory/');
@@ -107,9 +105,7 @@ if (isset($image['input']['data'])) {
     // get the crop data for the output image
     $data = $image['input']['data'];
 
-    $path = '.'.$base_url.$logo_path;
-    echo $path;
-    exit;
+    $path = '..'.$base_url.$logo_path;
 
     // If you want to store the file in another directory pass the directory name as the third parameter.
     // $input = Slim::saveFile($data, $name, 'my-directory/');

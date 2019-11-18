@@ -161,7 +161,7 @@ class Slim {
         }
         
         // Tet for .htaccess file in directory, if none found, add custom one
-        if (!file_exists($path . DIRECTORY_SEPARATOR . '.htaccess')) {
+        if (!file_exists($path . '.htaccess')) {
             Slim::secureDirectory($path);
         }
 

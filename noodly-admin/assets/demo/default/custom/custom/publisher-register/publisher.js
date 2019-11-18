@@ -1,49 +1,14 @@
 
 "use strict";
 
-import("../../../../../vendors/custom/slim/slim.kickstart.min.js");
 $(function() {
-  $("#register-form").validate({
-    rules: {
-      name: {
-        required: true
-      },
-      logo: {
-        required: true
-      },  
-      domain: {
-        required: true
-      },
-      phone: {
-        required: true
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      country: {
-        required: true
-      },
-      state: {
-        required: true
-      },
-      address1: {
-        required: true
-      },
-      city: {
-        required: true
-      },
-      zipcode: {
-        required: true
-      }
-    },
-    messages: {
-      email: "Please enter a valid email address"
-    },
-    submitHandler: function(form) {
+  $('.delete-btn').click(function() {
+    console.log('aaa');
+    const id = $(this).attr('data-id');
+    if (confirm('Really?')) {
       $.ajax({
-        url: 'action.php?action=register_publisher',
-        data: $(form).serialize(),
+        url: 'action.php?action=delete_publisher',
+        data: {id},
         dataType: 'json',
         method: 'POST',
         success: function(res) {
@@ -69,7 +34,7 @@ $(function() {
             
             toastr.success(res.message);
             setTimeout(() => {
-              location.href = `edit_publisher.php?publisherid=${res.id}`;
+              location.href = `publishers.php`;
             }, 3000);
           } else {
             toastr.options = {
@@ -93,14 +58,7 @@ $(function() {
             toastr.error(res.message);
           }
         }
-      });
+      })
     }
-  });
-
-  $('#save-btn').click(() => {
-    $('#register-form').submit();
-  });
-  setTimeout(() => {
-    $('#register-form').find('input[name="logo"]').val($('#register-form').find('input[type="file"]').attr('data-value'));
-  }, 500);
+  })
 }); 

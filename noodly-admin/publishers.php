@@ -1,5 +1,7 @@
 <?php
   include_once('../common/initialize.php');
+  $script_files = array('demo/default/custom/custom/publisher-register/publisher.js');
+
   $publishers = get_publishers($db);
 ?>
 <?php
@@ -82,8 +84,8 @@
 																	<i class="fa fa-bars"></i> Actions
 																	</button>
 																	<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-																	  <a class="dropdown-item" href="#"><i class="fa fa-pencil-alt"></i>Edit</a>
-																	  <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+																	  <a class="dropdown-item" href="<?php echo 'edit_publisher.php?publisherid='.$publisher['pid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+																	  <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $publisher['pid'];?>"><i class="fa fa-trash"></i> Delete</a>
 																	</div>
 															</div>
 													</td>

@@ -8,8 +8,11 @@
     case 'login':
       login($post['email'], $post['password'], $db);
     break;
-    case 'publish_register':
-      publish_register($post, $db);
+    case 'register_publisher':
+      register_publisher($post, $db);
+    break;
+    case 'delete_publisher':
+      delete_publisher($post['id'], $db);
     break;
   }
 
@@ -24,7 +27,7 @@
     }
   }
 
-  function publish_register($data, $db) {
+  function register_publisher($data, $db) {
     $new_data = array(
       'name' => $data['name'],
       'domain' => $data['domain'],
@@ -41,16 +44,24 @@
 
     if ($data['id']) {  //update
       if ($db->where('pid', $data['id'])->update('publishers', $new_data)) {
-        echo json_encode(array('code' => 0, 'id' => $data['id'], 'message' => 'Update succeeded!'));
+        echo json_encode(array('code' => 0, 'id' => $data['id'], 'message' => 'Update Success!'));
       } else {
-        echo json_encode(array('code' => 1, 'message' => 'Update failed!'));
+        echo json_encode(array('code' => 1, 'message' => 'Update Failed!'));
       }
     } else {  //create
       if ($db->insert('publishers', $new_data)) {
-        echo json_encode(array('code' => 0, 'id' => $db->insert_id(), 'message' => 'Create succeeded!'));
+        echo json_encode(array('code' => 0, 'id' => $db->insert_id(), 'message' => 'Create Success!'));
       } else {
-        echo json_encode(array('code' => 1, 'message' => 'Create failed!'));
+        echo json_encode(array('code' => 1, 'message' => 'Create Failed!'));
       }
     }
   }
+
+  function delete_publisher($id, $db) {
+    if ($db->where('pid', $id)->delete('publishers')) {
+      echo json_encode(array('code' => 0, 'message' => 'Delete Success!'));
+    } else {
+      echo json_encode(array('code' => 1, 'message' => 'Delete Failed!'));
+    }
+  } 
 ?>

@@ -82,7 +82,7 @@ class Slim {
         }
 
         var_dump('aaa');
-
+        var_dump($data);
         if (isset($data->output)) {
 
             $outputDate = null;

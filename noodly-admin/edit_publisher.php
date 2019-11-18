@@ -78,7 +78,7 @@
                               <div class="slim"
                                 data-service="../common/libraries/upload_logo.php"
                                 data-did-throw-error="handleError">
-                                <input type="file" name="logo" data-value='{"file": "<?php echo $publisher['logo']; ?>"}'/>
+                                <input type="file" name="logo" data-value="<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>"/>
                                 <?php
                                   if (count($publisher)) {
                                 ?>

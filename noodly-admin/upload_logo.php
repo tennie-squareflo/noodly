@@ -11,7 +11,8 @@ try {
     $images = Slim::getImages('logo');
 }
 catch (Exception $e) {
-
+    echo 'aaa';
+    exit;
     // Possible solutions
     // ----------
     // Make sure you're running PHP version 5.6 or higher

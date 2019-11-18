@@ -5,9 +5,6 @@ abstract class SlimStatus {
     const SUCCESS = 'success';
 }
 
-var_dump('aaa');
-var_dump(DIRECTORY_SEPARATOR);
-exit;
 
 class Slim {
 

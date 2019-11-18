@@ -24,10 +24,6 @@ catch (Exception $e) {
     return;
 }
 
-
-echo 'aaa';
-exit;
-
 // No image found under the supplied input name
 if ($images === false) {
 

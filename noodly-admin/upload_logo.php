@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 // Uncomment if you want to allow posts from other domains
 // header('Access-Control-Allow-Origin: *');
 

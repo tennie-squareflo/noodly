@@ -241,6 +241,8 @@ class Slim {
             // Slim was not used to upload this file
             return false;
         }
+        var_dump('aaa');
+        exit;
 
         return $values;
     }

@@ -83,6 +83,8 @@ class Slim {
 
         var_dump('aaa');
         var_dump($data);
+        var_dump($_FILES);
+
         if (isset($data->output)) {
 
             $outputDate = null;

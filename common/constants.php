@@ -1,5 +1,5 @@
 <?php
-define('COUNTRY_NAMES', array(
+$country_names = array(
   "AF"=>"Afghanistan",
   "AX"=>"Åland Islands",
   "AL"=>"Albania",
@@ -248,6 +248,4 @@ define('COUNTRY_NAMES', array(
   "EH"=>"Western Sahara",
   "YE"=>"Yemen",
   "ZM"=>"Zambia",
-  "ZW"=>"Zimbabwe"));
-
-var_dump(COUNTRY_NAMES);
+  "ZW"=>"Zimbabwe");

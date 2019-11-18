@@ -11,5 +11,3 @@ require_once('dbmodel.php');
 if (strpos($_SERVER['REQUEST_URI'], 'login') === false) {
   redirect_not_logged();
 }
-
-var_dump(COUNTRY_NAMES);

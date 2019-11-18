@@ -120,7 +120,7 @@
                               <select class="form-control" name="country">
                                 <option value="" <?php echo count($publisher) ? '' : 'selected'; ?> disabled hidden>Select...</option>
                                 <?php
-                                  foreach (COUNTRY_NAMES as $key => $value) {
+                                  foreach ($country_names as $key => $value) {
                                     # code...
                                     echo "<option value='$key' ".(count($publisher) && $key === $publisher['country'] ? 'selected' : '').">$value</option>\n";
                                   }

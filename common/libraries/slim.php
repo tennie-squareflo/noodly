@@ -94,6 +94,7 @@ class Slim {
             else if (isset ($data->output->field)) {
                 $filename = $_FILES[$data->output->field]['tmp_name'];
                 if ($filename && Slim::isImage($filename)) {
+                    var_dump('ccc');
                     $outputData = file_get_contents($filename);
                 }
             }

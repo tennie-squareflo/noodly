@@ -82,9 +82,6 @@ class Slim {
         }
 
 
-        var_dump('aaa');
-        exit;
-
         if (isset($data->output)) {
 
             $outputDate = null;
@@ -106,6 +103,10 @@ class Slim {
                 'height' => $data->output->height
             );
         }
+
+
+        var_dump('aaa');
+        exit;
 
         if (isset($data->actions)) {
             $actions = array(

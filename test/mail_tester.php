@@ -1,3 +1,3 @@
 <?php
-  mail('everdev0923@gmail.com', 'here', 'test message');
+  mail('sunmandev@gmail.com', 'here', 'test message');
   ?>

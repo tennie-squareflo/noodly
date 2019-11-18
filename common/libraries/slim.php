@@ -242,6 +242,7 @@ class Slim {
             return false;
         }
         var_dump('aaa');
+        var_dump($values);
         exit;
 
         return $values;

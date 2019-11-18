@@ -12,11 +12,6 @@ class Slim {
 
         $values = Slim::getPostData($inputName);
 
-
-        var_dump('aaa');
-        var_dump($values);
-        exit;
-
         // test for errors
         if ($values === false) {
             return false;
@@ -36,6 +31,10 @@ class Slim {
             }
         }
 
+
+        var_dump('aaa');
+        var_dump($data);
+        exit;
         // return the data collected from the fields
         return $data;
 

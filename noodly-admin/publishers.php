@@ -40,7 +40,7 @@
               
               
 
-              <a href="CONTRIBUTOR-add-story.html" class="btn btn-success">
+              <a href="<?php echo $base_url;?>edit_publisher.php" class="btn btn-success">
                 <i class="la la-pencil"></i> Add A Publisher
             </a>
             </div>

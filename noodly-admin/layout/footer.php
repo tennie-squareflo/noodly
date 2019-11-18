@@ -39,6 +39,9 @@
 	<script src="<?php echo $assets_url; ?>app/scripts/bundle/app.bundle.js" type="text/javascript">
 	</script> <!--end::Global App Bundle -->
 
+	<script src="<?php echo $assets_url; ?>demo/default/custom/components/extended/toastr.js" type="text/javascript">
+	</script> <!--end::Toastr Plugin -->
+
 <?php
 	if (isset($script_files)) {
 		foreach ($script_files as $file) {

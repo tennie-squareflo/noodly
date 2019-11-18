@@ -1,7 +1,7 @@
 <?php
 
-//$env = 'development';
-$env = 'production';
+$env = 'development';
+//$env = 'production';
 
 $configSetting['production'] = array(
     'database' => array(
@@ -23,5 +23,7 @@ $configSetting['development'] = array(
 
 $base_url = $env === 'development' ? '/noodly-admin/' : '/';
 $assets_url = $base_url.'assets/';
+
+$logo_path = 'assets/media/logos/';
 
 $config = $configSetting[$env];

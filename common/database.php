@@ -261,7 +261,7 @@ class Database
         if (!mysqli_query(self::$link, $sql)) {
             throw new Exception('Error executing MySQL query: ' . $sql . '. MySQL error ' . mysqli_errno(self::$link) . ': ' . mysqli_error(self::$link));
         } else {
-            self::set('insert_id', mysqli_insert_id());
+            self::set('insert_id', mysqli_insert_id(self::$link));
             return true;
         }
     }

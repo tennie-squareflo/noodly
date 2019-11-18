@@ -69,7 +69,7 @@ $(function() {
             
             toastr.success(res.message);
             setTimeout(() => {
-              location.href = `/edit_publisher.php?publisher_id=${res.id}`;
+              location.href = `/edit_publisher.php?publisherid=${res.id}`;
             }, 3000);
           } else {
             toastr.options = {

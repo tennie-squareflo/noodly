@@ -48,10 +48,6 @@ class Slim {
         }
 
 
-        var_dump('aaa');
-        var_dump($data);
-        exit;
-
         // The data is posted as a JSON String so to be used it needs to be deserialized first
         $data = json_decode($value);
 
@@ -84,6 +80,10 @@ class Slim {
             );
 
         }
+
+
+        var_dump('aaa');
+        exit;
 
         if (isset($data->output)) {
 

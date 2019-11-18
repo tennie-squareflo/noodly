@@ -76,7 +76,7 @@
 														<label class="col-3 col-form-label">Logo</label>
 														<div class="col-9">
                               <div class="slim"
-                                data-service="../common/libraries/upload_logo.php"
+                                data-service="upload_logo.php"
                                 data-did-throw-error="handleError">
                                 <input type="file" name="logo" data-value="<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>"/>
                                 <?php

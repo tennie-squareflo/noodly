@@ -3,8 +3,8 @@
 // Uncomment if you want to allow posts from other domains
 // header('Access-Control-Allow-Origin: *');
 
-require_once('slim.php');
-require_once('../config.php');
+require_once('../common/libraries/slim.php');
+require_once('../common/config.php');
 
 // Get posted data, if something is wrong, exit
 try {

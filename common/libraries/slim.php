@@ -31,10 +31,6 @@ class Slim {
             }
         }
 
-
-        var_dump('aaa');
-        var_dump($data);
-        exit;
         // return the data collected from the fields
         return $data;
 
@@ -50,6 +46,11 @@ class Slim {
         if (get_magic_quotes_gpc()) {
             $value = stripslashes($value);
         }
+
+
+        var_dump('aaa');
+        var_dump($data);
+        exit;
 
         // The data is posted as a JSON String so to be used it needs to be deserialized first
         $data = json_decode($value);

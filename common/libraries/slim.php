@@ -81,10 +81,6 @@ class Slim {
 
         }
 
-        var_dump('aaa');
-        var_dump($data);
-        var_dump($_FILES);
-
         if (isset($data->output)) {
 
             $outputDate = null;
@@ -93,8 +89,6 @@ class Slim {
             }
             else if (isset ($data->output->field)) {
                 $filename = $_FILES[$data->output->field]['tmp_name'];
-                var_dump($filename);
-                var_dump(Slim::isImage($filename));
                 if ($filename && Slim::isImage($filename)) {
                     $outputData = file_get_contents($filename);
                 }
@@ -108,10 +102,6 @@ class Slim {
                 'height' => $data->output->height
             );
         }
-
-
-        var_dump('bbb');
-        exit;
 
         if (isset($data->actions)) {
             $actions = array(

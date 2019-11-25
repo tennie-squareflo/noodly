@@ -2,7 +2,6 @@
 
 class Database
 {
-
     private static $link = null;
     private static $info = array(
         'last_query' => null,
@@ -62,7 +61,7 @@ class Database
 
     private static function connection()
     {
-        if (!is_resource(self::$link) || empty(self::$link)) {
+        if (!self::$link || empty(self::$link)) {
             if (($link = mysqli_connect(self::$connection_info['host'], self::$connection_info['user'], self::$connection_info['pass'])) && mysqli_select_db($link, self::$connection_info['db'])) {
                 self::$link = $link;
                 mysqli_set_charset(self::$link, 'utf8');
@@ -191,7 +190,7 @@ class Database
     {
         self::connection();
         self::set('last_query', $qry);
-        $result = mysqli_query(self::$link, $query);
+        $result = mysqli_query(self::$link, $qry);
         if (is_resource($result)) {
             self::set('num_rows', mysqli_num_rows($result));
         }

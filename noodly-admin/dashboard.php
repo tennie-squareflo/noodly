@@ -1,5 +1,5 @@
 <?php
-  include_once('../common/initialize.php');
+  require_once('../common/initialize.php');
 
 	$publishers = get_publishers($db, 5);
 	$count['publishers'] = get_publishers_count($db);
@@ -7,7 +7,7 @@
 	$count['stories'] = get_stories_count($db);
 ?>
 <?php
-	include_once('layout/header.php');
+	require_once('layout/header.php');
 ?>
 <!-- begin:: Content -->
 <div class="k-content k-grid__item k-grid__item--fluid k-grid k-grid--hor" id="k_content">
@@ -203,5 +203,5 @@
 </div>
 </div><!-- end:: Content -->
 <?php
-include_once('layout/footer.php');
+require_once('layout/footer.php');
 ?>

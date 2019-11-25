@@ -138,7 +138,7 @@
           </div>
           <!-- end:: Aside -->
           <?php
-          include_once('sidebar.php');
+          require_once('sidebar.php');
         ?>
         </div>
         <!-- end:: Aside -->

@@ -1,5 +1,5 @@
 <?php
-include_once('../common/initialize.php');
+require_once('../common/initialize.php');
 
 function get_session_value($name) {
   return isset($_SESSION[$name]) ? $_SESSION[$name] : null;

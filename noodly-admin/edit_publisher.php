@@ -1,5 +1,5 @@
 <?php
-  include_once('../common/initialize.php');
+  require_once('../common/initialize.php');
   $style_files = array('vendors/custom/slim/slim.min.css');
   $script_files = array('demo/default/custom/custom/publisher-register/register.js');
 
@@ -7,7 +7,7 @@
   $publisher = get_publisher_info($db, $publisher_id);
 ?>
 <?php
-  include_once('layout/header.php');
+  require_once('layout/header.php');
 ?>
 <!-- begin:: Content -->
 <div class="k-content	k-grid__item k-grid__item--fluid k-grid k-grid--hor">
@@ -186,5 +186,5 @@
 
 		<!-- end:: Content -->
 <?php
-  include_once('layout/footer.php');
+  require_once('layout/footer.php');
 ?>

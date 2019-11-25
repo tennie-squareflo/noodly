@@ -39,11 +39,12 @@ $admin_path = 'noodly-admin';
 $publisher_path = 'noodly-publisher';
 
 // initialize
-include_once($core_path.DIRECTORY_SEPARATOR.'session.php');
-include_once($core_path.DIRECTORY_SEPARATOR.'constants.php');
-include_once($core_path.DIRECTORY_SEPARATOR.'app.php');
+require_once($core_path.DIRECTORY_SEPARATOR.'session.php');
+require_once($core_path.DIRECTORY_SEPARATOR.'constants.php');
+require_once($core_path.DIRECTORY_SEPARATOR.'app.php');
 
 // parse url
-include_once($core_path.DIRECTORY_SEPARATOR.'routes.php');
+require_once($core_path.DIRECTORY_SEPARATOR.'routes.php');
+
 
 ?>

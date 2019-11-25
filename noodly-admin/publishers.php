@@ -1,11 +1,11 @@
 <?php
-  include_once('../common/initialize.php');
+  require_once('../common/initialize.php');
   $script_files = array('demo/default/custom/custom/publisher-register/publisher.js');
 
   $publishers = get_publishers($db);
 ?>
 <?php
-  include_once('layout/header.php');
+  require_once('layout/header.php');
 ?>
 					<!-- begin:: Content -->
 <div class="k-content	k-grid__item k-grid__item--fluid k-grid k-grid--hor">
@@ -104,5 +104,5 @@
 </div>	<!-- end:: Content Body -->
 </div> <!-- end:: Content -->
 <?php
-  include_once('layout/footer.php');
+  require_once('layout/footer.php');
 ?>

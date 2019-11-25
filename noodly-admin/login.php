@@ -1,5 +1,5 @@
 <?php
-	include_once('../common/initialize.php');
+	require_once('../common/initialize.php');
 	session_destroy();
 ?>
 

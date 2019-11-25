@@ -11,6 +11,7 @@ $publisher_domain = '';
 
 if (ENV === 'production') {
   $current_role = $host_url === 'noodly.io' || $host_url === 'www.noodly.io' ? 'admin' : 'publisher';
+  $publisher_domain = strstr($host_url, '.', true);
 } else {
   $current_role = substr($request_uri, 0, 6) === '/admin' ? 'admin' : 'publisher';
   $publisher_domain = strstr(substr($request_uri, 1), '/', true);

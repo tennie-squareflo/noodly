@@ -9,11 +9,14 @@ class Core_Model {
     $this->table_name = $tbl_name;
     $this->pk = $primarykey;
   }
-  function get($where = array()) {
+  function get($select, $where = array(), $limit = 0) {
     if (!empty($where)) {
       $this->db->where($where);
     }
-    return $this->db->get($this->table_name);
+    if ($limit > 0) {
+      $this->db->limit(5);
+    }
+    return $this->db->get($this->table_name, $select);
   }
   function get_one($where = array()) {
     if (!empty($where)) {
@@ -25,7 +28,7 @@ class Core_Model {
     if (!empty($where)) {
       $this->db->where($where);
     }
-    return $this->db->limit(1)->get($this->table_name, "count($this->count) cnt")->cnt;
+    return $this->db->limit(1)->get($this->table_name, "count($this->pk) cnt")['cnt'];
   }
   function create($data) {
     if ($this->db->insert($this->table_name, $data)) {
@@ -33,5 +36,11 @@ class Core_Model {
     } else {
       return false;
     }
+  }
+  function delete($where = array()) {
+    if (!empty($where)) {
+      $this->db->where($where);
+    }
+    return $this->db->delete($this->table_name);
   }
 }

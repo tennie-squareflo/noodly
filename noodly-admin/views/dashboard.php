@@ -1,14 +1,3 @@
-<?php
-  require_once('../common/initialize.php');
-
-	$publishers = get_publishers($db, 5);
-	$count['publishers'] = get_publishers_count($db);
-	$count['contributors'] = get_contributors_count($db);
-	$count['stories'] = get_stories_count($db);
-?>
-<?php
-	require_once('layout/header.php');
-?>
 <!-- begin:: Content -->
 <div class="k-content k-grid__item k-grid__item--fluid k-grid k-grid--hor" id="k_content">
 	<!-- begin:: Content Head -->
@@ -202,6 +191,3 @@
 </div><!-- end:: Content Body -->
 </div>
 </div><!-- end:: Content -->
-<?php
-require_once('layout/footer.php');
-?>

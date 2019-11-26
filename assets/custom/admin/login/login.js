@@ -20,17 +20,17 @@ $(function() {
       email: "Please enter a valid email address"
     },
     submitHandler: function(form) {
+
       $.ajax({
-        url: 'action.php?action=login',
+        url: 'login/login',
         data: $(form).serialize(),
         dataType: 'json',
         method: 'POST',
         success: function(res) {
-          if (res) {
-            location.href = 'dashboard.php';
-          } else {
-            $('#error-message').show();
-          }
+          location.href = 'dashboard';
+        },
+        error: function(res) {
+          $('#error-message').show();
         }
       })
     }

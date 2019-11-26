@@ -29,28 +29,28 @@
     <!--end::Web font -->
     <!--begin::Page Vendors Styles -->
     <link
-      href="<?php echo $assets_url; ?>vendors/custom/fullcalendar/fullcalendar.bundle.css"
+      href="<?php echo ASSETS_PATH; ?>vendors/custom/fullcalendar/fullcalendar.bundle.css"
       rel="stylesheet"
       type="text/css"
     />
-    <!--RTL version:<link href="<?php echo $assets_url; ?>vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <!--RTL version:<link href="<?php echo ASSETS_PATH; ?>vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
     <!--end::Page Vendors Styles -->
     <!--begin::Global Theme Styles -->
     <link
-      href="<?php echo $assets_url; ?>vendors/base/vendors.bundle.css"
+      href="<?php echo ASSETS_PATH; ?>vendors/base/vendors.bundle.css"
       rel="stylesheet"
       type="text/css"
     />
-    <!--RTL version:<link href="<?php echo $assets_url; ?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <!--RTL version:<link href="<?php echo ASSETS_PATH; ?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
     <link
-      href="<?php echo $assets_url; ?>demo/default/base/style.bundle.css"
+      href="<?php echo ASSETS_PATH; ?>demo/default/base/style.bundle.css"
       rel="stylesheet"
       type="text/css"
     />
-    <!--RTL version:<link href="<?php echo $assets_url; ?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <!--RTL version:<link href="<?php echo ASSETS_PATH; ?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
     <!--end::Global Theme Styles -->
     <link
-      href="<?php echo $assets_url; ?>media/logos/favicon.ico"
+      href="<?php echo ASSETS_PATH; ?>media/logos/favicon.ico"
       rel="shortcut icon"
     />
     
@@ -60,7 +60,7 @@
           # code...
     ?>
     <link
-      href="<?php echo $assets_url.$file; ?>"
+      href="<?php echo ASSETS_PATH.$file; ?>"
       rel="stylesheet"
       type="text/css"
     />
@@ -84,7 +84,7 @@
         <a href="#"
           ><img
             alt="Logo"
-            src="<?php echo $assets_url;?>/media/logos/logo-1.png"
+            src="<?php echo ASSETS_PATH;?>/media/logos/logo-1.png"
             width="100px"
         /></a>
       </div>
@@ -123,7 +123,7 @@
               <a href="#"
                 ><img
                   alt="Logo"
-                  src="<?php echo $assets_url;?>/media/logos/logo-2.png"
+                  src="<?php echo ASSETS_PATH;?>/media/logos/logo-2.png"
                   width="130px"
               /></a>
             </div>

@@ -1,7 +1,7 @@
 <?php
 
-define('ENV', 'production');
-//define('ENV', 'development');
+//define('ENV', 'production');
+define('ENV', 'development');
 
 // error reporting
 
@@ -32,19 +32,24 @@ switch (ENV)
 }
 
 // core path
-
-$core_path = 'core';
-$assets_path = '/assets';
-$admin_path = 'noodly-admin';
-$publisher_path = 'noodly-publisher';
+define('CORE_PATH', 'core'.DIRECTORY_SEPARATOR);
+define('ASSETS_PATH', DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR);
+define('ADMIN_PATH', 'noodly-admin'.DIRECTORY_SEPARATOR);
+define('PUBLISHER_PATH', 'noodly-publisher'.DIRECTORY_SEPARATOR);
+define('VIEW_PATH', 'views'.DIRECTORY_SEPARATOR);
 
 // initialize
-require_once($core_path.DIRECTORY_SEPARATOR.'session.php');
-require_once($core_path.DIRECTORY_SEPARATOR.'constants.php');
-require_once($core_path.DIRECTORY_SEPARATOR.'app.php');
+require_once(CORE_PATH.'session.php');
+require_once(CORE_PATH.'constants.php');
+require_once(CORE_PATH.'app.php');
+
+// core modules
+require_once(CORE_PATH.'models/core_model.php');
+require_once(CORE_PATH.'controllers/core_controller.php');
 
 // parse url
-require_once($core_path.DIRECTORY_SEPARATOR.'routes.php');
+require_once(CORE_PATH.'routes.php');
+require_once(CORE_PATH.'load_modules.php');
 
 
 ?>

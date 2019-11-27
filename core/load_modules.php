@@ -33,6 +33,8 @@ while ($request_uri !== '/') {
     break;
   }
 }
+var_dump($base_path);
+var_dump($path);
 if (file_exists($base_path.'controllers'.$path.'.php')) {
   require_once($base_path.'controllers'.$path.'.php');
   $class_name .= '_controller';

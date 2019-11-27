@@ -1,5 +1,6 @@
 <?php
 $host_url = $_SERVER['HTTP_HOST'];
+var_dump($_SERVER);
 $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/login';
 
 $current_role = '';

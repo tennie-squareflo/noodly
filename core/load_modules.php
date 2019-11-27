@@ -28,6 +28,10 @@ while ($request_uri !== '/') {
   if (file_exists($base_path.'controllers'.$path.'.php')) {
     break;
   }
+  if (file_exists($base_path.'controllers'.$path.'/index.php')) {
+    $path = $path.'/index';
+    break;
+  }
 }
 if (file_exists($base_path.'controllers'.$path.'.php')) {
   require_once($base_path.'controllers'.$path.'.php');

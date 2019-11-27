@@ -1,7 +1,6 @@
 <?php
 $host_url = $_SERVER['HTTP_HOST'];
-var_dump($_SERVER);
-$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/login';
+$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
 
 $current_role = '';
 $publisher_domain = '';
@@ -25,13 +24,10 @@ $base_path =  $current_role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH;
 
 if (ENV == 'development') {
   if ($current_role === 'admin') {
-    define('BASE_URL', '/admin');
+    define('BASE_URL', '/admin/');
   } else {
-    define('BASE_URL', '/'.$publisher_domain);
+    define('BASE_URL', '/'.$publisher_domain.'/');
   }
 } else {
-  define('BASE_URL', '');
-}
-if ($request_uri === false) {
-  $request_uri = '/login';
+  define('BASE_URL', '/');
 }

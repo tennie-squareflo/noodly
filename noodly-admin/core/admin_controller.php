@@ -3,7 +3,7 @@ class Admin_Controller extends Core_Controller {
   function __construct() {
     parent::__construct('admin');
     if (!$this->check_logged_in()) {
-      header('Location: login');
+      header("Location: login");
     }
   }
 

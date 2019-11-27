@@ -8,12 +8,12 @@ $(function() {
       name: {
         required: true
       },
-      logo: {
-        required: true
-      },  
-      domain: {
-        required: true
-      },
+      // logo: {
+      //   required: true
+      // },  
+      // domain: {
+      //   required: true
+      // },
       phone: {
         required: true
       },
@@ -90,8 +90,28 @@ $(function() {
               "hideMethod": "fadeOut"
             };
             
-            toastr.error(res.message);
+            toastr.warning(res.message);
           }
+        }, 
+        error: function(res) {
+          toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
         }
       });
     }

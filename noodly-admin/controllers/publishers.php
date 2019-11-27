@@ -26,7 +26,7 @@ class Publishers_Controller extends Admin_Controller {
         $new_data = array(
           'name' => test_input($_POST['name']),
           'domain' => test_input($_POST['domain']),
-          'logo' => json_decode($_POST['logo'])->file,
+          'logo' => !empty($_POST['logo']) ? json_decode($_POST['logo'])->file : '',
           'phonenumber' => test_input($_POST['phone']),
           'email' => test_input($_POST['email']),
           'country' => test_input($_POST['country']),

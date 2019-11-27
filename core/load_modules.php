@@ -17,10 +17,6 @@ $func_name = '';
 $class_name = '';
 $args = array();
 do {
-  if (file_exists($base_path.'controllers'.$path.'/index.php')) {
-    $path = $path.'/index';
-    break;
-  }
   $request_uri = substr($request_uri, 1);
   if (strpos($request_uri, DIRECTORY_SEPARATOR) === false) {
     $request_uri = $request_uri.DIRECTORY_SEPARATOR;
@@ -30,6 +26,10 @@ do {
   $request_uri = strstr($request_uri, DIRECTORY_SEPARATOR);
 
   if (file_exists($base_path.'controllers'.$path.'.php')) {
+    break;
+  }
+  if (file_exists($base_path.'controllers'.$path.'/index.php')) {
+    $path = $path.'/index';
     break;
   }
 } while ($request_uri !== '/');

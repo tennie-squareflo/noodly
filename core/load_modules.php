@@ -11,7 +11,7 @@
 // $controller_class = new $class_name();
 // $handler = isset($_SERVER['HTTP_HANDLER']) ? $_SERVER['HTTP_HANDLER'] : 'index';
 // $controller_class->$handler();
-
+var_dump($_SERVER);
 $path = '';
 $func_name = '';
 $class_name = '';

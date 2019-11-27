@@ -24,6 +24,9 @@ while ($request_uri !== '/') {
   $class_name = strstr($request_uri, DIRECTORY_SEPARATOR, true);
   $path .= DIRECTORY_SEPARATOR.$class_name;
   $request_uri = strstr($request_uri, DIRECTORY_SEPARATOR);
+  echo $base_path.'controllers'.$path.'.php'.'<br/>';
+  var_dump (file_exists($base_path.'controllers'.$path.'.php'));
+  var_dump (file_exists('/'.$base_path.'controllers'.$path.'.php'));
   if (file_exists($base_path.'controllers'.$path.'.php')) {
     break;
   }

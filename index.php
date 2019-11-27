@@ -46,8 +46,6 @@ define('PUBLISHER_PATH', BASE_PATH.'noodly-publisher'.DIRECTORY_SEPARATOR);
 define('ASSETS_PATH', DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR);
 define('VIEW_PATH', 'views'.DIRECTORY_SEPARATOR);
 
-var_dump($_SERVER);
-
 // initialize
 require_once(CORE_PATH.'session.php');
 require_once(CORE_PATH.'constants.php');

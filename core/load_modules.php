@@ -30,6 +30,7 @@ do {
   }
   if (file_exists($base_path.'controllers'.$path.'/index.php')) {
     $path = $path.'/index';
+    $class_name = 'index';
     break;
   }
 } while ($request_uri !== '/');

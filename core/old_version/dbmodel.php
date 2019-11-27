@@ -61,4 +61,3 @@ function get_contributors_count($db, $publisher = 0) {
 function get_publisher_info($db, $publisher_id) {
   return $db->limit(1)->where('pid', $publisher_id)->get('publishers');
 }
-?>

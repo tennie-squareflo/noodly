@@ -15,4 +15,3 @@ class Publisher_Model extends Core_Model{
     return $this->get($select, $where, $limit);
   }
 }
-?>

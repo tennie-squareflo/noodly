@@ -11,9 +11,6 @@ class Dashboard_Controller extends Admin_Controller {
     $count['contributors'] = $this->user_model->count(array('role' => 'contributor'));
     $count['stories'] = $this->story_model->count();
     $view_data['count'] = $count;
-    $this->load_view('/layout/header');
     $this->load_view('dashboard', $view_data);
-    $this->load_view('/layout/footer');
   }
 }
-?>

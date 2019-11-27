@@ -5,7 +5,12 @@ class Login_Controller extends Core_Controller {
 	}
 	function index() {
 		session_unset();
-		$this->load_view('login');
+		$vars['script_files'] = array(
+			'custom/admin/login/login.js'
+		);
+		$this->load_view('layout/html_header', $vars);
+		$this->load_view('login',$vars);
+		$this->load_view('layout/footer', $vars);
 	}
 	function login() {
 		$this->load_model('auth');
@@ -20,4 +25,3 @@ class Login_Controller extends Core_Controller {
 		}
 	}
 }
-?>

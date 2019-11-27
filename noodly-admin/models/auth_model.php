@@ -22,4 +22,3 @@ class Auth_Model extends Core_Model{
     return isset($_SESSION['user']) && $_SESSION['user']['role'] === 'super_admin';
   }
 }
-?>

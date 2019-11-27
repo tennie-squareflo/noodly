@@ -6,8 +6,16 @@ class Admin_Controller extends Core_Controller {
       header('Location: login');
     }
   }
+
   function check_logged_in() {
     $this->load_model('auth');
     return $this->auth_model->is_logged_in();
+  }
+
+  function load_view($page, $vars = array()) {  
+    parent::load_view('/layout/html_header', $vars);
+    parent::load_view('/layout/header', $vars);
+    parent::load_view('dashboard', $vars);
+    parent::load_view('/layout/footer', $vars);
   }
 }

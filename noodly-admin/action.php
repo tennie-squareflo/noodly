@@ -64,4 +64,3 @@
       echo json_encode(array('code' => 1, 'message' => 'Delete Failed!'));
     }
   } 
-?>

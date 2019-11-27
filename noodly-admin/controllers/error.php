@@ -9,4 +9,3 @@ class Error_Controller extends Core_Controller{
   }
 }
 
-?>

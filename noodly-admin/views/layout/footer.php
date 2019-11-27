@@ -20,6 +20,7 @@
 	                   "focus": "#9816f4"
 	               }
 	           };
+		const BASE_URL = "<?php echo BASE_URL; ?>";
 	</script> <!-- end::Global Config -->
 	 <!--begin::Global Theme Bundle -->
 	 

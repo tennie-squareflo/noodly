@@ -14,12 +14,7 @@ class Core_Controller {
       $filename .= '.php';
     }
     extract($vars);
-    if (! ini_get('short_open_tag'))
-		{
-			echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($this->view_path.$filename))));
-    } else {
-      include ($this->view_path.$filename);
-    }
+    include ($this->view_path.$filename);
   }
 
   function load_model($model) {

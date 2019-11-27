@@ -33,5 +33,3 @@ if ($current_role === 'admin') {
     $allowed = true;
   }
 }
-
-?>

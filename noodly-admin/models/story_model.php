@@ -5,4 +5,3 @@ class Story_Model extends Core_Model{
   }
   
 }
-?>

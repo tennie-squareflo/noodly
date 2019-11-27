@@ -47,4 +47,3 @@ if (file_exists($base_path.'controllers'.$path.'.php')) {
   $error->error404();
   exit();
 }
-?>

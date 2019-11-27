@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<!-- 
-Theme: Keen - The Ultimate Bootstrap Admin Theme
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-License: You must have a valid license purchased only from https://themes.getbootstrap.com/product/keen-the-ultimate-bootstrap-admin-theme/ in order to legally use the theme for your project.
--->
-<html lang="en">
-<!-- begin::Head -->
-<head>
-	<meta charset="utf-8">
-	<title>Noodly.io Admin Login</title>
-	<meta content="User login example" name="description">
-	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-	<meta content="IE=edge" http-equiv="X-UA-Compatible"><!--begin::Web font -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js">
-	</script>
-	<script>
-	           WebFont.load({
-	               google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-	               active: function() {
-	                   sessionStorage.fonts = true;
-	               }
-	           });
-	</script><!--end::Web font -->
-	<!--begin::Global Theme Styles -->
-	<link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-	<link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-	<!--end::Global Theme Styles -->
-	<link href="<?php echo ASSETS_PATH;?>media/logos/favicon.ico" rel="shortcut icon">
-</head><!-- end::Head -->
-<!-- begin::Body -->
 <body class="k-login-v2--enabled k-header--fixed k-header--skin-dark k-header-mobile--skin-dark k-header-mobile--fixed k-aside--enabled k-aside--fixed k-aside--skin-light k-aside__brand--skin-dark k-aside-secondary--enabled">
 	<!-- begin:: Page -->
 	<div class="k-grid k-grid--ver k-grid--root k-page">
@@ -87,41 +51,3 @@ License: You must have a valid license purchased only from https://themes.getboo
 			<!--begin::Item-->
 			<!--end::Item-->
 		</div>
-	</div><!-- end:: Page -->
-	<!-- begin::Global Config -->
-	<script>
-	           var KAppOptions = {
-	               "colors": {
-	                   "brand": "#5c4de5",
-	                   "metal": "#c4c5d6",
-	                   "light": "#ffffff",
-	                   "accent": "#00c5dc",
-	                   "primary": "#5867dd",
-	                   "success": "#34bfa3",
-	                   "info": "#36a3f7",
-	                   "warning": "#ffb822",
-	                   "danger": "#fd3995",
-	                   "focus": "#9816f4"
-	               }
-	           };
-	</script> <!-- end::Global Config -->
-	 <!--begin::Global Theme Bundle -->
-	 
-	<script src="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.js" type="text/javascript">
-	</script> 
-	<script src="<?php echo ASSETS_PATH;?>demo/default/base/scripts.bundle.js" type="text/javascript">
-	</script> <!--end::Global Theme Bundle -->
-	 <!--begin::Page Scripts -->
-	 
-	<script src="<?php echo ASSETS_PATH;?>custom/admin/login/login.js" type="text/javascript">
-	</script> <!--end::Page Scripts -->
-	 <!--begin::Global App Bundle -->
-	 
-	<script src="<?php echo ASSETS_PATH;?>app/scripts/bundle/app.bundle.js" type="text/javascript">
-	</script> <!--end::Global App Bundle -->
-	 
-	<script>
-	           var KThemeMode = 'released';
-	</script><!-- end::Body -->
-</body>
-</html>

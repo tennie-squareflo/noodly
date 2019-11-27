@@ -22,12 +22,12 @@ $(function() {
     submitHandler: function(form) {
 
       $.ajax({
-        url: BASE_URL + '/login/login',
+        url: BASE_URL + 'login/login',
         data: $(form).serialize(),
         dataType: 'json',
         method: 'POST',
         success: function(res) {
-          location.href = BASE_URL+'/dashboard';
+          location.href = BASE_URL+'dashboard';
         },
         error: function(res) {
           $('#error-message').show();

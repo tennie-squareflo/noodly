@@ -1,14 +1,3 @@
-<?php
-  require_once('../common/initialize.php');
-  $style_files = array('vendors/custom/slim/slim.min.css');
-  $script_files = array('demo/default/custom/custom/publisher-register/register.js');
-
-  $publisher_id = isset($_GET['publisherid']) ? $_GET['publisherid'] : 0;
-  $publisher = get_publisher_info($db, $publisher_id);
-?>
-<?php
-  require_once('layout/header.php');
-?>
 <!-- begin:: Content -->
 <div class="k-content	k-grid__item k-grid__item--fluid k-grid k-grid--hor">
 		<!-- begin:: Content -->
@@ -23,7 +12,7 @@
 				<div class="k-content__head-toolbar">
 					<div class="k-content__head-toolbar-wrapper">
 						
-						<a href="#" class="btn btn-success" id="save-btn">
+						<a class="btn btn-success" id="save-btn">
 							<i class="la la-check"></i> Save!
 						</a>
 					</div>
@@ -78,11 +67,11 @@
                               <div class="slim"
                                 data-service="upload_logo.php"
                                 data-did-throw-error="handleError">
-                                <input type="file" name="logo" data-value="<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>"/>
+                                <input type="file" name="logo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>'/>
                                 <?php
                                   if (count($publisher)) {
                                 ?>
-                                <img src="<?php echo $assets_url.'media/logos/'.$publisher['logo']; ?>" alt="">
+                                <img src="<?php echo ASSETS_PATH.'media/logos/'.$publisher['logo']; ?>" alt="">
                                 <?php
                                   }?>
                               </div>
@@ -120,7 +109,7 @@
                               <select class="form-control" name="country">
                                 <option value="" <?php echo count($publisher) ? '' : 'selected'; ?> disabled hidden>Select...</option>
                                 <?php
-                                  foreach ($country_names as $key => $value) {
+                                  foreach (unserialize(COUNTRIES) as $key => $value) {
                                     # code...
                                     echo "<option value='$key' ".(count($publisher) && $key === $publisher['country'] ? 'selected' : '').">$value</option>\n";
                                   }
@@ -183,8 +172,3 @@
 
 			<!-- end:: Content Body -->
 		</div>
-
-		<!-- end:: Content -->
-<?php
-  require_once('layout/footer.php');
-?>

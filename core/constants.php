@@ -1,5 +1,5 @@
 <?php
-$country_names = array(
+define('COUNTRIES', serialize(array(
   "AF"=>"Afghanistan",
   "AX"=>"Åland Islands",
   "AL"=>"Albania",
@@ -248,4 +248,4 @@ $country_names = array(
   "EH"=>"Western Sahara",
   "YE"=>"Yemen",
   "ZM"=>"Zambia",
-  "ZW"=>"Zimbabwe");
+  "ZW"=>"Zimbabwe")));

@@ -27,11 +27,29 @@ class Core_Controller {
     return false;
   }
 
+  function load_helper($helper) {
+    $filename = $helper.'_helper';
+    if ($this->load_file($filename, $this->base_path.'helpers/')) {
+      return true;
+    }
+    if ($this->load_file($filename, CORE_PATH.'helpers/')) {
+      return true;
+    }
+    return false;
+  }
+
   function load_class($name, $path, $suffix = '') {
     $class_name = $name.$suffix;
-    if (file_exists($path.$class_name.'.php')) {
-      require_once($path.$class_name.'.php');
+    if ($this->load_file($class_name, $path)) {
       $this->$class_name = new $class_name();
+      return true;
+    }
+    return false;
+  }
+
+  function load_file($file, $path) {
+    if (file_exists($path.$file.'.php')) {
+      require_once($path.$file.'.php');
       return true;
     }
     return false;

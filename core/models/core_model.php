@@ -10,8 +10,12 @@ class Core_Model {
     $this->pk = $primarykey;
   }
   function get($select, $where = array(), $limit = 0) {
-    if (!empty($where)) {
-      $this->db->where($where);
+    if (isset($where)) {
+      if (!is_array($where)) {
+        $this->db->where(array($this->pk => $where));
+      } else if(!empty($where)) {
+        $this->db->where($where);
+      }
     }
     if ($limit > 0) {
       $this->db->limit(5);
@@ -19,14 +23,22 @@ class Core_Model {
     return $this->db->get($this->table_name, $select);
   }
   function get_one($where = array()) {
-    if (!empty($where)) {
-      $this->db->where($where);
+    if (isset($where)) {
+      if (!is_array($where)) {
+        $this->db->where(array($this->pk => $where));
+      } else if(!empty($where)) {
+        $this->db->where($where);
+      }
     }
     return $this->db->limit(1)->get($this->table_name);
   }
   function count($where = array()) {
-    if (!empty($where)) {
-      $this->db->where($where);
+    if (isset($where)) {
+      if (!is_array($where)) {
+        $this->db->where(array($this->pk => $where));
+      } else if(!empty($where)) {
+        $this->db->where($where);
+      }
     }
     return $this->db->limit(1)->get($this->table_name, "count($this->pk) cnt")['cnt'];
   }
@@ -38,9 +50,23 @@ class Core_Model {
     }
   }
   function delete($where = array()) {
-    if (!empty($where)) {
-      $this->db->where($where);
+    if (isset($where)) {
+      if (!is_array($where)) {
+        $this->db->where(array($this->pk => $where));
+      } else if(!empty($where)) {
+        $this->db->where($where);
+      }
     }
     return $this->db->delete($this->table_name);
+  }
+  function update($new_data, $where = array()) {
+    if (isset($where)) {
+      if (!is_array($where)) {
+        $this->db->where(array($this->pk => $where));
+      } else if(!empty($where)) {
+        $this->db->where($where);
+      }
+    }
+    return $this->db->update($this->table_name, $new_data);
   }
 }

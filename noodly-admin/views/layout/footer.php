@@ -44,7 +44,7 @@
 	</script> <!--end::Toastr Plugin -->
 
 <?php
-	if (isset($script_files)) {
+	if (isset($script_files) && is_array($script_files)) {
 		foreach ($script_files as $file) {
 			# code...
 ?>

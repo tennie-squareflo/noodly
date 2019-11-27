@@ -1,6 +1,6 @@
 <?php
 $host_url = $_SERVER['HTTP_HOST'];
-$request_uri = isset($_SERVER['REDIRECT_URL']) ? $_SERVER['REDIRECT_URL'] : '/login';
+$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/login';
 
 $current_role = '';
 $publisher_domain = '';

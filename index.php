@@ -38,7 +38,7 @@ switch (ENV)
 if (ENV === 'development') {
 	define('BASE_PATH', '');
 } else {
-	define('BASE_PATH', dirname(__FILE__));
+	define('BASE_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 }
 define('CORE_PATH', BASE_PATH.'core'.DIRECTORY_SEPARATOR);
 define('ADMIN_PATH', BASE_PATH.'noodly-admin'.DIRECTORY_SEPARATOR);

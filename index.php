@@ -40,11 +40,11 @@ if (ENV === 'development') {
 } else {
 	define('BASE_PATH', 'noodly/');
 }
-define('CORE_PATH', 'core'.DIRECTORY_SEPARATOR);
+define('CORE_PATH', BASE_PATH.'core'.DIRECTORY_SEPARATOR);
 define('ASSETS_PATH', DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR);
-define('ADMIN_PATH', 'noodly-admin'.DIRECTORY_SEPARATOR);
-define('PUBLISHER_PATH', 'noodly-publisher'.DIRECTORY_SEPARATOR);
-define('VIEW_PATH', 'views'.DIRECTORY_SEPARATOR);
+define('ADMIN_PATH', BASE_PATH.'noodly-admin'.DIRECTORY_SEPARATOR);
+define('PUBLISHER_PATH', BASE_PATH.'noodly-publisher'.DIRECTORY_SEPARATOR);
+define('VIEW_PATH', BASE_PATH.'views'.DIRECTORY_SEPARATOR);
 
 // initialize
 require_once(CORE_PATH.'session.php');

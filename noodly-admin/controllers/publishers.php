@@ -36,8 +36,8 @@ class Publishers_Controller extends Admin_Controller {
           'city' => test_input($_POST['city']),
           'zipcode' => test_input($_POST['zipcode'])
         );
-        foreach($new_data as $value) {
-          if (empty($value)) {
+        foreach($new_data as $key => $value) {
+          if (empty($value) && $key !== 'logo') {
             $this->response(array('code' => 2, 'message' => 'Invalid input!'), 400);
             return;
           }

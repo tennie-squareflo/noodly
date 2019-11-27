@@ -11,9 +11,9 @@ $(function() {
       // logo: {
       //   required: true
       // },  
-      // domain: {
-      //   required: true
-      // },
+      domain: {
+        required: true
+      },
       phone: {
         required: true
       },

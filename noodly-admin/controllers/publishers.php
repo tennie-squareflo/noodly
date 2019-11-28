@@ -21,7 +21,8 @@ class Publishers_Controller extends Admin_Controller {
   }
 
   function action($action) {
-    $id = $_POST['id'];
+    $id = intval($_POST['id']);
+    
     $this->load_helper('validation');
     switch ($action) {
       case 'edit': {

@@ -15,8 +15,8 @@ class Publishers_Controller extends Admin_Controller {
   function edit($id = 0) {
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $view_data['script_files'] = array('custom/admin/publisher-register/register.js');
-    $view_data['publisher_id'] = $id;
-    $view_data['publisher'] = $this->publisher_model->get_one($id);
+    $view_data['publisher_id'] = intval($id);
+    $view_data['publisher'] = $this->publisher_model->get_one(intval($id));
     $this->load_view('publishers/edit_publisher', $view_data);
   }
 

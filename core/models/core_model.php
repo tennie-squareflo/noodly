@@ -44,7 +44,7 @@ class Core_Model {
   }
   function create($data) {
     if ($this->db->insert($this->table_name, $data)) {
-      return $this->insert_id();
+      return $this->db->insert_id();
     } else {
       return false;
     }

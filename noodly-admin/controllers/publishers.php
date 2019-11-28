@@ -40,10 +40,14 @@ class Publishers_Controller extends Admin_Controller {
           'zipcode' => test_input($_POST['zipcode'])
         );
         foreach($new_data as $key => $value) {
-          if (empty($value) && $key !== 'logo' && $key !== 'address2') {
-            $this->response(array('code' => 2, 'message' => 'Invalid input!'), 400);
+          if (empty($value) && $key !== 'address2') {
+            $this->response(array('code' => 2, 'message' => lcfirst($key).'is required.'), 400);
             return;
           }
+        }
+        if (!test_domain($new_data['domain'])) {
+          $this->response(array('code' => 2, 'message' => "Domain name \"$new_data[domain]\" is invalid."), 400);
+          return;
         }
         if ($id === 0) { // create
           $new_id = $this->publisher_model->create($new_data);

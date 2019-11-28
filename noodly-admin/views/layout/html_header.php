@@ -29,8 +29,8 @@ License: You must have a valid license purchased only from https://themes.getboo
 	           });
 	</script><!--end::Web font -->
 	<!--begin::Global Theme Styles -->
-	<link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-	<link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+	<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+	<link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 	<!--end::Global Theme Styles -->
 	<?php
 		if (isset($style_files)) {
@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 				# code...
 	?>
     <link
-      href="<?php echo ASSETS_PATH.$file; ?>"
+      href="<?php echo ASSETS_URL.$file; ?>"
       rel="stylesheet"
       type="text/css"
     />
@@ -47,6 +47,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 		}
 	?>
 
-	<link href="<?php echo ASSETS_PATH;?>media/logos/favicon.ico" rel="shortcut icon">
+	<link href="<?php echo ASSETS_URL;?>media/logos/favicon.ico" rel="shortcut icon">
 </head><!-- end::Head -->
 <!-- begin::Body -->

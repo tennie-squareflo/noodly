@@ -8,7 +8,7 @@
 				<!--begin::Heade-->
 				<div class="k-login-v2__head">
 					<div class="k-login-v2__head-logo">
-						<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_PATH.'media/logos/';?>logo-1.png"></a>
+						<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png"></a>
 					</div>
 				</div><!--begin::Head-->
 			</div><!--end::Item-->
@@ -45,7 +45,7 @@
 						</div>
 					</div><!--end::Wrapper-->
 					<!--begin::Pic-->
-					<div class="k-login-v2__body-pic"><img alt="" src="<?php echo ASSETS_PATH;?>media/misc/bg_icon.svg"></div><!--begin::Pic-->
+					<div class="k-login-v2__body-pic"><img alt="" src="<?php echo ASSETS_URL;?>media/misc/bg_icon.svg"></div><!--begin::Pic-->
 				</div><!--begin::Body-->
 			</div><!--end::Item-->
 			<!--begin::Item-->

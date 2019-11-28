@@ -11,7 +11,7 @@
         <a href="#"
           ><img
             alt="Logo"
-            src="<?php echo ASSETS_PATH;?>/media/logos/logo-1.png"
+            src="<?php echo ASSETS_URL;?>/media/logos/logo-1.png"
             width="100px"
         /></a>
       </div>
@@ -50,7 +50,7 @@
               <a href="#"
                 ><img
                   alt="Logo"
-                  src="<?php echo ASSETS_PATH;?>/media/logos/logo-2.png"
+                  src="<?php echo ASSETS_URL;?>/media/logos/logo-2.png"
                   width="130px"
               /></a>
             </div>

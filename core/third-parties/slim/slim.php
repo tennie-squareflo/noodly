@@ -256,7 +256,7 @@ IndexIgnore *
 # Disable script execution
 AddHandler cgi-script .php .pl .jsp .asp .sh .cgi
 Options -ExecCGI -Indexes';
-        file_put_contents($path . DIRECTORY_SEPARATOR . '.htaccess', $content);
+        file_put_contents($path . '.htaccess', $content);
     }
 
     /**

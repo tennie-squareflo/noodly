@@ -65,13 +65,14 @@
 														<label class="col-3 col-form-label">Logo</label>
 														<div class="col-9">
                               <div class="slim"
-                                data-service="upload_logo.php"
+                                data-service="<?php echo BASE_URL; ?>publishers/logo_upload"
+																data-push="true"
                                 data-did-throw-error="handleError">
                                 <input type="file" name="logo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>'/>
                                 <?php
                                   if (count($publisher)) {
                                 ?>
-                                <img src="<?php echo ASSETS_PATH.'media/logos/'.$publisher['logo']; ?>" alt="">
+                                <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" alt="">
                                 <?php
                                   }?>
                               </div>

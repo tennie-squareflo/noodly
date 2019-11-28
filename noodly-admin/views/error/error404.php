@@ -25,18 +25,18 @@ License: You must have a valid license purchased only from https://themes.getboo
 
         
                     <!--begin::Page Custom Styles(used by this page) -->
-                             <link href="<?php echo ASSETS_PATH; ?>common/pages/error/404-v1.css" rel="stylesheet" type="text/css" />
+                             <link href="<?php echo ASSETS_URL; ?>common/pages/error/404-v1.css" rel="stylesheet" type="text/css" />
                         <!--end::Page Custom Styles -->
         
         <!--begin::Global Theme Styles(used by all pages) -->
-                    <link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-	                  <link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_PATH;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+                    <link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+	                  <link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
                 <!--end::Global Theme Styles -->
 
         <!--begin::Layout Skins(used by all pages) -->
         
 
-        <link rel="shortcut icon" href="<?php echo ASSETS_PATH; ?>media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="<?php echo ASSETS_URL; ?>media/logos/favicon.ico" />
 
         <!-- Hotjar Tracking Code for keenthemes.com -->
 <script>
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 		<div class="kt-error404-v1__desc"><strong>OOPS!</strong> Something went wrong here.</div>
 	</div>
 	<div class="kt-error404-v1__image">
-		<img src="<?php echo ASSETS_PATH; ?>media/misc/404-bg1.jpg" class="kt-error404-v1__image-content" alt="" title=""/>
+		<img src="<?php echo ASSETS_URL; ?>media/misc/404-bg1.jpg" class="kt-error404-v1__image-content" alt="" title=""/>
 	</div>	
 </div>	</div>
 	<!-- end:: Page -->
@@ -114,8 +114,8 @@ License: You must have a valid license purchased only from https://themes.getboo
         <!-- end::Global Config -->
 
     	<!--begin::Global Theme Bundle(used by all pages) -->
-      <script src="<?php echo ASSETS_PATH;?>vendors/base/vendors.bundle.js" type="text/javascript"></script> 
-	    <script src="<?php echo ASSETS_PATH;?>demo/default/base/scripts.bundle.js" type="text/javascript">
+      <script src="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.js" type="text/javascript"></script> 
+	    <script src="<?php echo ASSETS_URL;?>demo/default/base/scripts.bundle.js" type="text/javascript">
 				<!--end::Global Theme Bundle -->
 
         

@@ -11,6 +11,7 @@ class Publishers_Controller extends Admin_Controller {
     $view_data['publishers'] = $this->publisher_model->get_publishers();
     $this->load_view('publishers/publishers', $view_data);
   }
+
   function edit($id = 0) {
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $view_data['script_files'] = array('custom/admin/publisher-register/register.js');
@@ -18,6 +19,7 @@ class Publishers_Controller extends Admin_Controller {
     $view_data['publisher'] = $this->publisher_model->get_one($id);
     $this->load_view('publishers/edit_publisher', $view_data);
   }
+
   function action($action) {
     $id = $_POST['id'];
     $this->load_helper('validation');
@@ -66,5 +68,10 @@ class Publishers_Controller extends Admin_Controller {
         }
         break;
     }
+  }
+
+  function logo_upload() {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload('logo', ASSETS_PATH.'media/logos/');
   }
 }

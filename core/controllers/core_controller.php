@@ -58,5 +58,28 @@ class Core_Controller {
   function response($data, $code = 200) {
     http_response_code($code);
     echo json_encode($data);
+    exit();
   }
+
+  function load_library($library) {
+    if ($this->load_class($library, $this->base_path.'libraries/')) {
+      return true;
+    }
+
+    if ($this->load_class($library, CORE_PATH.'libraries/')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // function load_third_party($file, $path, $classname) {
+  //   if (file_exists($path.$file.'.php')) {
+  //     require_once($path.$file.'.php');
+  //     $this->$classname = new $classname();
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
 }

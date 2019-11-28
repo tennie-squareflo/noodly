@@ -8,7 +8,7 @@ class Users_Controller extends Admin_Controller {
   }
 
   function index() {
-    //$view_data['script_files'] = array('custom/admin/publisher-register/publisher.js');
+    $view_data['script_files'] = array('custom/admin/users/list.js');
     $view_data['users'] = $this->user_model->get_users();
     $this->load_view('users/users', $view_data);
   }
@@ -21,60 +21,69 @@ class Users_Controller extends Admin_Controller {
   //   $this->load_view('publishers/edit_publisher', $view_data);
   // }
 
-  // function action($action) {
-  //   $id = intval($_POST['id']);
+  function action($action) {
+    $id = intval($_POST['id']);
     
-  //   $this->load_helper('validation');
-  //   switch ($action) {
-  //     case 'edit': {
-  //       $new_data = array(
-  //         'name' => test_input($_POST['name']),
-  //         'domain' => test_input($_POST['domain']),
-  //         'logo' => !empty($_POST['logo']) ? json_decode($_POST['logo'])->file : '',
-  //         'phonenumber' => test_input($_POST['phone']),
-  //         'email' => test_input($_POST['email']),
-  //         'country' => test_input($_POST['country']),
-  //         'state' => test_input($_POST['state']),
-  //         'address1' => test_input($_POST['address1']),
-  //         'address2' => test_input($_POST['address2']),
-  //         'city' => test_input($_POST['city']),
-  //         'zipcode' => test_input($_POST['zipcode'])
-  //       );
-  //       foreach($new_data as $key => $value) {
-  //         if (empty($value) && $key !== 'address2') {
-  //           $this->response(array('code' => 2, 'message' => lcfirst($key).'is required.'), 400);
-  //           return;
-  //         }
-  //       }
-  //       if (!test_domain($new_data['domain'])) {
-  //         $this->response(array('code' => 2, 'message' => "Domain name \"$new_data[domain]\" is invalid."), 400);
-  //         return;
-  //       }
-  //       if ($id === 0) { // create
-  //         $new_id = $this->publisher_model->create($new_data);
-  //         if ($new_id !== false) {
-  //           $this->response(array('code' => 0, 'id' => $new_id, 'message' => 'Publisher created successfully!'));
-  //         } else {
-  //           $this->response(array('code' => 1, 'message' => 'Publisher creation failed!'), 500);
-  //         }
-  //       } else {
-  //         if ($this->publisher_model->update($new_data, $id)) {
-  //           $this->response(array('code' => 0, 'id' => $id, 'message' => 'Publisher updated successfully!'));
-  //         } else {
-  //           $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
-  //         }
-  //       }
-  //       break; 
-  //     }
-  //     case 'delete':
-  //       if ($this->publisher_model->delete($id))  {
-  //         $this->response(array('code' => 0, 'message' => 'Publisher deleted successfully!'));
-  //       } else {
-  //         $this->response(array('code' => 1, 'message' => 'Publisher deletion failed!'), 500);
-  //       }
-  //       break;
-  //   }
-  // }
+    $this->load_helper('validation');
+    switch ($action) {
+      // case 'edit': {
+      //   $new_data = array(
+      //     'name' => test_input($_POST['name']),
+      //     'domain' => test_input($_POST['domain']),
+      //     'logo' => !empty($_POST['logo']) ? json_decode($_POST['logo'])->file : '',
+      //     'phonenumber' => test_input($_POST['phone']),
+      //     'email' => test_input($_POST['email']),
+      //     'country' => test_input($_POST['country']),
+      //     'state' => test_input($_POST['state']),
+      //     'address1' => test_input($_POST['address1']),
+      //     'address2' => test_input($_POST['address2']),
+      //     'city' => test_input($_POST['city']),
+      //     'zipcode' => test_input($_POST['zipcode'])
+      //   );
+      //   foreach($new_data as $key => $value) {
+      //     if (empty($value) && $key !== 'address2') {
+      //       $this->response(array('code' => 2, 'message' => lcfirst($key).'is required.'), 400);
+      //       return;
+      //     }
+      //   }
+      //   if (!test_domain($new_data['domain'])) {
+      //     $this->response(array('code' => 2, 'message' => "Domain name \"$new_data[domain]\" is invalid."), 400);
+      //     return;
+      //   }
+      //   if ($id === 0) { // create
+      //     $new_id = $this->publisher_model->create($new_data);
+      //     if ($new_id !== false) {
+      //       $this->response(array('code' => 0, 'id' => $new_id, 'message' => 'Publisher created successfully!'));
+      //     } else {
+      //       $this->response(array('code' => 1, 'message' => 'Publisher creation failed!'), 500);
+      //     }
+      //   } else {
+      //     if ($this->publisher_model->update($new_data, $id)) {
+      //       $this->response(array('code' => 0, 'id' => $id, 'message' => 'Publisher updated successfully!'));
+      //     } else {
+      //       $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+      //     }
+      //   }
+      //   break; 
+      // }
+      case 'delete':
+        if ($this->user_model->delete($id))  {
+          $this->response(array('code' => 0, 'message' => 'User deleted successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'User deletion failed!'), 500);
+        }
+        break;
+      case 'invite': {
+        $user = $this->user_model->get_one($id);
+        if (mail($user['email'], "This mail is from noodly.io!\nThis will be updated with a link to profile page!")) {
+          $this->response(array('code' => 0, 'message' => 'Invitation sent on success fully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
+        }
+        break;
+      }
+    }
+  }
 
   // function logo_upload() {
   //   $this->load_library('slim_image_uploader');

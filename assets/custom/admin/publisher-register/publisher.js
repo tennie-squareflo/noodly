@@ -3,7 +3,6 @@
 
 $(function() {
   $('.delete-btn').click(function() {
-    console.log('aaa');
     const id = $(this).attr('data-id');
     if (confirm('Really?')) {
       $.ajax({
@@ -12,7 +11,6 @@ $(function() {
         dataType: 'json',
         method: 'POST',
         success: function(res) {
-          console.log('sc', res);
           if (res.code == 0) {
             //location.href = 'dashboard.php';
             toastr.options = {

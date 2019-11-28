@@ -75,7 +75,7 @@ class Users_Controller extends Admin_Controller {
         break;
       case 'invite': {
         $user = $this->user_model->get_one($id);
-        if (mail($user['email'], "This mail is from noodly.io!\nThis will be updated with a link to profile page!")) {
+        if (mail($user['email'], "From Noodly.io", "This mail is from noodly.io!\nThis will be updated with a link to profile page!")) {
           $this->response(array('code' => 0, 'message' => 'Invitation sent on success fully!'));
         } else {
           $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);

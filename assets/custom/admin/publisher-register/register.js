@@ -1,6 +1,20 @@
 "use strict";
 
 import("../../../vendors/custom/slim/slim.kickstart.min.js");
+import(
+  "../../../vendors/custom/country-province-select/jquery.countryProvinceSelect.js"
+).then(() => {
+  $('.form-control[name="country"]').countryProvinceSelect({
+    type: "country",
+    countryFirstValue: ":Select your Country",
+    provinceFirstValue: ":Select your Province",
+    showHideProvinceOnChange: false,
+    provinceSelect: '.form-control[name="state"]',
+    //,onlyUseTheseCountries:'|Canada|United States'
+    //,doNotUseTheseCountries:'|Canada|United States'
+  });
+});
+
 $(function() {
   jQuery.validator.addMethod(
     "checkDomain",

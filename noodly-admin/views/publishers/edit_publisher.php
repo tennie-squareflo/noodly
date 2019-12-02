@@ -55,9 +55,14 @@
 													</div>
 
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Domain Name</label>
+														<label class="col-3 col-form-label">Sub-domain</label>
 														<div class="col-9">
-															<input class="form-control" placeholder="Domain Name" name="domain" type="text" value="<?php echo count($publisher) ? $publisher['domain'] : ''; ?>">
+															<div class="input-group">
+																<input class="form-control" placeholder="Domain Name" name="domain" type="text" value="<?php echo count($publisher) ? $publisher['domain'] : ''; ?>">
+																<div class="input-group-append">
+																	<span class="input-group-text">.noodly.io</span>
+																</div>
+															</div>															
 														</div>
 													</div>
 
@@ -107,14 +112,7 @@
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Country</label>
 														<div class="col-9">
-                              <select class="form-control" name="country">
-                                <option value="" <?php echo count($publisher) ? '' : 'selected'; ?> disabled hidden>Select...</option>
-                                <?php
-                                  foreach (unserialize(COUNTRIES) as $key => $value) {
-                                    # code...
-                                    echo "<option value='$key' ".(count($publisher) && $key === $publisher['country'] ? 'selected' : '').">$value</option>\n";
-                                  }
-                                ?>
+                              <select class="form-control" name="country" data-start-value="<?php echo count($publisher) ? $publisher['country'] : ''; ?>">
 															</select>
 														</div>
 													</div>
@@ -122,7 +120,7 @@
 													<div class="form-group row">
 														<label class="col-3 col-form-label">State / Province / Region</label>
 														<div class="col-9">
-															<input class="form-control" placeholder="State" name="state" type="text" value="<?php echo count($publisher) ? $publisher['state'] : ''; ?>">
+															<select class="form-control" name="state" data-start-value="<?php echo count($publisher) ? $publisher['state'] : ''; ?>"></select>
 														</div>
 													</div>
 

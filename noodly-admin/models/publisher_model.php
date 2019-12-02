@@ -14,4 +14,14 @@ class Publisher_Model extends Core_Model{
       (SELECT ifnull(sum(visits), 0) FROM stories s WHERE (SELECT pid FROM users u WHERE u.uuid = s.uuid) = publishers.pid) visits";
     return $this->get($select, $where, $limit);
   }
+
+  function get_list() {
+    $select = "publishers.pid, publishers.name";
+    $list = $this->get($select);
+    $result = array();
+    foreach ($list as $publisher) {
+      $result[$publisher['pid']] = $publisher['name'];
+    }
+    return $result;
+  }
 }

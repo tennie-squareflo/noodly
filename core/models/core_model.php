@@ -9,7 +9,7 @@ class Core_Model {
     $this->table_name = $tbl_name;
     $this->pk = $primarykey;
   }
-  function get($select, $where = array(), $limit = 0) {
+  function get($select, $where = array(), $limit = 0, $by = '', $order_type = 'DESC') {
     if (isset($where)) {
       if (!is_array($where)) {
         $this->db->where(array($this->pk => $where));
@@ -19,6 +19,11 @@ class Core_Model {
     }
     if ($limit > 0) {
       $this->db->limit(5);
+    }
+    if ($by) {
+      $this->db->order_by($by, $order_type);
+    } else {
+      $this->db->order_by($this->pk);
     }
     return $this->db->get($this->table_name, $select);
   }

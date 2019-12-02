@@ -33,7 +33,7 @@
             
             
 
-            <a href="<?php echo BASE_URL;?>publishers/edit" class="btn btn-success">
+            <a href="<?php echo BASE_URL;?>users/edit" class="btn btn-success">
               <i class="la la-pencil"></i> Add A User
           </a>
           </div>

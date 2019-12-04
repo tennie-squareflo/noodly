@@ -119,12 +119,17 @@ class Users_Controller extends Admin_Controller {
         $view_data['user'] = $user;
         $view_data['publisher'] = $publisher;
         $view_data['env'] = $this->environment_model->get_admin_env();
-        $body = $this->single_load_view('email_template/invite_user', $view_data, true);
+        $view_data['accept_url'] = $publisher['domain'];
 
-        if (mail($to, $subject, $body, $headers)) {
-          $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
+        $body = $this->single_load_view('email_template/invite_user', $view_data, true);
+        if (ENV === 'production') {
+          if (mail($to, $subject, $body, $headers)) {
+            $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
+          } else {
+            $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
+          }
         } else {
-          $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
+          var_dump($body);
         }
         break;
       }

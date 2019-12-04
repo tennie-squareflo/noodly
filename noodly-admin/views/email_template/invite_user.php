@@ -208,7 +208,7 @@
                   <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tbody>
                       <tr>
-                        <td <?php echo $env['email_background_image'] !== '' ? "background='".'http://'.$publisher['domain'].ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover; border-radius: 8px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
+                        <td <?php echo $env['email_background_image'] !== '' ? "background='".PROTOCOL.'://'.$publisher['domain'].ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover; border-radius: 8px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
                           <!--[if gte mso 9]>
             <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
                 <v:fill type="frame" src="images/header-2-image-2.jpg" color="#1B1B1B"></v:fill>
@@ -235,7 +235,7 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" align="center">
-                                          <a href="//<?php echo $publisher['domain']; ?>" style="text-decoration: none;"><img src="<?php echo 'http://'.$publisher['domain'].ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $publisher['domain']; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$publisher['domain'].ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
                                         </td>
                                       </tr>
                                       <tr>
@@ -265,7 +265,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="border-radius: 8px; padding: 13px 17px; background-color: #5654dd" bgcolor="#5654dd" valign="top" align="center">
-                                                  <a href="http://example.com" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Create A Password</a>
+                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Create A Password</a>
                                                 </td>
                                               </tr>
                                             </tbody>

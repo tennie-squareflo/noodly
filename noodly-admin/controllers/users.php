@@ -110,7 +110,7 @@ class Users_Controller extends Admin_Controller {
 
         $to = $user['email'];
         $from = $publisher['email'];
-        $subject = "Noodly Account Created!";
+        $subject = "Noodly Account Created";
 
         $headers = "From: $from\r\n";
         $headers .= "MIME-Version: 1.0\r\n";

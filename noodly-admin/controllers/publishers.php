@@ -48,6 +48,8 @@ class Publishers_Controller extends Admin_Controller {
         if (!test_domain($new_data['domain'])) {
           $this->response(array('code' => 2, 'message' => "Domain name \"$new_data[domain]\" is invalid."), 400);
           return;
+        } else {
+          $new_data['domain'] .='.noodly.io';
         }
         if ($id === 0) { // create
           $new_id = $this->publisher_model->create($new_data);

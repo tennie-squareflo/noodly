@@ -1,19 +1,6 @@
 "use strict";
 
 import("../../../vendors/custom/slim/slim.kickstart.min.js");
-import(
-  "../../../vendors/custom/country-province-select/jquery.countryProvinceSelect.js"
-).then(() => {
-  $('.form-control[name="country"]').countryProvinceSelect({
-    type: "country",
-    countryFirstValue: ":Select your Country",
-    provinceFirstValue: ":Select your Province",
-    showHideProvinceOnChange: false,
-    provinceSelect: '.form-control[name="state"]'
-    //,onlyUseTheseCountries:'|Canada|United States'
-    //,doNotUseTheseCountries:'|Canada|United States'
-  });
-});
 
 $(function() {
   jQuery.validator.setDefaults({
@@ -31,56 +18,17 @@ $(function() {
       $(element).removeClass("is-invalid");
     }
   });
-  jQuery.validator.addMethod(
-    "checkDomain",
-    function(value) {
-      return value.match(/[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]/g)[0] === value;
-    },
-    "Domain must be valid"
-  );
 
   $("#register-form").validate({
     rules: {
-      name: {
-        required: true
-      },
-      // logo: {
-      //   required: true
-      // },
-      domain: {
-        required: true,
-        checkDomain: true
-      },
-      phone: {
-        required: true
-      },
-      email: {
-        required: true,
-        email: true
-      },
-      country: {
-        required: true
-      },
-      state: {
-        required: true
-      },
-      address1: {
-        required: true
-      },
-      city: {
-        required: true
-      },
-      zipcode: {
+      email_expiration_time: {
         required: true
       }
     },
-    messages: {
-      email: "Please enter a valid email address",
-      checkDomain: "Please enter a valid domain"
-    },
+    messages: {},
     submitHandler: function(form) {
       $.ajax({
-        url: BASE_URL + "publishers/action/edit",
+        url: BASE_URL + "settings/edit",
         data: $(form).serialize(),
         dataType: "json",
         method: "POST",
@@ -106,9 +54,6 @@ $(function() {
             };
 
             toastr.success(res.message);
-            setTimeout(() => {
-              location.href = BASE_URL + `publishers/edit/${res.id}`;
-            }, 3000);
           } else {
             toastr.options = {
               closeButton: false,
@@ -160,7 +105,7 @@ $(function() {
   });
   setTimeout(() => {
     $("#register-form")
-      .find('input[name="logo"]')
+      .find('input[name="email_background_image"]')
       .val(
         $("#register-form")
           .find('input[type="file"]')

@@ -9,12 +9,22 @@ class Core_Controller {
     $this->view_path = ($this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH).VIEW_PATH;
   }
 
-  function load_view($filename, $vars = array()) {
+  function load_view($filename, $vars = array(), $return = false) {
     if (substr($filename, -4) !== '.php') {
       $filename .= '.php';
     }
     extract($vars);
+    if ($return === true) {
+      ob_start();
+    }
+    
     include ($this->view_path.$filename);
+
+    if ($return === true) {
+      $result = ob_get_clean();
+      return $result;
+    }
+    
   }
 
   function load_model($model) {

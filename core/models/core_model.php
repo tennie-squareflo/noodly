@@ -9,6 +9,19 @@ class Core_Model {
     $this->table_name = $tbl_name;
     $this->pk = $primarykey;
   }
+
+
+  // begin, commit, rollback transactions
+  function begin_transaction() {
+    $this->db->begin_transaction();
+  }
+  function trans_commit() {
+    $this->db->commit();
+  }
+  function trans_rollback() {
+    $this->db->rollback();
+  }
+
   function get($select, $where = array(), $limit = 0, $by = '', $order_type = 'DESC') {
     if (isset($where)) {
       if (!is_array($where)) {
@@ -74,4 +87,5 @@ class Core_Model {
     }
     return $this->db->update($this->table_name, $new_data);
   }
+
 }

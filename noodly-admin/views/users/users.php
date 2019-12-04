@@ -76,7 +76,7 @@
                                   <?php
                                     if (intval($user['profile_ready']) === 0) :
                                   ?>
-                                  <a class="dropdown-item invite-btn" data-id="<?php echo $user['uuid'];?>"><i class="fa fa-pencil-alt"></i>Send invitation</a>
+                                  <a class="dropdown-item invite-btn" data-id="<?php echo $user['uuid'];?>"><i class="fa fa-paper-plane"></i>Send invitation</a>
                                   <?php 
                                     endif;
                                   ?>

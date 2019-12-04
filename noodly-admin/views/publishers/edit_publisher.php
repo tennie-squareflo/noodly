@@ -62,7 +62,7 @@
 																<div class="input-group-append">
 																	<span class="input-group-text">.noodly.io</span>
 																</div>
-															</div>															
+															</div>
 														</div>
 													</div>
 

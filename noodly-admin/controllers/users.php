@@ -41,9 +41,14 @@ class Users_Controller extends Admin_Controller {
           'address1' => test_input($_POST['address1']),
           'address2' => test_input($_POST['address2']),
           'city' => test_input($_POST['city']),
-          'zipcode' => test_input($_POST['zipcode'])
+          'zipcode' => test_input($_POST['zipcode']),
+          'avatar' => !empty($_POST['avatar']) ? json_decode($_POST['avatar'])->file : '',
         );
         //check validation
+        if (empty($new_data['firstname'])) {
+          $this->response(array('code' => 1, 'message' => 'First Name is required!'), 400);
+          return;
+        }
         if (empty($new_data['email'])) {
           $this->response(array('code' => 1, 'message' => 'Email is required!'), 400);
           return;
@@ -97,9 +102,25 @@ class Users_Controller extends Admin_Controller {
         }
         break;
       case 'invite': {
-        $user = $this->user_model->get_one($id);
+        $this->load_model('publisher');
+        $this->load_model('environment');
 
-        if (mail($user['email'], 'From Noodly', 'Click here to go noodly.io !')) {
+        $user = $this->user_model->get_one($id);
+        $publisher = $this->publisher_model->get_one($user['pid']);
+
+        $to = $user['email'];
+        $from = $publisher['email'];
+
+        $headers = "From: $from\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+        $view_data['user'] = $user;
+        $view_data['publisher'] = $publisher;
+        $view_data['env'] = $this->environment_model->get_admin_env();
+        $body = $this->single_load_view('email_template/invite_user', $view_data, true);
+
+        if (mail($to, $subject, $body, $headers)) {
           $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
         } else {
           $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
@@ -109,8 +130,8 @@ class Users_Controller extends Admin_Controller {
     }
   }
 
-  // function logo_upload() {
-  //   $this->load_library('slim_image_uploader');
-  //   $this->slim_image_uploader->image_upload('logo', ASSETS_PATH.'media/logos/');
-  // }
+  function avatar_upload() {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload('avatar', ASSETS_PATH.'media/avatars/');
+  }
 }

@@ -15,6 +15,10 @@
       </li>
 
       <li aria-haspopup="true" class="k-menu__item">
+        <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
+      </li>
+
+      <li aria-haspopup="true" class="k-menu__item">
         <a class="k-menu__link" href="<?php echo BASE_URL; ?>login"><i class="k-menu__link-icon fa fa-lock"></i><span class="k-menu__link-text">Log Out</span></a>
       </li>
         </ul>

@@ -302,4 +302,17 @@ class Database
         }
     }
 
+    public function begin_transaction() {
+        self::connection();
+        mysqli_begin_transaction(self::$link);
+    }
+
+    public function commit() {
+        self::connection();
+        mysqli_commit(self::$link);
+    }
+    public function rollback() {
+        self::connection();
+        mysqli_rollback(self::$link);
+    }
 }

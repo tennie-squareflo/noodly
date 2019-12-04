@@ -6,7 +6,7 @@
 			<!-- begin:: Content Head -->
 			<div class="k-content__head	k-grid__item">
 				<div class="k-content__head-main">
-					<h3 class="k-content__head-title">Settings</h3>
+					<h3 class="k-content__head-title">User Settings</h3>
 				
 				</div>
 				<div class="k-content__head-toolbar">
@@ -59,6 +59,24 @@
 															<input class="form-control" placeholder="Last Name" name="lastname" type="text" value="<?php echo count($user) ? $user['lastname'] : ''; ?>">
 														</div>
                           </div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Avatar</label>
+														<div class="col-9">
+                              <div class="slim"
+                                data-service="<?php echo BASE_URL; ?>users/avatar_upload"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="avatar" data-value='<?php echo count($user) ? '{"file": "'.$user['avatar'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (count($user)) {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/avatars/'.$user['avatar']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
                           
                           <div class="form-group row">
 														<label class="col-3 col-form-label">Phone</label>

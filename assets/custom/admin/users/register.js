@@ -18,6 +18,9 @@ import(
 $(function() {
   $("#register-form").validate({
     rules: {
+      firstname: {
+        required: true,
+      },
       email: {
         required: true,
         email: true

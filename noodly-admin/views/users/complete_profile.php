@@ -6,7 +6,7 @@
 			<!-- begin:: Content Head -->
 			<div class="k-content__head	k-grid__item">
 				<div class="k-content__head-main">
-					<h3 class="k-content__head-title">User Settings</h3>
+					<h3 class="k-content__head-title">Complete Profile</h3>
 				
 				</div>
 				<div class="k-content__head-toolbar">
@@ -28,16 +28,9 @@
 						<!--begin::Portlet-->
 						<div class="k-portlet" id="k_page_portlet">
 							<div class="k-portlet__body">
-                <?php
-                  if ($user_id !== 0 && count($user) === 0) {
-                    $user_id = 0;
-                ?>
-                  <div class="alert alert-danger" id="error-message" role="alert">
-                    <div class="alert-text">Incorrect user provided! Mode changed to create.</div>
-                  </div>
-                <?php
-                  }
-                ?>
+                <div class="alert alert-info" role="alert">
+                  <div class="alert-text">Please complete your profile.</div>
+                </div>
                 <form class="k-form" id="register-form"  method="post" enctype="multipart/form-data">
                   <input type="hidden" name="id" value="<?php echo $user_id; ?>" />
 									<div class="row">
@@ -48,7 +41,7 @@
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 													
 													<div class="form-group row">
-														<label class="col-3 col-form-label">First Name</label>
+														<label class="col-3 col-form-label">First Name*</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="First Name" name="firstname" type="text" value="<?php echo count($user) ? $user['firstname'] : ''; ?>">
 														</div>
@@ -57,6 +50,18 @@
 														<label class="col-3 col-form-label">Last Name</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="Last Name" name="lastname" type="text" value="<?php echo count($user) ? $user['lastname'] : ''; ?>">
+														</div>
+                          </div>
+                          <div class="form-group row">
+														<label class="col-3 col-form-label">Password*</label>
+														<div class="col-9">
+															<input class="form-control" id="password" placeholder="Password" name="password" type="password" value="<?php echo count($user) ? $user['password'] : ''; ?>">
+														</div>
+                          </div>
+                          <div class="form-group row">
+														<label class="col-3 col-form-label">Confirm Password</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Confirm password" name="confirm_password" type="password" value="<?php echo count($user) ? $user['password'] : ''; ?>">
 														</div>
                           </div>
 
@@ -79,23 +84,23 @@
 													</div>
                           
                           <div class="form-group row">
-														<label class="col-3 col-form-label">Phone</label>
+														<label class="col-3 col-form-label">Phone*</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="Phone" name="phonenumber" type="text" value="<?php echo count($user) ? $user['phonenumber'] : ''; ?>">
 														</div>
                           </div>
                           
                           <div class="form-group row">
-														<label class="col-3 col-form-label">Email Address</label>
+														<label class="col-3 col-form-label">Email Address*</label>
 														<div class="col-9">
-															<input class="form-control" placeholder="Email Address" name="email" type="text" value="<?php echo count($user) ? $user['email'] : ''; ?>">
+															<input class="form-control" placeholder="Email Address" disabled readonly name="email" type="text" value="<?php echo count($user) ? $user['email'] : ''; ?>">
 														</div>
                           </div>
 
                           <div class="form-group row">
-														<label class="col-3 col-form-label">Role</label>
+														<label class="col-3 col-form-label">Role*</label>
 														<div class="col-9">
-															<select class="form-control" placeholder="Role" name="role">
+															<select class="form-control" placeholder="Role" name="role" readonly disabled>
                                 <?php
                                   $options = array(
                                     '' => 'Select Role', 
@@ -112,9 +117,9 @@
                           </div>
                           
                           <div class="form-group row">
-														<label class="col-3 col-form-label">Publisher</label>
+														<label class="col-3 col-form-label">Publisher*</label>
 														<div class="col-9">
-															<select class="form-control" placeholder="Role" name="pid">
+															<select class="form-control" placeholder="Role" name="pid"  readonly disabled>
                                 <?php
 																	$publishers = array('' => 'Select Publisher') + $publishers;
                                   foreach ($publishers as $key => $publisher) {
@@ -132,7 +137,7 @@
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">Address:</h3>
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Country</label>
+														<label class="col-3 col-form-label">Country*</label>
 														<div class="col-9">
                               <select class="form-control" name="country" data-start-value="<?php echo count($user) ? $user['country'] : ''; ?>">
 															</select>
@@ -140,7 +145,7 @@
 													</div>
 
 													<div class="form-group row">
-														<label class="col-3 col-form-label">State / Province / Region</label>
+														<label class="col-3 col-form-label">State / Province / Region*</label>
 														<div class="col-9">
 															<select class="form-control" name="state" data-start-value="<?php echo count($user) ? $user['state'] : ''; ?>"></select>
 														</div>
@@ -148,7 +153,7 @@
 
 
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Address Line 1</label>
+														<label class="col-3 col-form-label">Address Line 1*</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="Address Line1" name="address1" type="text" value="<?php echo count($user) ? $user['address1'] : ''; ?>">
 														</div>
@@ -160,14 +165,14 @@
 														</div>
 													</div>
 													<div class="form-group row">
-														<label class="col-3 col-form-label">City</label>
+														<label class="col-3 col-form-label">City*</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="City" name="city" type="text" value="<?php echo count($user) ? $user['city'] : ''; ?>">
 														</div>
 													</div>
 													
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Zip / Postal Code</label>
+														<label class="col-3 col-form-label">Zip / Postal Code*</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="ZipCode" name="zipcode" type="text" value="<?php echo count($user) ? $user['zipcode'] : ''; ?>">
 														</div>

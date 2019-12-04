@@ -18,6 +18,10 @@ class Users_Controller extends Admin_Controller {
     $view_data['script_files'] = array('custom/admin/users/register.js');
     $view_data['user_id'] = intval($id);
     $view_data['user'] = $this->user_model->get_one(intval($id));
+    if (intval($id) !== 0 && empty($view_data['user'])) {
+      header("Location: ".BASE_URL."users/edit");
+      return;
+    }
     $this->load_model('publisher');
     $view_data['publishers'] = $this->publisher_model->get_list();
     $this->load_view('users/edit_user', $view_data);
@@ -33,7 +37,7 @@ class Users_Controller extends Admin_Controller {
           'firstname' => test_input($_POST['firstname']),
           'lastname' => test_input($_POST['lastname']),
           'role' => test_input($_POST['role']),
-          'pid' => test_input($_POST['pid']),
+          'pid' => test_input(empty($_POST['pid']) ? 0 : $_POST['pid']),
           'phonenumber' => test_input($_POST['phonenumber']),
           'email' => test_input($_POST['email']),
           'country' => test_input($_POST['country']),
@@ -89,7 +93,7 @@ class Users_Controller extends Admin_Controller {
           if ($this->user_model->update($new_data, $id)) {
             $this->response(array('code' => 0, 'id' => $id, 'message' => "User updated successfully!$message"));
           } else {
-            $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+            $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
           }
         }
         break; 
@@ -107,6 +111,7 @@ class Users_Controller extends Admin_Controller {
 
         $user = $this->user_model->get_one($id);
         $publisher = $this->publisher_model->get_one($user['pid']);
+        $env = $this->environment_model->get_admin_env();
 
         $to = $user['email'];
         $from = $publisher['email'];
@@ -116,10 +121,26 @@ class Users_Controller extends Admin_Controller {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
+        $invite_token = array(
+          'uuid' => $user['uuid'],
+          'expiration_time' => time() + (60 * $env['email_expiration_time'])
+        );
+
+        $this->load_library('encryption', true);
+
+        if (ENV === 'development') {
+          $domain = $publisher['domain'] === 'noodly.io' 
+                    ? 'dev.noodly.com/admin' 
+                    : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
+          $publisher['domain'] = 'dev.noodly.com';
+        } else {
+          $domain = $publisher['domain'];
+        }
+        
+        $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);
         $view_data['user'] = $user;
         $view_data['publisher'] = $publisher;
-        $view_data['env'] = $this->environment_model->get_admin_env();
-        $view_data['accept_url'] = $publisher['domain'];
+        $view_data['env'] = $env;
 
         $body = $this->single_load_view('email_template/invite_user', $view_data, true);
         if (ENV === 'production') {

@@ -21,27 +21,39 @@ $(function() {
       firstname: {
         required: true,
       },
-      email: {
+      password: {
+        minlength: 8,
         required: true,
-        email: true
       },
-      role: {
+      confirm_password: {
+        equalTo: '#password'
+      },
+      phonenumber: {
         required: true
       },
-      pid: {
-        required: {
-          depends: function() {
-            return $('.form-control[name="role"]').val() !== "super_admin";
-          }
-        }
-      }
+      country: {
+        required: true
+      }, 
+      state: {
+        required: true
+      }, 
+      address1: {
+        required: true
+      }, 
+      city: {
+        required: true
+      }, 
+      zipcode: {
+        required: true
+      }, 
+
     },
     messages: {
       email: "Please enter a valid email address"
     },
     submitHandler: function(form) {
       $.ajax({
-        url: BASE_URL + "users/action/edit",
+        url: BASE_URL + "accept/save_profile",
         data: $(form).serialize(),
         dataType: "json",
         method: "POST",
@@ -67,9 +79,6 @@ $(function() {
             };
 
             toastr.success(res.message);
-            setTimeout(() => {
-              location.href = BASE_URL + `users/edit/${res.id}`;
-            }, 3000);
           } else {
             toastr.options = {
               closeButton: false,
@@ -117,14 +126,6 @@ $(function() {
   });
   $("#save-btn").click(() => {
     $("#register-form").submit();
-  });
-  $('select[name="role"]').change((e) => {
-    if (e.target.value === 'super_admin') {
-      $('select[name="pid"]').val(0);
-      $('select[name="pid"]').attr('disabled', true);
-    } else {
-      $('select[name="pid"]').attr('disabled', false);
-    }
   });
   setTimeout(() => {
     $("#register-form")

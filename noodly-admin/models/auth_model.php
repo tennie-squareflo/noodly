@@ -10,7 +10,8 @@ class Auth_Model extends Core_Model{
         'uuid' => $res['uuid'],
         'pid' => $res['pid'],
         'role' => $res['role'],
-        'name' => $res['firstname'].$res['lastname']
+        'name' => $res['firstname'].$res['lastname'],
+        'profile_ready' => $res['profile_ready']
       );
       return true;
     }
@@ -20,5 +21,9 @@ class Auth_Model extends Core_Model{
 
   function is_logged_in() {
     return isset($_SESSION['user']) && $_SESSION['user']['role'] === 'super_admin';
+  }
+
+  function is_profile_ready() {
+    return isset($_SESSION['user']) && intval($_SESSION['user']['profile_ready']) === 1;
   }
 }

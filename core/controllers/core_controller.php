@@ -27,11 +27,11 @@ class Core_Controller {
     
   }
 
-  function load_model($model) {
-    if ($this->load_class($model, $this->base_path.'models/', '_model')) {
+  function load_model($model, $static = false) {
+    if ($this->load_class($model, $this->base_path.'models/', '_model', $static)) {
       return true;
     }
-    if ($this->load_class($model, CORE_PATH.'models/' ,'_model')) {
+    if ($this->load_class($model, CORE_PATH.'models/' ,'_model', $static)) {
       return true;
     }
     return false;
@@ -48,12 +48,15 @@ class Core_Controller {
     return false;
   }
 
-  function load_class($name, $path, $suffix = '') {
+  function load_class($name, $path, $suffix = '', $static = false) {
     $class_name = $name.$suffix;
     if ($this->load_file($class_name, $path)) {
-      $this->$class_name = new $class_name();
+      if ($static === false) {
+        $this->$class_name = new $class_name();
+      }
       return true;
     }
+
     return false;
   }
 
@@ -71,12 +74,12 @@ class Core_Controller {
     exit();
   }
 
-  function load_library($library) {
-    if ($this->load_class($library, $this->base_path.'libraries/')) {
+  function load_library($library, $static = false) {
+    if ($this->load_class($library, $this->base_path.'libraries/', '', $static)) {
       return true;
     }
 
-    if ($this->load_class($library, CORE_PATH.'libraries/')) {
+    if ($this->load_class($library, CORE_PATH.'libraries/', '', $static)) {
       return true;
     }
 

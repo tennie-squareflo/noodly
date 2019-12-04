@@ -110,6 +110,7 @@ class Users_Controller extends Admin_Controller {
 
         $to = $user['email'];
         $from = $publisher['email'];
+        $subject = "Noodly Account Created!";
 
         $headers = "From: $from\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
@@ -119,6 +120,8 @@ class Users_Controller extends Admin_Controller {
         $view_data['publisher'] = $publisher;
         $view_data['env'] = $this->environment_model->get_admin_env();
         $body = $this->single_load_view('email_template/invite_user', $view_data, true);
+
+        var_dump($body);
 
         if (mail($to, $subject, $body, $headers)) {
           $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));

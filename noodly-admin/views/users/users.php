@@ -70,7 +70,7 @@
                         echo intval($user['status']) == 0 
                               ? 'No' 
                               : (intval($user['status']) == 1 
-                                ? 'Actrive' 
+                                ? 'Active' 
                                 : (intval($user['status']) >= time() 
                                   ? 'Invite Sent' 
                                   : 'Invite Expired'));

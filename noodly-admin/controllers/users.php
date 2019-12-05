@@ -145,12 +145,12 @@ class Users_Controller extends Admin_Controller {
     $this->load_library('encryption', true);
 
     if (ENV === 'development') {
-      $domain = $publisher['domain'] === '' 
+      $domain = $publisher['domain'] == '' 
                 ? 'dev.noodly.com/admin' 
                 : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
       $publisher['domain'] = 'dev.noodly.com';
     } else {
-      $domain = $publisher['domain'].'.noodly.io';
+      $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
     }
     
     $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);

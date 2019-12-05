@@ -67,7 +67,7 @@ class Accept_Controller extends Admin_Controller {
     $id = $_SESSION['user']['uuid'];
     $user = $this->user_model->get_one($id);
     if ($user['password'] != $_POST['password']) {
-      $new_data['password'] = test_input($_POST['password']);
+      $new_data['password'] = md5(test_input($_POST['password']));
     }
 
     //check validation

@@ -227,7 +227,7 @@
                           <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tbody>
                               <tr>
-                                <td  <?php echo $env['email_background_image'] !== '' ? "background='".PROTOCOL.'://'.$publisher['domain'].ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover">
+                                <td  <?php echo $env['email_background_image'] !== '' ? "background='".PROTOCOL.'://'.$domain.ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover">
                                   <!--[if gte mso 9]>
             <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
                 <v:fill type="frame" src="images/header-2-image-2.jpg" color="#1B1B1B"></v:fill>
@@ -254,7 +254,7 @@
                                             <tbody>
                                               <tr>
                                                 <td valign="top" align="center">
-                                                <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$publisher['domain'].ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
+                                                <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$domain.ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
                                                 </td>
                                               </tr>
                                               <tr>

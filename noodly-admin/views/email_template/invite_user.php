@@ -244,7 +244,13 @@
                                     </tbody>
                                     <tbody>
                                       <tr>
-                                        <td class="pc-xs-lh-42 pc-xs-fs-30 pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 46px; letter-spacing: -0.6px; color: <?php echo $env['email_foreground_color'];?>;" valign="top"><?php echo $publisher['name']; ?> Account Created&nbsp;</td>
+                                        <td class="pc-xs-lh-42 pc-xs-fs-30 pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 46px; letter-spacing: -0.6px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
+                                        <?php 
+                                        echo ($update === true)
+                                        ? "$publisher[name] Account Updated"
+                                        : "$publisher[name] Account Created";
+                                        ?>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td height="30" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
@@ -252,7 +258,14 @@
                                     </tbody>
                                     <tbody>
                                       <tr>
-                                        <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">Hi <?php echo $user['firstname'];?>!<br>Please click on the button below to create a password for your new <strong><?php echo $publisher['name']; ?></strong> account.</td>
+                                        <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
+                                        Hi <?php echo $user['firstname'];?>!<br>
+                                        <?php 
+                                        echo ($update === true) ? 
+                                        "Your profile is updated by Super Admin. Please click on the button below to check your profile for <strong>$publisher[name]</strong> account." :
+                                        "Please click on the button below to complete profile for your new <strong>$publisher[name]</strong> account.";
+                                        ?>
+                                        </td>
                                       </tr>
                                       <tr>
                                         <td height="24" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
@@ -265,7 +278,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="border-radius: 8px; padding: 13px 17px; background-color: #5654dd" bgcolor="#5654dd" valign="top" align="center">
-                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Create A Password</a>
+                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Complete Your Profile.</a>
                                                 </td>
                                               </tr>
                                             </tbody>

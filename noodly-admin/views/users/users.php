@@ -50,7 +50,7 @@
                       <th>Phone Number</th>
                       <th>Role</th>
                       <th>Publisher</th>
-                      <th>Profile Ready?</th>
+                      <th>Status</th>
                       <th></th>
                   </tr>
                 </thead>
@@ -64,8 +64,18 @@
                       <td><?php echo $user['email'];?></td>
                       <td><?php echo $user['phonenumber'];?></td>
                       <td><?php echo $user['role'];?></td>
-                      <td><?php echo $user['publishername'];?></td>
-                      <td><?php echo intval($user['profile_ready']) ? 'Yes' : 'No';?></td>
+                      <td><?php echo $user['role'] === 'super_admin' ? 'All' : $user['publishername'];?></td>
+                      <td>
+                      <?php 
+                        echo intval($user['status']) == 0 
+                              ? 'No' 
+                              : (intval($user['status']) == 1 
+                                ? 'Actrive' 
+                                : (intval($user['status']) >= time() 
+                                  ? 'Invite Sent' 
+                                  : 'Invite Expired'));
+                      ?>
+                      </td>
                       <td>
                             <div class="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,7 +84,7 @@
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                   <a class="dropdown-item" href="<?php echo BASE_URL.'users/edit/'.$user['uuid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
                                   <?php
-                                    if (intval($user['profile_ready']) === 0) :
+                                    if (intval($user['status']) !== 1) :
                                   ?>
                                   <a class="dropdown-item invite-btn" data-id="<?php echo $user['uuid'];?>"><i class="fa fa-paper-plane"></i>Send invitation</a>
                                   <?php 

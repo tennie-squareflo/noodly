@@ -24,7 +24,7 @@ class Accept_Controller extends Admin_Controller {
         'pid' => $user['pid'],
         'role' => $user['role'],
         'name' => $user['firstname'].$user['lastname'],
-        'profile_ready' => $user['profile_ready']
+        'status' => $user['status'] === 1
       );
       header("Location: ".BASE_URL."accept/complete_profile");
     }
@@ -44,7 +44,7 @@ class Accept_Controller extends Admin_Controller {
     $view_data['user'] = $user;
     $this->load_model('publisher');
     $view_data['publishers'] = $this->publisher_model->get_list();
-    $this->load_view('users/complete_profile', $view_data);
+    $this->load_view('users/edit_user', $view_data);
   }
 
   function save_profile() {
@@ -62,7 +62,7 @@ class Accept_Controller extends Admin_Controller {
       'city' => test_input($_POST['city']),
       'zipcode' => test_input($_POST['zipcode']),
       'avatar' => !empty($_POST['avatar']) ? json_decode($_POST['avatar'])->file : '',
-      'profile_ready' => 1
+      'status' => 1
     );
     $id = $_SESSION['user']['uuid'];
     $user = $this->user_model->get_one($id);
@@ -94,48 +94,51 @@ class Accept_Controller extends Admin_Controller {
     
     //
     if ($this->user_model->update($new_data, $id)) {
-
-      $this->load_model('publisher');
-      $this->load_model('environment');
-
-      $user = $this->user_model->get_one($id);
-      $publisher = $this->publisher_model->get_one($user['pid']);
-      $env = $this->environment_model->get_admin_env();
-
-      $to = $user['email'];
-      $from = $publisher['email'];
-      $subject = 'Welcome to '.$publisher['domain'];
-
-      $headers = "From: $from\r\n";
-      $headers .= "MIME-Version: 1.0\r\n";
-      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-      $this->load_library('encryption', true);
-
-      if (ENV === 'development') {
-        $domain = $publisher['domain'] === 'noodly.io' 
-                  ? 'dev.noodly.com/admin' 
-                  : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
-      } else {
-        $domain = $publisher['domain'];
+      if (intval($user['status']) === 1) {
+        $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.'));
       }
-      
-      $view_data['user'] = $user;
-      $view_data['publisher'] = $publisher;
-      $view_data['env'] = $env;
-      $view_data['domain'] = $domain;
+      else {
+        $this->load_model('publisher');
+        $this->load_model('environment');
 
-      $body = $this->single_load_view('email_template/profile_complete', $view_data, true);
-      if (ENV === 'production') {
-        if (mail($to, $subject, $body, $headers)) {
-          $this->response(array('code' => 0, 'message' => 'Completion mail sent successfully!'));
+        $user = $this->user_model->get_one($id);
+        $publisher = $this->publisher_model->get_one($user['pid']);
+        $env = $this->environment_model->get_admin_env();
+
+        $to = $user['email'];
+        $from = $publisher['email'];
+        $subject = 'Welcome to '.$publisher['domain'];
+
+        $headers = "From: $from\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+        $this->load_library('encryption', true);
+
+        if (ENV === 'development') {
+          $domain = $publisher['domain'] === 'noodly.io' 
+                    ? 'dev.noodly.com/admin' 
+                    : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
         } else {
-          $this->response(array('code' => 1, 'message' => 'Completion mail is not sent!'), 500);
+          $domain = $publisher['domain'];
         }
-      } else {
-        var_dump($body);
-      }
+        
+        $view_data['user'] = $user;
+        $view_data['publisher'] = $publisher;
+        $view_data['env'] = $env;
+        $view_data['domain'] = $domain;
 
+        $body = $this->single_load_view('email_template/profile_complete', $view_data, true);
+        if (ENV === 'production') {
+          if (mail($to, $subject, $body, $headers)) {
+            $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.'));
+          } else {
+            $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
+          }
+        } else {
+          var_dump($body);
+        }
+      }
     } else {
       $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
     }

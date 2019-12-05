@@ -73,7 +73,7 @@
 														<label class="col-3 col-form-label">Email Expiration Time</label>
 														<div class="col-9">
                             <div class="input-group">
-																<input class="form-control" placeholder="Expiration Time" name="email_expiration_time" type="number" value="<?php $_env['email_expiration_time']; ?>">
+																<input class="form-control" placeholder="Expiration Time" name="email_expiration_time" type="number" value="<?php echo intval($_env['email_expiration_time']); ?>">
 																<div class="input-group-append">
 																	<span class="input-group-text">minutes</span>
 																</div>

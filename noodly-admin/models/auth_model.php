@@ -11,7 +11,7 @@ class Auth_Model extends Core_Model{
         'pid' => $res['pid'],
         'role' => $res['role'],
         'name' => $res['firstname'].$res['lastname'],
-        'profile_ready' => $res['profile_ready']
+        'status' => $res['status']
       );
       return true;
     }
@@ -24,6 +24,6 @@ class Auth_Model extends Core_Model{
   }
 
   function is_profile_ready() {
-    return isset($_SESSION['user']) && intval($_SESSION['user']['profile_ready']) === 1;
+    return isset($_SESSION['user']) && intval($_SESSION['user']['status']) === 1;
   }
 }

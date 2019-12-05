@@ -25,6 +25,9 @@ $(function() {
         required: true,
         email: true
       },
+      confirm_password: {
+        equalTo: '#password'
+      },
       role: {
         required: true
       },

@@ -46,6 +46,24 @@
 											<div class="k-section k-section--first">
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Avatar</label>
+														<div class="col-9">
+                              <div class="slim avatar"
+                                data-service="<?php echo BASE_URL; ?>users/avatar_upload"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="avatar" data-value='<?php echo count($user) ? '{"file": "'.$user['avatar'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (count($user) && $user['avatar'] != '') {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/avatars/'.$user['avatar']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
 													
 													<div class="form-group row">
 														<label class="col-3 col-form-label">First Name</label>
@@ -61,22 +79,25 @@
                           </div>
 
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Avatar</label>
+														<label class="col-3 col-form-label">Email Address</label>
 														<div class="col-9">
-                              <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>users/avatar_upload"
-																data-push="true"
-                                data-did-throw-error="handleError">
-                                <input type="file" name="avatar" data-value='<?php echo count($user) ? '{"file": "'.$user['avatar'].'"}' : ''; ?>'/>
-                                <?php
-                                  if (count($user) && $user['avatar'] != '') {
-                                ?>
-                                <img src="<?php echo ASSETS_URL.'media/avatars/'.$user['avatar']; ?>" alt="">
-                                <?php
-                                  }?>
-                              </div>
+															<input class="form-control" placeholder="Email Address" name="email" type="text" value="<?php echo count($user) ? $user['email'] : ''; ?>" <?php echo isset($edit_user) && $edit_user == true ? '' : 'diabled readonly' ?> >
 														</div>
-													</div>
+                          </div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Password</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Password" name="password" id="password" type="password" value="<?php echo count($user) ? $user['password'] : ''; ?>">
+														</div>
+                          </div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Confirm Password</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password" value="<?php echo count($user) ? $user['password'] : ''; ?>">
+														</div>
+                          </div>
                           
                           <div class="form-group row">
 														<label class="col-3 col-form-label">Phone</label>
@@ -85,13 +106,8 @@
 														</div>
                           </div>
                           
-                          <div class="form-group row">
-														<label class="col-3 col-form-label">Email Address</label>
-														<div class="col-9">
-															<input class="form-control" placeholder="Email Address" name="email" type="text" value="<?php echo count($user) ? $user['email'] : ''; ?>">
-														</div>
-                          </div>
-
+													<?php 
+													if (isset($edit_user) && $edit_user == true) { ?>
                           <div class="form-group row">
 														<label class="col-3 col-form-label">Role</label>
 														<div class="col-9">
@@ -101,8 +117,7 @@
                                     '' => 'Select Role', 
                                     'super_admin' => 'Super Admin',
                                     'admin' => 'Publisher Admin',
-                                    'contributor' => 'Contributor',
-                                    'subscriber' => 'Subscriber');
+                                    'contributor' => 'Contributor');
                                   foreach ($options as $key => $option) {
                                     echo "<option value='$key' ".($key === (count($user) ? $user['role'] : '') ? 'selected' : '').">$option</option>";
                                   }
@@ -124,7 +139,8 @@
                               </select>
 														</div>
                           </div>
-                          
+                          <?php
+													} ?>
 												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>

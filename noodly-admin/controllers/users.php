@@ -18,6 +18,7 @@ class Users_Controller extends Admin_Controller {
     $view_data['script_files'] = array('custom/admin/users/register.js');
     $view_data['user_id'] = intval($id);
     $view_data['user'] = $this->user_model->get_one(intval($id));
+    $view_data['edit_user'] = true;
     if (intval($id) !== 0 && empty($view_data['user'])) {
       header("Location: ".BASE_URL."users/edit");
       return;
@@ -47,6 +48,7 @@ class Users_Controller extends Admin_Controller {
           'city' => test_input($_POST['city']),
           'zipcode' => test_input($_POST['zipcode']),
           'avatar' => !empty($_POST['avatar']) ? json_decode($_POST['avatar'])->file : '',
+          'status' => 0
         );
         //check validation
         if (empty($new_data['firstname'])) {
@@ -69,29 +71,24 @@ class Users_Controller extends Admin_Controller {
         if (empty($new_data['pid'])) {
           $new_data['pid'] = 0;
         }
-
-        if (empty($new_data['firstname']) || 
-            empty($new_data['lastname']) || 
-            empty($new_data['phonenumber']) || 
-            empty($new_data['country']) || 
-            empty($new_data['state']) || 
-            empty($new_data['address1']) || 
-            empty($new_data['city']) || 
-            empty($new_data['zipcode'])) {
-              $new_data['profile_ready'] = 0;
-            }
-        $message = $new_data['profile_ready'] === 0 ? "<br/>Profile is not completed! Please send invitation to complete profile." : "";
         //
         if ($id === 0) { // create
+          if ($_POST['password'] !== '') {
+            $new_data['password'] = md5($_POST['password']);
+          }
           $new_id = $this->user_model->create($new_data);
-          if ($new_id !== false) {
-            $this->response(array('code' => 0, 'id' => $new_id, 'message' => "User created successfully!$message"));
+          if ($new_id !== false && $this->send_invitation($new_id)) {
+            $this->response(array('code' => 0, 'id' => $new_id, 'message' => "User created successfully! Invitation Sent."));
           } else {
             $this->response(array('code' => 1, 'message' => 'Publisher creation failed!'), 500);
           }
         } else {
-          if ($this->user_model->update($new_data, $id)) {
-            $this->response(array('code' => 0, 'id' => $id, 'message' => "User updated successfully!$message"));
+          $user = $this->user_model->get_one($id);
+          if ($user['password'] != $_POST['password']) {
+            $new_data['password'] = test_input($_POST['password']);
+          }
+          if ($this->user_model->update($new_data, $id) && $this->send_invitation($id, true)) {
+            $this->response(array('code' => 0, 'id' => $id, 'message' => "User updated successfully!"));
           } else {
             $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
           }
@@ -106,51 +103,10 @@ class Users_Controller extends Admin_Controller {
         }
         break;
       case 'invite': {
-        $this->load_model('publisher');
-        $this->load_model('environment');
-
-        $user = $this->user_model->get_one($id);
-        $publisher = $this->publisher_model->get_one($user['pid']);
-        $env = $this->environment_model->get_admin_env();
-
-        $to = $user['email'];
-        $from = $publisher['email'];
-        $subject = 'Welcome to '.$publisher['domain'];
-
-        $headers = "From: $from\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-        $invite_token = array(
-          'uuid' => $user['uuid'],
-          'expiration_time' => time() + (60 * $env['email_expiration_time'])
-        );
-
-        $this->load_library('encryption', true);
-
-        if (ENV === 'development') {
-          $domain = $publisher['domain'] === 'noodly.io' 
-                    ? 'dev.noodly.com/admin' 
-                    : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
-          $publisher['domain'] = 'dev.noodly.com';
+        if ($this->send_invitation($id)) {
+          $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
         } else {
-          $domain = $publisher['domain'];
-        }
-        
-        $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);
-        $view_data['user'] = $user;
-        $view_data['publisher'] = $publisher;
-        $view_data['env'] = $env;
-
-        $body = $this->single_load_view('email_template/invite_user', $view_data, true);
-        if (ENV === 'production') {
-          if (mail($to, $subject, $body, $headers)) {
-            $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
-          } else {
-            $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
-          }
-        } else {
-          var_dump($body);
+          $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
         }
         break;
       }
@@ -160,5 +116,60 @@ class Users_Controller extends Admin_Controller {
   function avatar_upload() {
     $this->load_library('slim_image_uploader');
     $this->slim_image_uploader->image_upload('avatar', ASSETS_PATH.'media/avatars/');
+  }
+
+  function send_invitation($id, $update = false) {
+    $this->load_model('publisher');
+    $this->load_model('environment');
+
+    $user = $this->user_model->get_one($id);
+    $publisher = $this->publisher_model->get_one($user['pid']);
+    $env = $this->environment_model->get_admin_env();
+
+    $to = $user['email'];
+    $from = $publisher['email'];
+    $subject = 'Welcome to '.$publisher['domain'];
+
+    $headers = "From: $from\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    $expiration_time = time() + (60 * $env['email_expiration_time']);
+
+    $invite_token = array(
+      'uuid' => $user['uuid'],
+      'expiration_time' => $expiration_time
+    );
+    $this->user_model->update(array('status' => $expiration_time), $user['uuid']);
+
+    $this->load_library('encryption', true);
+
+    if (ENV === 'development') {
+      $domain = $publisher['domain'] === '' 
+                ? 'dev.noodly.com/admin' 
+                : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
+      $publisher['domain'] = 'dev.noodly.com';
+    } else {
+      $domain = $publisher['domain'].'.noodly.io';
+    }
+    
+    $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);
+    $view_data['user'] = $user;
+    $view_data['publisher'] = $publisher;
+    $view_data['env'] = $env;
+
+    $view_data['update'] = $update;
+
+    $body = $this->single_load_view('email_template/invite_user', $view_data, true);
+    if (ENV === 'production') {
+      if (mail($to, $subject, $body, $headers)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      var_dump($body);
+      return true;
+    }
   }
 }

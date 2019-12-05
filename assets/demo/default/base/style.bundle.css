@@ -10580,13 +10580,13 @@ a.text-dark:focus {
     background-color: #fff
 }
 
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
     -webkit-text-fill-color: transparent !important
-}
+} */
 
 .custom-select {
     -webkit-appearance: none;
@@ -60334,13 +60334,13 @@ a.text-dark:focus {
     background-color: #fff
 }
 
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
     -webkit-text-fill-color: transparent !important
-}
+} */
 
 .custom-select {
     -webkit-appearance: none;

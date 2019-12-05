@@ -271,7 +271,7 @@
                                             </tbody>
                                             <tbody>
                                               <tr>
-                                                <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">Hi <?php echo $user['firstname'];?>!<br>Profile completed successfully! Now you can use your account to work on the site.</td>
+                                                <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">Hi <?php echo $user['firstname'];?>!<br>Thanks for completing your profile. You can now login and do stuff.</td>
                                               </tr>
                                               <tr>
                                                 <td height="24" style="line-height: 1px; font-size: 1px;">&nbsp;</td>

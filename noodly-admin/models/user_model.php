@@ -11,7 +11,7 @@ class User_Model extends Core_Model{
       concat(concat(firstname, ' '), lastname) name, 
       role, 
       phonenumber, 
-      profile_ready,
+      status,
       (SELECT p.name FROM publishers p WHERE p.pid = users.pid) publishername";
     return $this->get($select, $where, $limit);
   }

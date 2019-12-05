@@ -49,10 +49,12 @@
 
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Avatar</label>
-														<div class="col-9">
-                              <div class="slim avatar"
+														<div class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
+                              <div class="slim rounded-circle"
                                 data-service="<?php echo BASE_URL; ?>users/avatar_upload"
 																data-push="true"
+																data-ratio="1:1"
+																data-size="240,240"
                                 data-did-throw-error="handleError">
                                 <input type="file" name="avatar" data-value='<?php echo count($user) ? '{"file": "'.$user['avatar'].'"}' : ''; ?>'/>
                                 <?php

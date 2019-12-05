@@ -116,11 +116,11 @@ class Accept_Controller extends Admin_Controller {
         $this->load_library('encryption', true);
 
         if (ENV === 'development') {
-          $domain = $publisher['domain'] === '' 
+          $domain = $publisher['domain'] == '' 
                     ? 'dev.noodly.com/admin' 
                     : 'dev.noodly.com/'.$publisher['domain'];
         } else {
-          $domain = $publisher['domain'] === '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
+          $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
         }
         
         $view_data['user'] = $user;

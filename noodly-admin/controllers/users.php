@@ -85,7 +85,7 @@ class Users_Controller extends Admin_Controller {
         } else {
           $user = $this->user_model->get_one($id);
           if ($user['password'] != $_POST['password']) {
-            $new_data['password'] = test_input($_POST['password']);
+            $new_data['password'] = md5(test_input($_POST['password']));
           }
           if ($this->user_model->update($new_data, $id) && $this->send_invitation($id, true)) {
             $this->response(array('code' => 0, 'id' => $id, 'message' => "User updated successfully!"));

@@ -157,6 +157,7 @@ class Users_Controller extends Admin_Controller {
     $view_data['user'] = $user;
     $view_data['publisher'] = $publisher;
     $view_data['env'] = $env;
+    $view_data['domain'] = $domain;
 
     $view_data['update'] = $update;
 

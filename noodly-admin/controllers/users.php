@@ -144,7 +144,7 @@ class Users_Controller extends Admin_Controller {
 
     $this->load_library('encryption', true);
 
-    if (ENV === 'development') {
+    if (ENV === 'local') {
       $domain = $publisher['domain'] == '' 
                 ? 'dev.noodly.com/admin' 
                 : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));

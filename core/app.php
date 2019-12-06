@@ -6,13 +6,13 @@ class App {
   public $db;
 
   private $db_config = array(
-    'production' => array(
+    'server' => array(
         'host' => '45.33.88.101',
         'user' => 'noodlyad_admin',
         'password' => 'root!@#!@#123',
         'database' => 'noodlyad_db',
     ),
-    'development' => array(
+    'local' => array(
       'host' => '127.0.0.1',
       'user' => 'noodlyad_admin',
       'password' => 'root!@#!@#123',

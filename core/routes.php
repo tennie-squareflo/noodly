@@ -12,7 +12,7 @@ if (substr($request_uri, -4) === '.php') {
   $request_uri = substr($request_uri, 0, strlen($request_uri) - 4);
 }
 
-if (ENV === 'production') {
+if (ENV === 'server') {
   $current_role = $host_url === 'noodly.io' || $host_url === 'www.noodly.io' ? 'admin' : 'publisher';
   $publisher_domain = strstr($host_url, '.', true);
 } else {
@@ -22,7 +22,7 @@ if (ENV === 'production') {
 }
 $base_path =  $current_role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH;
 
-if (ENV == 'development') {
+if (ENV == 'local') {
   if ($current_role === 'admin') {
     define('BASE_URL', '/admin/');
   } else {

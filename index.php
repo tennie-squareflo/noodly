@@ -1,20 +1,23 @@
 <?php
 
-define('ENV', 'production');
-//define('ENV', 'development');
+if ($_SERVER['SERVER_NAME'] === 'dev.noodly.com') {
+	define('ENV', 'local');
+} else {
+	define('ENV', 'server');
+}
 
 define('PROTOCOL', $_SERVER['REQUEST_SCHEME']);
 // error reporting
 
 switch (ENV)
 {
-	case 'development':
+	case 'local':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
 	break;
 
 	case 'testing':
-	case 'production':
+	case 'server':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
 	break;
@@ -36,7 +39,7 @@ switch (ENV)
 }
 
 // core path
-if (ENV === 'development') {
+if (ENV === 'local') {
 	define('BASE_PATH', '');
 } else {
 	define('BASE_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);

@@ -111,18 +111,21 @@ class Accept_Controller extends Admin_Controller {
 
         $this->load_library('encryption', true);
 
-        if (ENV === 'development') {
+        if (ENV === 'local') {
           $domain = $publisher['domain'] == '' 
                     ? 'dev.noodly.com/admin' 
                     : 'dev.noodly.com/'.$publisher['domain'];
+          $server = 'dev.noodly.com';
         } else {
           $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
+          $server = $domain;
         }
         
         $view_data['user'] = $user;
         $view_data['publisher'] = $publisher;
         $view_data['env'] = $env;
         $view_data['domain'] = $domain;
+        $view_data['server'] = $server;
         
         // sene email via sendgrid
         $this->load_helper('sendgrid_mail');

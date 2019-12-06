@@ -79,6 +79,9 @@ $(function() {
             };
 
             toastr.success(res.message);
+            setTimeout(() => {
+              location.href = BASE_URL + `accept/success`;
+            })
           } else {
             toastr.options = {
               closeButton: false,

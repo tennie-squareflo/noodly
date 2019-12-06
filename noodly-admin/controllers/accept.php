@@ -136,6 +136,7 @@ class Accept_Controller extends Admin_Controller {
         if (sendgridMail($params)) {
           //$this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.'));
           header("Location: ".BASE_URL."accept/success");
+          exit();
         } else {
           $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
         }

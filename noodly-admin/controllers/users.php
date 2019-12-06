@@ -162,15 +162,19 @@ class Users_Controller extends Admin_Controller {
     $view_data['update'] = $update;
 
     $body = $this->single_load_view('email_template/invite_user', $view_data, true);
-    if (ENV === 'production') {
-      if (mail($to, $subject, $body, $headers)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      var_dump($body);
+    
+    $this->load_helper('sendgrid_mail');
+
+    $params = array(
+      'to' => $to,
+      'from' => $from,
+      'subject' => $subject,
+      'html' => $body,
+    );
+    if (sendgridMail($params)) {
       return true;
+    } else {
+      return false;
     }
   }
 }

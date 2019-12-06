@@ -48,7 +48,7 @@
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Avatar</label>
+														<label class="col-3 col-form-label">Profile picture</label>
 														<div class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
                               <div class="slim rounded-circle"
                                 data-service="<?php echo BASE_URL; ?>users/avatar_upload"

@@ -47,7 +47,6 @@
                   <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Phone Number</th>
                       <th>Role</th>
                       <th>Publisher</th>
                       <th>Status</th>
@@ -62,7 +61,6 @@
                     <tr>
                       <td><h5><?php echo $user['name'];?></h5></td>
                       <td><?php echo $user['email'];?></td>
-                      <td><?php echo $user['phonenumber'];?></td>
                       <td><?php echo $user['role'];?></td>
                       <td><?php echo $user['role'] === 'super_admin' ? 'All' : $user['publishername'];?></td>
                       <td>

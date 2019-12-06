@@ -109,10 +109,6 @@ class Accept_Controller extends Admin_Controller {
         $from = $publisher['email'];
         $subject = 'Welcome to '.$publisher['domain'];
 
-        $headers = "From: $from\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
         $this->load_library('encryption', true);
 
         if (ENV === 'development') {
@@ -127,20 +123,29 @@ class Accept_Controller extends Admin_Controller {
         $view_data['publisher'] = $publisher;
         $view_data['env'] = $env;
         $view_data['domain'] = $domain;
+        
+        // sene email via sendgrid
+        $this->load_helper('sendgrid_mail');
 
-        $body = $this->single_load_view('email_template/profile_complete', $view_data, true);
-        if (ENV === 'production') {
-          if (mail($to, $subject, $body, $headers)) {
-            $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.'));
-          } else {
-            $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
-          }
+        $params = array(
+          'to' => $to,
+          'from' => $from,
+          'subject' => $subject,
+          'html' => $body,
+        );
+        if (sendgridMail($params)) {
+          //$this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.'));
+          header("Location: ".BASE_URL."accept/success");
         } else {
-          var_dump($body);
+          $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
         }
       }
     } else {
       $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
     }
+  }
+
+  function success() {
+    echo 'success page';
   }
 }

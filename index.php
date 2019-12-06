@@ -1,7 +1,7 @@
 <?php
 
-//define('ENV', 'production');
-define('ENV', 'development');
+define('ENV', 'production');
+//define('ENV', 'development');
 
 define('PROTOCOL', $_SERVER['REQUEST_SCHEME']);
 // error reporting

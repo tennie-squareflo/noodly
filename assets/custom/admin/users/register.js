@@ -118,17 +118,30 @@ $(function() {
       });
     }
   });
+
   $("#save-btn").click(() => {
     $("#register-form").submit();
   });
+
   $('select[name="role"]').change((e) => {
     if (e.target.value === 'super_admin') {
       $('select[name="pid"]').val(0);
       $('select[name="pid"]').attr('disabled', true);
+      $('#publisher-row').css('display', 'none');
     } else {
       $('select[name="pid"]').attr('disabled', false);
+      $('#publisher-row').css('display', 'flex');
     }
   });
+  if ($('select[name="role"]').val() === 'super_admin') {
+    $('select[name="pid"]').val(0);
+    $('select[name="pid"]').attr('disabled', true);
+    $('#publisher-row').css('display', 'none');
+  } else {
+    $('select[name="pid"]').attr('disabled', false);
+    $('#publisher-row').css('display', 'flex');
+  }
+  
   setTimeout(() => {
     $("#register-form")
       .find('input[name="avatar"]')

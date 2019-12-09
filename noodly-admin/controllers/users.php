@@ -147,10 +147,11 @@ class Users_Controller extends Admin_Controller {
     if (ENV === 'local') {
       $domain = $publisher['domain'] == '' 
                 ? 'dev.noodly.com/admin' 
-                : 'dev.noodly.com/'.substr($publisher['domain'], 0, -strlen('.noodly.io'));
-      $publisher['domain'] = 'dev.noodly.com';
+                : 'dev.noodly.com/'.$publisher['domain'];
+      $server = 'dev.noodly.com';
     } else {
       $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
+      $server = $domain;
     }
     
     $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);
@@ -158,6 +159,7 @@ class Users_Controller extends Admin_Controller {
     $view_data['publisher'] = $publisher;
     $view_data['env'] = $env;
     $view_data['domain'] = $domain;
+    $view_data['server'] = $server;
 
     $view_data['update'] = $update;
 
@@ -171,6 +173,7 @@ class Users_Controller extends Admin_Controller {
       'subject' => $subject,
       'html' => $body,
     );
+    var_dump($body);
     if (sendgridMail($params)) {
       return true;
     } else {

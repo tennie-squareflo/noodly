@@ -128,7 +128,7 @@
 														</div>
                           </div>
                           
-                          <div class="form-group row">
+                          <div class="form-group row" id="publisher-row">
 														<label class="col-3 col-form-label">Publisher</label>
 														<div class="col-9">
 															<select class="form-control" placeholder="Role" name="pid">

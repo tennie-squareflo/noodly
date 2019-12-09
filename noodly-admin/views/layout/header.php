@@ -90,9 +90,20 @@
                   data-offset="30px -2px"
                   data-toggle="dropdown"
                 >
-                  <span class="k-header__topbar-icon"
-                    ><i class="fa fa-user-circle"></i
-                  ></span>
+                  <span class="k-header__topbar-icon">
+                    <?php
+                      if ($_SESSION['user']['avatar'] === '') {
+                    ?>
+                        <i class="fa fa-user-circle"></i>
+                    <?php
+                      } else {
+                    ?>
+                      <img src="<?php echo ASSETS_URL;?>media/avatars/<?php echo $_SESSION['user']['avatar'];?>" class="rounded-circle" width="24px"
+                      />
+                    <?php
+                      }
+                      ?>
+                  </span>
                 </div>
               </div>
             </div>

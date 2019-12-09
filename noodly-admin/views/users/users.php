@@ -30,10 +30,10 @@
             
           <div class="dropdown dropdown-inline">
             
-            
-            
-
-            <a href="<?php echo BASE_URL;?>users/edit" class="btn btn-success">
+          <a class="btn btn-primary"  data-toggle="modal" data-target="#inviteModal">
+              <i class="fa fa-paper-plane"></i> Invite A User
+          </a>
+          <a href="<?php echo BASE_URL;?>users/edit" class="btn btn-success">
               <i class="la la-pencil"></i> Add A User
           </a>
           </div>
@@ -106,3 +106,9 @@
 </div>
 </div>	<!-- end:: Content Body -->
 </div> <!-- end:: Content -->
+
+<div class="modal" tabindex="-1" role="dialog" id="inviteModal">
+  <?php
+    require('invite_modal.php');
+  ?>
+</div>

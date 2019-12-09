@@ -5,11 +5,13 @@ class Users_Controller extends Admin_Controller {
   function __construct() {
     parent::__construct();
     $this->load_model('user');
+    $this->load_model('publisher');
   }
 
   function index() {
     $view_data['script_files'] = array('custom/admin/users/list.js');
     $view_data['users'] = $this->user_model->get_users();
+    $view_data['publishers'] = $this->publisher_model->get_list();
     $this->load_view('users/users', $view_data);
   }
 
@@ -23,7 +25,6 @@ class Users_Controller extends Admin_Controller {
       header("Location: ".BASE_URL."users/edit");
       return;
     }
-    $this->load_model('publisher');
     $view_data['publishers'] = $this->publisher_model->get_list();
     $this->load_view('users/edit_user', $view_data);
   }
@@ -114,7 +115,6 @@ class Users_Controller extends Admin_Controller {
   }
 
   function send_invitation($id, $update = false) {
-    $this->load_model('publisher');
     $this->load_model('environment');
 
     $user = $this->user_model->get_one($id);

@@ -12,7 +12,7 @@ class Auth_Model extends Core_Model{
         'role' => $res['role'],
         'name' => $res['firstname'].$res['lastname'],
         'avatar' => $res['avatar'],
-        'status' => $res['status'] === 1
+        'status' => (intval($res['status']) === 1)
       );
       return true;
     }

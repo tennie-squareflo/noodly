@@ -24,6 +24,7 @@ class Accept_Controller extends Admin_Controller {
         'pid' => $user['pid'],
         'role' => $user['role'],
         'name' => $user['firstname'].$user['lastname'],
+        'avatar' => $user['avatar'],
         'status' => $user['status'] === 1
       );
       header("Location: ".BASE_URL."accept/complete_profile");

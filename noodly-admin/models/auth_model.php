@@ -11,7 +11,8 @@ class Auth_Model extends Core_Model{
         'pid' => $res['pid'],
         'role' => $res['role'],
         'name' => $res['firstname'].$res['lastname'],
-        'status' => $res['status']
+        'avatar' => $res['avatar'],
+        'status' => $res['status'] === 1
       );
       return true;
     }

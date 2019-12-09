@@ -92,7 +92,7 @@
                 >
                   <span class="k-header__topbar-icon">
                     <?php
-                      if ($_SESSION['user']['avatar'] === '') {
+                      if ($_SESSION['user']['avatar'] && $_SESSION['user']['avatar'] === '') {
                     ?>
                         <i class="fa fa-user-circle"></i>
                     <?php

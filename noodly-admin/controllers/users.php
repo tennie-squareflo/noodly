@@ -113,11 +113,6 @@ class Users_Controller extends Admin_Controller {
     }
   }
 
-  function avatar_upload() {
-    $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('avatar', ASSETS_PATH.'media/avatars/');
-  }
-
   function send_invitation($id, $update = false) {
     $this->load_model('publisher');
     $this->load_model('environment');
@@ -173,7 +168,7 @@ class Users_Controller extends Admin_Controller {
       'subject' => $subject,
       'html' => $body,
     );
-    var_dump($body);
+    
     if (sendgridMail($params)) {
       return true;
     } else {

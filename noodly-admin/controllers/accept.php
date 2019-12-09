@@ -126,6 +126,8 @@ class Accept_Controller extends Admin_Controller {
         $view_data['env'] = $env;
         $view_data['domain'] = $domain;
         $view_data['server'] = $server;
+
+        $body = $this->single_load_view('email_template/profile_complete', $view_data, true);
         
         // sene email via sendgrid
         $this->load_helper('sendgrid_mail');

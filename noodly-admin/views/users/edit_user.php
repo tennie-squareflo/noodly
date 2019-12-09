@@ -51,7 +51,7 @@
 														<label class="col-3 col-form-label">Profile picture</label>
 														<div class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
                               <div class="slim rounded-circle"
-                                data-service="<?php echo BASE_URL; ?>users/avatar_upload"
+                                data-service="<?php echo BASE_URL; ?>api/avatar_upload"
 																data-push="true"
 																data-ratio="1:1"
 																data-size="240,240"

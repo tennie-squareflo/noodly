@@ -193,8 +193,6 @@
             </v:background>
             <![endif]-->
           <!--[if (gte mso 9)|(IE)]><table width="620" align="center" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td width="620" align="center" valign="top"><![endif]-->
-          <?php var_dump(PROTOCOL);
-          var_dump($server); ?>
           <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; max-width: 620px;">
             <tbody>
               <tr>

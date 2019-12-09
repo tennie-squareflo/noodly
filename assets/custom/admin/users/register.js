@@ -125,7 +125,7 @@ $(function() {
 
   $('select[name="role"]').change((e) => {
     if (e.target.value === 'super_admin') {
-      $('select[name="pid"]').val(0);
+      $('select[name="pid"]').val('');
       $('select[name="pid"]').attr('disabled', true);
       $('#publisher-row').css('display', 'none');
     } else {
@@ -134,7 +134,7 @@ $(function() {
     }
   });
   if ($('select[name="role"]').val() === 'super_admin') {
-    $('select[name="pid"]').val(0);
+    $('select[name="pid"]').val('');
     $('select[name="pid"]').attr('disabled', true);
     $('#publisher-row').css('display', 'none');
   } else {

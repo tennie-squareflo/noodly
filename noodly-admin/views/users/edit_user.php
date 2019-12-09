@@ -133,9 +133,10 @@
 														<div class="col-9">
 															<select class="form-control" placeholder="Role" name="pid">
                                 <?php
+																	unset($publishers[0]);
 																	$publishers = array('' => 'Select Publisher') + $publishers;
                                   foreach ($publishers as $key => $publisher) {
-                                    echo "<option value='$key' ".($key == (count($user) ? $user['pid'] : '') ? 'selected' : '').">$publisher</option>";
+                                    echo "<option value='$key' ".($key == (count($user) && $user['pid'] != '0' ? $user['pid'] : '') ? 'selected' : '').">$publisher</option>";
                                   }
                                 ?>
                               </select>

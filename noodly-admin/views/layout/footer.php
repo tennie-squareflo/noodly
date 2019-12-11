@@ -26,7 +26,7 @@
 	 
 	<script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
 	</script> 
-	<script src="<?php echo ASSETS_URL; ?>demo/default/base/scripts.bundle.js" type="text/javascript">
+	<script src="<?php echo ASSETS_URL; ?>vendors/base/scripts.bundle.js" type="text/javascript">
 	</script> <!--end::Global Theme Bundle -->
 	 <!--begin::Page Vendors -->
 	 
@@ -34,14 +34,20 @@
 	</script> <!--end::Page Vendors -->
 	 <!--begin::Page Scripts -->
 	 
-	<script src="<?php echo ASSETS_URL; ?>demo/default/custom/components/datatables/basic/basic.js" type="text/javascript">
+	<script src="<?php echo ASSETS_URL; ?>vendors/custom/components/datatables/basic/basic.js" type="text/javascript">
 	</script> <!--begin::Global App Bundle -->
 	 
 	<script src="<?php echo ASSETS_URL; ?>app/scripts/bundle/app.bundle.js" type="text/javascript">
 	</script> <!--end::Global App Bundle -->
 
-	<script src="<?php echo ASSETS_URL; ?>demo/default/custom/components/extended/toastr.js" type="text/javascript">
+	<script src="<?php echo ASSETS_URL; ?>vendors/custom/components/extended/toastr.js" type="text/javascript">
 	</script> <!--end::Toastr Plugin -->
+
+	<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
+	</script> <!--end::Debounce Plugin -->
+
+	<script src="<?php echo ASSETS_URL; ?>custom/admin/common.js" type="text/javascript">
+	</script> <!--end::Common Plugin -->
 
 <?php
 	if (isset($script_files) && is_array($script_files)) {

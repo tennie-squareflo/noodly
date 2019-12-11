@@ -10,8 +10,6 @@ import(
     provinceFirstValue: ":Select your Province",
     showHideProvinceOnChange: false,
     provinceSelect: '.form-control[name="state"]'
-    //,onlyUseTheseCountries:'|Canada|United States'
-    //,doNotUseTheseCountries:'|Canada|United States'
   });
 });
 
@@ -19,34 +17,33 @@ $(function() {
   $("#register-form").validate({
     rules: {
       firstname: {
-        required: true,
+        required: true
       },
       password: {
         minlength: 8,
-        required: true,
+        required: true
       },
       confirm_password: {
-        equalTo: '#password'
+        equalTo: "#password"
       },
       phonenumber: {
         required: true
       },
       country: {
         required: true
-      }, 
+      },
       state: {
         required: true
-      }, 
+      },
       address1: {
         required: true
-      }, 
+      },
       city: {
         required: true
-      }, 
+      },
       zipcode: {
         required: true
-      }, 
-
+      }
     },
     messages: {
       email: "Please enter a valid email address"
@@ -81,7 +78,7 @@ $(function() {
             toastr.success(res.message);
             setTimeout(() => {
               location.href = BASE_URL + `accept/success`;
-            })
+            });
           } else {
             toastr.options = {
               closeButton: false,
@@ -127,9 +124,34 @@ $(function() {
       });
     }
   });
+
+  // If role is super admin, hide publishers list
+  $('select[name="role"]').change(e => {
+    if (e.target.value === "super_admin") {
+      $('select[name="pid"]').val("");
+      $('select[name="pid"]').attr("disabled", true);
+      $("#publisher-row").css("display", "none");
+    } else {
+      $('select[name="pid"]').attr("disabled", false);
+      $("#publisher-row").css("display", "flex");
+    }
+  });
+
+  if ($('select[name="role"]').val() === "super_admin") {
+    $('select[name="pid"]').val("");
+    $('select[name="pid"]').attr("disabled", true);
+    $("#publisher-row").css("display", "none");
+  } else {
+    $('select[name="pid"]').attr("disabled", false);
+    $("#publisher-row").css("display", "flex");
+  }
+
+  // submit the form if the save button is clicked.
   $("#save-btn").click(() => {
     $("#register-form").submit();
   });
+
+  // get inital value of the profile image
   setTimeout(() => {
     $("#register-form")
       .find('input[name="avatar"]')

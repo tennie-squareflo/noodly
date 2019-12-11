@@ -48,7 +48,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Role</th>
-                      <th>Publisher</th>
+                      <th>Publishers</th>
                       <th>Status</th>
                       <th></th>
                   </tr>
@@ -62,7 +62,23 @@
                       <td><h5><?php echo $user['name'];?></h5></td>
                       <td><?php echo $user['email'];?></td>
                       <td><?php echo $user['role'];?></td>
-                      <td><?php echo $user['role'] === 'super_admin' ? 'All' : $user['publishername'];?></td>
+                      <td><?php
+                        // Option 1: Display the first letter of the publisher.
+                        // foreach ($user['publishers'] as $key => $publisher) {
+                        //   echo "<div class='rounded-circle letter-image type-".(intval($publisher['pid'])%14 + 1)."' title='".$publishers[$publisher['pid']]['name']."'>".strtoupper($publishers[$publisher['pid']]['name'][0])."</div>";
+                        // }
+                        // if ($user['publishers_count'] > 5) {
+                        //   echo " +".(intval($user['publishers_count']) - 5);
+                        // }
+
+                        // Option 2: Display the logo of each publisher.
+                        foreach ($user['publishers'] as $key => $publisher) {
+                          echo "<img class='logo-images type-".(intval($publisher['pid'])%14 + 1)."'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['logo']."' title='".$publishers[$publisher['pid']]['name']."'/>";
+                        }
+                        if ($user['publishers_count'] > 5) {
+                          echo " +".(intval($user['publishers_count']) - 5);
+                        }
+                      ?></td>
                       <td>
                       <?php 
                         echo intval($user['status']) == 0 

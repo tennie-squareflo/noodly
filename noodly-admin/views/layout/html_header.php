@@ -30,8 +30,11 @@ License: You must have a valid license purchased only from https://themes.getboo
 	</script><!--end::Web font -->
 	<!--begin::Global Theme Styles -->
 	<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-	<link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+	<link href="<?php echo ASSETS_URL;?>vendors/base/style.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>vendors/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 	<!--end::Global Theme Styles -->
+
+	<!--begin::Component Theme Styles -->
+	<!--end::Component Theme Styles -->
 	<?php
 		if (isset($style_files)) {
 			foreach ($style_files as $file) {

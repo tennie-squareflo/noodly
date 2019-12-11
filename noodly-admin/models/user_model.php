@@ -9,10 +9,11 @@ class User_Model extends Core_Model{
       "uuid,
       email, 
       concat(concat(firstname, ' '), lastname) name, 
-      role, 
+      role,
       phonenumber, 
       status,
-      (SELECT p.name FROM publishers p WHERE p.pid = users.pid) publishername";
+      (SELECT count(id) from match_user_role mur where mur.uuid = users.uuid) publishers_count
+      ";
     return $this->get($select, $where, $limit);
   }
 }

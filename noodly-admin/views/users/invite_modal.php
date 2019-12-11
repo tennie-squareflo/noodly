@@ -14,18 +14,18 @@
             <div class="k-section k-section--first">
               <div class="k-section__body">
                 <h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
-              
-                <div class="form-group row">
-                  <label class="col-3 col-form-label">First Name</label>
-                  <div class="col-9">
-                    <input class="form-control" placeholder="First Name" name="firstname" type="text">
-                  </div>
-                </div>
 
                 <div class="form-group row">
                   <label class="col-3 col-form-label">Email Address</label>
                   <div class="col-9">
                     <input class="form-control" placeholder="Email Address" name="email" type="text">
+                  </div>
+                </div>
+              
+                <div class="form-group row">
+                  <label class="col-3 col-form-label">First Name</label>
+                  <div class="col-9">
+                    <input class="form-control" placeholder="First Name" name="firstname" type="text">
                   </div>
                 </div>
 
@@ -53,9 +53,9 @@
                     <select class="form-control" placeholder="Role" name="pid">
                       <?php
                         unset($publishers[0]);
-                        $publishers = array('' => 'Select Publisher') + $publishers;
+                        $publishers = array('' => array('name' => 'Select Publisher')) + $publishers;
                         foreach ($publishers as $key => $publisher) {
-                          echo "<option value='$key'>$publisher</option>";
+                          echo "<option value='$key'>$publisher[name]</option>";
                         }
                       ?>
                     </select>
@@ -71,7 +71,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary invite-btn">Invite</button>
+      <button type="button" class="btn btn-primary" id="invite-btn">Invite</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
   </div>

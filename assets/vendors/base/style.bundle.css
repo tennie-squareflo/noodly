@@ -99503,3 +99503,95 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):not(.k-sweetale
         color: #fff
     }
 }
+
+.letter-image {
+    color: white;
+    background-color: black;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    margin-left: -10px;
+    border: 2px solid white;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+}
+.letter-image:hover {
+    z-index: 1;
+}
+
+.letter-image.type-1, .logo-images.type-1 {
+    background-color: yellowgreen;
+}
+
+.letter-image.type-2, .logo-images.type-2 {
+    background-color: violet;
+}
+
+.letter-image.type-3, .logo-images.type-3 {
+    background-color: tomato;
+}
+
+.letter-image.type-4, .logo-images.type-4 {
+    background-color: turquoise;
+}
+
+.letter-image.type-5, .logo-images.type-5 {
+    background-color: teal;
+}
+
+.letter-image.type-6, .logo-images.type-6 {
+    background-color: steelblue;
+}
+
+.letter-image.type-7, .logo-images.type-7 {
+    background-color: slategrey;
+}
+
+.letter-image.type-8, .logo-images.type-8 {
+    background-color: slateblue;
+}
+
+.letter-image.type-9, .logo-images.type-9 {
+    background-color: sienna;
+}
+
+.letter-image.type-10, .logo-images.type-10 {
+    background-color: seagreen;
+}
+
+.letter-image.type-11, .logo-images.type-11 {
+    background-color: sandybrown;
+}
+
+.letter-image.type-12, .logo-images.type-12 {
+    background-color: salmon;
+}
+
+.letter-image.type-13, .logo-images.type-13 {
+    background-color: royalblue;
+}
+
+.letter-image.type-14, .logo-images.type-14 {
+    background-color: orchid;
+}
+
+.logo-images {
+    height: 25px;
+    margin-left: -20px;
+    border: 2px solid white;
+    display: inline-block;
+    background-color: black;
+    border-radius: 20px;
+    position: relative;
+    z-index: 0;
+}
+
+.logo-images:hover {
+    z-index: 1;
+}

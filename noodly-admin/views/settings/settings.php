@@ -80,6 +80,48 @@
 															</div>															
 														</div>
 													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Title(New User)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_new_user_title" value="<?php echo $_env['email_new_user_title']; ?>"></input>
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Message(New User)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_new_user_message" value="<?php echo $_env['email_new_user_message']; ?>"></input>
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Title(New Role)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_new_role_title" value="<?php echo $_env['email_new_role_title']; ?>"></input>
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Message(New Role)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_new_role_message" value="<?php echo $_env['email_new_role_message']; ?>"></input>
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Title(Default)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_invitation_title" value="<?php echo $_env['email_invitation_title']; ?>"></input>
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Email Template Message(Default)</label>
+														<div class="col-9">
+                            <input class="form-control" name="email_invitation_message" value="<?php echo $_env['email_invitation_message']; ?>"></input>
+														</div>
+													</div>
 												</div>
 											</div>
 											

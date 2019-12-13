@@ -10,8 +10,7 @@ class Users_Controller extends Admin_Controller {
   }
 
   function index() {
-    $view_data['script_files'] = array('custom/admin/users/list.js');
-    $view_data['script_files'] = array('custom/admin/users/invite_user.js');
+    $view_data['script_files'] = array('custom/admin/users/list.js', 'custom/admin/users/invite_user.js');
     $users = $this->user_model->get_users();
     $view_data['publishers'] = $this->publisher_model->get_list();
 

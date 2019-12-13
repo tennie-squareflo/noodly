@@ -21,7 +21,6 @@ class Accept_Controller extends Admin_Controller {
       $user = $this->user_model->get_one($token['uuid']);
       $_SESSION['user'] = array(
         'uuid' => $user['uuid'],
-        'pid' => $user['pid'],
         'role' => $user['role'],
         'name' => $user['firstname'].$user['lastname'],
         'avatar' => $user['avatar'],

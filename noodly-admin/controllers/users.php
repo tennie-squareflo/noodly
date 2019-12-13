@@ -185,12 +185,12 @@ class Users_Controller extends Admin_Controller {
       'html' => $body,
     );
 
-    var_dump($body);
+    //var_dump($body);
     
-    // if (sendgridMail($params)) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    if (sendgridMail($params)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

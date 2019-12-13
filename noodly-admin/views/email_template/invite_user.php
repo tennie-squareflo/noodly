@@ -15,7 +15,11 @@
   $title = str_replace('%publisher%', $publisher['name'], $title);
   $message = str_replace('%publisher%', $publisher['name'], $message);
   $message = str_replace('%user%', $user['firstname'], $message);
-  $message = str_replace('%role%', $role['role'], $message);
+  if (isset($role['role'])) {
+    $message = str_replace('%role%', get_user_types($role['role']), $message);
+  } else {
+    $message = str_replace('%role%', 'Super Admin', $message);
+  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

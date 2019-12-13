@@ -8,3 +8,15 @@ function generate_random_string($charset = 'abcdefghijklmnopqrstuvwxyz0123456789
   }
   return $randomString;
 }
+
+function get_user_types($role) {
+  switch ($role) {
+    case 'super_admin':
+      return 'Super Admin';
+    case 'admin':
+      return 'Publisher Admin';
+    case 'contributor':
+      return 'Contributor';
+  }
+  return '';
+}

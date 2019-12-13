@@ -7,6 +7,8 @@ class Users_Controller extends Admin_Controller {
     $this->load_model('user');
     $this->load_model('publisher');
     $this->load_model('match_user_role');
+
+    $this->load_helper('string_helper');
   }
 
   function index() {
@@ -132,8 +134,12 @@ class Users_Controller extends Admin_Controller {
     $role = $this->user_model->get_role($id, $pid);
 
     $to = $user['email'];
-    $from = $publisher['email'];
-    $subject = 'Welcome to '.$publisher['domain'];
+    $from = $publisher['name'];
+    if ($pid != 0) {
+      $subject = 'Invitation to join '.$publisher['name'].' as a '.get_user_types($role['role']);
+    } else {
+      $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
+    }
 
     $headers = "From: $from\r\n";
     $headers .= "MIME-Version: 1.0\r\n";

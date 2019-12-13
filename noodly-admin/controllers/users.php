@@ -103,7 +103,7 @@ class Users_Controller extends Admin_Controller {
         }
 
         // send invitation
-        echo "Invited user($user[uuid]) to publisher($post[pid]) with role($post[role]): new user?(".($new_user?'true':'false').") new role? (".($new_role?'true':'false').") ";
+        //echo "Invited user($user[uuid]) to publisher($post[pid]) with role($post[role]): new user?(".($new_user?'true':'false').") new role? (".($new_role?'true':'false').") ";
         
         if ($this->send_invitation($user['uuid'], $post['pid'], $new_user, $new_role)) {
           if ($new_user === false && $new_role === false) {

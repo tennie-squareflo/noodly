@@ -7,6 +7,6 @@ class Match_User_Role_Model extends Core_Model {
 
   // get related publisher ids from a uuid
   function get_related_publishers($uuid) {
-    return $this->get('pid', array('uuid' => $uuid), 5);
+    return $this->get('*', array('uuid' => $uuid), 5);
   }
 }

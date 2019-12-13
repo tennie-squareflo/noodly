@@ -104,7 +104,7 @@ class Accept_Controller extends Admin_Controller {
 
         $user = $this->user_model->get_one($id);
         $publisher = $this->publisher_model->get_one($user['pid']);
-        $env = $this->environment_model->get_admin_env();
+        $env = $this->environment_model->get_env();
 
         $to = $user['email'];
         $from = $publisher['email'];

@@ -73,7 +73,21 @@
 
                         // Option 2: Display the logo of each publisher.
                         foreach ($user['publishers'] as $key => $publisher) {
-                          echo "<img class='logo-images type-".(intval($publisher['pid'])%14 + 1)."'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['logo']."' title='".$publishers[$publisher['pid']]['name']."'/>";
+                          $style = intval($publisher['status']) == 0 
+                                  ? 'no' 
+                                  : (intval($publisher['status']) == 1 
+                                    ? intval($publisher['pid'])%10 + 1 
+                                    : (intval($publisher['status']) > time() 
+                                      ? 'invited'
+                                      : 'expired'));
+                          $tooltip = intval($publisher['status']) == 0 
+                                    ? 'No' 
+                                    : (intval($publisher['status']) == 1 
+                                      ? 'Active' 
+                                      : (intval($publisher['status']) > time() 
+                                        ? 'Invited'
+                                        : 'Invite Expired'));
+                          echo "<img class='logo-images type-$style'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['logo']."' title='".$publishers[$publisher['pid']]['name'].": $tooltip'/>";
                         }
                         if ($user['publishers_count'] > 5) {
                           echo " +".(intval($user['publishers_count']) - 5);

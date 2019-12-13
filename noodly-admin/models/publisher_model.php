@@ -10,7 +10,7 @@ class Publisher_Model extends Core_Model{
       "publishers.pid, 
       publishers.name, 
       publishers.domain, 
-      (SELECT count(uuid) FROM match_user_role u WHERE u.pid = publishers.pid AND u.role='subscriber') subscribers, 
+      (SELECT count(uuid) FROM subscription s WHERE s.refid = publishers.pid AND s.type='publisher') subscribers, 
       (SELECT count(uuid) FROM match_user_role u WHERE u.pid = publishers.pid AND u.role='contributor') contributors, 
       (SELECT count(sid) FROM stories s WHERE s.pid = publishers.pid) stories,
       (SELECT ifnull(sum(visits), 0) FROM stories s WHERE s.pid = publishers.pid) visits";

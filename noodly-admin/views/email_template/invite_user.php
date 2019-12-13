@@ -1,3 +1,22 @@
+<?php
+  $title = '';
+  $message = '';
+  if ($new_user) {
+    $title = $env['email_new_user_title'];
+    $message = $env['email_new_user_message'];
+  } else if ($new_role) {
+    $title = $env['email_new_role_title'];
+    $message = $env['email_new_role_message'];
+  } else {
+    $title = $env['email_invitation_title'];
+    $message = $env['email_invitation_message'];
+  }
+
+  $title = str_replace('%publisher%', $publisher['name'], $title);
+  $message = str_replace('%publisher%', $publisher['name'], $message);
+  $message = str_replace('%user%', $user['firstname'], $message);
+  $message = str_replace('%role%', $role['role'], $message);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -246,9 +265,7 @@
                                       <tr>
                                         <td class="pc-xs-lh-42 pc-xs-fs-30 pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 46px; letter-spacing: -0.6px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
                                         <?php 
-                                        echo ($update === true)
-                                        ? "$publisher[name] Account Updated"
-                                        : "$publisher[name] Account Created";
+                                        echo $title;
                                         ?>
                                         </td>
                                       </tr>
@@ -261,9 +278,7 @@
                                         <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
                                         Hi <?php echo $user['firstname'];?>!<br>
                                         <?php 
-                                        echo ($update === true) ? 
-                                        "Your profile is updated by Super Admin. Please click on the button below to check your profile for <strong>$publisher[name]</strong> account." :
-                                        "Please click on the button below to complete profile for your new <strong>$publisher[name]</strong> account.";
+                                        echo $message;
                                         ?>
                                         </td>
                                       </tr>

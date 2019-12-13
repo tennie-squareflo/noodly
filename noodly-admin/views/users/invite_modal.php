@@ -25,7 +25,7 @@
                 <div class="form-group row">
                   <label class="col-3 col-form-label">First Name</label>
                   <div class="col-9">
-                    <input class="form-control" placeholder="First Name" name="firstname" type="text">
+                    <input class="form-control" placeholder="First Name" name="firstname" type="text" readonly>
                   </div>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="form-group row" id="publisher-row">
                   <label class="col-3 col-form-label">Publisher</label>
                   <div class="col-9">
-                    <select class="form-control" placeholder="Role" name="pid">
+                    <select class="form-control" placeholder="Publisher" name="pid">
                       <?php
                         unset($publishers[0]);
                         $publishers = array('' => array('name' => 'Select Publisher')) + $publishers;

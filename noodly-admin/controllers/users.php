@@ -38,43 +38,99 @@ class Users_Controller extends Admin_Controller {
   }
 
   function action($action) {
-    var_dump($action);
-    var_dump($_POST);
-    exit();
 
-    $id = intval($_POST['id']);
     
     $this->load_helper('validation');
     switch ($action) {
-      case 'delete':
+      case 'delete': {
+        $id = intval($_POST['id']);
         if ($this->user_model->delete($id))  {
           $this->response(array('code' => 0, 'message' => 'User deleted successfully!'));
         } else {
           $this->response(array('code' => 1, 'message' => 'User deletion failed!'), 500);
         }
         break;
+      }
       case 'invite': {
-        $new_data = array(
-          'firstname',
-          'email',
-          'role', 
-        );
-        if ($this->send_invitation($id)) {
-          $this->response(array('code' => 0, 'message' => 'Invitation sent successfully!'));
-        } else {
-          $this->response(array('code' => 1, 'message' => 'Invitation is not sent!'), 500);
+        $this->load_model('user');
+        $post = $_POST;
+        $new_user = false;
+        $new_role = false;
+
+        if (!isset($post['pid']) || $post['pid'] === '') {
+          $post['pid'] = 0;
         }
+
+        // check if user already exists.
+        $user = $this->user_model->get_one(array('email' => $post['email']));
+        
+        if (count($user)) { // if user already exists
+          // check if the user is a super admin
+          if ($user['role'] === 'super_admin' && $post['role'] !== 'super_admin') {
+            $this->response(array('code' => 2, 'message' => 'Can not send invitation to a super admin'), 500);
+          }
+
+          // check if the user already has a role in that publisher.
+          if ($post['role'] !== 'super_admin') {
+            $role = $this->user_model->get_role($user['uuid'], $post['pid']);
+            if (!($role === false || $role['role'] === $post['role'])) {
+              $this->response(array('code' => 2, 'message' => 'This user has already a different role in this publisher'), 500);
+            }
+          } else if ($user['role'] !== 'super_admin') {
+            $this->response(array('code' => 2, 'message' => 'Can not invite this user as a super admin'), 500);
+          }
+        } else { // create a user
+          $user = array(
+            'email' => test_input($post['email']),
+            'firstname' => test_input($post['firstname']),
+            'role' => $post['role'] === 'super_admin' ? 'super_admin' : '',
+            'status' => 0
+          );
+          $user['uuid'] = $this->user_model->create($user);
+          $new_user = true;
+          if ($user['uuid'] === false) {
+            $this->response(array('code' => 3, 'message' => 'User creation failed, please try again.'), 500);
+          }
+        }
+
+        // set role if publisher
+        if ($post['role'] !== 'super_admin' 
+            && $this->user_model->get_role($user['uuid'], $post['pid']) === false) {
+
+          if (!($this->user_model->set_publisher_role($user['uuid'], $post['pid'], $post['role'])
+              && $new_role = true)) {
+            $this->response(array('code' => 3, 'message' => 'Role setting failed.'), 500);
+          }
+        }
+
+        // send invitation
+        echo "Invited user($user[uuid]) to publisher($post[pid]) with role($post[role]): new user?(".($new_user?'true':'false').") new role? (".($new_role?'true':'false').") ";
+        
+        if ($this->send_invitation($user['uuid'], $post['pid'], $new_user, $new_role)) {
+          if ($new_user === false && $new_role === false) {
+            $message = 'Re Invitation is sent successfully';
+          } else {
+            $message = 'Invitation is sent successfully';
+          }
+          $this->response(array('code' => 0, 'message' => $message));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Email is not sent, please try again!'), 500);
+        }
+
         break;
       }
+      default:
+      break;
     }
   }
 
-  function send_invitation($id, $update = false) {
+  function send_invitation($id, $pid, $new_user, $new_role) {
     $this->load_model('environment');
 
     $user = $this->user_model->get_one($id);
-    $publisher = $this->publisher_model->get_one($user['pid']);
-    $env = $this->environment_model->get_admin_env();
+    $publisher = $this->publisher_model->get_one($pid);
+    $env = $this->environment_model->get_env();
+    $role = $this->user_model->get_role($id, $pid);
 
     $to = $user['email'];
     $from = $publisher['email'];
@@ -90,7 +146,10 @@ class Users_Controller extends Admin_Controller {
       'uuid' => $user['uuid'],
       'expiration_time' => $expiration_time
     );
-    $this->user_model->update(array('status' => $expiration_time), $user['uuid']);
+    $this->user_model->update_role(array('status' => $expiration_time), $id, $pid);
+    if ($user['status'] == 0) {
+      $this->user_model->update(array('status' => $expiration_time), $id);
+    }
 
     $this->load_library('encryption', true);
 
@@ -110,8 +169,10 @@ class Users_Controller extends Admin_Controller {
     $view_data['env'] = $env;
     $view_data['domain'] = $domain;
     $view_data['server'] = $server;
+    $view_data['role'] = $role;
 
-    $view_data['update'] = $update;
+    $view_data['new_user'] = $new_user;
+    $view_data['new_role'] = $new_role;
 
     $body = $this->single_load_view('email_template/invite_user', $view_data, true);
     
@@ -123,11 +184,13 @@ class Users_Controller extends Admin_Controller {
       'subject' => $subject,
       'html' => $body,
     );
+
+    var_dump($body);
     
-    if (sendgridMail($params)) {
-      return true;
-    } else {
-      return false;
-    }
+    // if (sendgridMail($params)) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   }
 }

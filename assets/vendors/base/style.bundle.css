@@ -99565,20 +99565,16 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):not(.k-sweetale
     background-color: seagreen;
 }
 
-.letter-image.type-11, .logo-images.type-11 {
-    background-color: sandybrown;
+.letter-image.type-no, .logo-images.type-no {
+    background-color: grey;
 }
 
-.letter-image.type-12, .logo-images.type-12 {
-    background-color: salmon;
-}
-
-.letter-image.type-13, .logo-images.type-13 {
+.letter-image.type-invited, .logo-images.type-invited {
     background-color: royalblue;
 }
 
-.letter-image.type-14, .logo-images.type-14 {
-    background-color: orchid;
+.letter-image.type-expired, .logo-images.type-expired {
+    background-color: salmon;
 }
 
 .logo-images {

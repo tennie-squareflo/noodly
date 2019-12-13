@@ -16,4 +16,18 @@ class User_Model extends Core_Model{
       ";
     return $this->get($select, $where, $limit);
   }
+
+  function get_role($uuid, $pid) {
+    $roles = $this->db->limit(1)->where(array('uuid' => $uuid, 'pid' => $pid))->get('match_user_role');
+    return count($roles) === 0 ? false : $roles;
+  }
+
+  function set_publisher_role($uuid, $pid, $role, $status = 0) {
+    $res = $this->db->insert('match_user_role', array('uuid' => $uuid, 'pid' => $pid, 'role' => $role, 'status' => $status));
+    return $res;
+  }
+
+  function update_role($data, $uuid, $pid) {
+    return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->update('match_user_role', $data);
+  }
 }

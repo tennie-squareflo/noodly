@@ -92,7 +92,8 @@
                 >
                   <span class="k-header__topbar-icon">
                     <?php
-                      if ($_SESSION['user']['avatar'] && $_SESSION['user']['avatar'] === '') {
+                      if (!isset($_SESSION['user']['avatar'])
+                        || !file_exists(ASSETS_URL."media/avatars/".$_SESSION['user']['avatar'])) {
                     ?>
                         <i class="fa fa-user-circle"></i>
                     <?php

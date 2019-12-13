@@ -8,7 +8,7 @@ class User_Model extends Core_Model{
     $select = 
       "uuid,
       email, 
-      concat(concat(firstname, ' '), lastname) name, 
+      concat(concat(firstname, ' '), ifnull(lastname, '')) name, 
       role,
       phonenumber, 
       status,

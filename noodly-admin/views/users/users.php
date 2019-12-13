@@ -111,13 +111,6 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                   <a class="dropdown-item" href="<?php echo BASE_URL.'users/edit/'.$user['uuid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
-                                  <?php
-                                    if (intval($user['status']) !== 1) :
-                                  ?>
-                                  <a class="dropdown-item invite-btn" data-id="<?php echo $user['uuid'];?>"><i class="fa fa-paper-plane"></i>Send invitation</a>
-                                  <?php 
-                                    endif;
-                                  ?>
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $user['uuid'];?>"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>

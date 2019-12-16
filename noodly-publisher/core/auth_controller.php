@@ -46,7 +46,7 @@ class Auth_Controller extends Core_Controller {
     if ($return === true) {
       $result = "";
       $result .= parent::load_view("$layout_url/html_header", $vars);
-      if (isset($_SESSION['user'])) {
+      if (!(substr($page, 0, 6) === '/admin' && !isset($_SESSION['user']))) {
         $result .= parent::load_view("$layout_url/header", $vars);
       }
       $result .= parent::load_view($page, $vars);
@@ -54,7 +54,7 @@ class Auth_Controller extends Core_Controller {
       return $result;
     } else {
       parent::load_view("$layout_url/html_header", $vars);
-      if (isset($_SESSION['user'])) {
+      if (!(substr($page, 0, 6) === '/admin' && !isset($_SESSION['user']))) {
         parent::load_view("$layout_url/header", $vars);
       }
       parent::load_view($page, $vars);

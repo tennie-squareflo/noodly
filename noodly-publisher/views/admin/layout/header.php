@@ -50,7 +50,7 @@
               <a href="#"
                 ><img
                   alt="Logo"
-                  src="<?php echo ASSETS_URL;?>/media/logos/logo-2.png"
+                  src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['logo'];?>"
                   width="130px"
               /></a>
             </div>

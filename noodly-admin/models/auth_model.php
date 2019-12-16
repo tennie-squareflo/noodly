@@ -6,13 +6,14 @@ class Auth_Model extends Core_Model{
   
   function login($email, $password) {
     // get user
-    $res = $this->get_one(array('role' => 'super_admin', 'email' => $email, 'password' => md5($password)));
-    if (count($res)) {
+    $user = $this->get_one(array('role' => 'super_admin', 'email' => $email, 'password' => md5($password)));
+    if (count($user)) {
       $_SESSION['user'] = array(
-        'uuid' => $res['uuid'],
-        'name' => $res['firstname'].$res['lastname'],
-        'avatar' => $res['avatar'],
-        'status' => (intval($res['status']) === 1)    // if the profile is completed, `status` is 1, otherwise `status` is 0
+        'uuid' => $user['uuid'],
+        'role' => $user['role'],
+        'name' => $user['firstname'],
+        'avatar' => $user['avatar'],
+        'status' => (intval($user['status']) === 1)    // if the profile is completed, `status` is 1, otherwise `status` is 0
       );
       return true;
     }

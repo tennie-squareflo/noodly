@@ -127,27 +127,6 @@ $(function() {
     }
   });
 
-  // If role is super admin, hide publishers list
-  $('select[name="role"]').change(e => {
-    if (e.target.value === "super_admin") {
-      $('select[name="pid"]').val("");
-      $('select[name="pid"]').attr("disabled", true);
-      $("#publisher-row").css("display", "none");
-    } else {
-      $('select[name="pid"]').attr("disabled", false);
-      $("#publisher-row").css("display", "flex");
-    }
-  });
-
-  if ($('select[name="role"]').val() === "super_admin") {
-    $('select[name="pid"]').val("");
-    $('select[name="pid"]').attr("disabled", true);
-    $("#publisher-row").css("display", "none");
-  } else {
-    $('select[name="pid"]').attr("disabled", false);
-    $("#publisher-row").css("display", "flex");
-  }
-
   // submit the form if the save button is clicked.
   $("#save-btn").click(() => {
     $("#register-form").submit();

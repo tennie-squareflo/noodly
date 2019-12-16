@@ -14,20 +14,36 @@ class Auth_Model extends Core_Model{
     // get user
     $user = $this->get_one(array('email' => $email, 'password' => md5($password)));
     if (count($user)) {
-      $role = $this->db->where(array('pid' => $pid, 'uuid' => $user['uuid']))->limit(1)->select('match_user_role', '*');
-
-      if (count($role)) {
-        if ($role['status'] > 1) {
-          return 3;
-        }
+      if ($user['role'] === 'super_admin') {
         $_SESSION['user'] = array(
           'uuid' => $user['uuid'],
-          'name' => $res['firstname'],
-          'avatar' => $res['avatar'],
-          'status' => (intval($res['status']) === 1),
+          'name' => $user['firstname'],
+          'avatar' => $user['avatar'],
+          'role' => 'admin',
+          'user_status' => (intval($user['status']) === 1),
+          'role_status' => 1,
           'pid' => $pid
         );
         return true;
+      }
+      else {
+        $role = $this->db->where(array('pid' => $pid, 'uuid' => $user['uuid']))->limit(1)->get('match_user_role', '*');
+
+        if (count($role)) {
+          if ($role['status'] > 1) {
+            return 3;
+          }
+          $_SESSION['user'] = array(
+            'uuid' => $user['uuid'],
+            'name' => $user['firstname'],
+            'avatar' => $user['avatar'],
+            'role' => $role['role'],
+            'role_status' => (intval($role['status']) === 1),
+            'user_status' => (intval($user['status']) === 1),
+            'pid' => $pid
+          );
+          return true;
+        }
       }
 
       return 2;
@@ -42,6 +58,6 @@ class Auth_Model extends Core_Model{
   }
 
   function is_profile_ready() {
-    return isset($_SESSION['user']) && intval($_SESSION['user']['status']) === 1;
+    return isset($_SESSION['user']) && intval($_SESSION['user']['user_status']) === 1;
   }
 }

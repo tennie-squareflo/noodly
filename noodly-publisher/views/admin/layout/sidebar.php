@@ -3,25 +3,49 @@
   <div class="k-aside-menu k-aside-menu--skin-light" data-kmenu-dropdown-timeout="500" data-kmenu-scroll="1" data-kmenu-vertical="1" id="k_aside_menu" style="position: relative;">
     <ul class="k-menu__nav">
     <?php
-      if (isset($_SESSION['user']['status']) && $_SESSION['user']['status'] == 1) {
+      if (isset($_SESSION['user']['user_status']) && $_SESSION['user']['user_status'] === true):
     ?>
-      <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>dashboard"><i class="k-menu__link-icon fas fa-tachometer-alt"></i><span class="k-menu__link-text">Dashboard</span></a>
-      </li>
+      <?php
+        if ($_SESSION['user']['role'] === 'admin') : // if admin
+      ?>
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>dashboard"><i class="k-menu__link-icon fas fa-tachometer-alt"></i><span class="k-menu__link-text">Dashboard</span></a>
+          </li>
 
-      <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
-      </li>
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
+          </li>
 
-      <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>users"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Users</span></a>
-      </li>
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>users"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Users</span></a>
+          </li>
 
-      <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
-      </li>
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
+          </li>
+      <?php
+        else:   // if contributor
+      ?>
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>dashboard"><i class="k-menu__link-icon fas fa-tachometer-alt"></i><span class="k-menu__link-text">Dashboard</span></a>
+          </li>
+
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
+          </li>
+
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>users"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Users</span></a>
+          </li>
+
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
+          </li>
+      <?php
+        endif;
+      ?>
     <?php 
-      }
+      endif;
     ?>
       <li aria-haspopup="true" class="k-menu__item">
         <a class="k-menu__link" href="<?php echo BASE_URL; ?>accept/complete_profile"><i class="k-menu__link-icon fa fa-user"></i><span class="k-menu__link-text">My Account</span></a>

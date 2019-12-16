@@ -37,7 +37,7 @@ class Auth_Controller extends Core_Controller {
   }
 
   function load_view($page, $vars = array(), $return = false) { 
-    if (substr($page, 6) === '/admin') {
+    if (substr($page, 0, 6) === '/admin') {
       $layout_url = "/admin/layout";
     } else {
       $layout_url = "/common/layout";
@@ -46,13 +46,17 @@ class Auth_Controller extends Core_Controller {
     if ($return === true) {
       $result = "";
       $result .= parent::load_view("$layout_url/html_header", $vars);
-      $result .= parent::load_view("$layout_url/header", $vars);
+      if (isset($_SESSION['user'])) {
+        $result .= parent::load_view("$layout_url/header", $vars);
+      }
       $result .= parent::load_view($page, $vars);
       $result .= parent::load_view("$layout_url/footer", $vars);
       return $result;
     } else {
       parent::load_view("$layout_url/html_header", $vars);
-      parent::load_view("$layout_url/header", $vars);
+      if (isset($_SESSION['user'])) {
+        parent::load_view("$layout_url/header", $vars);
+      }
       parent::load_view($page, $vars);
       parent::load_view("$layout_url/footer", $vars);
     }

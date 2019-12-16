@@ -127,6 +127,7 @@ class Users_Controller extends Admin_Controller {
 
   function send_invitation($id, $pid, $new_user, $new_role) {
     $this->load_model('environment');
+    $this->load_helper('string');
 
     $user = $this->user_model->get_one($id);
     $publisher = $this->publisher_model->get_one($pid);
@@ -189,8 +190,6 @@ class Users_Controller extends Admin_Controller {
       'subject' => $subject,
       'html' => $body,
     );
-
-    //var_dump($body);
     
     if (sendgridMail($params)) {
       return true;

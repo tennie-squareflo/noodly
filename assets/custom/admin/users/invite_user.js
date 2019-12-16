@@ -52,9 +52,6 @@ $(function() {
             };
 
             toastr.success(res.message);
-            setTimeout(() => {
-              location.href = BASE_URL + `users/edit/${res.id}`;
-            }, 3000);
           } else {
             toastr.options = {
               closeButton: false,

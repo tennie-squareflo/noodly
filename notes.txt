@@ -30,5 +30,5 @@
   You are invited to {Noodly} publisher as a {publisher admin},
   link to login page
   
-
-  //
+//
+- Check if domain is duplicated

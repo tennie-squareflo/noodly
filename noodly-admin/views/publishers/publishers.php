@@ -64,7 +64,7 @@
                       # code...
                     ?>
                     <tr>
-                      <td><h5><a href="http://<?php echo $publisher['domain'];?>.noodly.io/"><?php echo $publisher['name'];?></a></h5></td>
+                      <td><h5><a href="http://<?php echo $publisher['domain'];?>.noodly.io/" target="_blank"><?php echo $publisher['name'];?></a></h5></td>
                       <td><?php echo $publisher['contributors'];?></td>
                       <td><?php echo $publisher['stories'];?></td>
                       <td><?php echo $publisher['visits'];?></td>

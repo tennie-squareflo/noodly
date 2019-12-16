@@ -7,7 +7,6 @@ class Index_Controller extends Auth_Controller {
   }
 
   function index() {
-    var_dump($_SESSION);
     $this->load_view('common/home', $this->view_data);
   }
 } 

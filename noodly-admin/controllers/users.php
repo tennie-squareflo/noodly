@@ -135,14 +135,14 @@ class Users_Controller extends Admin_Controller {
     $role = $this->user_model->get_role($id, $pid);
 
     $to = $user['email'];
-    $from = $publisher['name'];
+    $from = $publisher['email'];
     if ($pid != 0) {
       $subject = 'Invitation to join '.$publisher['name'].' as a '.get_user_types($role['role']);
     } else {
       $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
     }
 
-    $headers = "From: $from\r\n";
+    $headers = "From: $publisher[name]\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 

@@ -1,7 +1,7 @@
 <?php
 function sendgridMail($a_params,$a_settings=array(),$b_returnResponseOnSuccess=false){
 
-	$config['sendgrid_api']				= array(
+	$config['sendgrid_api']	= array(
     'api_user' => 'everdev0923',
     'api_key' => 'P-*w$N#3yXez5wZ'
   );
@@ -46,7 +46,7 @@ function sendgridMail($a_params,$a_settings=array(),$b_returnResponseOnSuccess=f
 	$s_response = curl_exec ($ch);
   curl_close ($ch);
   
-	$a_response = json_decode($s_response,true);
+    $a_response = json_decode($s_response,true);
 	if($a_response['message'] == "success"){
 		return($b_returnResponseOnSuccess ? $a_response : true);
 	} else {

@@ -1,6 +1,6 @@
 <?php
 $host_url = $_SERVER['HTTP_HOST'];
-$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'].'/' : '/';
 
 $current_role = '';
 $publisher_domain = '';
@@ -31,3 +31,5 @@ if (ENV == 'local') {
 } else {
   define('BASE_URL', '/');
 }
+
+define('PUBLISHER_DOMAIN', $publisher_domain);

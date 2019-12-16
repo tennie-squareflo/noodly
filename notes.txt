@@ -1,0 +1,34 @@
+- Test cases
+
+1. invite a user who is super admin. 
+  => should fail with message 'Can not invite a super admin'
+
+2. invite a user as a publisher (admin or contributor) who already has a role in that publisher
+  => invite with different role
+    should fail with message 'This user has already a different role in this publisher'
+  => invite with the existing role
+    should only send invitationii 'The invitation is sent again successfully'
+3. invite a user as a publisher (admin or contributor) who doesn't have a role in that publisher
+  should success with message 'Invitation is sent successfully'
+4. invite a user as a publisher (admin or contributor) who have not registered
+  should success with messsage 'Invitation is sent successfully'
+
+5. invite a user as a super admin who has registered.
+  shoud fail with message 
+6. invite a user as a super admin who has not registered.
+  should success.
+
+  new_user
+  {Noodly} Account Created
+  Hi, {TestUser}!
+  Please click on the button below to complete profile for your new {Noodly} account.
+  link to complete profile page
+
+  new_role
+  You are Invited to {Noodly} publisher
+  Hi, {TeshUser}!
+  You are invited to {Noodly} publisher as a {publisher admin},
+  link to login page
+  
+
+  //

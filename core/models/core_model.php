@@ -31,7 +31,7 @@ class Core_Model {
       }
     }
     if ($limit > 0) {
-      $this->db->limit(5);
+      $this->db->limit($limit);
     }
     if ($by) {
       $this->db->order_by($by, $order_type);

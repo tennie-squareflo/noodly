@@ -1,5 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine On
-
-RewriteCond %{HTTP_HOST} ^(^.*)\.noodly.io
-RewriteRule (.*) $1?publisher=%1

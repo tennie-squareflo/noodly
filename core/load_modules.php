@@ -34,6 +34,7 @@ do {
     break;
   }
 } while ($request_uri !== '/');
+
 if (file_exists($base_path.'controllers'.$path.'.php')) {
   require_once($base_path.'controllers'.$path.'.php');
   $class_name .= '_controller';

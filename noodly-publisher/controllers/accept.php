@@ -35,7 +35,7 @@ class Accept_Controller extends Auth_Controller {
             'role' => $role['role'],
             'role_status' => (intval($role['status']) === 1),
             'user_status' => (intval($user['status']) === 1),
-            'pid' => $pid
+            'pid' => $this->publisher['pid']
           );
           header("Location: ".BASE_URL."accept/complete_profile");
           return;

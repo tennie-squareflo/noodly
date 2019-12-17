@@ -13,15 +13,15 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>contributor"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Contributors</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>users"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Users</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>story"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Stories</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>message"><i class="k-menu__link-icon fa fa-envelope"></i><span class="k-menu__link-text">Messages</span></a>
           </li>
       <?php
         else:   // if contributor
@@ -31,15 +31,11 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>story"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Stories</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>users"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Users</span></a>
-          </li>
-
-          <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>settings"><i class="k-menu__link-icon fa fa-cogs"></i><span class="k-menu__link-text">Settings</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>message"><i class="k-menu__link-icon fa fa-envelope"></i><span class="k-menu__link-text">Messages</span></a>
           </li>
       <?php
         endif;

@@ -96,12 +96,12 @@
                       <td>
                       <?php 
                         echo intval($user['status']) == 0 
-                              ? 'No' 
-                              : (intval($user['status']) == 1 
-                                ? 'Active' 
-                                : (intval($user['status']) >= time() 
-                                  ? 'Invite Sent' 
-                                  : 'Invite Expired'));
+                        ? '<span class="badge badge-warning">No</span>' 
+                        : (intval($user['status']) == 1 
+                          ? '<span class="badge badge-success">Active</span>' 
+                          : (intval($user['status']) >= time() 
+                            ? '<span class="badge badge-info">Invite Sent</span>' 
+                            : '<span class="badge badge-danger">Invite Expired</span>'));
                       ?>
                       </td>
                       <td>

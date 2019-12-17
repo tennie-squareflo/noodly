@@ -7,6 +7,7 @@ class Core_Controller {
     $this->role = $role;
     $this->base_path = $this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH;
     $this->view_path = ($this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH).VIEW_PATH;
+    $this->load_helper('string');
   }
 
   function load_view($filename, $vars = array(), $return = false) {

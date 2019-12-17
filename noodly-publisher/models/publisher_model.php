@@ -5,29 +5,25 @@ class Publisher_Model extends Core_Model{
     parent::__construct('publishers', 'pid');
   }
 
-  function get_publishers($where = array(), $limit = 0) {
-    $select = 
-      "publishers.pid, 
-      publishers.name, 
-      publishers.domain, 
-      (SELECT count(uuid) FROM subscription s WHERE s.refid = publishers.pid AND s.type='publisher') subscribers, 
-      (SELECT count(uuid) FROM match_user_role u WHERE u.pid = publishers.pid AND u.role='contributor') contributors, 
-      (SELECT count(sid) FROM stories s WHERE s.pid = publishers.pid) stories,
-      (SELECT ifnull(sum(visits), 0) FROM stories s WHERE s.pid = publishers.pid) visits";
-    return $this->get($select, $where, $limit);
+  function get_users_count($type, $pid) {
+    switch ($type) {
+      case 'admin': case 'contributor': {
+        return $this->db->where(array('pid' => $pid, 'role' => $type))->limit(1)->get('match_user_role', 'count(uuid) cnt')['cnt'];
+      }
+      case 'subscriber': {
+        return $this->db->where(array('refid' => $pid, 'type' => 'publisher'))->limit(1)->get('subscription', 'count(uuid) cnt')['cnt'];
+      }
+    }
   }
 
-  function get_list() {
-    $select = "publishers.pid, publishers.name, publishers.logo";
-    $list = $this->get($select);
-    $result = array();
-    foreach ($list as $publisher) {
-      $result[$publisher['pid']] = array('name' => $publisher['name'], 'logo' => $publisher['logo']);
-    }
-    return $result;
-  }
-  
-  function get_pid($where) {
-    return $this->get("publishers.pid", $where, 1)['pid'];
+  function get_contributors($pid) {
+    $select = "
+      match_user_role.uuid, 
+      match_user_role.status, 
+      (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = match_user_role.uuid) username,
+      (SELECT count(sid) FROM stories WHERE stories.uuid = match_user_role.uuid AND stories.pid = $pid) stories,
+      (SELECT count(id) FROM subscription WHERE subscription.refid = match_user_role.uuid AND type='contributor') subscribers
+    ";
+    return $this->db->where(array('pid' => $pid))->get('match_user_role', $select);
   }
 }

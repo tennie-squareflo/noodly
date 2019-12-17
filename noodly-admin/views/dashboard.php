@@ -125,7 +125,7 @@
 								</div>
 								<div class="k-portlet__head-toolbar">
 									<div class="k-portlet__head-toolbar-wrapper">
-										<button class="btn btn-sm btn-outline-success" onClick="location.href = '<?php echo $base_url; ?>publishers.php';" type="button"><i class="la la-list"></i> View All</button>
+										<button class="btn btn-sm btn-outline-success" onClick="location.href = '<?php echo BASE_URL; ?>publishers';" type="button"><i class="la la-list"></i> View All</button>
 									</div>
 								</div>
 							</div>

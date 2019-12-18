@@ -33,7 +33,7 @@
               
               
               <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
-                <i class="la la-pencil"></i> Add A Contributor
+                <i class="la la-pencil"></i> Invite A Contributor
             </a>
             </div>
           </div>

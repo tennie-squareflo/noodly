@@ -16,7 +16,7 @@
                 <h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 
                 <div class="form-group row">
-                  <label class="col-3 col-form-label">Email Address</label>
+                  <label class="col-3 col-form-label">Email</label>
                   <div class="col-9">
                     <input class="form-control" placeholder="Email Address" name="email" type="text">
                   </div>

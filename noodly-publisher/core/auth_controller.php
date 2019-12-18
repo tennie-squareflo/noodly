@@ -2,7 +2,7 @@
 class Auth_Controller extends Core_Controller {
 
   public $publisher_domain;
-  public $publisher;
+  public $pid;
   public $view_data;
 
   function __construct($no_auth = false, $no_profile = false) {
@@ -22,8 +22,10 @@ class Auth_Controller extends Core_Controller {
   function init() {
     $this->publisher_domain = PUBLISHER_DOMAIN;
     $this->load_model("publisher");
-    $this->publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
-    $this->view_data['publisher'] = $this->publisher;
+    $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
+    $this->pid = $publisher['pid'];
+    $this->pid = $publisher['pid'];
+    $this->view_data['publisher'] = $publisher;
   }
 
   function check_logged_in() {
@@ -61,15 +63,5 @@ class Auth_Controller extends Core_Controller {
       parent::load_view("$layout_url/footer", $vars);
     }
 
-  }
-
-  function single_load($page, $vars = array(), $return = false) {
-    if ($return === true) {
-      $result = "";
-      $result .= parent::load_view($page, $vars, $return);
-      return $result;
-    } else {
-      parent::load_view($page, $vars);
-    }
   }
 }

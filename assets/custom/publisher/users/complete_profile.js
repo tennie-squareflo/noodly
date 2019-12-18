@@ -1,6 +1,5 @@
 "use strict";
 
-import("../../../vendors/custom/slim/slim.kickstart.min.js");
 import(
   "../../../vendors/custom/country-province-select/jquery.countryProvinceSelect.js"
 ).then(() => {

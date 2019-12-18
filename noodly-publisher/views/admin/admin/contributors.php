@@ -74,7 +74,7 @@
                         <td><span class="badge badge-warning"><?php echo number_k($contributor['subscribers']); ?></span></td>
                         <td><?php 
                           echo intval($contributor['status']) == 0 
-                                ? '<span class="badge badge-warning">No</span>' 
+                                ? '<span class="badge badge-warning">Suspended</span>' 
                                 : (intval($contributor['status']) == 1 
                                   ? '<span class="badge badge-success">Active</span>' 
                                   : (intval($contributor['status']) >= time() 
@@ -88,10 +88,16 @@
                                 <i class="fa fa-bars"></i> Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <?php if (intval($contributor['status']) != 1): ?>
-                                  <a class="dropdown-item" href="#"><i class="fa fa-paper-plane"></i>Send Invitation</a>
+                                <?php if (intval($contributor['status']) > 1): ?>
+                                  <a class="dropdown-item invite-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fa fa-paper-plane"></i>Send Invitation</a>
                                 <?php endif; ?>
-                                  <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+                                <?php if (intval($contributor['status']) == 1): ?>
+                                  <a class="dropdown-item block-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Block</a>
+                                <?php endif; ?>
+                                <?php if (intval($contributor['status']) == 0): ?>
+                                  <a class="dropdown-item activate-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Activate</a>
+                                <?php endif; ?>
+                                  <a class="dropdown-item delete-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </td>

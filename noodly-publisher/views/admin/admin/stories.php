@@ -3,7 +3,7 @@
 
 <!-- begin:: Content Head -->
 <div class="k-content__head	k-grid__item">
-  <h3 class="k-content__head-title">My Stories</h3>
+  <h3 class="k-content__head-title">Stories</h3>
 </div>
 
 <!-- end:: Content Head -->
@@ -33,7 +33,7 @@
               
               
 
-              <a href="CONTRIBUTOR-add-story.html" class="btn btn-success">
+              <a href="<?php echo BASE_URL;?>story/edit" class="btn btn-success">
                 <i class="la la-pencil"></i> Add A Story
             </a>
             </div>
@@ -48,8 +48,7 @@
               
                 <table class="table table-head-noborder table-striped">
                   <thead>
-                    <tr>
-                      
+                    <tr>                      
                         <th>&nbsp</th>
                         <th>Title</th>
                         <th>Contributor</th>
@@ -85,8 +84,11 @@
                             case 'DRAFT':
                               echo '<span class="badge badge-warning">DRAFT</span>';
                             break;
+                            case 'SUBMITTED':
+                              echo '<span class="badge badge-info">SUBMITTED</span>';
+                            break;
                             case 'PUBLISHED':
-                              echo '<span class="badge badge-dark">PUBLISHED</span>';
+                              echo '<span class="badge badge-success">PUBLISHED</span>';
                             break;
                           }
                         ?>
@@ -99,6 +101,9 @@
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                   <?php if($story['status'] === 'DRAFT') : ?>
                                     <a class="dropdown-item" href="#"><i class="fa fa-newspaper"></i>Submit</a>
+                                  <?php endif; ?>
+                                  <?php if($story['status'] === 'SUBMITTED') : ?>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-newspaper"></i>Publish</a>
                                   <?php endif; ?>
                                   <a class="dropdown-item" href="#"><i class="fa fa-pencil-alt"></i>Edit</a>
                                   <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>

@@ -37,14 +37,4 @@ class Admin_Controller extends Core_Controller {
       parent::load_view('/layout/footer', $vars);
     }
   }
-
-  function single_load_view($page, $vars = array(), $return = false) {
-    if ($return === true) {
-      $result = '';
-      $result .= parent::load_view($page, $vars, $return);
-      return $result;
-    } else {
-      parent::load_view($page, $vars);
-    }
-  }
 }

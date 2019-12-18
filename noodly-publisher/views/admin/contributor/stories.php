@@ -33,7 +33,7 @@
               
               
 
-              <a href="CONTRIBUTOR-add-story.html" class="btn btn-success">
+            <a href="<?php echo BASE_URL;?>story/edit" class="btn btn-success">
                 <i class="la la-pencil"></i> Add A Story
             </a>
             </div>

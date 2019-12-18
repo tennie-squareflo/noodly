@@ -39,7 +39,7 @@ class Accept_Controller extends Admin_Controller {
     $user = $this->user_model->get_one($_SESSION['user']['uuid']);
 
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/admin/users/complete_profile.js');
+    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/admin/users/complete_profile.js');
     $view_data['user_id'] = intval($user['uuid']);
     $view_data['user'] = $user;
     $this->load_model('publisher');
@@ -99,47 +99,10 @@ class Accept_Controller extends Admin_Controller {
       }
       else {
         $this->load_model('publisher');
-        $this->load_model('environment');
-
-        $user = $this->user_model->get_one($id);
         $publisher = $this->publisher_model->get_one(0);
-        $env = $this->environment_model->get_env();
-
-        $to = $user['email'];
-        $from = $publisher['email'];
         $subject = 'Welcome to '.$publisher['domain'];
 
-        $this->load_library('encryption', true);
-
-        if (ENV === 'local') {
-          $domain = $publisher['domain'] == '' 
-                    ? 'dev.noodly.com/admin' 
-                    : 'dev.noodly.com/'.$publisher['domain'];
-          $server = 'dev.noodly.com';
-        } else {
-          $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
-          $server = $domain;
-        }
-        
-        $view_data['user'] = $user;
-        $view_data['publisher'] = $publisher;
-        $view_data['env'] = $env;
-        $view_data['domain'] = $domain;
-        $view_data['server'] = $server;
-
-        $body = $this->single_load_view('email_template/profile_complete', $view_data, true);
-        
-        // sene email via sendgrid
-        $this->load_helper('sendgrid_mail');
-
-        $params = array(
-          'to' => $to,
-          'from' => $from,
-          'subject' => $subject,
-          'html' => $body,
-        );
-
-        if (sendgridMail($params)) {
+        if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
           $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
         } else {
           $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);

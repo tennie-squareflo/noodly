@@ -10,6 +10,7 @@ class Accept_Controller extends Auth_Controller {
     $this->load_library('encryption', true);
     $this->load_model('match_user_role');
     $token = Encryption::decrypt($cypher);
+    $pid = $this->pid;
     if ($token == NULL || !is_array($token)) {
       header("Location: ".BASE_URL."error/invalid_token");
       return;
@@ -20,11 +21,11 @@ class Accept_Controller extends Auth_Controller {
     } else {
       $this->load_model('user');
       $user = $this->user_model->get_one($token['uuid']);
-      $role = $this->match_user_role_model->get_one(array('pid' => $this->publisher['pid'], 'uuid' => $user['uuid']));
+      $role = $this->match_user_role_model->get_one(array('pid' => $pid, 'uuid' => $user['uuid']));
 
       if (count($role)) {
         if (intval($user['status']) === 1)  { // if the user has completed profile 
-          $this->match_user_role_model->update(array('status' => 1), array('pid' => $this->publisher['pid'], 'uuid' => $user['uuid']));
+          $this->match_user_role_model->update(array('status' => 1), array('pid' => $pid, 'uuid' => $user['uuid']));
           header("Location: ".BASE_URL."dashboard");
           return;
         } else {  // otherwise
@@ -35,7 +36,7 @@ class Accept_Controller extends Auth_Controller {
             'role' => $role['role'],
             'role_status' => (intval($role['status']) === 1),
             'user_status' => (intval($user['status']) === 1),
-            'pid' => $this->publisher['pid']
+            'pid' => $pid
           );
           header("Location: ".BASE_URL."accept/complete_profile");
           return;
@@ -56,7 +57,7 @@ class Accept_Controller extends Auth_Controller {
     $user = $this->user_model->get_one($_SESSION['user']['uuid']);
 
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $this->view_data['script_files'] = array('custom/publisher/users/complete_profile.js');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/publisher/users/complete_profile.js');
     $this->view_data['user_id'] = intval($user['uuid']);
     $this->view_data['user'] = $user;
     $this->load_view('/admin/edit_user', $this->view_data);
@@ -81,8 +82,9 @@ class Accept_Controller extends Auth_Controller {
       'status' => 1
     );
     $id = $_SESSION['user']['uuid'];
+    $pid = $_SESSION['user']['pid'];
     $user = $this->user_model->get_one($id);
-    $role = $this->match_user_role_model->get_one(array('uuid' => $id, 'pid' => $this->publisher['pid']));
+    $role = $this->match_user_role_model->get_one(array('uuid' => $id, 'pid' => $pid));
     if ($user['password'] != $_POST['password']) {
       $new_data['password'] = md5(test_input($_POST['password']));
     }
@@ -111,53 +113,16 @@ class Accept_Controller extends Auth_Controller {
     
     //
     if ($this->user_model->update($new_data, $id) &&
-      $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $this->publisher['pid']))) {
+      $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $pid))) {
       if (intval($role['status']) === 1) {
         $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
       }
       else {
         $this->load_model('publisher');
-        $this->load_model('environment');
-
-        $user = $this->user_model->get_one($id);
-        $publisher = $this->publisher_model->get_one($this->publisher['pid']);
-        $env = $this->environment_model->get_env();
-
-        $to = $user['email'];
-        $from = $publisher['email'];
+        $publisher = $this->publisher_model->get_one($pid);
         $subject = 'Welcome to '.$publisher['domain'];
 
-        $this->load_library('encryption', true);
-
-        if (ENV === 'local') {
-          $domain = $publisher['domain'] == '' 
-                    ? 'dev.noodly.com/admin' 
-                    : 'dev.noodly.com/'.$publisher['domain'];
-          $server = 'dev.noodly.com';
-        } else {
-          $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
-          $server = $domain;
-        }
-        
-        $view_data['user'] = $user;
-        $view_data['publisher'] = $publisher;
-        $view_data['env'] = $env;
-        $view_data['domain'] = $domain;
-        $view_data['server'] = $server;
-
-        $body = $this->single_load('/common/email_template/profile_complete', $view_data, true);
-        
-        // sene email via sendgrid
-        $this->load_helper('sendgrid_mail');
-
-        $params = array(
-          'to' => $to,
-          'from' => $from,
-          'subject' => $subject,
-          'html' => $body,
-        );
-
-        if (sendgridMail($params)) {
+        if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
           $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
         } else {
           $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);

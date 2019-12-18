@@ -22,4 +22,21 @@ class Story_Controller extends Auth_Controller {
       $this->load_view('/admin/contributor/stories', $this->view_data);
     }
   }
+
+  function edit($id = 0) {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/edit.js');
+
+    $this->load_model('category');
+
+    $this->view_data['categories'] = $this->category_model->get_categories($this->pid);
+    
+    $this->load_view('/admin/edit_story', $this->view_data);
+  }
+
+  function upload_image() {
+
+  }
+
+  function preview($id) {}
 } 

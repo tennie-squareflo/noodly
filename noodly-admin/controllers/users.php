@@ -26,7 +26,7 @@ class Users_Controller extends Admin_Controller {
 
   function edit($id = 0) {
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/admin/users/complete_profile.js');
+    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/admin/users/complete_profile.js');
     $view_data['user_id'] = intval($id);
     $view_data['user'] = $this->user_model->get_one(intval($id));
     $view_data['edit_user'] = true;
@@ -68,7 +68,7 @@ class Users_Controller extends Admin_Controller {
         if (count($user)) { // if user already exists
           // check if the user is a super admin
           if ($user['role'] === 'super_admin' && $post['role'] !== 'super_admin') {
-            $this->response(array('code' => 2, 'message' => 'Can not send invitation to a super admin'), 500);
+            $this->response(array('code' => 2, 'message' => 'Can not send invitation to a super admin'), 400);
           }
 
           // check if the user already has a role in that publisher.
@@ -134,17 +134,11 @@ class Users_Controller extends Admin_Controller {
     $env = $this->environment_model->get_env();
     $role = $this->user_model->get_role($id, $pid);
 
-    $to = $user['email'];
-    $from = $publisher['email'];
     if ($pid != 0) {
       $subject = 'Invitation to join '.$publisher['name'].' as a '.get_user_types($role['role']);
     } else {
       $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
     }
-
-    $headers = "From: $publisher[name]\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
     $expiration_time = time() + (60 * $env['email_expiration_time']);
 
@@ -159,39 +153,12 @@ class Users_Controller extends Admin_Controller {
 
     $this->load_library('encryption', true);
 
-    if (ENV === 'local') {
-      $domain = $publisher['domain'] == '' 
-                ? 'dev.noodly.com/admin' 
-                : 'dev.noodly.com/'.$publisher['domain'];
-      $server = 'dev.noodly.com';
-    } else {
-      $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
-      $server = $domain;
-    }
-    
-    $view_data['accept_url'] = $domain.'/accept/invitation/'.Encryption::encrypt($invite_token);
-    $view_data['user'] = $user;
-    $view_data['publisher'] = $publisher;
-    $view_data['env'] = $env;
-    $view_data['domain'] = $domain;
-    $view_data['server'] = $server;
+    $link = '/accept/invitation/'.Encryption::encrypt($invite_token);
     $view_data['role'] = $role;
-
     $view_data['new_user'] = $new_user;
     $view_data['new_role'] = $new_role;
 
-    $body = $this->single_load_view('email_template/invite_user', $view_data, true);
-    
-    $this->load_helper('sendgrid_mail');
-
-    $params = array(
-      'to' => $to,
-      'from' => $from,
-      'subject' => $subject,
-      'html' => $body,
-    );
-    
-    if (sendgridMail($params)) {
+    if ($this->send_email($id, $pid, $subject, $link, 'invite_user', $view_data)) {
       return true;
     } else {
       return false;

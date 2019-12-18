@@ -30,4 +30,5 @@ class User_Model extends Core_Model{
   function update_role($data, $uuid, $pid) {
     return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->update('match_user_role', $data);
   }
+
 }

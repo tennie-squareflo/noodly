@@ -97,16 +97,55 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet--></div>`
-          };
+};
 
 $(function() {
-  $('.btn-add-block').click(function () {
-    const type = $(this).data('block-type');
+  $(".btn-add-block").click(function() {
+    const type = $(this).data("block-type");
     const block = $(newBlock[type]);
-    block.insertBefore('#k_content_body #insert_block');
-    if (type === 'image') {
+    block.insertBefore("#k_content_body #insert_block");
+    if (type === "image") {
       block.find('input[type="file"]').slim();
     }
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
-  })
+  });
+
+  jQuery.validator.markMethod(
+    "checkUrl",
+    $.debounce(500, e => {
+      if (e.match(/[a-zA-Z0-9-]*/)) {
+        $.ajax({
+          url: BASE_URL + "api/check_story_url",
+          data: { url: $(".main-form input[name=url]").val() },
+          dataType: "json",
+          method: "POST",
+          success: function(res) {
+            console.log(res.exist);
+            if (res.exist === true) {
+              mainFormValidator.showErrors({
+                url: "This url is used."
+              });
+            }
+          }
+        });
+      }
+    })
+  );
+
+  const mainFormValidator = $(".main-form").validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      firstname: {
+        required: true
+      }
+    },
+    messages: {
+      email: "Please enter a valid email address"
+    }
+  });
+
+  $(".main-form input[name=url]").keyup();
 });

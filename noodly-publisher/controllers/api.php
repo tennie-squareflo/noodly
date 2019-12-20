@@ -27,4 +27,12 @@ class Api_Controller extends Core_Controller {
       $this->response(array('code' => 1));
     }
   }
+
+  public function check_story_url() {
+    $post = $_POST;
+    $this->load_model('story');
+    
+    $story = $this->story_model->get_one(array('url' => $post['url']));
+    $this->response(array('code' => 0, 'exist' => count($story) !== 0));
+  }
 }

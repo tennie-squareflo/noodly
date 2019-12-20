@@ -7,7 +7,7 @@
 						</div>
 						<div class="k-content__head-toolbar">
 							<div class="k-content__head-toolbar-wrapper">
-								<a class="btn btn-metal" href="client-profile.html"><i class="la la-save"></i> Save as Draft</a> <a class="btn btn-success" href="client-profile.html"><i class="la la-check"></i> Submit!</a>
+								<a class="btn btn-metal save-as-draft-button"><i class="la la-save"></i> Save as Draft</a> <a class="btn btn-success submit-button"><i class="la la-check"></i> Submit!</a>
 							</div>
 						</div>
 					</div><!-- end:: Content Head -->
@@ -18,7 +18,7 @@
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
 									<div class="k-portlet__body">
-										<form class="k-form" id="k_form" name="k_form">
+										<form class="k-form main-form" id="k_form" name="k_form">
 											<div class="row">
 												<div class="col-xl-2"></div>
 												<div class="col-xl-8">
@@ -37,7 +37,7 @@
 																	<div class="input-group">
 																		<div class="input-group-append">
 																			<span class="input-group-text">http://<?php echo $publisher['domain'];?>.noodly.io/story/</span>
-																		</div><input class="form-control" placeholder="Username" type="text" value="story-title-goes-here" readonly>
+																		</div><input class="form-control" placeholder="story url" type="text" name="url">
 																	</div>
 																</div>
 															</div>
@@ -51,7 +51,7 @@
 																					Select A Category
 																				</option>
 																				<?php
-																					foreach ($categories as $key => $value) {
+																					foreach ($$categories as $key => $value) {
 																						echo "<option value='$key'>$value</option>";
 																					}
 																				?>

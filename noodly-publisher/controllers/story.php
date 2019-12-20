@@ -34,6 +34,14 @@ class Story_Controller extends Auth_Controller {
     $this->load_view('/admin/edit_story', $this->view_data);
   }
 
+  function action($type) {
+    var_dump($type);
+    var_dump($_POST);
+    switch ($type) {
+
+    }
+  }
+
   function upload_image() {
 
   }

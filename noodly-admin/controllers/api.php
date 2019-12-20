@@ -2,7 +2,18 @@
 
 class Api_Controller extends Core_Controller {
   function __construct() {
-    parent::__construct('admin');
+    parent::__construct('admin')rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      firstname: {
+        required: true
+      }
+    },
+    messages: {
+      email: "Please enter a valid email address"
+    },;
   }
 
   public function avatar_upload() {

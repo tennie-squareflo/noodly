@@ -70,7 +70,7 @@
                                 <label class="form-check-label" for="defaultCheck1"></label>
                                 </div>
                         </td>
-                        <td><h5><a href="#"><?php echo $story['title'];?></a></h5></td>
+                        <td><h5><a href="<?php echo BASE_URL.'story/preview/'.$story['sid'];?>"><?php echo $story['title'];?></a></h5></td>
 
                         <td><?php echo time_diff_format($story['created_at']); ?></td>
                         <td><?php echo number_k($story['visits']); ?></td>

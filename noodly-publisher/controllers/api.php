@@ -10,9 +10,9 @@ class Api_Controller extends Core_Controller {
     $this->slim_image_uploader->image_upload('avatar', ASSETS_PATH.'media/avatars/');
   }
 
-  public function story_image_upload() {
+  public function story_image_upload($type) {
     $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('avatar', ASSETS_PATH.'media/story/');
+    $this->slim_image_uploader->image_upload($type, ASSETS_PATH.'media/stories/');
   }
 
   public function check_email() {

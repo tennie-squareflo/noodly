@@ -46,6 +46,9 @@
 	<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
 	</script> <!--end::Debounce Plugin -->
 
+<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-ui/jquery-ui.bundle.js" type="text/javascript">
+	</script> <!--end::jQuery UI Plugin -->
+
 	<script src="<?php echo ASSETS_URL; ?>custom/admin/common.js" type="text/javascript">
 	</script> <!--end::Common Plugin -->
 

@@ -7,7 +7,7 @@
 						</div>
 						<div class="k-content__head-toolbar">
 							<div class="k-content__head-toolbar-wrapper">
-								<a class="btn btn-metal save-as-draft-button"><i class="la la-save"></i> Save as Draft</a> <a class="btn btn-success submit-button"><i class="la la-check"></i> Submit!</a>
+								<a class="btn btn-metal draft-button"><i class="la la-save"></i> Save as Draft</a> <a class="btn btn-success save-button"><i class="la la-check"></i> Submit!</a>
 							</div>
 						</div>
 					</div><!-- end:: Content Head -->
@@ -51,7 +51,7 @@
 																					Select A Category
 																				</option>
 																				<?php
-																					foreach ($$categories as $key => $value) {
+																					foreach ($categories as $key => $value) {
 																						echo "<option value='$key'>$value</option>";
 																					}
 																				?>
@@ -62,7 +62,7 @@
 																		<label class="col-3 col-form-label">Thumbnail Image</label>
 																		<div class="col-9">
 																			<div class="slim"
-																				data-service="<?php echo BASE_URL; ?>api/story_image_upload"
+																				data-service="<?php echo BASE_URL; ?>api/story_image_upload/thumb_image"
 																				data-push="true"
 																				data-did-throw-error="handleError">
 																				<input type="file" name="thumb_image" data-value=''/>
@@ -79,7 +79,7 @@
 																		<label class="col-3 col-form-label">Cover Image</label>
 																		<div class="col-9">
 																			<div class="slim"
-																				data-service="<?php echo BASE_URL; ?>api/story_image_upload"
+																				data-service="<?php echo BASE_URL; ?>api/story_image_upload/cover_image"
 																				data-push="true"
 																				data-did-throw-error="handleError">
 																				<input type="file" name="cover_image" data-value=''/>
@@ -115,6 +115,8 @@
 							</div>
 						</div>
 						
+						<div class="sortable">
+						</div>
 						<div class="row" id="insert_block">
 								<div class="col-lg-12">
 									<!--begin::Portlet-->

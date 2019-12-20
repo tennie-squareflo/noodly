@@ -238,7 +238,7 @@ const submitForm = type => {
   });
 
   $.ajax({
-    url: BASE_URL + "/story/action/edit",
+    url: `${BASE_URL}story/action/edit`,
     method: "post",
     dataType: "JSON",
     data: { data, type },

@@ -83,9 +83,19 @@ class Database
         foreach ($info as $row => $value) {
             $real_row = $escape ? "`".$row."`" : $row;
             if (empty($where)) {
-                $where = sprintf("WHERE %s='%s'", $real_row, mysqli_real_escape_string(self::$link, $value));
+                if (is_array($value)) {
+                    $where .= sprintf("WHERE %s in (%s)", $real_row, mysqli_real_escape_string(self::$link, join(', ', $value)));
+                }
+                else {
+                    $where .= sprintf("WHERE %s='%s'", $real_row, mysqli_real_escape_string(self::$link, $value));
+                }
             } else {
-                $where .= sprintf(" %s %s='%s'", $type, $real_row, mysqli_real_escape_string(self::$link, $value));
+                if (is_array($value)) {
+                    $where .= sprintf(" %s in (%s)", $real_row, mysqli_real_escape_string(self::$link, join(', ', $value)));
+                }
+                else {
+                    $where .= sprintf(" %s %s='%s'", $type, $real_row, mysqli_real_escape_string(self::$link, $value));
+                }
             }
         }
         self::$where = $where;

@@ -67,6 +67,10 @@ class Core_Model {
       return false;
     }
   }
+  function deleteRows($ids) {
+    $this->db->where(array($this->pk => $where));
+    return $this->db->delete($this->table_name);
+  }
   function delete($where = array()) {
     if (isset($where)) {
       if (!is_array($where)) {

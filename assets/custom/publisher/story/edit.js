@@ -1,7 +1,7 @@
 "use strict";
 
 const newBlock = {
-  video: `<div class="row">
+  video: `<div class="row new-form-row">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -13,7 +13,7 @@ const newBlock = {
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle pull-right"><i class="fas fa-trash"></i></a> <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right"><i class="fas fa-arrows-alt-v"></i></a> <label for="exampleTextarea">Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content">
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content">
 														</div>
 													</div>
 												</div>
@@ -24,7 +24,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  heading: `<div class="row">
+  heading: `<div class="row new-form-row">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -36,7 +36,7 @@ const newBlock = {
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle pull-right"><i class="fas fa-trash"></i></a> <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right"><i class="fas fa-arrows-alt-v"></i></a> <label for="exampleTextarea">Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content">
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content">
 														</div>
 													</div>
 												</div>
@@ -47,7 +47,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  image: `<div class="row">
+  image: `<div class="row new-form-row">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -59,7 +59,7 @@ const newBlock = {
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle pull-right"><i class="fas fa-trash"></i></a> <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right"><i class="fas fa-arrows-alt-v"></i></a> <label for="exampleTextarea">Image</label><br>
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Image</label><br>
                               <input type="file" name="content" data-value=''/>
 														</div>
 													</div>
@@ -71,7 +71,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  text: `<div class="row">
+  text: `<div class="row new-form-row">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -84,7 +84,7 @@ const newBlock = {
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
 															<div class="form-group form-group-last">
-																<a class="btn btn-outline-hover-danger btn-sm btn-icon btn-circle pull-right"><i class="fas fa-trash"></i></a> <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right"><i class="fas fa-arrows-alt-v"></i></a> <label for="exampleTextarea">Text</label> 
+																<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Text</label> 
 																<textarea class="form-control" id="exampleTextarea" rows="10" name="content"></textarea>
 															</div>
 														</div>
@@ -100,6 +100,35 @@ const newBlock = {
 };
 
 $(function() {
+  // intialize images
+  setTimeout(() => {
+    $(".main-form")
+      .find('input[name="thumb_image"]')
+      .val(
+        $(".main-form")
+          .find('input[name="thumb_image"]')
+          .siblings('input[type="file"]')
+          .attr("data-value")
+      );
+    $(".main-form")
+      .find('input[name="cover_image"]')
+      .val(
+        $(".main-form")
+          .find('input[name="thumb_image"]')
+          .siblings('input[type="file"]')
+          .attr("data-value")
+      );
+      $(".sortable .k-form").each(function() {
+        $(this)
+          .find(".slim input[name=content]")
+          .val(
+            $(this)
+              .find('input[type="file"]')
+              .attr("data-value")
+          );
+      });
+  }, 500);
+
   jQuery.validator.setDefaults({
     errorElement: "span",
     errorPlacement: function(error, element) {
@@ -123,7 +152,10 @@ $(function() {
         let exist = false;
         $.ajax({
           url: BASE_URL + "api/check_story_url",
-          data: { url: $(".main-form input[name=url]").val() },
+          data: {
+            url: $(".main-form input[name=url]").val(),
+            id: $(".main-form input[name=id]").val()
+          },
           dataType: "json",
           method: "POST",
           async: false,
@@ -142,17 +174,24 @@ $(function() {
     revert: true
   });
 
+  $('.btn-block-delete').click(function() {
+    $(this).parents('.new-form-row').remove();
+  });
+
   $(".btn-add-block").click(function() {
     const type = $(this).data("block-type");
     const block = $(newBlock[type]);
     //block.insertBefore("#k_content_body #insert_block");
     $(".sortable").append(block);
+    block.find('.btn-block-delete').click(function() {
+      $(this).parents('.new-form-row').remove();
+    });
     if (type === "image") {
       block.find('input[type="file"]').slim({
-				service: `${BASE_URL}api/story_image_upload/content`,
-				push: true,
-				didReceiveServerError: "handleError"
-			});
+        service: `${BASE_URL}api/story_image_upload/content`,
+        push: true,
+        didReceiveServerError: "handleError"
+      });
     }
     block.find("form").validate({
       rules: {
@@ -213,7 +252,7 @@ const submitForm = type => {
   });
 
   if (valid) {
-  	return;
+    return;
   }
 
   const mainData = {};
@@ -243,45 +282,49 @@ const submitForm = type => {
     dataType: "JSON",
     data: { data, type },
     success: function(res) {
-			toastr.options = {
-				closeButton: false,
-				debug: false,
-				newestOnTop: false,
-				progressBar: false,
-				positionClass: "toast-top-right",
-				preventDuplicates: false,
-				onclick: null,
-				showDuration: "300",
-				hideDuration: "1000",
-				timeOut: "5000",
-				extendedTimeOut: "1000",
-				showEasing: "swing",
-				hideEasing: "linear",
-				showMethod: "fadeIn",
-				hideMethod: "fadeOut"
-			};
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: false,
+        positionClass: "toast-top-right",
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+      };
 
-			toastr.success(res.message);
-		},
-		error: function(res) {
-			toastr.options = {
-				closeButton: false,
-				debug: false,
-				newestOnTop: false,
-				progressBar: false,
-				positionClass: "toast-top-right",
-				preventDuplicates: false,
-				onclick: null,
-				showDuration: "300",
-				hideDuration: "1000",
-				timeOut: "5000",
-				extendedTimeOut: "1000",
-				showEasing: "swing",
-				hideEasing: "linear",
-				showMethod: "fadeIn",
-				hideMethod: "fadeOut"
-			};
-			toastr.error(res.responseJSON.message);
-		}
+      toastr.success(res.message);
+
+      setTimeout(() => {
+        //location.href= BASE_URL + 'story/edit/' + res.id;
+      }, 3000);
+    },
+    error: function(res) {
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: false,
+        positionClass: "toast-top-right",
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+      };
+      toastr.error(res.responseJSON.message);
+    }
   });
 };

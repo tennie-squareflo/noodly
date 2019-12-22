@@ -33,6 +33,6 @@ class Api_Controller extends Core_Controller {
     $this->load_model('story');
     
     $story = $this->story_model->get_one(array('url' => $post['url']));
-    $this->response(array('code' => 0, 'exist' => count($story) !== 0));
+    $this->response(array('code' => 0, 'exist' => count($story) !== 0 && $story['sid'] != $post['id']));
   }
 }

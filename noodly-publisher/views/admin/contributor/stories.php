@@ -80,8 +80,14 @@
                             case 'DRAFT':
                               echo '<span class="badge badge-warning">DRAFT</span>';
                             break;
+                            case 'BLOCKED':
+                              echo '<span class="badge badge-error">BLOCKED</span>';
+                            break;
+                            case 'SUBMITTED':
+                              echo '<span class="badge badge-info">SUBMITTED</span>';
+                            break;
                             case 'PUBLISHED':
-                              echo '<span class="badge badge-dark">PUBLISHED</span>';
+                              echo '<span class="badge badge-success">PUBLISHED</span>';
                             break;
                           }
                         ?>
@@ -92,8 +98,11 @@
                                 <i class="fa fa-bars"></i> Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                  <a class="dropdown-item" href="#"><i class="fa fa-pencil-alt"></i>Edit</a>
-                                  <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+                                  <?php if($story['status'] === 'DRAFT') : ?>
+                                    <a class="dropdown-item submit-btn" href="#" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-newspaper"></i>Submit</a>
+                                  <?php endif; ?>
+                                  <a class="dropdown-item" href="<?php echo BASE_URL.'story/edit/'.$story['sid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+                                  <a class="dropdown-item" href="#" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </td>

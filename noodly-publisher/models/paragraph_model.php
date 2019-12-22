@@ -5,7 +5,7 @@ class Paragraph_Model extends Core_Model{
   }
 
   function get_paragraphs($sid) {
-    $paragraphs = $this->get('*', array('sid' => $sid));
+    $paragraphs = $this->get('*', array('sid' => $sid), 0, 'pid', 'ASC');
     $result = array();
     foreach ($paragraphs as $paragraph) {
       $result[$paragraph['pid']] = $paragraph;

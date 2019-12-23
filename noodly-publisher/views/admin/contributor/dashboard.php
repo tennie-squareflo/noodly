@@ -162,8 +162,14 @@
 																		case 'DRAFT':
 																			echo '<span class="badge badge-warning">DRAFT</span>';
 																		break;
+																		case 'BLOCKED':
+																			echo '<span class="badge badge-error">BLOCKED</span>';
+																		break;
+																		case 'SUBMITTED':
+																			echo '<span class="badge badge-info">SUBMITTED</span>';
+																		break;
 																		case 'PUBLISHED':
-																			echo '<span class="badge badge-dark">PUBLISHED</span>';
+																			echo '<span class="badge badge-success">PUBLISHED</span>';
 																		break;
 																	}
 																?>

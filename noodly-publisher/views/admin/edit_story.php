@@ -176,10 +176,10 @@
 												<div class="col-12 k-section__content k-section__content--border">
 													<div class="form-group form-group-last">
 													<div class="slim"
-														data-service="<?php echo BASE_URL; ?>api/story_image_upload/cover_image"
+														data-service="<?php echo BASE_URL; ?>api/story_image_upload/content"
 														data-push="true"
 														data-did-throw-error="handleError">
-														<input type="file" name="cover_image" data-value='.'{"file": "'.$paragraph['content'].'"}'.'/>
+														<input type="file" name="content" data-value='.'{"file": "'.$paragraph['content'].'"}'.'/>
 														<img src="'.ASSETS_URL.'media/stories/'.$paragraph['content'].'" alt="">
 													</div>
 													</div>

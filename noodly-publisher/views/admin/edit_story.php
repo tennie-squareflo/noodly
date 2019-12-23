@@ -176,7 +176,7 @@
 												<div class="col-12 k-section__content k-section__content--border">
 													<div class="form-group form-group-last">
 													<div class="slim"
-														data-service="<?php echo BASE_URL; ?>api/story_image_upload/content"
+														data-service="'.BASE_URL.'api/story_image_upload/content"
 														data-push="true"
 														data-did-throw-error="handleError">
 														<input type="file" name="content" data-value='.'{"file": "'.$paragraph['content'].'"}'.'/>

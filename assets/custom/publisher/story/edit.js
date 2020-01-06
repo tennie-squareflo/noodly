@@ -238,7 +238,7 @@ $(function() {
     submitForm("draft");
   });
 
-  let getSlug = true;
+  let getSlug = $('.form-control[name=url]').val() === '';
   // get default slug
   $('.form-control[name=title]').change((e) => {
     if (getSlug === true) {

@@ -102,7 +102,7 @@
                                     <a class="dropdown-item submit-btn" href="#" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-newspaper"></i>Submit</a>
                                   <?php endif; ?>
                                   <a class="dropdown-item" href="<?php echo BASE_URL.'story/edit/'.$story['sid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
-                                  <a class="dropdown-item" href="#" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>
+                                  <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </td>

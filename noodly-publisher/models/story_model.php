@@ -33,6 +33,7 @@ class Story_Model extends Core_Model{
     }
     return $this->get($select, array(), $limit, 'sid');
   }
+  
   function slug_exists($slug) {
     return $this->count(array('url' => $slug)) > 0;
   }

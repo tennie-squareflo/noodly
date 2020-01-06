@@ -34,7 +34,7 @@ class Story_Controller extends Auth_Controller {
 
     $this->view_data['post'] = $this->story_model->get_one($id);
     $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($id);
-    $this->view_data['categories'] = $this->category_model->get_categories($this->pid);
+    $this->view_data['categories'] = $this->category_model->get_category_names($this->pid);
     $this->view_data['is_new'] = count($this->view_data['post']) === 0;
     
     $this->load_view('/admin/edit_story', $this->view_data);
@@ -213,7 +213,7 @@ class Story_Controller extends Auth_Controller {
           return;
         }
       break;
-      case 'delete';
+      case 'delete':
         $id = $post['id'];
         try {
           $this->story_model->delete($id);

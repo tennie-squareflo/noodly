@@ -228,10 +228,6 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function upload_image() {
-
-  }
-
   function preview($id) {
     $this->load_model('story');
     $this->load_model('paragraph');
@@ -246,5 +242,16 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
     
     $this->load_view('/common/preview_story', $this->view_data);
+  }
+
+  function get_slug() {
+    $title = $_POST['title'];
+    $slug = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower($title));
+    $this->load_model('story');
+    $this->load_helper('string_helper');
+    while ($this->story_model->slug_exists($slug)) {
+      $slug .= generate_random_string(1);
+    }
+    $this->response(array('slug' => $slug));
   }
 } 

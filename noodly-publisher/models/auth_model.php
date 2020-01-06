@@ -58,6 +58,6 @@ class Auth_Model extends Core_Model{
   }
 
   function is_profile_ready() {
-    return isset($_SESSION['user']) && intval($_SESSION['user']['user_status']) === 1;
+    return isset($_SESSION['user']) && isset($_SESSION['user']['user_status']) && intval($_SESSION['user']['user_status']) === 1;
   }
 }

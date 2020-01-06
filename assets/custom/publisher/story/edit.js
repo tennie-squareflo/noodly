@@ -237,6 +237,23 @@ $(function() {
   $(".draft-button").click(() => {
     submitForm("draft");
   });
+
+  let getSlug = true;
+  // get default slug
+  $('.form-control[name=title]').change((e) => {
+    if (getSlug === true) {
+      $.ajax({
+        url: `${BASE_URL}story/get_slug`,
+        method: "post",
+        dataType: "JSON",
+        data: { title: e.target.value },
+        success: function(res) {
+          $('.form-control[name=url]').val(res.slug);
+          getSlug = false;
+        }
+      });
+    }
+  });
 });
 
 const submitForm = type => {

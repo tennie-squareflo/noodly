@@ -57,7 +57,7 @@ class Section_Controller extends Auth_Controller {
           ), 500);
         }
         $this->response(array(
-          'message' => "A Story ".($post['id'] == '0' ? 'Created' : 'Updated')." Successfully!",
+          'message' => "A Section ".($post['id'] == '0' ? 'Created' : 'Updated')." Successfully!",
           'id' => $id
         ), 200);
       }
@@ -66,6 +66,9 @@ class Section_Controller extends Auth_Controller {
         $id = $post['id'];
         try {
           $this->category_model->delete($id);
+          $this->response(array(
+            'message' => "A Section Deleted Successfully!",
+          ), 200);
         } catch(Exception $e) {
           $this->response(array(
             'message' => $e->getMessage()

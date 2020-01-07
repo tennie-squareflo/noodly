@@ -16,9 +16,9 @@
   $message = str_replace('%publisher%', $publisher['name'], $message);
   $message = str_replace('%user%', $user['firstname'], $message);
   if (isset($role['role'])) {
-    $message = str_replace('%role%', get_user_types($role['role']), $message);
+    $message = str_replace('%user_type%', get_user_types($role['role']), $message);
   } else {
-    $message = str_replace('%role%', 'Super Admin', $message);
+    $message = str_replace('%user_type%', 'Super Admin', $message);
   }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -165,12 +165,6 @@
       display: none !important;
     }
 
-    @media screen and (min-width: 621px) {
-      .pc-email-container {
-        width: 620px !important;
-      }
-    }
-
     @media screen and (max-width:620px) {
       .pc-sm-p-34-30-55 {
         padding: 34px 30px 55px !important
@@ -205,7 +199,7 @@
   <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 </head>
 <body style="width: 100% !important; margin: 0; padding: 0; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #f4f4f4" class="">
-  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
+  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;"></span>
   <table class="pc-email-body" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed;">
     <tbody>
       <tr>
@@ -216,7 +210,7 @@
             </v:background>
             <![endif]-->
           <!--[if (gte mso 9)|(IE)]><table width="620" align="center" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td width="620" align="center" valign="top"><![endif]-->
-          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; max-width: 620px;">
+          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; ">
             <tbody>
               <tr>
                 <td align="left" valign="top" style="padding: 0 10px;">

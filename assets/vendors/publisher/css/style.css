@@ -475,8 +475,6 @@ header.mobile .header-wrapper .menu-function {
       .posts .post-title.small:hover {
         color: #f17070;
         text-decoration: none; }
-    .posts .post-title:hover {
-      text-decoration: underline; }
   .posts .upload-day, .posts .author-name {
     font-family: "Cerebri-regular";
     font-size: 14px;
@@ -1256,8 +1254,6 @@ footer.v2 {
       .posts .post-classic-tib .post-detail .post-title:hover, .posts .post-video-text-in_block .post-detail .post-title:hover {
         color: #fff;
         text-decoration: none; }
-      .posts .post-classic-tib .post-detail .post-title:hover, .posts .post-video-text-in_block .post-detail .post-title:hover {
-        text-decoration: underline; }
     .posts .post-classic-tib .post-detail .post-credit, .posts .post-video-text-in_block .post-detail .post-credit {
       margin-bottom: 0;
       overflow-x: unset; }

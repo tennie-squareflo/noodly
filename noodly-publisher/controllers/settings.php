@@ -1,31 +1,22 @@
 <?php
-require_once(ADMIN_PATH.'core/admin_controller.php');
+require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
-class Publishers_Controller extends Admin_Controller {
+class Settings_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
     $this->load_model('publisher');
   }
-  function index() {
-    $view_data['script_files'] = array('custom/admin/publisher-register/publisher.js');
-    $view_data['publishers'] = $this->publisher_model->get_publishers();
-    $this->load_view('publishers/publishers', $view_data);
-  }
 
-  function edit($id = 0) {
+  function index() {
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/admin/publisher-register/register.js');
-    $view_data['publisher_id'] = intval($id);
-    if ($id != 0) {
-      $view_data['publisher'] = $this->publisher_model->get_one(intval($id));
-    } else {
-      $view_data['publisher'] = array();
-    }
-    $this->load_view('publishers/edit_publisher', $view_data);
+    $view_data['script_files'] = array('custom/publisher/settings/settings.js');
+    $view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $view_data['publisher'] = $this->publisher_model->get_one(intval($view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings', $view_data);
   }
 
   function action($action) {
-    $id = intval($_POST['id']);
+    $id = $_SESSION['user']['pid'];
     
     $this->load_helper('validation');
     switch ($action) {
@@ -46,7 +37,7 @@ class Publishers_Controller extends Admin_Controller {
         );
         foreach($new_data as $key => $value) {
           if (empty($value) && $key !== 'address2') {
-            $this->response(array('code' => 2, 'message' => lcfirst($key).'is required.'), 400);
+            $this->response(array('code' => 2, 'message' => lcfirst($key).' is required.'), 400);
             return;
           }
         }
@@ -70,13 +61,6 @@ class Publishers_Controller extends Admin_Controller {
         }
         break; 
       }
-      case 'delete':
-        if ($this->publisher_model->delete($id))  {
-          $this->response(array('code' => 0, 'message' => 'Publisher deleted successfully!'));
-        } else {
-          $this->response(array('code' => 1, 'message' => 'Publisher deletion failed!'), 500);
-        }
-        break;
     }
   }
 

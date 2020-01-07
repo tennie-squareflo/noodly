@@ -10,7 +10,7 @@
       </li>
 
       <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Publishers</span></a>
+        <a class="k-menu__link" href="<?php echo BASE_URL; ?>publishers"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Publishers</span></a>
       </li>
 
       <li aria-haspopup="true" class="k-menu__item">

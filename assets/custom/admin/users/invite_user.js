@@ -148,8 +148,10 @@ $(function() {
     })
   );
 
+  $("#invite-form #publisher-row").css("display", "none");
+
   $('#invite-form select[name="role"]').change(e => {
-    if (e.target.value === "super_admin") {
+    if (e.target.value === "super_admin" || e.target.value === "") {
       $('#invite-form select[name="pid"]').val("");
       $('#invite-form select[name="pid"]').attr("disabled", true);
       $("#invite-form #publisher-row").css("display", "none");
@@ -158,7 +160,7 @@ $(function() {
       $("#invite-form #publisher-row").css("display", "flex");
     }
   });
-  if ($('#invite-form select[name="role"]').val() === "super_admin") {
+  if ($('#invite-form select[name="role"]').val() === "super_admin" || $('#invite-form select[name="role"]').val() === "") {
     $('#invite-form select[name="pid"]').val("");
     $('#invite-form select[name="pid"]').attr("disabled", true);
     $("#invite-form #publisher-row").css("display", "none");

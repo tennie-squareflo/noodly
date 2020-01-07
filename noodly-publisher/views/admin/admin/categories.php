@@ -35,6 +35,7 @@
 											<th>&nbsp</th>
 											<th>&nbsp</th>
 											<th>Views</th>
+											<th>&nbsp</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -55,11 +56,11 @@
 											<td>&nbsp;</td>
 											<td>&nbsp;</td>
 											<td><?php echo $category['visits']; ?></td>
-											<td>
+											<td class="text-right">
 												<div class="btn-group" role="group">
 													<button aria-expanded="false" aria-haspopup="true" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" id="btnGroupDrop1" type="button"><i class="fa fa-bars"></i> Actions</button>
 													<div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo BASE_URL.'section/edit/'.$category['cid'] ?>"><i class="fa fa-pencil"></i>Edit</a>
+                            <a class="dropdown-item" href="<?php echo BASE_URL.'section/edit/'.$category['cid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
                             <a class="dropdown-item delete-btn" data-id="<?php echo $category['cid'];?>"><i class="fa fa-trash"></i> Delete</a>
 													</div>
 												</div>

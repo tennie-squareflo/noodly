@@ -70,7 +70,7 @@
                                 <label class="form-check-label" for="defaultCheck1"></label>
                                 </div>
                         </td>
-                        <td><h5><a href="<?php echo BASE_URL.'story/preview/'.$story['sid'];?>"><?php echo $story['title'];?></a></h5></td>
+                        <td><h5><a href="<?php echo BASE_URL.'story/preview/'.$story['sid'];?>" target="_blank"><?php echo $story['title'];?></a></h5></td>
 
                         <td>
                           <strong><a href="#"><?php echo $story['username']; ?></a></strong>

@@ -83,7 +83,7 @@ $(function() {
     },
     submitHandler: function(form) {
       $.ajax({
-        url: BASE_URL + "publishers/action/edit",
+        url: BASE_URL + "settings/action/edit",
         data: $(form).serialize(),
         dataType: "json",
         method: "POST",
@@ -109,9 +109,6 @@ $(function() {
             };
 
             toastr.success(res.message);
-            setTimeout(() => {
-              location.href = BASE_URL + `publishers/edit/${res.id}`;
-            }, 3000);
           } else {
             toastr.options = {
               closeButton: false,

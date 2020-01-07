@@ -70,7 +70,7 @@
 														<label class="col-3 col-form-label">Logo</label>
 														<div class="col-9">
                               <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>publishers/logo_upload"
+                                data-service="<?php echo BASE_URL; ?>settings/logo_upload"
 																data-push="true"
                                 data-did-throw-error="handleError">
                                 <input type="file" name="logo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>'/>
@@ -88,7 +88,7 @@
 														<label class="col-3 col-form-label">Admin Logo</label>
 														<div class="col-9">
                               <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>publishers/admin_logo_upload"
+                                data-service="<?php echo BASE_URL; ?>settings/admin_logo_upload"
 																data-push="true"
                                 data-did-throw-error="handleError">
                                 <input type="file" name="adminlogo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['adminlogo'].'"}' : ''; ?>'/>

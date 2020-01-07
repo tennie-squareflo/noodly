@@ -11,7 +11,7 @@
         <a href="#"
           ><img
             alt="Logo"
-            src="<?php echo ASSETS_URL;?>/media/logos/logo-1.png"
+            src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['adminlogo'];?>"
             width="100px"
         /></a>
       </div>
@@ -50,7 +50,7 @@
               <a href="#"
                 ><img
                   alt="Logo"
-                  src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['logo'];?>"
+                  src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['adminlogo'];?>"
                   width="130px"
               /></a>
             </div>

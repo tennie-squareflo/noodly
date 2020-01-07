@@ -30,7 +30,7 @@
             
           <div class="dropdown dropdown-inline">
             
-          <a class="btn btn-primary"  data-toggle="modal" data-target="#inviteModal">
+          <a class="btn btn-primary text-light"  data-toggle="modal" data-target="#inviteModal">
               <i class="fa fa-paper-plane"></i> Invite A User
           </a>
           <a href="<?php echo BASE_URL;?>users/edit" class="btn btn-success">

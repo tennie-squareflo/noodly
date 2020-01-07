@@ -7,7 +7,7 @@
 							</div>
 							<div class="k-content__head-toolbar">
 								<div class="k-content__head-toolbar-wrapper">
-									<a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $is_new ? 'Add Section' : 'Edit A Section'; ?></a>
+									<a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $is_new ? 'Add Section' : 'Update'; ?></a>
 								</div>
 							</div>
 						</div><!-- end:: Content Head -->

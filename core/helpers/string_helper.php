@@ -9,14 +9,14 @@ function generate_random_string($length = 10, $charset = 'abcdefghijklmnopqrstuv
   return $randomString;
 }
 
-function get_user_types($role) {
+function get_user_types($role, $article = false) {
   switch ($role) {
     case 'super_admin':
-      return 'Super Admin';
+      return $article ? 'a Super Admin' : 'Super Admin';
     case 'admin':
-      return 'Publisher Admin';
+      return $article ? 'an Admin' : 'Admin';
     case 'contributor':
-      return 'Contributor';
+      return $article ? 'a Contributor' : 'Contributor';
   }
   return '';
 }
@@ -40,13 +40,13 @@ function time_diff_format($str_time) {
   $time = $now - strtotime($str_time);
 
   if ($time < 60) {
-    return $time." second(s) ago";
+    return $time." sec".($time === 1 ? "" : "(s)")." ago";
   } else if ($time < 60 * 60) {
-    return round($time / 60)." minute(s) ago";
+    return round($time / 60)." min".(round($time / 60) === 1 ? "" : "(s)")." ago";
   } else if ($time < 60 * 60 * 24) {
-    return round($time / 60 / 60)." hour(s) ago";
+    return round($time / 60 / 60)." hr".(round($time / 60 / 60) === 1 ? "" : "(s)")." ago";
   } else if ($time < 60 * 60 * 24 * 30) {
-    return round($time / 60 / 60 / 24)." day(s) ago";
+    return round($time / 60 / 60 / 24)." day".(round($time / 60 / 60 / 24) === 1 ? "" : "(s)")." ago";
   } else {
     return date('Y-m-d', strtotime($str_time));
   }

@@ -135,7 +135,7 @@ class Users_Controller extends Admin_Controller {
     $role = $this->user_model->get_role($id, $pid);
 
     if ($pid != 0) {
-      $subject = 'Invitation to join '.$publisher['name'].' as a '.get_user_types($role['role']);
+      $subject = 'Invitation to join '.$publisher['name'].' as '.get_user_types($role['role'], true);
     } else {
       $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
     }

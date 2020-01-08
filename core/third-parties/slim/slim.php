@@ -81,7 +81,7 @@ class Slim {
 
         if (isset($data->output)) {
 
-            $outputDate = null;
+            $outputData = null;
             if (isset($data->output->image)) {
                 $outputData = Slim::getBase64Data($data->output->image);
             }

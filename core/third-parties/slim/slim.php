@@ -48,7 +48,6 @@ class Slim {
 
         // The data is posted as a JSON String so to be used it needs to be deserialized first
         $data = json_decode($value);
-        var_dump($data);
 
         // shortcut
         $input = null;

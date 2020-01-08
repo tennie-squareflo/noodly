@@ -46,7 +46,7 @@ function time_diff_format($str_time) {
   } else if ($time < 60 * 60 * 24) {
     return round($time / 60 / 60)." hr".(round($time / 60 / 60) === 1 ? "" : "(s)")." ago";
   } else if ($time < 60 * 60 * 24 * 30) {
-    return round($time / 60 / 60 / 24)." day".(round($time / 60 / 60 / 24) === 1 ? "" : "(s)")." ago";
+    return round($time / 60 / 60 / 24)." day".(round($time / 60 / 60 / 24) === 1 ? "" : "s")." ago";
   } else {
     return date('Y-m-d', strtotime($str_time));
   }

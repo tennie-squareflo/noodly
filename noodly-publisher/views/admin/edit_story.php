@@ -179,7 +179,7 @@
 														data-service="'.BASE_URL.'api/story_image_upload/content"
 														data-push="true"
 														data-did-throw-error="handleError">
-														<input type="file" name="content" data-value='.'{"file": "'.$paragraph['content'].'"}'.'/>
+														<input type="file" name="content" data-value=\''.'{"file": "'.$paragraph['content'].'"}'.'\'/>
 														<img src="'.ASSETS_URL.'media/stories/'.$paragraph['content'].'" alt="">
 													</div>
 													</div>

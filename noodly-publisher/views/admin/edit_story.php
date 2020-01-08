@@ -74,12 +74,12 @@
 																		<div class="slim"
 																			data-service="<?php echo BASE_URL; ?>api/story_image_upload/thumb_image"
 																			data-push="true"
-																			data-did-throw-error="handleError">
+																			data-did-throw-error="handleError" style="width: 70%">
 																			<input type="file" name="thumb_image" data-value='<?php echo !$is_new ? '{"file": "'.$post['thumb_image'].'"}' : ''; ?>'/>
 																			<?php
 																				if (!$is_new && $post['thumb_image'] != '') {
 																			?>
-																			<img src="<?php echo ASSETS_URL.'media/stories/'.$post['thumb_image']; ?>" alt="">
+																			<img src="<?php echo ASSETS_URL.'media/stories/'.$post['thumb_image']; ?>" width="70%" alt="">
 																			<?php
 																				}?>
 																		</div>

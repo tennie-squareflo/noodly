@@ -10,6 +10,7 @@ class Section_Controller extends Auth_Controller {
     $this->load_model('publisher');
     $this->load_model('category');
     $this->load_model('user');
+    $this->view_data['style_files'] = array('custom/publisher/category/list.css');
     $this->view_data['script_files'] = array('custom/publisher/category/list.js');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
@@ -68,6 +69,21 @@ class Section_Controller extends Auth_Controller {
           $this->category_model->delete($id);
           $this->response(array(
             'message' => "A Section Deleted Successfully!",
+          ), 200);
+        } catch(Exception $e) {
+          $this->response(array(
+            'message' => $e->getMessage()
+          ), 500);
+          return;
+        }
+      break;
+      case 'delete_selected':
+        $ids = $post['selectedIds'];
+        // var_dump($id);exit;
+        try {
+          $this->category_model->deleteRows($ids);
+          $this->response(array(
+            'message' => "Sections Deleted Successfully!",
           ), 200);
         } catch(Exception $e) {
           $this->response(array(

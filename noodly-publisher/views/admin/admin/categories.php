@@ -8,11 +8,11 @@
 					<div class="k-content__body k-grid__item k-grid__item--fluid" id="k_content_body">
 						<div class="k-portlet k-portlet--mobile">
 							<div class="k-portlet__head">
-								<div class="k-portlet__head-label">
-									<h3 class="k-portlet__head-title"><br></h3>
-									<div class="form-group">
-										<h3 class="k-portlet__head-title"></h3>
-										
+								<div class="k-portlet__head-toolbar">
+									<div class="k-portlet__head-toolbar-wrapper">
+										<div class="dropdown dropdown-inline">
+											<a class="btn btn-warning btn-delete-selected"><i class="la la-trash"></i> Delete Selected</a>
+										</div>
 									</div>
 								</div>
 								<div class="k-portlet__head-toolbar">
@@ -45,7 +45,7 @@
 										<tr>
 											<td>
 												<div class="form-check">
-													<input class="form-check-input" id="defaultCheck1" type="checkbox" value=""> <label class="form-check-label" for="defaultCheck1"></label>
+													<input class="form-check-input" id="defaultCheck_<?php echo $category['cid']; ?>" data-id="<?php echo $category['cid']; ?>" name="defaultCheck[]" type="checkbox" value="<?php echo $category['cid'];?>"> <label class="form-check-label" for="defaultCheck1"></label>
 												</div>
 											</td>
 											<td>

@@ -24,7 +24,6 @@ class Auth_Controller extends Core_Controller {
     $this->load_model("publisher");
     $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
     $this->pid = $publisher['pid'];
-    $this->pid = $publisher['pid'];
     $this->view_data['publisher'] = $publisher;
   }
 

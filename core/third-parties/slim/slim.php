@@ -48,6 +48,7 @@ class Slim {
 
         // The data is posted as a JSON String so to be used it needs to be deserialized first
         $data = json_decode($value);
+        var_dump($data);
 
         // shortcut
         $input = null;
@@ -81,7 +82,7 @@ class Slim {
 
         if (isset($data->output)) {
 
-            $outputDate = null;
+            $outputData = null;
             if (isset($data->output->image)) {
                 $outputData = Slim::getBase64Data($data->output->image);
             }

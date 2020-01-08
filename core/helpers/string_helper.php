@@ -40,11 +40,11 @@ function time_diff_format($str_time) {
   $time = $now - strtotime($str_time);
 
   if ($time < 60) {
-    return $time." sec".($time === 1 ? "" : "(s)")." ago";
+    return $time." sec".($time === 1 ? "" : "s")." ago";
   } else if ($time < 60 * 60) {
-    return round($time / 60)." min".(round($time / 60) === 1 ? "" : "(s)")." ago";
+    return round($time / 60)." min".(round($time / 60) === 1 ? "" : "s")." ago";
   } else if ($time < 60 * 60 * 24) {
-    return round($time / 60 / 60)." hr".(round($time / 60 / 60) === 1 ? "" : "(s)")." ago";
+    return round($time / 60 / 60)." hr".(round($time / 60 / 60) === 1 ? "" : "s")." ago";
   } else if ($time < 60 * 60 * 24 * 30) {
     return round($time / 60 / 60 / 24)." day".(round($time / 60 / 60 / 24) === 1 ? "" : "s")." ago";
   } else {

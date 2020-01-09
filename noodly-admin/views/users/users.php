@@ -87,7 +87,7 @@
                                       : (intval($publisher['status']) > time() 
                                         ? 'Invited'
                                         : 'Invite Expired'));
-                          echo "<img class='logo-images type-$style'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['logo']."' title='".$publishers[$publisher['pid']]['name'].": $tooltip'/>";
+                          echo "<img class='logo-images type-$style'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['favicon']."' title='".$publishers[$publisher['pid']]['name'].": $tooltip'/>";
                         }
                         if ($user['publishers_count'] > 5) {
                           echo " +".(intval($user['publishers_count']) - 5);

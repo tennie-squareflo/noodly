@@ -101,6 +101,24 @@
                               </div>
 														</div>
 													</div>
+
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Favicon</label>
+														<div class="col-9">
+                              <div class="slim"
+                                data-service="<?php echo BASE_URL; ?>publishers/favicon_upload"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="favicon" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['favicon'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (count($publisher)) {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['favicon']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
 													
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Phone #</label>

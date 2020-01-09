@@ -18,11 +18,11 @@ class Publisher_Model extends Core_Model{
   }
 
   function get_list() {
-    $select = "publishers.pid, publishers.name, publishers.logo";
+    $select = "publishers.pid, publishers.name, publishers.logo, publishers.favicon";
     $list = $this->get($select);
     $result = array();
     foreach ($list as $publisher) {
-      $result[$publisher['pid']] = array('name' => $publisher['name'], 'logo' => $publisher['logo']);
+      $result[$publisher['pid']] = array('name' => $publisher['name'], 'logo' => $publisher['logo'], 'favicon' => $publisher['favicon']);
     }
     return $result;
   }

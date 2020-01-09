@@ -2,7 +2,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div class="post-classic-tib big-post" style="background-image: url('<?php echo ASSETS_URL.'media/stories/'.$post['cover_image'];?>')">
+    
+      <div class="post-classic-tib big-post" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<?php echo ASSETS_URL.'media/stories/'.$post['cover_image'];?>')">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-10 col-lg-12">
@@ -13,7 +14,7 @@
                 <h1 class="post-title title"><?php echo $post['title'];?></h1>
                 <div class="post-credit">
                   <div class="author">
-                    <h5 class="author-name"><?php echo $author['firstname'].' '.$author['lastname']; ?></h5>
+                    <h5 class="author-name"><?php echo 'By '.$author['firstname'].' '.$author['lastname']; ?></h5>
                   </div>
                 </div>
               </div>
@@ -30,9 +31,9 @@
 <div class="container">
 
 <div class="row justify-content-center">
-  <div class="col-8 col-lg-8">
+  <div class="col-10 col-lg-10">
     <div class="post-block">
-      <p class="blog-pragraph"> <?php echo $post['first_paragraph']; ?></p>
+      <p class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></p>
 
       <?php
         $next_id = $post['first_pid'];

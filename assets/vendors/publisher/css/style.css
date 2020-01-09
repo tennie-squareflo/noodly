@@ -2663,7 +2663,8 @@ footer.v2 {
       line-height: 30px;
       display: block;
       margin-bottom: 20px; }
-      .blog-detail .post-block .blog-pragraph span, .blog-detail .post-block .blog-pragraph::first-letter {
+       
+      .first-paragraph::first-letter {
         font-size: 60px;
         float: left;
         font-family: "Cerebri-bold";

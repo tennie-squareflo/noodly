@@ -27,15 +27,17 @@
         </div>
         <div class="k-portlet__head-toolbar">
           <div class="k-portlet__head-toolbar-wrapper">
-              
+          <div class="dropdown dropdown-inline">
+            
+            <a class="btn btn-warning btn-delete-selected">
+              <i class="la la-trash"></i> Delete Selected
+            </a>
+          </div>
             <div class="dropdown dropdown-inline">
-              
-              
-              
-
+            
               <a href="<?php echo BASE_URL;?>story/edit" class="btn btn-success">
                 <i class="la la-pencil"></i> Add A Story
-            </a>
+              </a>
             </div>
           </div>
         </div>
@@ -66,7 +68,7 @@
                         
                         <td>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                              <input class="form-check-input" id="defaultCheck_<?php echo $story['sid']; ?>" data-id="<?php echo $story['sid']; ?>" name="defaultCheck[]" type="checkbox" value="<?php echo $story['sid'];?>"> <label class="form-check-label" for="defaultCheck1"></label>
                                 <label class="form-check-label" for="defaultCheck1"></label>
                                 </div>
                         </td>

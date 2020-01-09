@@ -5,7 +5,7 @@
           <div class="container">
             <div class="header-menu">
               <div class="row no-gutters align-items-center justify-content-center">
-                <div class="col-4 col-md-2"><a class="logo" href="index.html"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="150px"></a></div>
+                <div class="col-4 col-md-2"><a class="logo" href="index.html"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
                 <div class="col-8 col-md-8">
                   <div class="mobile-menu"><a href="#" id="showMenu"><i class="fas fa-bars"></i></a></div>
                   <nav class="navigation">

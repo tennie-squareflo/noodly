@@ -13,7 +13,7 @@
                 <h1 class="post-title title"><?php echo $post['title'];?></h1>
                 <div class="post-credit">
                   <div class="author">
-                    <h5 class="author-name"><?php echo $author['firstname'].' '.$author['lastname']; ?></h5>
+                    <h5 class="author-name"><?php echo 'By '.$author['firstname'].' '.$author['lastname']; ?></h5>
                   </div>
                 </div>
               </div>

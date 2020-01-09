@@ -2,7 +2,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div class="post-classic-tib big-post" style="background-image: url('<?php echo ASSETS_URL.'media/stories/'.$post['cover_image'];?>')">
+    
+      <div class="post-classic-tib big-post" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<?php echo ASSETS_URL.'media/stories/'.$post['cover_image'];?>')">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-10 col-lg-12">

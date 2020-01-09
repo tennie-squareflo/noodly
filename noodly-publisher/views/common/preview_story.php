@@ -32,7 +32,7 @@
 <div class="row justify-content-center">
   <div class="col-10 col-lg-10">
     <div class="post-block">
-      <p class="blog-pragraph"> <?php echo $post['first_paragraph']; ?></p>
+      <p class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></p>
 
       <?php
         $next_id = $post['first_pid'];

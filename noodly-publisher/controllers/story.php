@@ -11,6 +11,7 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('story');
     $this->load_model('user');
     $this->view_data['script_files'] = array('custom/publisher/story/list.js');
+    $this->view_data['style_files'] = array('custom/publisher/story/list.css');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
       $uuid = $_SESSION['user']['uuid'];
@@ -218,6 +219,20 @@ class Story_Controller extends Auth_Controller {
         try {
           $this->story_model->delete($id);
           $this->paragraph_model->delete(array('sid' => $id));
+        } catch(Exception $e) {
+          $this->response(array(
+            'message' => $e->getMessage()
+          ), 500);
+          return;
+        }
+      break;
+      case 'delete_selected':
+        $ids = $post['selectedIds'];
+        try {
+          $this->story_model->deleteRows($ids);
+          $this->response(array(
+            'message' => "Sections Deleted Successfully!",
+          ), 200);
         } catch(Exception $e) {
           $this->response(array(
             'message' => $e->getMessage()

@@ -105,10 +105,8 @@
 																	</div>
 																	<div class="form-group">
 																		<label class="form-label" for="exampleTextarea">First Paragraph</label> 
-																		<!-- <textarea class="form-control" id="exampleTextarea" rows="10" name='first_paragraph'><?php echo $is_new ? '' : $post['first_paragraph']; ?></textarea> -->
-																		<div class="form-control" id="exampleTextarea" name='first_paragraph'>
-																			<!-- <?php echo $is_new ? '' : $post['first_paragraph']; ?> -->
-																			<p>asdfasfef</p>
+																		<div class="quilltext form-control" id="exampleTextarea" name='first_paragraph' data-block-id="0">
+																			<?php echo $is_new ? '' : $post['first_paragraph']; ?> 
 																		</div>
 																	</div>
 																</div>
@@ -132,7 +130,7 @@
 									$paragraph = $paragraphs[$next_id];
 									$next_id = $paragraph['next_pid'];
 									echo '
-									<div class="row new-form-row">
+									<div class="row new-form-row" data-type="'.$paragraph['type'].'">
 										<div class="col-lg-12">
 											<!--begin::Portlet-->
 											<div class="k-portlet" id="k_page_portlet">
@@ -148,7 +146,7 @@
 											echo '
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
-														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content" value="'.$paragraph['content'].'">
+														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content" value="'.$paragraph['content'].'">
 													</div>
 												</div>
 											';
@@ -157,7 +155,7 @@
 											echo '
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
-														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content" value="'.$paragraph['content'].'">
+														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content" value="'.$paragraph['content'].'">
 													</div>
 												</div>
 											';
@@ -167,8 +165,8 @@
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
 														<div class="form-group form-group-last">
-															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Text</label> 
-															<textarea class="form-control" id="exampleTextarea" rows="10" name="content">'.$paragraph['content'].'</textarea>
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Text</label> 
+															<div class="form-control quilltext" data-block-id="'.$paragraph['pid'].'" name="content">'.$paragraph['content'].'</div>
 														</div>
 													</div>
 												</div>
@@ -179,6 +177,7 @@
 											<div class="form-group form-group-last">
 												<div class="col-12 k-section__content k-section__content--border">
 													<div class="form-group form-group-last">
+													<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Image</label> 
 													<div class="slim"
 														data-service="'.BASE_URL.'api/story_image_upload/content"
 														data-push="true"

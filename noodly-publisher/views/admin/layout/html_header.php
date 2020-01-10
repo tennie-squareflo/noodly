@@ -22,7 +22,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 	<!-- Main Quill library -->
 
 	<!-- Theme included stylesheets -->
-	<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	<!-- Core build with no theme, formatting, non-essential modules -->
 	<script>
 	           WebFont.load({

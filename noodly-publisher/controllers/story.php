@@ -26,8 +26,8 @@ class Story_Controller extends Auth_Controller {
   }
 
   function edit($id = 0) {
-    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/edit.js');
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css', 'custom/publisher/story/edit.css');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/quill/quill.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/edit.js');
 
     $this->load_model('story');
     $this->load_model('paragraph');

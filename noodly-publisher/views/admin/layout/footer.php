@@ -23,7 +23,7 @@
 		const BASE_URL = "<?php echo BASE_URL; ?>";
 	</script> <!-- end::Global Config -->
 	 <!--begin::Global Theme Bundle -->
-	 
+
 	<script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
 	</script> 
 	<script src="<?php echo ASSETS_URL; ?>vendors/base/scripts.bundle.js" type="text/javascript">
@@ -46,11 +46,13 @@
 	<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
 	</script> <!--end::Debounce Plugin -->
 
-<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-ui/jquery-ui.bundle.js" type="text/javascript">
+	<script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-ui/jquery-ui.bundle.js" type="text/javascript">
 	</script> <!--end::jQuery UI Plugin -->
 
 	<script src="<?php echo ASSETS_URL; ?>custom/admin/common.js" type="text/javascript">
 	</script> <!--end::Common Plugin -->
+
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <?php
 	if (isset($script_files) && is_array($script_files)) {

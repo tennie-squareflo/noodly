@@ -33,14 +33,14 @@
 <div class="row justify-content-center">
   <div class="col-10 col-lg-10">
     <div class="post-block">
-      <p class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></p>
+      <div class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></div>
 
       <?php
         $next_id = $post['first_pid'];
         while ($next_id) {
           switch ($paragraphs[$next_id]['type']) {
             case 'text':
-              echo "<p class='blog-pragraph'>".$paragraphs[$next_id]['content']."</p>";
+              echo "<div class='blog-pragraph'>".$paragraphs[$next_id]['content']."</div>";
             break;
             case 'image':
               echo '<div class="row">

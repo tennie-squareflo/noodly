@@ -26,13 +26,8 @@
         </h3>
       </div>
       <div class="k-portlet__head-toolbar">
-        <div class="k-portlet__head-toolbar-wrapper">
-            
+        <div class="k-portlet__head-toolbar-wrapper">            
           <div class="dropdown dropdown-inline">
-            
-            
-            
-
             <a href="<?php echo BASE_URL;?>publishers/edit" class="btn btn-success">
               <i class="la la-pencil"></i> Add A Publisher
           </a>
@@ -42,52 +37,48 @@
     </div>
     <div class="k-portlet__body">
 
-        <!--begin::Portlet-->
-    
-          
-            
-              <table class="table table-head-noborder table-striped">
-                <thead>
-                  <tr>
-                    
-                      <th>Name</th>
-                      <th>Contributors</th>
-                      <th>Stories</th>
-                      <th>Visits</th>
-                      <th>Subscribers</th>
-                      <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    foreach ($publishers as $publisher) {
-                      # code...
-                    ?>
-                    <tr>
-                      <td><h5><a href="http://<?php echo $publisher['domain'];?>.noodly.io/" target="_blank"><?php echo $publisher['name'];?></a></h5></td>
-                      <td><?php echo $publisher['contributors'];?></td>
-                      <td><?php echo $publisher['stories'];?></td>
-                      <td><?php echo $publisher['visits'];?></td>
-                      <td><span class="badge badge-warning"><?php echo $publisher['subscribers'];?></span></td>
-                      <td>
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bars"></i> Actions
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                  <a class="dropdown-item" href="<?php echo BASE_URL.'publishers/edit/'.$publisher['pid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
-                                  <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $publisher['pid'];?>"><i class="fa fa-trash"></i> Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                  <?php
-                  }
-                  ?>
-                </tbody>
-              </table>
+      <!--begin::Portlet-->        
+      <table class="table table-head-noborder table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contributors</th>
+            <th>Stories</th>
+            <th>Visits</th>
+            <th>Subscribers</th>
+            <th width=15%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            foreach ($publishers as $publisher) {
+              # code...
+            ?>
+            <tr>
+              <td><h5><a href="http://<?php echo $publisher['domain'];?>.noodly.io/" target="_blank"><?php echo $publisher['name'];?></a></h5></td>
+              <td><?php echo $publisher['contributors'];?></td>
+              <td><?php echo $publisher['stories'];?></td>
+              <td><?php echo $publisher['visits'];?></td>
+              <td><span class="badge badge-warning"><?php echo $publisher['subscribers'];?></span></td>
+              <td>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars"></i> Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <a class="dropdown-item" href="<?php echo BASE_URL.'publishers/edit/'.$publisher['pid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+                          <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $publisher['pid'];?>"><i class="fa fa-trash"></i> Delete</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+          <?php
+          }
+          ?>
+        </tbody>
+      </table>
         
-        <!--end::Form-->
+      <!--end::Form-->
     </div>
   </div>
 </div>

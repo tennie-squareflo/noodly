@@ -27,14 +27,15 @@
         </div>
         <div class="k-portlet__head-toolbar">
           <div class="k-portlet__head-toolbar-wrapper">
-              
             <div class="dropdown dropdown-inline">
-              
-              
-              
+              <a class="btn btn-warning btn-delete-selected">
+                <i class="la la-trash"></i> Block Selected
+              </a>
+            </div>
+            <div class="dropdown dropdown-inline">
               <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
                 <i class="la la-pencil"></i> Invite A Contributor
-            </a>
+              </a>
             </div>
           </div>
         </div>
@@ -62,12 +63,11 @@
                       foreach ($contributors as $key => $contributor) {
                     ?>
                       <tr>
-                        
                         <td>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1"></label>
-                                </div>
+                          <div class="form-check">
+                            <input class="form-check-input" id="defaultCheck_<?php echo $contributor['uuid']; ?>" data-id="<?php echo $contributor['uuid']; ?>" name="defaultCheck[]" type="checkbox" value="<?php echo $contributor['uuid'];?>"> <label class="form-check-label" for="defaultCheck1"></label>
+                            <label class="form-check-label" for="defaultCheck1"></label>
+                          </div>
                         </td>
                         <td><h5><a href="#"><?php echo $contributor['username'];?></a></h5></td>
                         <td><?php echo number_k($contributor['stories']); ?></td>

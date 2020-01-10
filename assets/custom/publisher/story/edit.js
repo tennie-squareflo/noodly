@@ -1,7 +1,7 @@
 "use strict";
 
 const newBlock = {
-  video: `<div class="row new-form-row">
+  video: `<div class="row new-form-row" data-type="video">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -24,7 +24,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  heading: `<div class="row new-form-row">
+  heading: `<div class="row new-form-row" data-type="heading">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -47,7 +47,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  image: `<div class="row new-form-row">
+  image: `<div class="row new-form-row" data-type="image">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -71,7 +71,7 @@ const newBlock = {
 								</div>
 							</div>
             </div><!--end::Portlet-->`,
-  text: `<div class="row new-form-row">
+  text: `<div class="row new-form-row" data-type="text">
 							<div class="col-lg-12">
 								<!--begin::Portlet-->
 								<div class="k-portlet" id="k_page_portlet">
@@ -85,7 +85,7 @@ const newBlock = {
 														<div class="col-12 k-section__content k-section__content--border">
 															<div class="form-group form-group-last">
 																<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Text</label> 
-																<textarea class="form-control" id="exampleTextarea" rows="10" name="content"></textarea>
+																<div class="quilltext form-control" name="content"></div>
 															</div>
 														</div>
 													</div>
@@ -98,6 +98,55 @@ const newBlock = {
 							</div>
             </div><!--end::Portlet--></div>`
 };
+
+const quillSettings = {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'color', 'font', 'code', 'italic', 'link', 'size', 'strike', 'script', 'underline'],
+      ["image", "code-block"]
+    ]
+  },
+  placeholder: "Compose an epic...",
+  theme: "snow" // or 'bubble'
+};
+
+const setValidation = (element, isValid) => {
+  if (isValid) {
+    const error = $('<span id="summary-error">This field is required.</span>');
+    error.addClass("invalid-feedback");
+    error.addClass("text-right");
+    error.addClass("px-3");
+    $(element)
+      .closest(".form-group")
+      .append(error);
+    $(element).addClass("is-invalid");
+  } else {
+    $(element).removeClass("is-invalid");
+    $(element)
+      .closest(".form-group")
+      .remove(".invalid-feedback");
+  }
+};
+
+function Generator() {};
+Generator.prototype.rand = Math.floor(Math.random() * 26) + Date.now();
+Generator.prototype.getId = function() {
+  return this.rand++;
+};
+const idGen = new Generator();
+
+const quills = [];
+
+function deleteForm(){
+  const parent = $(this).parents(".new-form-row");
+  console.log('----- deleteForm ------ ', $(this));
+  if (parent.data('type') === 'text') {
+    const id = parent.find(".form-control[name='content']").data('block-id');
+    delete(quills[`content${id}`]);
+  }
+  parent.remove();
+}
 
 $(function() {
   // intialize images
@@ -118,15 +167,15 @@ $(function() {
           .siblings('input[type="file"]')
           .attr("data-value")
       );
-      $(".sortable .k-form").each(function() {
-        $(this)
-          .find(".slim input[name=content]")
-          .val(
-            $(this)
-              .find('input[type="file"]')
-              .attr("data-value")
-          );
-      });
+    $(".sortable .k-form").each(function() {
+      $(this)
+        .find(".slim input[name=content]")
+        .val(
+          $(this)
+            .find('input[type="file"]')
+            .attr("data-value")
+        );
+    });
   }, 500);
 
   jQuery.validator.setDefaults({
@@ -170,28 +219,42 @@ $(function() {
     "URL must be valid and unique"
   );
 
-  $(".sortable").sortable({
-    revert: true
+  $(".quilltext").each(function() {
+    const name = $(this).attr("name");
+    const id = $(this).data("block-id");
+    quills[`${name}${id}`] = new Quill(
+      `.form-control[name="${name}"][data-block-id="${id}"]`,
+      quillSettings
+    );
   });
 
-  $('.btn-block-delete').click(function() {
-    $(this).parents('.new-form-row').remove();
-  });
+  // $(".sortable").sortable({
+  //   revert: true
+  // });
+
+  $(".btn-block-delete").click(deleteForm);
 
   $(".btn-add-block").click(function() {
     const type = $(this).data("block-type");
     const block = $(newBlock[type]);
     //block.insertBefore("#k_content_body #insert_block");
     $(".sortable").append(block);
-    block.find('.btn-block-delete').click(function() {
-      $(this).parents('.new-form-row').remove();
-    });
+    block.find(".btn-block-delete").click(deleteForm);
     if (type === "image") {
       block.find('input[type="file"]').slim({
         service: `${BASE_URL}api/story_image_upload/content`,
         push: true,
         didReceiveServerError: "handleError"
       });
+    }
+    if (type === "text") {
+      const quillText = block.find(".form-control[name='content']");
+      const id = idGen.getId();
+      quillText.attr('data-block-id', id);
+      quills[`content${id}`] = new Quill(
+        `.form-control[name="content"][data-block-id="${id}"]`,
+        quillSettings
+      );
     }
     block.find("form").validate({
       rules: {
@@ -238,9 +301,9 @@ $(function() {
     submitForm("draft");
   });
 
-  let getSlug = $('.form-control[name=url]').val() === '';
+  let getSlug = $(".form-control[name=url]").val() === "";
   // get default slug
-  $('.form-control[name=title]').change((e) => {
+  $(".form-control[name=title]").change(e => {
     if (getSlug === true) {
       $.ajax({
         url: `${BASE_URL}story/get_slug`,
@@ -248,7 +311,7 @@ $(function() {
         dataType: "JSON",
         data: { title: e.target.value },
         success: function(res) {
-          $('.form-control[name=url]').val(res.slug);
+          $(".form-control[name=url]").val(res.slug);
           getSlug = false;
         }
       });
@@ -257,18 +320,30 @@ $(function() {
 });
 
 const submitForm = type => {
-  let valid = false;
+  let invalid = false;
 
   if (!$(".main-form").valid()) {
-    valid = true;
+    invalid = true;
   }
   $(".new-form").each(function() {
     if (!$(this).valid()) {
-      valid = true;
+      invalid = true;
     }
   });
 
-  if (valid) {
+  // quilltext validation
+  console.log("quills", quills);
+  Object.keys(quills).forEach(key => {
+    const quill = quills[key];
+    if (quill.root.innerHTML === "<p><br></p>") {
+      setValidation(quill.container, true);
+      invalid = true;
+    } else {
+      setValidation(quill.container, false);
+    }
+  });
+
+  if (invalid) {
     return;
   }
 
@@ -278,6 +353,7 @@ const submitForm = type => {
     .forEach(item => {
       mainData[item.name] = item.value;
     });
+  mainData["first_paragraph"] = quills["first_paragraph0"].root.innerHTML;
 
   var data = {
     mainForm: mainData,
@@ -285,11 +361,20 @@ const submitForm = type => {
   };
   $(".new-form").each(function() {
     const otherData = {};
-    $(this)
-      .serializeArray()
-      .forEach(item => {
+    const fields = $(this).serializeArray();
+    let isText = false;
+    fields.forEach(item => {
+      {
         otherData[item.name] = item.value;
-      });
+        if (item.name === "type" && item.value === "text") {
+          isText = true;
+        }
+      }
+    });
+    if (isText) {
+      const id = $(this).find('.form-control.quilltext[name="content"]').data('block-id');
+      otherData['content'] = quills[`content${id}`].root.innerHTML;
+    }
     data.otherForms.push(otherData);
   });
 
@@ -320,7 +405,7 @@ const submitForm = type => {
       toastr.success(res.message);
 
       setTimeout(() => {
-        location.href= BASE_URL + 'story/edit/' + res.id;
+        location.href = BASE_URL + "story/edit/" + res.id;
       }, 3000);
     },
     error: function(res) {

@@ -18,8 +18,12 @@ License: You must have a valid license purchased only from https://themes.getboo
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible"><!--begin::Web font -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js">
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+	<!-- Main Quill library -->
+
+	<!-- Theme included stylesheets -->
+	<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+	<!-- Core build with no theme, formatting, non-essential modules -->
 	<script>
 	           WebFont.load({
 	               google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},

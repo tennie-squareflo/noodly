@@ -23,7 +23,20 @@
 		const BASE_URL = "<?php echo BASE_URL; ?>";
 	</script> <!-- end::Global Config -->
 	 <!--begin::Global Theme Bundle -->
-	 
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	<script>
+		var quill = new Quill('#exampleTextarea', {
+		  modules: {
+				toolbar: [
+					[{ header: [1, 2, false] }],
+					['bold', 'italic', 'underline'],
+				]
+			},
+			placeholder: 'Compose a paragraph...',
+			theme: 'snow'  // or 'bubble'
+			
+		});
+	</script>
 	<script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
 	</script> 
 	<script src="<?php echo ASSETS_URL; ?>vendors/base/scripts.bundle.js" type="text/javascript">

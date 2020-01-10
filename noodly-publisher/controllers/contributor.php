@@ -9,7 +9,7 @@ class Contributor_Controller extends Auth_Controller {
   function index() {
     $this->load_model('publisher');
     $this->view_data['script_files'] = array('custom/publisher/contributors/invite_contributor.js', 'custom/publisher/contributors/list.js');
-
+    $this->view_data['style_files'] = array('custom/publisher/contributors/list.css');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
       $uuid = $_SESSION['user']['uuid'];
@@ -149,6 +149,17 @@ class Contributor_Controller extends Auth_Controller {
           $view_data['text'] = $text;
           $this->send_email($id, $pid, 'Your '.$publisher['name'].' Account Activated', '', 'user_state_change', $view_data);
           $this->response(array('code' => 0, 'message' => 'The role is activated successfully.'));
+        } else {
+          $this->response(array('code' => 2, 'message' => 'Something went wrong. Please try again.'), 400);
+        }
+      break;
+      case 'block_selected':
+        if ($this->user_model->delete_user_role($id, $pid)) {
+          $text['title'] = 'Your '.$publisher['name'].' Account has been removed';
+          $text['message'] = 'We are sorry to inform you that your '.$publisher['name'].' account has been removed. Please contact the administrator.';
+          $view_data['text'] = $text;
+          $this->send_email($id, $pid, 'Your '.$publisher['name'].' Account Removed', '', 'user_state_change', $view_data);
+          $this->response(array('code' => 0, 'message' => 'The role is removed successfully.'));
         } else {
           $this->response(array('code' => 2, 'message' => 'Something went wrong. Please try again.'), 400);
         }

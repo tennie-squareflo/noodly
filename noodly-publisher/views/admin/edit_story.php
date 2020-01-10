@@ -37,7 +37,7 @@
 															<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 															<div class="form-group">
 																<label class="col-form-label">Story Title</label>
-																<input class="form-control" type="text" placeholder="Story Tite Goes Here" name="title" value="<?php echo $is_new ? '' : $post['title'];?>">
+																<input class="form-control" type="text" placeholder="Story Title Goes Here" name="title" value="<?php echo $is_new ? '' : $post['title'];?>">
 															</div>
 															<div class="form-group form-group">
 																<label class="col-form-label">URL</label>
@@ -105,7 +105,11 @@
 																	</div>
 																	<div class="form-group">
 																		<label class="form-label" for="exampleTextarea">First Paragraph</label> 
-																		<textarea class="form-control" id="exampleTextarea" rows="10" name='first_paragraph'><?php echo $is_new ? '' : $post['first_paragraph']; ?></textarea>
+																		<!-- <textarea class="form-control" id="exampleTextarea" rows="10" name='first_paragraph'><?php echo $is_new ? '' : $post['first_paragraph']; ?></textarea> -->
+																		<div class="form-control" id="exampleTextarea" name='first_paragraph'>
+																			<!-- <?php echo $is_new ? '' : $post['first_paragraph']; ?> -->
+																			<p>asdfasfef</p>
+																		</div>
 																	</div>
 																</div>
 															</div>

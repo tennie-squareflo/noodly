@@ -27,7 +27,7 @@
                         </ul>
                       </li>
                       <li class="nav-item"><a class="pisen-nav-link" href="contributors.html">Contributors</a></li>
-                        
+                      <li class="nav-item"><a class="pisen-nav-link" href="contact-us.html">Contact Us</a><i class="submenu-opener fas fa-plus"></i>
                     </ul>
                   </nav>
                 </div>

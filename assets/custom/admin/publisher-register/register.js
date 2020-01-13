@@ -176,5 +176,12 @@ $(function() {
           .find('input[type="file"]')
           .attr("data-value")
       );
+      $("#register-form")
+      .find('input[name="favicon"]')
+      .val(
+        $("#register-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
   }, 500);
 });

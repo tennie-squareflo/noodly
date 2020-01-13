@@ -71,6 +71,7 @@ class Accept_Controller extends Auth_Controller {
     $new_data = array(
       'firstname' => test_input($_POST['firstname']),
       'lastname' => test_input($_POST['lastname']),
+      'shortbio' => test_input($_POST['shortbio']),
       'phonenumber' => test_input($_POST['phonenumber']),
       'country' => test_input($_POST['country']),
       'state' => test_input($_POST['state']),
@@ -79,7 +80,15 @@ class Accept_Controller extends Auth_Controller {
       'city' => test_input($_POST['city']),
       'zipcode' => test_input($_POST['zipcode']),
       'avatar' => !empty($_POST['avatar']) ? json_decode($_POST['avatar'])->file : '',
-      'status' => 1
+      'status' => 1,
+      'facebookurl' => test_input($_POST['facebookurl']),
+      'twitterurl' => test_input($_POST['twitterurl']),
+      'instagramurl' => test_input($_POST['instagramurl']),
+      'youtubeurl' => test_input($_POST['youtubeurl']),
+      'vimeourl' => test_input($_POST['vimeourl']),
+      'soundcloudurl' => test_input($_POST['soundcloudurl']),
+      'websiteurl' => test_input($_POST['websiteurl']),
+      'otherurl' => test_input($_POST['otherurl']),
     );
     $id = $_SESSION['user']['uuid'];
     $pid = $_SESSION['user']['pid'];
@@ -134,6 +143,6 @@ class Accept_Controller extends Auth_Controller {
   }
 
   function success() {
-    echo 'success page';
+    $this->single_load('success.php', $this->view_data);
   }
 }

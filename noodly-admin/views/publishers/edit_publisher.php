@@ -186,7 +186,54 @@
 															<input class="form-control" placeholder="ZipCode" name="zipcode" type="text" value="<?php echo count($publisher) ? $publisher['zipcode'] : ''; ?>">
 														</div>
 													</div>
-													
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Facebook URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Facebook URL" name="facebookurl" type="text" value="<?php echo count($publisher) ? $publisher['facebookurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Twitter URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Twitter URL" name="twitterurl" type="text" value="<?php echo count($publisher) ? $publisher['twitterurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Instagram URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Instagram URL" name="instagramurl" type="text" value="<?php echo count($publisher) ? $publisher['instagramurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Youtube URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Youtube URL" name="youtubeurl" type="text" value="<?php echo count($publisher) ? $publisher['youtubeurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Vimeo URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Vimeo URL" name="vimeourl" type="text" value="<?php echo count($publisher) ? $publisher['vimeourl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Sound Cloud URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Sound Cloud URL" name="soundcloudurl" type="text" value="<?php echo count($publisher) ? $publisher['soundcloudurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Website URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Website URL" name="websiteurl" type="text" value="<?php echo count($publisher) ? $publisher['websiteurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Other URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Other URL" name="otherurl" type="text" value="<?php echo count($publisher) ? $publisher['otherurl'] : ''; ?>">
+														</div>
+													</div>
 												</div>
 											</div>
 											

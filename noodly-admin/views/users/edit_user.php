@@ -108,42 +108,6 @@
 														</div>
                           </div>
                           
-													<?php 
-													if (isset($edit_user) && $edit_user == true) { ?>
-                          <div class="form-group row">
-														<label class="col-3 col-form-label">Role</label>
-														<div class="col-9">
-															<select class="form-control" placeholder="Role" name="role">
-                                <?php
-                                  $options = array(
-                                    '' => 'Select Role', 
-                                    'super_admin' => 'Super Admin',
-                                    'admin' => 'Publisher Admin',
-                                    'contributor' => 'Contributor');
-                                  foreach ($options as $key => $option) {
-                                    echo "<option value='$key' ".($key === (count($user) ? $user['role'] : '') ? 'selected' : '').">$option</option>";
-                                  }
-                                ?>
-                              </select>
-														</div>
-                          </div>
-                          
-                          <div class="form-group row" id="publisher-row">
-														<label class="col-3 col-form-label">Publisher</label>
-														<div class="col-9">
-															<select class="form-control" placeholder="Role" name="pid">
-                                <?php
-																	unset($publishers[0]);
-																	$publishers = array('' => 'Select Publisher') + $publishers;
-                                  foreach ($publishers as $key => $publisher) {
-                                    echo "<option value='$key' ".($key == (count($user) && $user['pid'] != '0' ? $user['pid'] : '') ? 'selected' : '').">$publisher</option>";
-                                  }
-                                ?>
-                              </select>
-														</div>
-                          </div>
-                          <?php
-													} ?>
 												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>

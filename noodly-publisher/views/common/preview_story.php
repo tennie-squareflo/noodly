@@ -69,7 +69,7 @@
           <div class="author-avatar">
           <?php
             if (empty($author['avatar'])
-              || !file_exists(ASSETS_URL."media/avatars/".$_SESSION['user']['avatar'])) {
+              || !file_exists($_SERVER['DOCUMENT_ROOT']."/assets/media/avatars/".$_SESSION['user']['avatar'])) {
           ?>
               <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000" class="rounded-circle"
             />
@@ -86,8 +86,49 @@
         <div class="col-sm-7 col-md-9">
           <div class="author-info">
             <h5><?php echo $author['firstname'].' '.$author['lastname']; ?></h5>
-            <p>Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum bore et dolore magna aliqua. </p>
-            <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
+            <p><?php echo $author['shortbio']; ?></p>
+            <div class="author-social">
+              <?php if(!empty($author['facebookurl'])) { ?>
+              <a href="<?php echo $author['facebookurl']; ?>">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['twitterurl'])) { ?>
+              <a href="<?php echo $author['twitterurl']; ?>">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['instagramurl'])) { ?>
+              <a href="<?php echo $author['instagramurl']; ?>">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['youtubeurl'])) { ?>
+              <a href="<?php echo $author['youtubeurl']; ?>">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['vimeourl'])) { ?>
+              <a href="<?php echo $author['vimeourl']; ?>">
+                <i class="fab fa-vimeo"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['soundcloudurl'])) { ?>
+              <a href="<?php echo $author['soundcloudurl']; ?>">
+                <i class="fab fa-soundcloud"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['websiteurl'])) { ?>
+              <a href="<?php echo $author['websiteurl']; ?>">
+                <i class="fa fa-globe"></i>
+              </a>
+              <?php } ?>
+              <?php if(!empty($author['otherurl'])) { ?>
+              <a href="<?php echo $author['otherurl']; ?>">
+                <i class="fa fa-globe"></i>
+              </a>
+              <?php } ?>
+            </div>
           </div>
         </div>
       </div>

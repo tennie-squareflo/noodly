@@ -25,15 +25,28 @@
                     </ul>
                   </div>
                 </div>
+                <?php
+                  
+                ?>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                   <div class="footer-contact">
                     <h5 class="footer-link--title">Contact us</h5>
                     <div class="contact-method">
-                      <p>YQRDaily Inc.</p>
-                      <p>72 Kangnam, Suite 391, New York, NY</p>
-                      <p>E-mail Us</p>
+                      <p><?php echo $publisher['name']; ?></p>
+                      <p><?php echo $publisher['address1']; ?></p>
+                      <p><?php echo $publisher['email']; ?></p>
                     </div>
-                    <div class="social-contact"><a class="icon-btn" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a class="icon-btn" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a class="icon-btn" href="https://twitter.com/"><i class="fab fa-twitter"></i></a></div>
+                    <div class="social-contact">
+                      <a class="icon-btn" href="https://www.facebook.com/">
+                        <i class="fab fa-facebook-f"></i>
+                        </a>
+                      <a class="icon-btn" href="https://www.instagram.com/">
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                      <a class="icon-btn" href="https://twitter.com/">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -46,7 +59,7 @@
                   <button> <i class="fas fa-paper-plane"></i></button>
                 </div>
               </form>
-              <p class="copyright">Copyright ©2019 Pisen Blog</p>
+              <p class="copyright">Copyright ©2019 <?php echo $publisher['name'] ?></p>
             </div>
           </div>
         </div>

@@ -123,7 +123,7 @@ class Accept_Controller extends Auth_Controller {
     //
     if ($this->user_model->update($new_data, $id) &&
       $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $pid))) {
-      if (intval($role['status']) === 1) {
+      if (isset($role['status']) && intval($role['status']) === 1) {
         $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
       }
       else {

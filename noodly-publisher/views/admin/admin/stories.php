@@ -98,7 +98,7 @@
                           }
                         ?>
                         </td>
-                        <td>
+                        <td class="text-right" width="15%">
                             <div class="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bars"></i> Actions

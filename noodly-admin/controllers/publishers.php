@@ -43,7 +43,10 @@ class Publishers_Controller extends Admin_Controller {
           'address1' => test_input($_POST['address1']),
           'address2' => test_input($_POST['address2']),
           'city' => test_input($_POST['city']),
-          'zipcode' => test_input($_POST['zipcode'])
+          'zipcode' => test_input($_POST['zipcode']),
+          'facebookurl' => test_input($_POST['facebookurl']),
+          'twitterurl' => test_input($_POST['twitterurl']),
+          'instagramurl' => test_input($_POST['instagramurl'])
         );
         foreach($new_data as $key => $value) {
           if (empty($value) && $key !== 'address2') {

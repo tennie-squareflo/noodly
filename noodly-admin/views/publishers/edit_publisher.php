@@ -189,7 +189,29 @@
 													
 												</div>
 											</div>
-											
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
+											<div class="k-section">
+												<div class="k-section__body">
+													<h3 class="k-section__title k-section__title-lg">Social Links:</h3>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Facebook URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Facebook URL" name="facebookurl" type="text" value="<?php echo count($publisher) ? $publisher['facebookurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Twitter URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Twitter URL" name="twitterurl" type="text" value="<?php echo count($publisher) ? $publisher['twitterurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Instagram URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Instagram URL" name="instagramurl" type="text" value="<?php echo count($publisher) ? $publisher['instagramurl'] : ''; ?>">
+														</div>
+													</div>
+												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											

@@ -243,7 +243,7 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function preview($id) {
+  function preview($slug) {
     $this->load_model('story');
     $this->load_model('paragraph');
     $this->load_model('category');
@@ -251,8 +251,10 @@ class Story_Controller extends Auth_Controller {
 
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/edit.js');
 
-    $this->view_data['post'] = $this->story_model->get_one($id);
-    $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($id);
+    $story = $this->story_model->get_one(array('url' => $slug));
+
+    $this->view_data['post'] = $story;
+    $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($story['sid']);
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
     

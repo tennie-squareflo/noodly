@@ -102,9 +102,7 @@ const newBlock = {
 const quillSettings = {
   modules: {
     toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'color', 'font', 'code', 'italic', 'link', 'size', 'strike', 'script', 'underline'],
-      ["image", "code-block"]
+      ['bold', 'italic', 'link', 'strike', 'underline']
     ]
   },
   placeholder: "Compose an epic...",

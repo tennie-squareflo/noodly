@@ -19,6 +19,7 @@ class Story_Model extends Core_Model{
       stories.sid,
       stories.title,
       stories.visits,
+      stories.url,
       stories.created_at,
       (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = stories.uuid) username,
       (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername,

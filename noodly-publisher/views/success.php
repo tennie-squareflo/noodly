@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>Startup 3.1.3 - Project</title>
+		<title>Welcome | Noodly.io</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-				<link rel="icon" href="i/favicon.png" type="image/x-icon">
+			
 		<!-- Google Fonts -->
 				<link href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,600,500,700,800,900|DM+Sans:100,200,300,400,500,600,700,800,900&amp;subset=latin" rel="stylesheet">
 				<!-- Bootstrap 4.3.1 CSS -->
@@ -18,7 +18,8 @@
 		<!-- FontAwesome CSS -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<!-- Startup 3 CSS (Styles for all blocks) -->
-					<link href="css/style.css" rel="stylesheet" />
+
+					<link href="<?php echo ASSETS_URL; ?>custom/publisher/success/style_success.css" rel="stylesheet" />
 				<!-- jQuery 3.3.1 -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 			</head> 
@@ -68,9 +69,8 @@
 <!-- AOS 2.3.4 jQuery plugin JS (Animations) -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
-<script src="<?php echo $ASSETS_URL;?>custom/publisher/success/jquery.maskedinput.min.js"></script>
+<script src="<?php echo ASSETS_URL;?>custom/publisher/success/jquery.maskedinput.min.js"></script>
 <!-- Startup 3 JS (Custom js for all blocks) -->
-<script src="<?php echo $ASSETS_URL;?>custom/publisher/success/script.js"></script>
-
+<script src="<?php echo ASSETS_URL;?>custom/publisher/success/script.js"></script>
 </body>
 </html>

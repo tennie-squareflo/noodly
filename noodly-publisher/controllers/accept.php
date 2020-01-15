@@ -143,6 +143,6 @@ class Accept_Controller extends Auth_Controller {
   }
 
   function success() {
-    $this->single_load('success.php', $this->view_data);
+    echo 'success page';
   }
 }

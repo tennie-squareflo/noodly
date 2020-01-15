@@ -62,7 +62,15 @@ class Accept_Controller extends Admin_Controller {
       'city' => test_input($_POST['city']),
       'zipcode' => test_input($_POST['zipcode']),
       'avatar' => !empty($_POST['avatar']) ? json_decode($_POST['avatar'])->file : '',
-      'status' => 1
+      'status' => 1,
+      'facebookurl' => test_input($_POST['facebookurl']),
+      'twitterurl' => test_input($_POST['twitterurl']),
+      'instagramurl' => test_input($_POST['instagramurl']),
+      'youtubeurl' => test_input($_POST['youtubeurl']),
+      'vimeourl' => test_input($_POST['vimeourl']),
+      'soundcloudurl' => test_input($_POST['soundcloudurl']),
+      'websiteurl' => test_input($_POST['websiteurl']),
+      'otherurl' => test_input($_POST['otherurl']),
     );
     $id = $_SESSION['user']['uuid'];
     $user = $this->user_model->get_one($id);

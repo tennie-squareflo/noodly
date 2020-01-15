@@ -113,6 +113,25 @@
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											<div class="k-section">
 												<div class="k-section__body">
+													<div class="access">
+														<h3 class="k-section__title k-section__title-lg">Access:</h3>
+														<a class="btn btn-light btn-elevate btn-pill btn-sm" id="add-publication" data-toggle="modal" data-target="#addPublicationModal">
+															<i class="la la-plus"></i> Add Publication
+														</a>
+													</div>
+													
+													<div class="form-group row" id="publisher">
+														<label class="col-3 col-form-label">Country</label>
+														<div class="col-9">
+                              <select class="form-control" name="country" data-start-value="<?php echo count($user) ? $user['country'] : ''; ?>">
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
+											<div class="k-section">
+												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">Address:</h3>
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Country</label>
@@ -158,7 +177,59 @@
 													
 												</div>
 											</div>
-											
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
+											<div class="k-section">
+												<div class="k-section__body">
+													<h3 class="k-section__title k-section__title-lg">My Links:</h3>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Facebook URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Facebook URL" name="facebookurl" type="text" value="<?php echo count($user) ? $user['facebookurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Twitter URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Twitter URL" name="twitterurl" type="text" value="<?php echo count($user) ? $user['twitterurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Instagram URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Instagram URL" name="instagramurl" type="text" value="<?php echo count($user) ? $user['instagramurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Youtube URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Youtube URL" name="youtubeurl" type="text" value="<?php echo count($user) ? $user['youtubeurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Vimeo URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Vimeo URL" name="vimeourl" type="text" value="<?php echo count($user) ? $user['vimeourl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Sound Cloud URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Sound Cloud URL" name="soundcloudurl" type="text" value="<?php echo count($user) ? $user['soundcloudurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Website URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Website URL" name="websiteurl" type="text" value="<?php echo count($user) ? $user['websiteurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Other URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Other URL" name="otherurl" type="text" value="<?php echo count($user) ? $user['otherurl'] : ''; ?>">
+														</div>
+													</div>
+												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											
@@ -176,3 +247,8 @@
 
 			<!-- end:: Content Body -->
 		</div>
+<div class="modal" tabindex="-1" role="dialog" id="addPublicationModal">
+  <?php
+    require('add_publication_modal.php');
+  ?>
+</div>

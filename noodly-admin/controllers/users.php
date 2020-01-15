@@ -25,8 +25,8 @@ class Users_Controller extends Admin_Controller {
   }
 
   function edit($id = 0) {
-    $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/admin/users/complete_profile.js');
+    $view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'custom/admin/users/edit_users.css');
+    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/admin/users/complete_profile.js', 'custom/admin/users/add_publisher.js');
     $view_data['user_id'] = intval($id);
     $view_data['user'] = $this->user_model->get_one(intval($id));
     $view_data['edit_user'] = true;

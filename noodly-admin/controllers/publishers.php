@@ -46,12 +46,7 @@ class Publishers_Controller extends Admin_Controller {
           'zipcode' => test_input($_POST['zipcode']),
           'facebookurl' => test_input($_POST['facebookurl']),
           'twitterurl' => test_input($_POST['twitterurl']),
-          'instagramurl' => test_input($_POST['instagramurl']),
-          'youtubeurl' => test_input($_POST['youtubeurl']),
-          'vimeourl' => test_input($_POST['vimeourl']),
-          'soundcloudurl' => test_input($_POST['soundcloudurl']),
-          'websiteurl' => test_input($_POST['websiteurl']),
-          'otherurl' => test_input($_POST['otherurl'])
+          'instagramurl' => test_input($_POST['instagramurl'])
         );
         foreach($new_data as $key => $value) {
           if (empty($value) && $key !== 'address2') {

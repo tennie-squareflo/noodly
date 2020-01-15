@@ -184,8 +184,10 @@
 														data-did-throw-error="handleError">
 														<input type="file" name="content" data-value=\''.'{"file": "'.$paragraph['content'].'"}'.'\'/>
 														<img src="'.ASSETS_URL.'media/stories/'.$paragraph['content'].'" alt="">
-													</div>
-													</div>
+														
+													</div>'; ?>
+													<input class="form-control" type="text" placeholder="Caption" name="caption" value="<?php echo $is_new ? '' : $paragraph['caption'];?>">
+													<?php echo '</div>
 												</div>
 											</div>
 											';

@@ -8,6 +8,10 @@ $publisher_domain = '';
 $request_uri = str_replace('..', '', $request_uri);
 $request_uri = str_replace('//', '/', $request_uri);
 
+foreach ($ROUTING as $key => $value) {
+  $request_uri = str_replace($key, $value, $request_uri);
+}
+
 if (substr($request_uri, -4) === '.php') {
   $request_uri = substr($request_uri, 0, strlen($request_uri) - 4);
 }

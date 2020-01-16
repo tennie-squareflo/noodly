@@ -39,7 +39,7 @@
 			You have successfully created a <?php echo $publisher['name']; ?> profile. You can now sign in as a contributor.		</div>
 		
 		<div class="mt-80 text-center buttons" data-aos-duration="600" data-aos="fade-down" data-aos-delay="600">
-			<div><a href="#" class="btn lg action-1">Sign In</a></div>
+			<div><a class="btn lg action-1" href="<?php echo BASE_URL.'login';?>">Sign In</a></div>
 		
 		</div>
 	</div>

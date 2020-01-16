@@ -65,6 +65,17 @@ const newBlock = {
 													</div>
 												</div>
 												<div class="col-xl-2"></div>
+                      </div>
+                      <div class="row">
+												<div class="col-xl-2"></div>
+												<div class="col-xl-8">
+													<div class="form-group form-group-last">
+														<div class="col-12 k-section__content k-section__content--border">
+															<input class="form-control" type="text" placeholder="Say Something Here" name="caption">
+														</div>
+													</div>
+												</div>
+												<div class="col-xl-2"></div>
 											</div>
 										</form>
 									</div>

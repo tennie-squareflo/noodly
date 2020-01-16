@@ -104,16 +104,18 @@
                                 <i class="fa fa-bars"></i> Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                  <a class="dropdown-item" href="<?php echo BASE_URL.'story/edit/'.$story['sid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
                                   <?php if($story['status'] === 'DRAFT' || $story['status'] === 'SUBMITTED') : ?>
                                     <a class="dropdown-item publish-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-newspaper"></i>Publish</a>
-                                  <?php endif; ?>
-                                  <?php if($story['status'] === 'PUBLISHED') : ?>
-                                    <a class="dropdown-item block-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-ban"></i>Block</a>
                                   <?php endif; ?>
                                   <?php if($story['status'] === 'BLOCKED') : ?>
                                     <a class="dropdown-item activate-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-check"></i>Activate</a>
                                   <?php endif; ?>
-                                  <a class="dropdown-item" href="<?php echo BASE_URL.'story/edit/'.$story['sid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+                                  <!-- <?php if($story['status'] === 'PUBLISHED') : ?>
+                                    <a class="dropdown-item block-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-ban"></i>Block</a>
+                                  <?php endif; ?> -->
+                                  
+                                  
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>

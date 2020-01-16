@@ -28,13 +28,13 @@
         <div class="k-portlet__head-toolbar">
           <div class="k-portlet__head-toolbar-wrapper">
             <div class="dropdown dropdown-inline">
-              <a class="btn btn-warning btn-delete-selected">
+              <a class="btn btn-danger btn-delete-selected">
                 <i class="la la-trash"></i> Block Selected
               </a>
             </div>
             <div class="dropdown dropdown-inline">
               <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
-                <i class="la la-pencil"></i> Invite A Contributor
+                <i class="fa fa-paper-plane"></i> Invite A Contributor
               </a>
             </div>
           </div>
@@ -95,7 +95,7 @@
                                   <a class="dropdown-item block-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Block</a>
                                 <?php endif; ?>
                                 <?php if (intval($contributor['status']) == 0): ?>
-                                  <a class="dropdown-item activate-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Activate</a>
+                                  <a class="dropdown-item activate-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-check-circle"></i>Activate</a>
                                 <?php endif; ?>
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fa fa-trash"></i> Delete</a>
                                 </div>

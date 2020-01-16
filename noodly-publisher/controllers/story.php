@@ -77,6 +77,7 @@ class Story_Controller extends Auth_Controller {
               $blocks_data[$i] = array(
                 'type' => $other_data[$i]['type'],
                 'content' => ($other_data[$i]['type'] !== 'image' ? $other_data[$i]['content'] : (!empty($other_data[$i]['content']) ? json_decode($other_data[$i]['content'])->file : '')),
+                'caption' => ($other_data[$i]['type'] == 'image' ? $other_data[$i]['caption'] : (!empty($other_data[$i]['caption']) ? $other_data[$i]['caption'] : '')),
                 'sid' => $new_story_id
               );
               $blocks_data[$i]['pid'] = $this->paragraph_model->create($blocks_data[$i]);

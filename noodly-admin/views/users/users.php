@@ -48,7 +48,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Status</th>
-                      <th></th>
+                      <th class="text-right" width="15%"></th>
                   </tr>
                 </thead>
                 <tbody>

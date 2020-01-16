@@ -1,7 +1,7 @@
 <section class="posts blog-creative">
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="slider-image">
     
       <div class="post-classic-tib big-post" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<?php echo ASSETS_URL.'media/stories/'.$post['cover_image'];?>')">
         <div class="container">
@@ -31,7 +31,7 @@
 <div class="container">
 
 <div class="row justify-content-center">
-  <div class="col-10 col-lg-10">
+  <div class="col-10 col-lg-12">
     <div class="post-block">
       <div class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></div>
 
@@ -44,14 +44,14 @@
             break;
             case 'image':
               echo '<div class="row">
-                <div class="col-12 col-sm-12"><img class="img-fluid w-100" src="'.ASSETS_URL.'media/stories/'.$paragraphs[$next_id]['content'].'" alt="post image"><div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div></div>
+                <div class="col-12 col-sm-12"><img class="img-fluid" src="'.ASSETS_URL.'media/stories/'.$paragraphs[$next_id]['content'].'" alt="post image"><div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div></div>
                 
               </div>';
             break;
             case 'video':
               echo '<div class="row">
                 <div class="col-12 col-sm-12">
-                <iframe class="w-100" width="600" height="400" src="'.$paragraphs[$next_id]['content'].'"></iframe>
+                <iframe width="600" height="400" src="'.$paragraphs[$next_id]['content'].'"></iframe>
                 </div>
               </div>';
             break;
@@ -87,7 +87,6 @@
         <div class="col-sm-7 col-md-9">
           <div class="author-info">
             <h5><?php echo $author['firstname'].' '.$author['lastname']; ?></h5>
-            <p><?php echo $author['shortbio']; ?></p>
             <div class="author-social">
               <?php if(!empty($author['facebookurl'])) { ?>
               <a target="_blank" href="<?php echo $author['facebookurl']; ?>">
@@ -130,6 +129,8 @@
               </a>
               <?php } ?>
             </div>
+            <p><?php echo $author['shortbio']; ?></p>
+            
           </div>
         </div>
       </div>

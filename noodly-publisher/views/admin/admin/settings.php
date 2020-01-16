@@ -6,7 +6,7 @@
 			<!-- begin:: Content Head -->
 			<div class="k-content__head	k-grid__item">
 				<div class="k-content__head-main">
-					<h3 class="k-content__head-title">Publisher Settings</h3>
+					<h3 class="k-content__head-title">Settings</h3>
 				
 				</div>
 				<div class="k-content__head-toolbar">

@@ -38,7 +38,7 @@ class Accept_Controller extends Auth_Controller {
           header("Location: ".BASE_URL."dashboard");
           return;
         } else {  // otherwise
-          header("Location: ".BASE_URL."accept/complete_profile");
+          header("Location: ".BASE_URL."my-account");
           return;
         }
       } else {

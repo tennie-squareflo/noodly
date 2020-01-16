@@ -408,7 +408,11 @@ header.mobile .header-wrapper .menu-function {
     width: 30vw; } }
 
 #main {
-  padding-top: 150px; }
+  padding-top: 105px; }
+
+.slider-image {
+  width: 100%;
+}
 
 #detail {
     padding-top: 0px; }

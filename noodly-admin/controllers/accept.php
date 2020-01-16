@@ -26,7 +26,7 @@ class Accept_Controller extends Admin_Controller {
         'avatar' => $user['avatar'],
         'status' => (intval($user['status']) === 1)
       );
-      header("Location: ".BASE_URL."accept/complete_profile");
+      header("Location: ".BASE_URL."my-account");
     }
   }
 

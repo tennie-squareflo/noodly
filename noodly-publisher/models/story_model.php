@@ -17,9 +17,11 @@ class Story_Model extends Core_Model{
   function get_recent_stories($pid = 0, $uuid = 0, $limit = 0) {
     $select = "
       stories.sid,
+      stories.cid,
       stories.title,
       stories.visits,
       stories.url,
+      stories.thumb_image,
       stories.created_at,
       (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = stories.uuid) username,
       (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername,

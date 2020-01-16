@@ -71,7 +71,8 @@ class Accept_Controller extends Admin_Controller {
       'soundcloudurl' => test_input($_POST['soundcloudurl']),
       'websiteurl' => test_input($_POST['websiteurl']),
       'otherurl' => test_input($_POST['otherurl']),
-      'role' => test_input(isset($_POST['role']) ? $_POST['role'] : '')
+      'role' => test_input(isset($_POST['role']) ? $_POST['role'] : ''),
+      'shortbio' => test(input($_POST['shortbio']))
     );
 
     $role = isset($_POST['role']) ? $_POST['role'] : '';

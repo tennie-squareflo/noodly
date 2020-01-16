@@ -326,7 +326,7 @@
                                           <span class="pc-xs-p-0" style="padding: 0 23px;">&nbsp;&nbsp;</span>
                                           <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/login" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">My Dashboard</a>
                                           <span class="pc-xs-p-0" style="padding: 0 23px;">&nbsp;&nbsp;</span>
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/accept/complete_profile" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">My Account</a>
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/my-account" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">My Account</a>
                                         </td>
                                       </tr>
                                     </tbody>

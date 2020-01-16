@@ -61,5 +61,6 @@ require_once(CORE_PATH.'models/core_model.php');
 require_once(CORE_PATH.'controllers/core_controller.php');
 
 // parse url
+require_once(CORE_PATH.'routing.php');
 require_once(CORE_PATH.'routes.php');
 require_once(CORE_PATH.'load_modules.php');

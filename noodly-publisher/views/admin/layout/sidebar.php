@@ -52,7 +52,7 @@
       endif;
     ?>
       <li aria-haspopup="true" class="k-menu__item">
-        <a class="k-menu__link" href="<?php echo BASE_URL; ?>accept/complete_profile"><i class="k-menu__link-icon fa fa-user"></i><span class="k-menu__link-text">My Account</span></a>
+        <a class="k-menu__link" href="<?php echo BASE_URL; ?>my-account"><i class="k-menu__link-icon fa fa-user"></i><span class="k-menu__link-text">My Account</span></a>
       </li>
 
       <li aria-haspopup="true" class="k-menu__item">

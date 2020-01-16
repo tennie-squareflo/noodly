@@ -7,7 +7,7 @@ class Admin_Controller extends Core_Controller {
       exit();
     }
     if (!$this->profile_ready() && !$no_profile) {
-      header("Location: ".BASE_URL."accept/complete_profile");
+      header("Location: ".BASE_URL."my-account");
       exit();
     }
   }

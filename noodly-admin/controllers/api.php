@@ -16,7 +16,7 @@ class Api_Controller extends Core_Controller {
 
     // check if email exists;
     $user = $this->user_model->get_one(array('email' => $post['email']));
-    if (count($user)) {
+    if (count($user) && isset($_POST['id']) && $_POST['id'] !== $user['uuid']) {
       $this->response(array('code' => 0, 'name' => $user['firstname']));
     } else {
       $this->response(array('code' => 1));

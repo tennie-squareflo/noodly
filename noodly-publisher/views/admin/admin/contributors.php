@@ -28,7 +28,7 @@
         <div class="k-portlet__head-toolbar">
           <div class="k-portlet__head-toolbar-wrapper">
             <div class="dropdown dropdown-inline">
-              <a class="btn btn-warning btn-delete-selected">
+              <a class="btn btn-danger btn-delete-selected">
                 <i class="la la-trash"></i> Block Selected
               </a>
             </div>

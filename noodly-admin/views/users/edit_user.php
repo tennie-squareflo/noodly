@@ -79,6 +79,12 @@
 															<input class="form-control" placeholder="Last Name" name="lastname" type="text" value="<?php echo count($user) ? $user['lastname'] : ''; ?>">
 														</div>
                           </div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Short Bio</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Short Bio" name="shortbio" type="text" value="<?php echo count($user) ? $user['shortbio'] : ''; ?>">
+														</div>
+                          </div>
 
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Email Address</label>

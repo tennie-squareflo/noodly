@@ -43,6 +43,9 @@ $(function() {
       },
       zipcode: {
         required: true
+      },
+      shortbio: {
+        required: true
       }
     },
     messages: {

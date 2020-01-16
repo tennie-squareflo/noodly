@@ -33,7 +33,7 @@
                     <h5 class="footer-link--title">Contact us</h5>
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
-                      <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['state']; ?></p>
+                      <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['zipcode']; ?></p>
                       <p><?php echo $publisher['email']; ?></p>
                     </div>
                     <div class="social-contact">

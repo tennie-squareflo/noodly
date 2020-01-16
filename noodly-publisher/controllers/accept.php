@@ -24,20 +24,20 @@ class Accept_Controller extends Auth_Controller {
       $role = $this->match_user_role_model->get_one(array('pid' => $pid, 'uuid' => $user['uuid']));
 
       if (count($role)) {
+        $_SESSION['user'] = array(
+          'uuid' => $user['uuid'],
+          'name' => $user['firstname'],
+          'avatar' => $user['avatar'],
+          'role' => $role['role'],
+          'role_status' => (intval($role['status']) === 1),
+          'user_status' => (intval($user['status']) === 1),
+          'pid' => $pid
+        );
         if (intval($user['status']) === 1)  { // if the user has completed profile 
           $this->match_user_role_model->update(array('status' => 1), array('pid' => $pid, 'uuid' => $user['uuid']));
           header("Location: ".BASE_URL."dashboard");
           return;
         } else {  // otherwise
-          $_SESSION['user'] = array(
-            'uuid' => $user['uuid'],
-            'name' => $user['firstname'],
-            'avatar' => $user['avatar'],
-            'role' => $role['role'],
-            'role_status' => (intval($role['status']) === 1),
-            'user_status' => (intval($user['status']) === 1),
-            'pid' => $pid
-          );
           header("Location: ".BASE_URL."accept/complete_profile");
           return;
         }
@@ -143,6 +143,6 @@ class Accept_Controller extends Auth_Controller {
   }
 
   function success() {
-    echo 'success page';
+    $this->single_load('success', $this->view_data);
   }
 }

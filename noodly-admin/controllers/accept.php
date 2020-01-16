@@ -120,7 +120,7 @@ class Accept_Controller extends Admin_Controller {
           $subject = 'Welcome to '.$publisher['domain'];
   
           if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
-            $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
+            $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => false));
           } else {
             $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
           }
@@ -140,9 +140,5 @@ class Accept_Controller extends Admin_Controller {
       }
     }
     
-  }
-
-  function success() {
-    echo 'success page';
   }
 }

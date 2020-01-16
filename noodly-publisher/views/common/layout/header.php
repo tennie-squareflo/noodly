@@ -1,3 +1,9 @@
+<?php
+  $this->load_model('category');
+  $this->load_model('story');
+  $this->load_model('user');
+  $this->load_model('publisher');
+?>
 <body>
     <div id="main">
       <header>
@@ -16,7 +22,6 @@
                       <li class="nav-item"><a class="pisen-nav-link" href="#">Sections</a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
                           <?php
-                            $this->load_model('category');
                             $categories = $this->category_model->get_categories($publisher['pid'], 0);
                             foreach ($categories as $key => $category) {
                           ?>
@@ -27,7 +32,7 @@
                         </ul>
                       </li>
                       <li class="nav-item"><a class="pisen-nav-link" href="contributors.html">Contributors</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="contact-us.html">Contact Us</a><i class="submenu-opener fas fa-plus"></i>
+                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'index/contact' ?>">Contact Us</a><i class="submenu-opener fas fa-plus"></i>
                     </ul>
                   </nav>
                 </div>

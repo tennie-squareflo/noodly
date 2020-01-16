@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form class="k-form" id="add-publication-form"  method="post" enctype="multipart/form-data">
+      <form class="k-form" id="add-prole-form"  method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-xl-1"></div>
           <div class="col-xl-10">
@@ -18,10 +18,9 @@
                 <div class="form-group row">
                   <label class="col-3 col-form-label">Role</label>
                   <div class="col-9">
-                    <select class="form-control" placeholder="Role" name="role">
+                    <select class="form-control" placeholder="Role" name="add-role">
                       <?php
                         $options = array(
-                          '' => 'Select Role',
                           'admin' => 'Publisher Admin',
                           'contributor' => 'Contributor');
                         foreach ($options as $key => $option) {
@@ -35,14 +34,7 @@
                 <div class="form-group row" id="publisher-row">
                   <label class="col-3 col-form-label">Publisher</label>
                   <div class="col-9">
-                    <select class="form-control" placeholder="Publisher" name="pid">
-                      <?php
-                        unset($publishers[0]);
-                        $publishers = array('' => array('name' => 'Select Publisher')) + $publishers;
-                        foreach ($publishers as $key => $publisher) {
-                          echo "<option value='$key'>$publisher[name]</option>";
-                        }
-                      ?>
+                    <select class="form-control" placeholder="Publisher" name="add-pid" id="add-pid">
                     </select>
                   </div>
                 </div>
@@ -56,7 +48,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" id="add-btn">Add</button>
+      <button type="button" class="btn btn-primary" id="add-publisher-btn">Add</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
   </div>

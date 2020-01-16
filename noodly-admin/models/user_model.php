@@ -22,6 +22,10 @@ class User_Model extends Core_Model{
     return count($roles) === 0 ? false : $roles;
   }
 
+  function get_user_roles($uuid) {
+    return $this->db->where(array('uuid' => $uuid))->get('match_user_role');
+  }
+
   function set_publisher_role($uuid, $pid, $role, $status = 0) {
     $res = $this->db->insert('match_user_role', array('uuid' => $uuid, 'pid' => $pid, 'role' => $role, 'status' => $status));
     return $res;
@@ -29,6 +33,19 @@ class User_Model extends Core_Model{
 
   function update_role($data, $uuid, $pid) {
     return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->update('match_user_role', $data);
+  }
+
+  function update_roles($id, $proles) {
+    $this->db->where(array('uuid' => $uuid))->delete('match_user_role');
+    foreach ($proles as $key => $value) {
+      $this->db->insert('match_user_role', array(
+        'uuid' => $id,
+        'pid' => $key,
+        'role' => $value,
+        'status' => 1
+      ));
+    }
+    return true;
   }
 
 }

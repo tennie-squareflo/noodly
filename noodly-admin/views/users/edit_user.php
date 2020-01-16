@@ -107,11 +107,28 @@
 															<input class="form-control" placeholder="Phone" name="phonenumber" type="text" value="<?php echo count($user) ? $user['phonenumber'] : ''; ?>">
 														</div>
                           </div>
-                          
+													<?php
+														if (isset($edit_user) && $edit_user === true) :
+													?>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Role</label>
+														<div class="col-9">
+															<select class="form-control" name="role">
+																<option value="" <?php echo count($user) && $user['role'] === "" ? "selected" : ""; ?> >None</option>
+																<option value="super_admin" <?php echo count($user) && $user['role'] === "super_admin" ? "selected" : ""; ?> >Super Admin</option>
+															</select>
+														</div>
+                          </div>
+                          <?php
+														endif;
+													?>
 												</div>
 											</div>
-											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
-											<div class="k-section">
+											<?php
+												if (isset($edit_user) && $edit_user === true) :
+											?>
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg access-section"></div>
+											<div class="k-section access-section">
 												<div class="k-section__body">
 													<div class="access">
 														<h3 class="k-section__title k-section__title-lg">Access:</h3>
@@ -120,15 +137,27 @@
 														</a>
 													</div>
 													
-													<div class="form-group row" id="publisher">
-														<label class="col-3 col-form-label">Country</label>
-														<div class="col-9">
-                              <select class="form-control" name="country" data-start-value="<?php echo count($user) ? $user['country'] : ''; ?>">
-															</select>
-														</div>
+													<div class="form-group row">
+														<div class="col-12">
+															<table class="table table-striped table-borderless">
+																<colgroup>
+																	<col width="50%">
+																	<col width="50%">
+																</colgroup>
+																<thead class="thead-light">
+																	<th>Publisher</th>
+																	<th></th>
+																</thead>
+																<tbody id="access-table-body">
+																</tbody>
+															</table>						
+														</div>								
 													</div>
 												</div>
 											</div>
+											<?php
+												endif;
+											?>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											<div class="k-section">
 												<div class="k-section__body">
@@ -252,3 +281,23 @@
     require('add_publication_modal.php');
   ?>
 </div>
+
+<script>
+	const editUser = <?php echo isset($edit_user) && $edit_user === true ? 'true' : 'false'; ?>;
+	const publisherListData = <?php echo isset($publishers) ? json_encode($publishers) : "[]"; ?>;
+	const selectedPublisherData = <?php echo isset($selected_publishers) ? json_encode($selected_publishers) : "[]"; ?>;
+
+	const publisherList = [];
+	const selectedPublisher = [];
+
+	Object.keys(publisherListData).forEach(key => {
+		publisherList[parseInt(key)] = publisherListData[key];
+	});
+	selectedPublisherData.forEach((selected) => {
+		selectedPublisher[parseInt(selected["pid"])] = selected["role"];
+	});
+
+	console.log('------- publishers -------', publisherList);
+	console.log('------- selectedPublisher -------', selectedPublisher);
+
+</script>

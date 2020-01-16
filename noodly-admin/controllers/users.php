@@ -30,6 +30,7 @@ class Users_Controller extends Admin_Controller {
     $view_data['user_id'] = intval($id);
     $view_data['user'] = $this->user_model->get_one(intval($id));
     $view_data['edit_user'] = true;
+    $view_data['selected_publishers'] = $this->user_model->get_user_roles($id);
     if (intval($id) !== 0 && empty($view_data['user'])) {
       header("Location: ".BASE_URL."users/edit");
       return;

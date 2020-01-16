@@ -130,6 +130,8 @@ class Accept_Controller extends Admin_Controller {
       }
     } else {      // add user
       try {
+        $new_data['email'] = $_POST['email'];
+        $new_data['password'] = md5($_POST['password']);
         $id = $this->user_model->create($new_data);
         $this->user_model->update_roles($id, $proles);
         $this->response(array('code' => 0, 'message' => 'User Created Successfully', 'navigate' => false, 'id' => $id));

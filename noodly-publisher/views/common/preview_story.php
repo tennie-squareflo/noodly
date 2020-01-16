@@ -70,7 +70,7 @@
           <div class="author-avatar">
           <?php
             if (empty($author['avatar']) || (empty($_SESSION['user']['avatar']))
-              || !file_exists($_SERVER['DOCUMENT_ROOT']."/assets/media/avatars/".$_SESSION['user']['avatar'])) {
+              || !file_exists(ASSETS_PATH."media/avatars/".$_SESSION['user']['avatar'])) {
           ?>
               <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000" class="rounded-circle"
             />

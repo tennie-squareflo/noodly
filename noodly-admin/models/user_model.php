@@ -36,7 +36,7 @@ class User_Model extends Core_Model{
   }
 
   function update_roles($id, $proles) {
-    $this->db->where(array('uuid' => $uuid))->delete('match_user_role');
+    $this->db->where(array('uuid' => $id))->delete('match_user_role');
     foreach ($proles as $key => $value) {
       $this->db->insert('match_user_role', array(
         'uuid' => $id,

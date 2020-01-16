@@ -95,7 +95,7 @@
                                   <a class="dropdown-item block-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Block</a>
                                 <?php endif; ?>
                                 <?php if (intval($contributor['status']) == 0): ?>
-                                  <a class="dropdown-item activate-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Activate</a>
+                                  <a class="dropdown-item activate-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-check-circle"></i>Activate</a>
                                 <?php endif; ?>
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fa fa-trash"></i> Delete</a>
                                 </div>

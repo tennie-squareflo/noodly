@@ -33,19 +33,25 @@
                     <h5 class="footer-link--title">Contact us</h5>
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
-                      <p><?php echo $publisher['city'].', '.$publisher['state'].',</br>'.$publisher['address1']; ?></p>
+                      <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['state']; ?></p>
                       <p><?php echo $publisher['email']; ?></p>
                     </div>
                     <div class="social-contact">
+                      <?php if (!empty($publisher['facebookurl'])): ?>
                       <a target="_blank" class="icon-btn" href="<?php echo $publisher['facebookurl']; ?>">
                         <i class="fab fa-facebook-f"></i>
                         </a>
+                      <?php endif; ?>
+                      <?php if (!empty($publisher['instagramurl'])): ?>
                       <a target="_blank" class="icon-btn" href="<?php echo $publisher['instagramurl']; ?>">
                         <i class="fab fa-instagram"></i>
                       </a>
+                      <?php endif; ?>
+                      <?php if (!empty($publisher['twitterurl'])): ?>
                       <a target="_blank" class="icon-btn" href="<?php echo $publisher['twitterurl']; ?>">
                         <i class="fab fa-twitter"></i>
                       </a>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>

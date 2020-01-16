@@ -34,7 +34,7 @@
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
                       <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['zipcode']; ?></p>
-                      <p><?php echo $publisher['email']; ?></p>
+                      <p><?php echo '<a href="'.BASE_URL.'index/contact">Send Us Your Email</a>'; ?></p>
                     </div>
                     <div class="social-contact">
                       <?php if (!empty($publisher['facebookurl'])): ?>
@@ -61,7 +61,10 @@
               <h5 class="footer-link--title">Subscribe To Our Mailing List </h5>
               <form action="" method="post">
                 <div class="email-form">
-                  <input class="input-form" type="text" placeholder="Enter Your Mail">
+                  <input class="input-form" type="text" placeholder="Enter Your First Name" style="width: 70%">
+                </div>
+                <div class="email-form">
+                  <input class="input-form" type="text" placeholder="Enter Your Email Address">
                   <button> <i class="fas fa-paper-plane"></i></button>
                 </div>
               </form>

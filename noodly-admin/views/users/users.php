@@ -47,8 +47,6 @@
                   <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Role</th>
-                      <th>Publishers</th>
                       <th>Status</th>
                       <th></th>
                   </tr>
@@ -61,38 +59,6 @@
                     <tr>
                       <td><h5><?php echo $user['name'];?></h5></td>
                       <td><?php echo $user['email'];?></td>
-                      <td><?php echo $user['role'];?></td>
-                      <td><?php
-                        // Option 1: Display the first letter of the publisher.
-                        // foreach ($user['publishers'] as $key => $publisher) {
-                        //   echo "<div class='rounded-circle letter-image type-".(intval($publisher['pid'])%14 + 1)."' title='".$publishers[$publisher['pid']]['name']."'>".strtoupper($publishers[$publisher['pid']]['name'][0])."</div>";
-                        // }
-                        // if ($user['publishers_count'] > 5) {
-                        //   echo " +".(intval($user['publishers_count']) - 5);
-                        // }
-
-                        // Option 2: Display the logo of each publisher.
-                        foreach ($user['publishers'] as $key => $publisher) {
-                          $style = intval($publisher['status']) == 0 
-                                  ? 'no' 
-                                  : (intval($publisher['status']) == 1 
-                                    ? intval($publisher['pid'])%10 + 1 
-                                    : (intval($publisher['status']) > time() 
-                                      ? 'invited'
-                                      : 'expired'));
-                          $tooltip = intval($publisher['status']) == 0 
-                                    ? 'No' 
-                                    : (intval($publisher['status']) == 1 
-                                      ? 'Active' 
-                                      : (intval($publisher['status']) > time() 
-                                        ? 'Invited'
-                                        : 'Invite Expired'));
-                          echo "<img class='logo-images type-$style'' src='".ASSETS_URL."media/logos/".$publishers[$publisher['pid']]['favicon']."' title='".$publishers[$publisher['pid']]['name'].": $tooltip'/>";
-                        }
-                        if ($user['publishers_count'] > 5) {
-                          echo " +".(intval($user['publishers_count']) - 5);
-                        }
-                      ?></td>
                       <td>
                       <?php 
                         echo intval($user['status']) == 0 

@@ -60,17 +60,17 @@
               <td><?php echo $publisher['stories'];?></td>
               <td><?php echo $publisher['visits'];?></td>
               <td><span class="badge badge-warning"><?php echo $publisher['subscribers'];?></span></td>
-              <td>
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-bars"></i> Actions
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <a class="dropdown-item" href="<?php echo BASE_URL.'publishers/edit/'.$publisher['pid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
-                          <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $publisher['pid'];?>"><i class="fa fa-trash"></i> Delete</a>
-                        </div>
-                    </div>
-                </td>
+              <td class="text-right" width="15%">
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-bars"></i> Actions
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="<?php echo BASE_URL.'publishers/edit/'.$publisher['pid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+                    <a class="dropdown-item delete-btn" href="#" data-id="<?php echo $publisher['pid'];?>"><i class="fa fa-trash"></i> Delete</a>
+                  </div>
+                </div>
+              </td>
             </tr>
           <?php
           }

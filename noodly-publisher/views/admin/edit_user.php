@@ -150,6 +150,13 @@
 															<input class="form-control" placeholder="ZipCode" name="zipcode" type="text" value="<?php echo count($user) ? $user['zipcode'] : ''; ?>">
 														</div>
 													</div>
+																						
+												</div>
+											</div>
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
+											<div class="k-section">
+												<div class="k-section__body">
+													<h3 class="k-section__title k-section__title-lg">My Links:</h3>
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Facebook URL</label>
 														<div class="col-9">
@@ -198,10 +205,7 @@
 															<input class="form-control" placeholder="Other URL" name="otherurl" type="text" value="<?php echo count($user) ? $user['otherurl'] : ''; ?>">
 														</div>
 													</div>
-													
 												</div>
-											</div>
-											
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											

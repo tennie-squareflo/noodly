@@ -2655,7 +2655,12 @@ footer.v2 {
           display: inline-block; }
     .blog-detail .post-block img {
       width: 100%;
-      margin-bottom: 50px; }
+      /* margin-bottom: 50px; */
+    }
+    .blog-detail .post-block .image-caption {
+      text-align: center;
+
+    }
     .blog-detail .post-block .blog-pragraph {
       font-family: "Cerebri-regular";
       font-size: 18px;

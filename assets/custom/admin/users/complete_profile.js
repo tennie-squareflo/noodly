@@ -13,10 +13,37 @@ import(
 });
 
 $(function() {
+  jQuery.validator.addMethod(
+    "checkEmail",
+    e => {
+      let exist = false;
+      $.ajax({
+        url: BASE_URL + "api/check_email",
+        data: {
+          email: $("#register-form input[name=email]").val(),
+          id: $("#register-form input[name=id]").val()
+        },
+        dataType: "json",
+        method: "POST",
+        async: false,
+        success: function(res) {
+          exist = res.code;
+        }
+      });
+      return exist;
+    },
+    "Email must be valid and unique"
+  );
+
   $("#register-form").validate({
     rules: {
       firstname: {
         required: true
+      },
+      email: {
+        required: true,
+        email: true,
+        checkEmail: true
       },
       password: {
         minlength: 8,
@@ -42,10 +69,14 @@ $(function() {
       },
       zipcode: {
         required: true
+      },
+      shortbio: {
+        required: true
       }
     },
     messages: {
-      email: "Please enter a valid email address"
+      email: "Please enter a valid email address",
+      checkEmail: "Email must be valid and unique"
     },
     submitHandler: function(form) {
       $.ajax({
@@ -79,6 +110,10 @@ $(function() {
               setTimeout(() => {
                 location.href = BASE_URL + `accept/success`;
               });
+            } else if (res.id) {
+              setTimeout(() => {
+                location.href = BASE_URL + `users/edit/${res.id}`;
+              }, 300);
             }
           } else {
             toastr.options = {
@@ -126,27 +161,6 @@ $(function() {
     }
   });
 
-  // If role is super admin, hide publishers list
-  $('select[name="role"]').change(e => {
-    if (e.target.value === "super_admin") {
-      $('select[name="pid"]').val("");
-      $('select[name="pid"]').attr("disabled", true);
-      $("#publisher-row").css("display", "none");
-    } else {
-      $('select[name="pid"]').attr("disabled", false);
-      $("#publisher-row").css("display", "flex");
-    }
-  });
-
-  if ($('select[name="role"]').val() === "super_admin") {
-    $('select[name="pid"]').val("");
-    $('select[name="pid"]').attr("disabled", true);
-    $("#publisher-row").css("display", "none");
-  } else {
-    $('select[name="pid"]').attr("disabled", false);
-    $("#publisher-row").css("display", "flex");
-  }
-
   // submit the form if the save button is clicked.
   $("#save-btn").click(() => {
     $("#register-form").submit();
@@ -162,4 +176,92 @@ $(function() {
           .attr("data-value")
       );
   }, 500);
+
+  if (editUser) {
+    updateAll();
+
+    if ($('select[name="role"]').val() !== "") {
+      $(".access-section").css("display", "none");
+    } else {
+      $(".access-section").css("display", "block");
+    }
+
+    $('select[name="role"]').change(e => {
+      if (e.target.value !== "") {
+        $(".access-section").css("display", "none");
+      } else {
+        $(".access-section").css("display", "block");
+      }
+    });
+
+    $("#add-prole-form").validate({
+      submitHandler: function(form) {
+        const data = $(form).serializeArray();
+        let pid, role;
+        data.forEach(item => {
+          if (item.name === "add-role") {
+            role = item.value;
+          } else if (item.name === "add-pid") {
+            pid = item.value;
+          }
+        });
+        selectedPublisher[pid] = role;
+        updateAll();
+      }
+    });
+    $("#add-publisher-btn").click(() => {
+      $("#add-prole-form").submit();
+    });
+  }
 });
+
+const drawTable = () => {
+  let html = "";
+  const tbody = $("#access-table-body");
+  selectedPublisher.forEach((item, index) => {
+    if (item) {
+      const tr = $(`<tr data-index='${index}'></tr>`);
+      tr.append(`<td>${publisherList[index].name}</td>`);
+      tr.append(`<td>
+        <input class="mr-1" type="radio" name="prole[${index}]" value="admin" ${
+        item === "admin" ? "checked" : ""
+      }><span class="mr-3">Admin</span>
+        <input class="mr-1" type="radio" name="prole[${index}]" value="contributor" ${
+        item === "contributor" ? "checked" : ""
+      }><span class="mr-3">Contributor</span>
+        <a class="delete-prole">X</a>
+      </td>`);
+      html += tr[0].outerHTML;
+    }
+  });
+  tbody.html(html);
+  tbody.find("a.delete-prole").click(function() {
+    const index = $(this)
+      .closest("tr")
+      .data("index");
+    delete selectedPublisher[index];
+    updateAll();
+  });
+  tbody.find('input[type="radio"]').click(function() {
+    const index = $(this)
+      .closest("tr")
+      .data("index");
+    selectedPublisher[index] = this.value;
+  });
+};
+
+const updatePublisherOptions = () => {
+  let html = "";
+  publisherList.forEach((item, index) => {
+    if (!selectedPublisher[index] && index !== 0) {
+      const elem = $(`<option value="${index}">${item.name}</option>`);
+      html += elem[0].outerHTML;
+    }
+  });
+  $("#add-pid").html(html);
+};
+
+const updateAll = () => {
+  drawTable();
+  updatePublisherOptions();
+};

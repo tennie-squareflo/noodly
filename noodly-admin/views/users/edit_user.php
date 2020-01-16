@@ -79,6 +79,12 @@
 															<input class="form-control" placeholder="Last Name" name="lastname" type="text" value="<?php echo count($user) ? $user['lastname'] : ''; ?>">
 														</div>
                           </div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Short Bio</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Short Bio" name="shortbio" type="text" value="<?php echo count($user) ? $user['shortbio'] : ''; ?>">
+														</div>
+                          </div>
 
 													<div class="form-group row">
 														<label class="col-3 col-form-label">Email Address</label>
@@ -107,9 +113,57 @@
 															<input class="form-control" placeholder="Phone" name="phonenumber" type="text" value="<?php echo count($user) ? $user['phonenumber'] : ''; ?>">
 														</div>
                           </div>
-                          
+													<?php
+														if (isset($edit_user) && $edit_user === true) :
+													?>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Role</label>
+														<div class="col-9">
+															<select class="form-control" name="role">
+																<option value="" <?php echo count($user) && $user['role'] === "" ? "selected" : ""; ?> >None</option>
+																<option value="super_admin" <?php echo count($user) && $user['role'] === "super_admin" ? "selected" : ""; ?> >Super Admin</option>
+															</select>
+														</div>
+                          </div>
+                          <?php
+														endif;
+													?>
 												</div>
 											</div>
+											<?php
+												if (isset($edit_user) && $edit_user === true) :
+											?>
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg access-section"></div>
+											<div class="k-section access-section">
+												<div class="k-section__body">
+													<div class="access">
+														<h3 class="k-section__title k-section__title-lg">Access:</h3>
+														<a class="btn btn-light btn-elevate btn-pill btn-sm" id="add-publication" data-toggle="modal" data-target="#addPublicationModal">
+															<i class="la la-plus"></i> Add Publication
+														</a>
+													</div>
+													
+													<div class="form-group row">
+														<div class="col-12">
+															<table class="table table-striped table-borderless">
+																<colgroup>
+																	<col width="50%">
+																	<col width="50%">
+																</colgroup>
+																<thead class="thead-light">
+																	<th>Publisher</th>
+																	<th></th>
+																</thead>
+																<tbody id="access-table-body">
+																</tbody>
+															</table>						
+														</div>								
+													</div>
+												</div>
+											</div>
+											<?php
+												endif;
+											?>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											<div class="k-section">
 												<div class="k-section__body">
@@ -158,7 +212,59 @@
 													
 												</div>
 											</div>
-											
+											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
+											<div class="k-section">
+												<div class="k-section__body">
+													<h3 class="k-section__title k-section__title-lg">My Links:</h3>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Facebook URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Facebook URL" name="facebookurl" type="text" value="<?php echo count($user) ? $user['facebookurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Twitter URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Twitter URL" name="twitterurl" type="text" value="<?php echo count($user) ? $user['twitterurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Instagram URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Instagram URL" name="instagramurl" type="text" value="<?php echo count($user) ? $user['instagramurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Youtube URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Youtube URL" name="youtubeurl" type="text" value="<?php echo count($user) ? $user['youtubeurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Vimeo URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Vimeo URL" name="vimeourl" type="text" value="<?php echo count($user) ? $user['vimeourl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Sound Cloud URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Sound Cloud URL" name="soundcloudurl" type="text" value="<?php echo count($user) ? $user['soundcloudurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Website URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Website URL" name="websiteurl" type="text" value="<?php echo count($user) ? $user['websiteurl'] : ''; ?>">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label class="col-3 col-form-label">Other URL</label>
+														<div class="col-9">
+															<input class="form-control" placeholder="Other URL" name="otherurl" type="text" value="<?php echo count($user) ? $user['otherurl'] : ''; ?>">
+														</div>
+													</div>
+												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											
@@ -176,3 +282,28 @@
 
 			<!-- end:: Content Body -->
 		</div>
+<div class="modal" tabindex="-1" role="dialog" id="addPublicationModal">
+  <?php
+    require('add_publication_modal.php');
+  ?>
+</div>
+
+<script>
+	const editUser = <?php echo isset($edit_user) && $edit_user === true ? 'true' : 'false'; ?>;
+	const publisherListData = <?php echo isset($publishers) ? json_encode($publishers) : "[]"; ?>;
+	const selectedPublisherData = <?php echo isset($selected_publishers) ? json_encode($selected_publishers) : "[]"; ?>;
+
+	const publisherList = [];
+	const selectedPublisher = [];
+
+	Object.keys(publisherListData).forEach(key => {
+		publisherList[parseInt(key)] = publisherListData[key];
+	});
+	selectedPublisherData.forEach((selected) => {
+		selectedPublisher[parseInt(selected["pid"])] = selected["role"];
+	});
+
+	console.log('------- publishers -------', publisherList);
+	console.log('------- selectedPublisher -------', selectedPublisher);
+
+</script>

@@ -44,14 +44,14 @@
             break;
             case 'image':
               echo '<div class="row">
-                <div class="col-12 col-sm-12"><img class="img-fluid w-100" src="'.ASSETS_URL.'media/stories/'.$paragraphs[$next_id]['content'].'" alt="post image"><div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div></div>
+                <div class="col-12 col-sm-12"><img class="img-fluid" src="'.ASSETS_URL.'media/stories/'.$paragraphs[$next_id]['content'].'" alt="post image"><div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div></div>
                 
               </div>';
             break;
             case 'video':
               echo '<div class="row">
                 <div class="col-12 col-sm-12">
-                <iframe class="w-100" width="600" height="400" src="'.$paragraphs[$next_id]['content'].'"></iframe>
+                <iframe width="600" height="400" src="'.$paragraphs[$next_id]['content'].'"></iframe>
                 </div>
               </div>';
             break;

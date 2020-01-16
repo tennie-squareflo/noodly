@@ -111,9 +111,9 @@
                                   <?php if($story['status'] === 'BLOCKED') : ?>
                                     <a class="dropdown-item activate-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-check"></i>Activate</a>
                                   <?php endif; ?>
-                                  <?php if($story['status'] === 'PUBLISHED') : ?>
+                                  <!-- <?php if($story['status'] === 'PUBLISHED') : ?>
                                     <a class="dropdown-item block-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-ban"></i>Block</a>
-                                  <?php endif; ?>
+                                  <?php endif; ?> -->
                                   
                                   
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>

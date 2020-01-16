@@ -133,7 +133,7 @@ class Accept_Controller extends Admin_Controller {
         $this->user_model->update_roles($id, $proles);
         $this->response(array('code' => 0, 'message' => 'User Created Successfully', 'navigate' => false, 'id' => $id));
       } catch (Exception $e) {
-        $this->response(array('code' => 1, 'message' => $e->Message(), 'navigate' => false), 500);
+        $this->response(array('code' => 1, 'message' => $e->getMessage(), 'navigate' => false), 500);
       }
     }
     

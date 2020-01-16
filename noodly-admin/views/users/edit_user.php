@@ -117,11 +117,11 @@
 														if (isset($edit_user) && $edit_user === true) :
 													?>
 													<div class="form-group row">
-														<label class="col-3 col-form-label">Role</label>
+														<label class="col-3 col-form-label">Super Admin?</label>
 														<div class="col-9">
 															<select class="form-control" name="role">
-																<option value="" <?php echo count($user) && $user['role'] === "" ? "selected" : ""; ?> >None</option>
-																<option value="super_admin" <?php echo count($user) && $user['role'] === "super_admin" ? "selected" : ""; ?> >Super Admin</option>
+																<option value="super_admin" <?php echo count($user) && $user['role'] === "super_admin" ? "selected" : ""; ?> >Yes</option>
+																<option value="" <?php echo count($user) && $user['role'] === "" ? "selected" : ""; ?> >No</option>																
 															</select>
 														</div>
                           </div>

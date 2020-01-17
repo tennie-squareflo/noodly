@@ -2,7 +2,7 @@
 
 class Api_Controller extends Core_Controller {
   function __construct() {
-    parent::__construct('admin');
+    parent::__construct(PUBLISHER_DOMAIN);
   }
 
   public function avatar_upload() {
@@ -39,5 +39,17 @@ class Api_Controller extends Core_Controller {
     
     $story = $this->story_model->get_one(array('url' => $post['url']));
     $this->response(array('code' => 0, 'exist' => count($story) !== 0 && $story['sid'] != $post['id']));
+  }
+
+  public function get_story_paragraph() {
+    $id = $_POST['pid'];
+
+    $this->load_model('paragraph');
+    $paragraph = $this->paragraph_model->get_one($id);
+    $this->response(array(
+      'type' => $paragraph['type'],
+      'content' => $paragraph['content'],
+      'nextPid' => $paragraph['next_pid']
+    ));
   }
 }

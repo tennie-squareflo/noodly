@@ -506,8 +506,6 @@ header.mobile .header-wrapper .menu-function {
     .posts .post-tag a:hover {
       color: #f17070;
       text-decoration: none; }
-    .posts .post-tag a:before {
-      content: "#"; }
   .posts .post-img {
     width: 100%;
     overflow: hidden; }

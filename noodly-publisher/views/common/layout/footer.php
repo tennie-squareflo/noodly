@@ -73,6 +73,9 @@
           </div>
         </div>
       </footer><!--End footer-->
+      <script>
+      const BASE_URL = "<?php echo BASE_URL; ?>";
+      </script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery-3.4.0.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery-ui.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/slick.min.js"></script>
@@ -84,6 +87,18 @@
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/numscroller-1.0.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.countdown.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/main.js"></script>
+
+      <?php
+	if (isset($script_files) && is_array($script_files)) {
+		foreach ($script_files as $file) {
+			# code...
+?>
+			<script src="<?php echo ASSETS_URL.$file; ?>" type="text/javascript">
+			</script>
+<?php
+		}
+	}
+?>
     </div>
   </body>
 </html>

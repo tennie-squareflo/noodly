@@ -35,33 +35,10 @@
     <div class="post-block">
       <div class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></div>
 
-      <?php
-        $next_id = $post['first_pid'];
-        while ($next_id) {
-          switch ($paragraphs[$next_id]['type']) {
-            case 'text':
-              echo "<div class='blog-pragraph'>".$paragraphs[$next_id]['content']."</div>";
-            break;
-            case 'image':
-              echo '<div class="row">
-                <div class="col-12 col-sm-12"><img class="img-fluid" src="'.ASSETS_URL.'media/stories/'.$paragraphs[$next_id]['content'].'" alt="post image"><div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div></div>
-                
-              </div>';
-            break;
-            case 'video':
-              echo '<div class="row">
-                <div class="col-12 col-sm-12">
-                <iframe width="600" height="400" src="'.$paragraphs[$next_id]['content'].'"></iframe>
-                </div>
-              </div>';
-            break;
-            case 'heading':
-              echo '<h3 class="post-title">'.$paragraphs[$next_id]['content'].'</h3>';
-            break;
-          }
-          $next_id = $paragraphs[$next_id]['next_pid'];
-        }
-      ?>
+      <div id="add-section-here"></div>
+      <script>
+        const firstPid = <?php echo $post['first_pid']; ?>;
+      </script>
     </div>
 
     <div class="post-author-detail">

@@ -15,9 +15,10 @@
           <div class="post-img"><img src="<?php echo ASSETS_URL;?>media/stories/<?php echo $story['thumb_image'];?>" alt="post image"></div>
           <div class="post-detail">
             <div class="post-credit">
-              <h5 class="upload-day"><?php echo $story['created_at'] ?></h5>
+
+              <h5 class="upload-day"><?php echo display_date($story['created_at']) ?></h5>
               <div class="post-tag"><a href="index.html"><?php echo $categories[$story['cid']]['name']; ?></a></div>
-            </div><a class="post-title regular" target="_blank" href="<?php echo BASE_URL.'story/preview/'.$story['url'];?>"><?php echo $story['title'];?></a>
+            </div><a class="post-title regular" target="_blank" href="<?php echo BASE_URL.'home/story/'.$story['url'];?>"><?php echo $story['title'];?></a>
           </div>
         </div>
       <? } ?>

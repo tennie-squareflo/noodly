@@ -35,6 +35,15 @@ function number_k($number) {
   return round($number, 2).' '.$units[$selected_unit];
 }
 
+function display_date($mydate) {
+  $months = ['01' => 'January', '02' => 'February', '03' => 'March', '04' => 'April', '05' => 'May', '06' => 'June', '07' => 'July', '08' => 'August', '09' => 'September', '10' => 'October', '11' => 'November', '12' => 'December'];
+  $mm = date("m", strtotime($mydate));
+  $mm_str = $months[$mm];
+  $yy = date("Y", strtotime($mydate));
+  $dd = date("d", strtotime($mydate));
+  return $mm_str.' '.$dd.', '.$yy;
+}
+
 function time_diff_format($str_time) {
   $now = time();
   $time = $now - strtotime($str_time);

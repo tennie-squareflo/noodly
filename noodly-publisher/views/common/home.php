@@ -5,6 +5,11 @@
   $categories = $this->category_model->get_categories($publisher['pid'], 0);
   $stories = $this->view_data['stories'] = $this->story_model->get_recent_stories($publisher['pid'], 0);
 ?>
+<style>
+  #main {
+    padding-top: 150px;
+  }
+</style>
 <section class="posts blog-masonry">
   <div class="container">
     <div class="blog-masonry_wrapper">

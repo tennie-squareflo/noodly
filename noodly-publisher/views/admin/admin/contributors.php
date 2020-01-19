@@ -52,6 +52,7 @@
                       
                         <th>&nbsp</th>
                         <th>Name</th>
+                        <th>Email Address</th>
                         <th>Stories</th>
                         <th>Subscribers</th>
                         <th>Status</th>
@@ -70,6 +71,7 @@
                           </div>
                         </td>
                         <td><h5><a href="#"><?php echo $contributor['username'];?></a></h5></td>
+                        <td><?php echo $contributor['email'];?></td>
                         <td><?php echo number_k($contributor['stories']); ?></td>
                         <td><span class="badge badge-warning"><?php echo number_k($contributor['subscribers']); ?></span></td>
                         <td><?php 

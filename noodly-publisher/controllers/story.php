@@ -259,7 +259,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($story['sid']);
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
-    
+    // $this->story_model->visits_plus($story['sid']);
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

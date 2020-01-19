@@ -8,7 +8,7 @@
 				<!--begin::Heade-->
 				<div class="k-login-v2__head">
 					<div class="k-login-v2__head-logo">
-						<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>"></a>
+						<!-- <a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>"></a> -->
 					</div>
 				</div><!--begin::Head-->
 			</div><!--end::Item-->
@@ -18,6 +18,7 @@
 				<div class="k-login-v2__body">
 					<!--begin::Wrapper-->
 					<div class="k-login-v2__body-wrapper">
+					<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>"></a>
 						<div class="k-login-v2__body-container">
 							<div class="k-login-v2__body-title">
 								<h3> </h3>

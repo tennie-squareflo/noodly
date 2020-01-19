@@ -87272,12 +87272,15 @@ td>.k-radio.k-radio--single {
     justify-content: flex-end;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .k-login-v2 .k-login-v2__body .k-login-v2__body-wrapper .k-login-v2__body-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     -webkit-box-shadow: 0px 0px 80px 0px rgba(77, 84, 124, 0.09);
     box-shadow: 0px 0px 80px 0px rgba(77, 84, 124, 0.09);
     border-radius: 0.6rem

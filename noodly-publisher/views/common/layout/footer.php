@@ -34,7 +34,7 @@
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
                       <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['zipcode']; ?></p>
-                      <p><?php echo '<a href="'.BASE_URL.'index/contact">Send Us Your Email</a>'; ?></p>
+                      <p><?php echo '<a href="'.BASE_URL.'index/contact">Email Us</a>'; ?></p>
                     </div>
                     <div class="social-contact">
                       <?php if (!empty($publisher['facebookurl'])): ?>

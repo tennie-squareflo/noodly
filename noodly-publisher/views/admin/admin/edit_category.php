@@ -26,16 +26,16 @@
 														<div class="k-section k-section--first">
 															<div class="k-section__body">
 																<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
-																<div class="form-group row">
-																	<label class="col-3 col-form-label">Section Name</label>
-																	<div class="col-9">
+																<div class="form-group">
+																	<label class="col-12 col-form-label">Section Name</label>
+																	<div class="col-12">
 																		<input class="form-control" name="name" type="text" value="<?php echo $is_new ? '' : $category['name']; ?>">
 																	</div>
 																</div>
 
-																<div class="form-group form-group row">
+																<div class="form-group form-group">
 																		<label class="col-3 col-form-label">URL</label>
-																		<div class="col-9">
+																		<div class="col-12">
 																			<div class="input-group">
 																				<div class="input-group-append">
 																					<span class="input-group-text">http://<?php echo $publisher['domain'];?>.noodly.io/section/</span>
@@ -44,8 +44,8 @@
 																		</div>
 																	</div>
 															
-																<div class="form-group row">
-																	<label class="col-3 col-form-label">Image</label>
+																<div class="form-group">
+																	<label class="col-5 col-form-label">Image</label>
 																	<div class="col-9">
 																		<div class="slim"
 																				data-service="<?php echo BASE_URL; ?>api/section_image_upload/image"

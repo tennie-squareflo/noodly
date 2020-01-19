@@ -20,6 +20,7 @@ class Publisher_Model extends Core_Model{
     $select = "
       match_user_role.uuid, 
       match_user_role.status, 
+      (SELECT users.email FROM users WHERE users.uuid = match_user_role.uuid) email,
       (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = match_user_role.uuid) username,
       (SELECT count(sid) FROM stories WHERE stories.uuid = match_user_role.uuid AND stories.pid = $pid) stories,
       (SELECT count(id) FROM subscription WHERE subscription.refid = match_user_role.uuid AND type='contributor') subscribers

@@ -20,7 +20,7 @@
 					<div class="k-login-v2__body-wrapper">
 						<div class="k-login-v2__body-container">
 							<div class="k-login-v2__body-title">
-								<h3>Login</h3>
+								<h3> </h3>
 							</div><!--begin::Form-->
 							<form action="#" autocomplete="off" class="k-login-v2__body-form k-form k-login-v2__body-form--border" id="login-form">
 								<div class="alert alert-danger" id="error-message" role="alert">
@@ -44,8 +44,6 @@
 							</div>
 						</div>
 					</div><!--end::Wrapper-->
-					<!--begin::Pic-->
-					<div class="k-login-v2__body-pic"><img alt="" src="<?php echo ASSETS_URL;?>media/misc/bg_icon.svg"></div><!--begin::Pic-->
 				</div><!--begin::Body-->
 			</div><!--end::Item-->
 			<!--begin::Item-->

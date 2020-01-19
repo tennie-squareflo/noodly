@@ -37,8 +37,8 @@
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Profile picture</label>
+													<div class="form-group">
+														<label class="col-7 col-form-label">Profile picture</label>
 														<div class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
                               <div class="slim rounded-circle"
                                 data-service="<?php echo BASE_URL; ?>api/avatar_upload"
@@ -57,14 +57,14 @@
 														</div>
 													</div>
 													
-													<div class="form-group row">
-														<label class="col-3 col-form-label">First Name</label>
+													<div class="form-group">
+														<label class="col-7 col-form-label">First Name</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="First Name" name="firstname" type="text" value="<?php echo count($user) ? $user['firstname'] : ''; ?>">
 														</div>
                           </div>
-                          <div class="form-group row">
-														<label class="col-3 col-form-label">Last Name</label>
+                          <div class="form-group">
+														<label class="col-7 col-form-label">Last Name</label>
 														<div class="col-9">
 															<input class="form-control" placeholder="Last Name" name="lastname" type="text" value="<?php echo count($user) ? $user['lastname'] : ''; ?>">
 														</div>

@@ -36,9 +36,9 @@
 											<div class="k-section">
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">Email Settings:</h3>
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Background Image</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Background Image</label>
+														<div class="col-12">
                               <div class="slim"
                                 data-service="<?php echo BASE_URL; ?>settings/email_background_upload"
 																data-push="true"
@@ -54,24 +54,24 @@
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Background Color</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Background Color</label>
+														<div class="col-12">
 															<input type="color" class="form-control" name="email_background_color" value="<?php echo $_env['email_background_color']; ?>"></input>
 														</div>
 													</div>
 
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Forground Color</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Forground Color</label>
+														<div class="col-12">
                             <input type="color" class="form-control" name="email_foreground_color" value="<?php echo $_env['email_foreground_color']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Expiration Time</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Expiration Time</label>
+														<div class="col-12">
                             <div class="input-group">
 																<input class="form-control" placeholder="Expiration Time" name="email_expiration_time" type="number" value="<?php echo intval($_env['email_expiration_time']); ?>">
 																<div class="input-group-append">
@@ -81,43 +81,43 @@
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Title(New User)</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Title(New User)</label>
+														<div class="col-12">
                             <input class="form-control" name="email_new_user_title" value="<?php echo $_env['email_new_user_title']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Message(New User)</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Message(New User)</label>
+														<div class="col-12">
                             <input class="form-control" name="email_new_user_message" value="<?php echo $_env['email_new_user_message']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Title(New Role)</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Title(New Role)</label>
+														<div class="col-12">
                             <input class="form-control" name="email_new_role_title" value="<?php echo $_env['email_new_role_title']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Message(New Role)</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Message(New Role)</label>
+														<div class="col-12">
                             <input class="form-control" name="email_new_role_message" value="<?php echo $_env['email_new_role_message']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Title(Default)</label>
-														<div class="col-9">
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Title(Default)</label>
+														<div class="col-12">
                             <input class="form-control" name="email_invitation_title" value="<?php echo $_env['email_invitation_title']; ?>"></input>
 														</div>
 													</div>
 
-													<div class="form-group row">
-														<label class="col-3 col-form-label">Email Template Message(Default)</label>
+													<div class="form-group">
+														<label class="col-12 col-form-label">Email Template Message(Default)</label>
 														<div class="col-9">
                             <input class="form-control" name="email_invitation_message" value="<?php echo $_env['email_invitation_message']; ?>"></input>
 														</div>

@@ -111,19 +111,23 @@ class Accept_Controller extends Admin_Controller {
         
       //
       if ($this->user_model->update($new_data, $id) && $this->user_model->update_roles($id, $proles)) {
-        if (intval($user['status']) === 1) {
-          $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
-        }
-        else {
-          $this->load_model('publisher');
-          $publisher = $this->publisher_model->get_one(0);
-          $subject = 'Welcome to '.$publisher['domain'];
-  
-          if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
-            $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => false));
-          } else {
-            $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
+        if (intval($_SERVER['uuid']) === intval($id)) {
+          if (intval($user['status']) === 1) {
+            $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
           }
+          else {
+            $this->load_model('publisher');
+            $publisher = $this->publisher_model->get_one(0);
+            $subject = 'Welcome to '.$publisher['domain'];
+    
+            if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
+              $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => false));
+            } else {
+              $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
+            }
+          }
+        } else {
+          $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
         }
       } else {
         $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);

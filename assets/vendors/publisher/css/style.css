@@ -2665,6 +2665,7 @@ footer.v2 {
     }
     .blog-detail .post-block .image-caption {
       text-align: center;
+      font-size: 15px !important;
 
     }
     .blog-detail .post-block .blog-pragraph {
@@ -2830,6 +2831,11 @@ footer.v2 {
         object-fit: cover;
         border: 4px solid #fff;
         border-radius: 999px; }
+      @media (min-width: 768px) {
+        .blog-detail .post-author-detail .author-avatar img {
+          text-align: right;
+        }
+      }
     .blog-detail .post-author-detail .author-info {
       margin-left: 40px; }
       .blog-detail .post-author-detail .author-info h5 {

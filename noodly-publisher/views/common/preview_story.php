@@ -40,10 +40,10 @@
         const firstPid = <?php echo $post['first_pid']; ?>;
       </script>
     </div>
-
+    
     <div class="post-author-detail">
       <div class="row no-gutters align-items-center">
-        <div class="col-sm-5 col-md-3">
+        <div class="col-sm-1 col-md-2">
           <div class="author-avatar">
           <?php
             if (empty($author['avatar']) || (empty($_SESSION['user']['avatar']))
@@ -107,10 +107,30 @@
               <?php } ?>
             </div>
             <p><?php echo $author['shortbio']; ?></p>
-            
+            <button class="normal-btn btn-secondary">Contact</button> &nbsp; <button class="normal-btn">Subscribe</button>
           </div>
         </div>
       </div>
+      <div class="another-posts"><a class="arrow-control arrow-prev" href="blog_detail.html"><i class="arrow_left"></i></a><a class="arrow-control arrow-next" href="blog_detail.html"><i class="arrow_right"></i></a>
+      <div class="row no-gutters">
+        <div class="col-12 col-md-6"><a href=""></a>
+          <div class="another-post_block prev-post">
+            <div class="post-mini-img text-left"><a href="blog_detail.html"><img src="https://images.pexels.com/photos/999248/pexels-photo-999248.png?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
+            <div class="post-title">
+              <p>Previous post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="another-post_block text-right next-post">
+            <div class="post-title">
+              <p>Next post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
+            </div>
+            <div class="post-mini-img text-right"><a href="blog_detail.html"><img src="https://images.pexels.com/photos/3133688/pexels-photo-3133688.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
     
   </div>

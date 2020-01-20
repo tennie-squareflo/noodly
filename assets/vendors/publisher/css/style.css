@@ -2665,6 +2665,7 @@ footer.v2 {
     }
     .blog-detail .post-block .image-caption {
       text-align: center;
+      font-size: 15px !important;
 
     }
     .blog-detail .post-block .blog-pragraph {
@@ -2825,8 +2826,8 @@ footer.v2 {
       text-align: center;
       padding: 20px 0; }
       .blog-detail .post-author-detail .author-avatar img {
-        width: 160px;
-        height: 160px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         border: 4px solid #fff;
         border-radius: 999px; }

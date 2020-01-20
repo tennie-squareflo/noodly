@@ -28,6 +28,28 @@ class Publisher_Model extends Core_Model{
     return $this->db->where(array('pid' => $pid, 'role' => 'contributor'))->get('match_user_role', $select);
   }
 
+  function get_active_contributors($pid) {
+    $select = "
+      match_user_role.uuid, 
+      match_user_role.status, 
+      (SELECT users.email FROM users WHERE users.uuid = match_user_role.uuid) email,
+      (SELECT users.shortbio FROM users WHERE users.uuid = match_user_role.uuid) shortbio,
+      (SELECT users.avatar FROM users WHERE users.uuid = match_user_role.uuid) avatar,
+      (SELECT users.facebookurl FROM users WHERE users.uuid = match_user_role.uuid) facebookurl,
+      (SELECT users.twitterurl FROM users WHERE users.uuid = match_user_role.uuid) twitterurl,
+      (SELECT users.instagramurl FROM users WHERE users.uuid = match_user_role.uuid) instagramurl,
+      (SELECT users.youtubeurl FROM users WHERE users.uuid = match_user_role.uuid) youtubeurl,
+      (SELECT users.vimeourl FROM users WHERE users.uuid = match_user_role.uuid) vimeourl,
+      (SELECT users.soundcloudurl FROM users WHERE users.uuid = match_user_role.uuid) soundcloudurl,
+      (SELECT users.websiteurl FROM users WHERE users.uuid = match_user_role.uuid) websiteurl,
+      (SELECT users.otherurl FROM users WHERE users.uuid = match_user_role.uuid) otherurl,
+      (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = match_user_role.uuid) username,
+      (SELECT count(sid) FROM stories WHERE stories.uuid = match_user_role.uuid AND stories.pid = $pid) stories,
+      (SELECT count(id) FROM subscription WHERE subscription.refid = match_user_role.uuid AND type='contributor') subscribers
+    ";
+    return $this->db->where(array('pid' => $pid, 'role' => 'contributor'))->get('match_user_role', $select);
+  }
+
   function get_all_admins($pid) {
     $select = "
       match_user_role.uuid, 

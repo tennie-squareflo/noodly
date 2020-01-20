@@ -31,7 +31,7 @@ class Story_Model extends Core_Model{
     if ($pid !== 0) {
       $this->db->where(array('pid' => $pid));
     }
-    if ($uuid != 0) {
+    if ($uuid !== 0) {
       $this->db->where(array('uuid' => $uuid));
     }
     return $this->get($select, array(), $limit, 'sid');

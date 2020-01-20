@@ -81,7 +81,7 @@ class Core_Model {
     }
     return $this->db->delete($this->table_name);
   }
-  function update($new_data, $where = array()) {
+  function update($new_data, $where = array(), $escape = true) {
     if (isset($where)) {
       if (!is_array($where)) {
         $this->db->where(array($this->pk => $where));
@@ -89,7 +89,7 @@ class Core_Model {
         $this->db->where($where);
       }
     }
-    return $this->db->update($this->table_name, $new_data);
+    return $this->db->update($this->table_name, $new_data, $escape);
   }
 
 }

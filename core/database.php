@@ -275,7 +275,7 @@ class Database
         }
     }
 
-    public function update($table, $info)
+    public function update($table, $info, $escape = true)
     {
         if (empty(self::$where)) {
             throw new Exception("Where is not set. Can't update whole table.");
@@ -283,7 +283,12 @@ class Database
             self::connection();
             $update = '';
             foreach ($info as $col => $value) {
-                $update .= sprintf("`%s`='%s', ", $col, mysqli_real_escape_string(self::$link, $value));
+                if ($escape) {
+                    $update .= sprintf("`%s`='%s', ", $col, mysqli_real_escape_string(self::$link, $value));
+                } else {
+                    $update .= sprintf("`%s`=%s, ", $col, mysqli_real_escape_string(self::$link, $value));
+                }
+                
             }
             $update = substr($update, 0, -2);
             $sql = sprintf("UPDATE %s SET %s%s", $table, $update, self::extra());

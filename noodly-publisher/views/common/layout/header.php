@@ -17,7 +17,7 @@
                     <ul>
 
                       <li class="nav-item"><a class="pisen-nav-link active" href="<?php echo BASE_URL; ?>">Latest</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL; ?>/popular">Popular</a></li>
+                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
                       <li class="nav-item"><a class="pisen-nav-link" href="#">Sections</a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
                           <?php

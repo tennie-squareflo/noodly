@@ -81,20 +81,22 @@ class Database
         self::connection();
         $where = self::$where;
         foreach ($info as $row => $value) {
-            $real_row = $escape ? "`".$row."`" : $row;
+            $real_row = "`".$row."`";
             if (empty($where)) {
                 if (is_array($value)) {
                     $where .= sprintf("WHERE %s in (%s)", $real_row, mysqli_real_escape_string(self::$link, join(', ', $value)));
                 }
                 else {
-                    $where .= sprintf("WHERE %s='%s'", $real_row, mysqli_real_escape_string(self::$link, $value));
+                    $value = $escape ? "'".mysqli_real_escape_string(self::$link, $value)."'" : mysqli_real_escape_string(self::$link, $value);
+                    $where .= sprintf("WHERE %s=%s", $real_row, $value);
                 }
             } else {
                 if (is_array($value)) {
                     $where .= sprintf(" %s in (%s)", $real_row, mysqli_real_escape_string(self::$link, join(', ', $value)));
                 }
                 else {
-                    $where .= sprintf(" %s %s='%s'", $type, $real_row, mysqli_real_escape_string(self::$link, $value));
+                    $value = $escape ? "'".mysqli_real_escape_string(self::$link, $value)."'" : mysqli_real_escape_string(self::$link, $value);
+                    $where .= sprintf(" %s %s=%s", $type, $real_row, $value);
                 }
             }
         }
@@ -104,9 +106,9 @@ class Database
     public function where($field, $equal = null, $escape = true)
     {
         if (is_array($field)) {
-            self::__where($field);
+            self::__where($field, 'AND', $escape);
         } else {
-            self::__where(array($field => $equal));
+            self::__where(array($field => $equal), 'AND', $escape);
         }
         return $this;
     }

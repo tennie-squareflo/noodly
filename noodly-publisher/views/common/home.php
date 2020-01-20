@@ -1,10 +1,3 @@
-<?php 
-  $this->load_model('category');
-  $this->load_model('story');
-  $this->load_model('publisher');
-  $categories = $this->category_model->get_categories($publisher['pid'], 0);
-  $stories = $this->view_data['stories'] = $this->story_model->get_published_recent_stories($publisher['pid'], 0);
-?>
 <style>
   #main {
     padding-top: 150px;

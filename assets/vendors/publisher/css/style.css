@@ -513,6 +513,10 @@ header.mobile .header-wrapper .menu-function {
       object-fit: cover;
       height: 100%;
       width: 100%; }
+    .posts .post-img img:hover {
+      opacity: 0.9;
+      filter: alpha(opacity=90); /* For IE8 and earlier */
+    }
   .posts .author-avatar {
     height: 35px;
     width: 35px;

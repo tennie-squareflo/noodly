@@ -49,6 +49,7 @@ class Api_Controller extends Core_Controller {
     $this->response(array(
       'type' => $paragraph['type'],
       'content' => $paragraph['content'],
+      'caption' => $paragraph['caption'],
       'nextPid' => $paragraph['next_pid']
     ));
   }

@@ -12,8 +12,12 @@ const newBlock = {
 												<div class="col-xl-2"></div>
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
-														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content">
+                            <div class="col-12 k-section__content k-section__content--border">
+                              <div class="handle">
+                                <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+                                <label for="exampleTextarea">Video URL</label>
+                              </div>
+                              <input class="form-control" type="text" placeholder="http://youtube.com/" name="content">
 														</div>
 													</div>
 												</div>
@@ -35,8 +39,12 @@ const newBlock = {
 												<div class="col-xl-2"></div>
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
-														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content">
+                            <div class="col-12 k-section__content k-section__content--border">
+                              <div class="handle">
+                                <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+                                <label for="exampleTextarea">Sub-heading</label>
+                              </div>
+                              <input class="form-control" type="text" placeholder="Say Something Here" name="content">
 														</div>
 													</div>
 												</div>
@@ -59,7 +67,10 @@ const newBlock = {
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
-															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Image</label><br>
+                              <div class="handle">
+                                <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+                                <label for="exampleTextarea">Image</label><br>
+                              </div>
                               <input type="file" name="content" data-value=''/>
 														</div>
 													</div>
@@ -94,8 +105,11 @@ const newBlock = {
 												<div class="col-xl-8">
 													<div class="form-group form-group-last">
 														<div class="col-12 k-section__content k-section__content--border">
-															<div class="form-group form-group-last">
-																<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label for="exampleTextarea">Text</label> 
+                              <div class="form-group form-group-last">
+                                <div class="handle">
+                                  <a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+                                  <label for="exampleTextarea">Text</label> 
+                                </div>
 																<div class="quilltext form-control" name="content"></div>
 															</div>
 														</div>
@@ -237,9 +251,10 @@ $(function() {
     );
   });
 
-  // $(".sortable").sortable({
-  //   revert: true
-  // });
+  $(".sortable").sortable({
+    connectWith: '.sortable',
+    handle: '.handle'
+  });
 
   $(".btn-block-delete").click(deleteForm);
 

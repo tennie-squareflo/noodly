@@ -27,7 +27,7 @@ class Story_Controller extends Auth_Controller {
         $this->load_view('/admin/contributor/stories', $this->view_data);
       }
     } else {
-      $this->preview($slug);
+      $this->view_story($slug, false);
     }
   }
 
@@ -293,15 +293,19 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function preview($slug) {
+  function view_story($slug, $preview = true) {
     $this->load_model('story');
     $this->load_model('category');
     $this->load_model('user');
 
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
+    
+    if($preview === false) {
+      $this->story_model->visits_plus($slug);
+    }
 
     $story = $this->story_model->get_one(array('url' => $slug));
-
+    
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);

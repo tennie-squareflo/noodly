@@ -25,7 +25,7 @@ class Publisher_Model extends Core_Model{
       (SELECT count(sid) FROM stories WHERE stories.uuid = match_user_role.uuid AND stories.pid = $pid) stories,
       (SELECT count(id) FROM subscription WHERE subscription.refid = match_user_role.uuid AND type='contributor') subscribers
     ";
-    return $this->db->where(array('pid' => $pid))->get('match_user_role', $select);
+    return $this->db->where(array('pid' => $pid, 'role' => 'contributor'))->get('match_user_role', $select);
   }
 
   function get_all_admins($pid) {

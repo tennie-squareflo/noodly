@@ -9,8 +9,10 @@ $request_uri = str_replace('..', '', $request_uri);
 $request_uri = str_replace('//', '/', $request_uri);
 
 foreach ($ROUTING as $key => $value) {
-  $request_uri = str_replace($key, $value, $request_uri);
-  break;
+  if (strstr($request_uri, $key) !== FALSE) {
+    $request_uri = str_replace($key, $value, $request_uri);
+    break;
+  }
 }
 
 if (substr($request_uri, -4) === '.php') {

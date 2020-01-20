@@ -132,6 +132,17 @@ class Contributor_Controller extends Auth_Controller {
           $this->response(array('code' => 2, 'message' => 'Something went wrong. Please try again.'), 400);
         }
       break;
+      case 'admin':
+        if ($this->user_model->update_role(array('role' => 'admin'), $id, $pid)) {
+          $text['title'] = 'Your '.$publisher['name'].' Account Role has been changed';
+          $text['message'] = 'Your '.$publisher['name'].' account has been changed, please log in and check your role';
+          $view_data['text'] = $text;
+          $this->send_email($id, $pid, 'Your '.$publisher['name'].' Account Blocked', '', 'user_state_change', $view_data);
+          $this->response(array('code' => 0, 'message' => 'The role is changed successfully.'));
+        } else {
+          $this->response(array('code' => 2, 'message' => 'Something went wrong. Please try again.'), 400);
+        }
+      break;
       case 'delete':
         if ($this->user_model->delete_user_role($id, $pid)) {
           $text['title'] = 'Your '.$publisher['name'].' Account has been removed';

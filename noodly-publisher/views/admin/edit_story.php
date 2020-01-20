@@ -152,7 +152,11 @@
 											echo '
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
-														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Video URL</label> <input class="form-control" type="text" placeholder="http://youtube.com/" name="content" value="'.$paragraph['content'].'">
+														<div class="handle">
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+															<label>Video URL</label>
+														</div>
+														<input class="form-control" type="text" placeholder="http://youtube.com/" name="content" value="'.$paragraph['content'].'">
 													</div>
 												</div>
 											';
@@ -161,7 +165,11 @@
 											echo '
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
-														<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Sub-heading</label> <input class="form-control" type="text" placeholder="Say Something Here" name="content" value="'.$paragraph['content'].'">
+														<div class="handle">
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+															<label>Sub-heading</label>
+														</div>
+														<input class="form-control" type="text" placeholder="Say Something Here" name="content" value="'.$paragraph['content'].'">
 													</div>
 												</div>
 											';
@@ -171,7 +179,10 @@
 												<div class="form-group form-group-last">
 													<div class="col-12 k-section__content k-section__content--border">
 														<div class="form-group form-group-last">
-															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Text</label> 
+															<div class="handle">
+																<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+																<label>Text</label> 
+															</div>
 															<div class="form-control quilltext" data-block-id="'.$paragraph['pid'].'" name="content">'.$paragraph['content'].'</div>
 														</div>
 													</div>
@@ -183,19 +194,22 @@
 											<div class="form-group form-group-last">
 												<div class="col-12 k-section__content k-section__content--border">
 													<div class="form-group form-group-last">
-													<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a> <label>Image</label> 
-													<div class="slim"
-														data-service="'.BASE_URL.'api/story_image_upload/content"
-														data-push="true"
-														data-did-throw-error="handleError">
-														<input type="file" name="content" data-value=\''.'{"file": "'.$paragraph['content'].'"}'.'\'/>
-														<img src="'.ASSETS_URL.'media/stories/'.$paragraph['content'].'" alt="">
-														
-													</div>'; ?>
-													<input class="form-control" type="text" placeholder="Caption" name="caption" value="<?php echo $is_new ? '' : $paragraph['caption'];?>">
-													<?php echo '</div>
+														<div class="handle">
+															<a class="btn btn-outline-hover-primary btn-sm btn-icon btn-circle pull-right btn-block-delete"><i class="fas fa-trash"></i></a>
+															<label>Image</label> 
+														</div>
+														<div class="slim"
+															data-service="'.BASE_URL.'api/story_image_upload/content"
+															data-push="true"
+															data-did-throw-error="handleError">
+															<input type="file" name="content" data-value=\''.'{"file": "'.$paragraph['content'].'"}'.'\'/>
+															<img src="'.ASSETS_URL.'media/stories/'.$paragraph['content'].'" alt="">
+															
+														</div>'; ?>
+														<input class="form-control" type="text" placeholder="Caption" name="caption" value="<?php echo $is_new ? '' : $paragraph['caption'];?>">
+														<?php echo '</div>
+													</div>
 												</div>
-											</div>
 											';
 										break;
 									}

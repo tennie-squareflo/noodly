@@ -3,29 +3,37 @@ require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
 class Story_Controller extends Auth_Controller {
   function __construct() {
-    parent::__construct();
+    parent::__construct(true, true);
   }
 
-  function index() {
-    $this->load_model('publisher');
-    $this->load_model('story');
-    $this->load_model('user');
-    $this->view_data['script_files'] = array('custom/publisher/story/list.js');
-    $this->view_data['style_files'] = array('custom/publisher/story/list.css');
-    if ($_SESSION['user']['role'] === 'admin') { // if admin
-      $pid = $_SESSION['user']['pid'];
-      $uuid = $_SESSION['user']['uuid'];
-      $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, 0);
-      $this->load_view('/admin/admin/stories', $this->view_data);
-    } else {    // contributor
-      $pid = $_SESSION['user']['pid'];
-      $uuid = $_SESSION['user']['uuid'];
-      $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, $uuid);
-      $this->load_view('/admin/contributor/stories', $this->view_data);
+  function index($slug = '') {
+    if ($slug === '') {
+      $this->redirect_auth();
+
+      $this->load_model('publisher');
+      $this->load_model('story');
+      $this->load_model('user');
+      $this->view_data['script_files'] = array('custom/publisher/story/list.js');
+      $this->view_data['style_files'] = array('custom/publisher/story/list.css');
+      if ($_SESSION['user']['role'] === 'admin') { // if admin
+        $pid = $_SESSION['user']['pid'];
+        $uuid = $_SESSION['user']['uuid'];
+        $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, 0);
+        $this->load_view('/admin/admin/stories', $this->view_data);
+      } else {    // contributor
+        $pid = $_SESSION['user']['pid'];
+        $uuid = $_SESSION['user']['uuid'];
+        $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, $uuid);
+        $this->load_view('/admin/contributor/stories', $this->view_data);
+      }
+    } else {
+      $this->preview($slug);
     }
   }
 
   function edit($id = 0) {
+    $this->redirect_auth();
+
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css', 'custom/publisher/story/edit.css');
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/quill/quill.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/edit.js');
 
@@ -42,6 +50,8 @@ class Story_Controller extends Auth_Controller {
   }
 
   function action($type) {
+    $this->redirect_auth();
+
     $post = $_POST;
     $this->load_model('story');
     $this->load_model('paragraph');
@@ -64,6 +74,7 @@ class Story_Controller extends Auth_Controller {
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
               'summary' => $main_data['summary'],
               'visits' => 0,
+              'hashtags' => $main_data['hashtags'],
               'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? 'PUBLISHED' : 'SUBMITTED') : 'DRAFT',
               'pid' => $_SESSION['user']['pid'],
               'created_at' => date('Y-m-d H:i:s'),
@@ -98,11 +109,15 @@ class Story_Controller extends Auth_Controller {
                 $this->paragraph_model->update(array('prev_pid' => $prev_pid, 'next_pid' => $next_pid), $blocks_data[$i]['pid']);
               }
             }
+
+            // send emails
+            $this->send_new_story_email($_SESSION['user']['uuid'], $_SESSION['user']['pid'], $new_story_id);
           } else {
             $new_story_id = $main_data['id'];
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
+              'hashtags' => $main_data['hashtags'],
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
@@ -242,6 +257,38 @@ class Story_Controller extends Auth_Controller {
           return;
         }
       break;
+    }
+  }
+
+  function send_new_story_email($uuid, $pid, $sid) {
+    $this->redirect_auth();
+
+    $this->load_model('user');
+    $this->load_model('publisher');
+    $this->load_model('story');
+    $this->load_library('encryption', true);
+    $this->load_model('environment');
+
+    $author = $this->user_model->get_one($uuid);
+    $admins = $this->publisher_model->get_admin_names($pid);
+    $story = $this->story_model->get_one($sid);
+    $env = $this->environment_model->get_env();
+    $expiration_time = time() + (60 * $env['email_expiration_time']);
+    
+    foreach ($admins as $admin) {
+      $view_data = array();
+      $view_data['title'] = $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+
+      $token = array(
+        'expiration_time' => $expiration_time,
+        'uuid' => $admin['uuid'],
+        'sid' => $sid
+      );
+      
+      $link = "/accept/story/".Encryption::encrypt($token);
+      $view_data['admin_name'] = $admin['firstname'];
+      $view_data['message'] = "$author[firstname] has just submitted a new story entitled $story[title]";
+      $this->send_email($admin['uuid'], $pid, $subject, $link, 'post_story', $view_data);
     }
   }
 

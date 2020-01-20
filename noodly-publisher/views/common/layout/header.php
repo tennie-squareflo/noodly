@@ -30,7 +30,7 @@
                           ?>
                         </ul>
                       </li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="contributors.html">Contributors</a></li>
+                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
                       <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a><i class="submenu-opener fas fa-plus"></i>
                     </ul>
                   </nav>

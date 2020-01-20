@@ -1,3 +1,7 @@
 .quilltext {
   min-height: 200px;
 }
+
+.handle, .handle * {
+  cursor: move;
+}

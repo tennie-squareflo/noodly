@@ -28,7 +28,7 @@ class Accept_Controller extends Auth_Controller {
           'uuid' => $user['uuid'],
           'name' => $user['firstname'],
           'avatar' => $user['avatar'],
-          'role' => $role['role'],
+          'role' => $user['role'] === 'super_admin' ? 'admin' : $role['role'],
           'role_status' => (intval($role['status']) === 1),
           'user_status' => (intval($user['status']) === 1),
           'pid' => $pid
@@ -64,7 +64,7 @@ class Accept_Controller extends Auth_Controller {
           'uuid' => $user['uuid'],
           'name' => $user['firstname'],
           'avatar' => $user['avatar'],
-          'role' => $role['role'],
+          'role' => $user['role'] === 'super_admin' ? 'admin' : $role['role'],
           'role_status' => (intval($role['status']) === 1),
           'user_status' => (intval($user['status']) === 1),
           'pid' => $pid

@@ -29,7 +29,7 @@ const call_api = (action, id, refresh = false) => {
         toastr.success(res.message);
         if (refresh) {
           setTimeout(() => {
-            location.href = location.href;
+            location.href = BASE_URL + 'contributor';
           }, 3000);
         }
       } else {
@@ -90,6 +90,13 @@ $(function() {
     const id = $(this).attr("data-id");
     if (confirm("Really?")) {
       call_api('block', id, true);
+    }
+  });
+
+  $(".admin-btn").click(function() {
+    const id = $(this).attr("data-id");
+    if (confirm("Really?")) {
+      call_api('admin', id, true);
     }
   });
 

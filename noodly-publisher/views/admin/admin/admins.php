@@ -68,7 +68,7 @@
                             <label class="form-check-label" for="defaultCheck1"></label>
                           </div>
                         </td>
-                        <td><h5><a href="#"><?php echo $admin['firstname'].' '.$admin['lastname'];?></a></h5></td>
+                        <td><h5><a href="#"><?php echo $admin['username'];?></a></h5></td>
                         <td><?php echo $admin['email'];?></td>
                         <td><?php 
                           echo intval($admin['status']) == 0 

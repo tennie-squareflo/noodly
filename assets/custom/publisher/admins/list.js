@@ -153,7 +153,7 @@ $(function() {
 
           toastr.success(res.message);
           setTimeout(() => {
-            location.href = BASE_URL + `admins`;
+            location.href = BASE_URL + `admin`;
           }, 3000);
         },
         error: function(res) {

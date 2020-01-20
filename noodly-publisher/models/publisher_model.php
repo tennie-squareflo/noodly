@@ -28,6 +28,17 @@ class Publisher_Model extends Core_Model{
     return $this->db->where(array('pid' => $pid))->get('match_user_role', $select);
   }
 
+  function get_all_admins($pid) {
+    $select = "
+      match_user_role.uuid, 
+      match_user_role.status, 
+      (SELECT users.email FROM users WHERE users.uuid = match_user_role.uuid) email,
+      (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = match_user_role.uuid) username,
+      (SELECT count(sid) FROM stories WHERE stories.uuid = match_user_role.uuid AND stories.pid = $pid) stories
+    ";
+    return $this->db->where(array('pid' => $pid, 'role' => 'admin'))->get('match_user_role', $select);
+  }
+
   function get_admins($pid) {
     $padmins = $this->db->where(array('pid' => $pid, 'status' => 1, 'role' => 'admin'))->get('match_user_role');
     $ids = array();

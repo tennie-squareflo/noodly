@@ -42,6 +42,11 @@ $(function() {
             };
 
             toastr.success(res.message);
+
+            setTimeout(() => {
+              location.href = location.href;
+            });
+            
           } else {
             toastr.options = {
               closeButton: false,

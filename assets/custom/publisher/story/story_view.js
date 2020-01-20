@@ -84,7 +84,7 @@ $(function() {
               newSection = $(`
               <div class="">
                   <img class="img-fluid" src="${ASSETS_URL + 'media/stories/' + res.content}" alt="post image">
-                  <div class="blog-pragraph image-caption">'.$paragraphs[$next_id]['caption'].'</div>
+                  <div class="blog-pragraph image-caption">${res.caption ? res.caption : ''}</div>
               </div>
               `);
               break;

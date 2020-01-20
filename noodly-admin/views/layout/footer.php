@@ -21,6 +21,7 @@
 	               }
 	           };
 		const BASE_URL = "<?php echo BASE_URL; ?>";
+		const ASSETS_URL = "<?php echo ASSETS_URL; ?>";
 	</script> <!-- end::Global Config -->
 	 <!--begin::Global Theme Bundle -->
 	 

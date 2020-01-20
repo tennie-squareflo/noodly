@@ -27,4 +27,12 @@ class Index_Controller extends Auth_Controller {
     $this->view_data['stories'] = $this->story_model->get_published_popular_stories($this->pid, 0);
     $this->load_view('common/popular', $this->view_data);
   }
+
+  function contributors() {
+
+    $this->load_model('publisher');
+
+    $this->view_data['contributors'] = $this->publisher_model->get_active_contributors($this->pid);
+    $this->load_view('common/contributors', $this->view_data);
+  }
 } 

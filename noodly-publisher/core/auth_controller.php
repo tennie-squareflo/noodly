@@ -9,11 +9,22 @@ class Auth_Controller extends Core_Controller {
     parent::__construct(PUBLISHER_DOMAIN);
     $this->init();
 
-    if (!$this->check_logged_in() && !$no_auth) {
+    if (!$no_auth && !$this->check_logged_in()) {
       header("Location: ".BASE_URL."login");
       exit();
     }
-    if (!$this->profile_ready() && !$no_profile) {
+    if (!$no_profile && !$this->profile_ready()) {
+      header("Location: ".BASE_URL."my-account");
+      exit();
+    }
+  }
+
+  function redirect_auth() {
+    if (!$this->check_logged_in()) {
+      header("Location: ".BASE_URL."login");
+      exit();
+    }
+    if (!$this->profile_ready()) {
       header("Location: ".BASE_URL."my-account");
       exit();
     }

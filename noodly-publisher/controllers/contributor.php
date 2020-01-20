@@ -154,12 +154,12 @@ class Contributor_Controller extends Auth_Controller {
         }
       break;
       case 'block_selected':
-        if ($this->user_model->delete_user_role($id, $pid)) {
-          $text['title'] = 'Your '.$publisher['name'].' Account has been removed';
-          $text['message'] = 'We are sorry to inform you that your '.$publisher['name'].' account has been removed. Please contact the administrator.';
+        if ($this->user_model->block_user_role($id, $pid)) {
+          $text['title'] = 'Your '.$publisher['name'].' Account has been suspended';
+          $text['message'] = 'We are sorry to inform you that your '.$publisher['name'].' account has been suspended. Please contact the administrator.';
           $view_data['text'] = $text;
-          $this->send_email($id, $pid, 'Your '.$publisher['name'].' Account Removed', '', 'user_state_change', $view_data);
-          $this->response(array('code' => 0, 'message' => 'The role is removed successfully.'));
+          $this->send_email($id, $pid, 'Your '.$publisher['name'].' Account Blocked', '', 'user_state_change', $view_data);
+          $this->response(array('code' => 0, 'message' => 'The role is blocked successfully.'));
         } else {
           $this->response(array('code' => 2, 'message' => 'Something went wrong. Please try again.'), 400);
         }

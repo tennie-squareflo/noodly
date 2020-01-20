@@ -6,6 +6,42 @@ class Accept_Controller extends Auth_Controller {
     parent::__construct(true, true);
   }
 
+  function story($cypher) {
+    $this->load_library('encryption', true);
+    $token = Encryption::decrypt($cypher);
+    $pid = $this->pid;
+    if ($token === NULL || !is_array($token)) {
+      header("Location: ".BASE_URL."error/invalid_token");
+      return;
+    }
+    if ($token['expiration_time'] < time()) {
+      header("Location: ".BASE_URL."error/expired");
+      return;
+    } else {
+      $this->load_model('user');
+      $this->load_model('match_user_role');
+      $user = $this->user_model->get_one($token['uuid']);
+      $role = $this->match_user_role_model->get_one(array('pid' => $pid, 'uuid' => $user['uuid']));
+
+      if (count($role)) {
+        $_SESSION['user'] = array(
+          'uuid' => $user['uuid'],
+          'name' => $user['firstname'],
+          'avatar' => $user['avatar'],
+          'role' => $role['role'],
+          'role_status' => (intval($role['status']) === 1),
+          'user_status' => (intval($user['status']) === 1),
+          'pid' => $pid
+        );
+
+        header("Location: ".BASE_URL."story/edit/".$token['sid']);
+      } else {
+        header("Location: ".BASE_URL."error/invalid_token");
+        return;
+      }
+    }
+  }
+
   function invitation($cypher) {
     $this->load_library('encryption', true);
     $this->load_model('match_user_role');

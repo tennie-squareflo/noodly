@@ -23,7 +23,7 @@
 
               <h5 class="upload-day"><?php echo display_date($story['created_at']) ?></h5>
               <div class="post-tag"><a href="index.html"><?php echo $categories[$story['cid']]['name']; ?></a></div>
-            </div><a class="post-title regular" target="_blank" href="<?php echo BASE_URL.'home/story/'.$story['url'];?>"><?php echo $story['title'];?></a>
+            </div><a class="post-title regular" target="_blank" href="<?php echo BASE_URL.'story/'.$story['url'];?>"><?php echo $story['title'];?></a>
           </div>
         </div>
       <? } ?>

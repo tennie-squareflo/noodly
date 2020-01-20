@@ -40,4 +40,18 @@ class Story_Model extends Core_Model{
   function slug_exists($slug) {
     return $this->count(array('url' => $slug)) > 0;
   }
+/*
+  function visits_plus($sid = 0) {
+    //echo $sid.'=====================';exit;
+    $visits = "select visits from stories where sid = ".$sid;
+    $update = "update stories set visits = ";
+    if($visits == '' || $visits == '0') {
+      $update.= "1";
+    }else {
+      $update.= $visits + 1;
+    }
+    return $this->db->where('sid' => $sid)->update('stories', $update);
+    echo $update;exit;
+  }
+*/
 }

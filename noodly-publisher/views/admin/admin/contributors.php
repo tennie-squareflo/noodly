@@ -93,6 +93,7 @@
                                 <?php if (intval($contributor['status']) > 1): ?>
                                   <a class="dropdown-item invite-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fa fa-paper-plane"></i>Send Invitation</a>
                                 <?php endif; ?>
+                                <!-- <a class="dropdown-item edit-btn" data-id="<?php echo $contributor['uuid']; ?>" href=" href="<?php echo BASE_URL.'users/edit/'.$contributor['uuid'] ?>><i class="fa fa-pencil-alt"></i> Edit</a> -->
                                 <?php if (intval($contributor['status']) == 1): ?>
                                   <a class="dropdown-item block-btn" data-id="<?php echo $contributor['uuid']; ?>" href="#"><i class="fas fa-ban"></i>Block</a>
                                 <?php endif; ?>

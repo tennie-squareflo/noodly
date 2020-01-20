@@ -68,6 +68,12 @@
 																			</select>
 																		</div>
 																	</div>
+																	<div class="form-group form-group">
+																		<label class="col-form-label">Hash Tags</label>
+																			<div class="input-group">
+																				<input class="form-control" placeholder="Hash Tags" type="text" name="hashtags" value="<?php echo $is_new ? '' : $post['hashtags'];?>">
+																		</div>
+																	</div>
 																	<div class="form-group">
 																		<label class="col-form-label">Thumbnail Image</label>
 																		

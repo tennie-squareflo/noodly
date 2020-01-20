@@ -97,6 +97,12 @@ $(function() {
     const id = $(this).attr("data-id");
     call_api('invite', id);
   });
+
+  $(".edit-btn").click(function() {
+    const id = $(this).attr("data-id");
+    call_api('edit', id);
+  });
+  
   
   $(".activate-btn").click(function() {
     const id = $(this).attr("data-id");
@@ -122,7 +128,7 @@ $(function() {
     });
     if (confirm("Really?")) {
       $.ajax({
-        url: BASE_URL + "contributor/action/delete_selected",
+        url: BASE_URL + "contributor/action/block_selected",
         data: { selectedIds },
         dataType: "json",
         method: "POST",

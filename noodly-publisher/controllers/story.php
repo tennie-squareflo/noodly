@@ -270,14 +270,15 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('environment');
 
     $author = $this->user_model->get_one($uuid);
-    $admins = $this->publisher_model->get_admin_names($pid);
+    $admins = $this->publisher_model->get_admins($pid);
     $story = $this->story_model->get_one($sid);
     $env = $this->environment_model->get_env();
     $expiration_time = time() + (60 * $env['email_expiration_time']);
     
     foreach ($admins as $admin) {
       $view_data = array();
-      $view_data['title'] = $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+      $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+      $view_data['title'] = "$author[firstname] has posted a story";
 
       $token = array(
         'expiration_time' => $expiration_time,

@@ -28,7 +28,7 @@ class Publisher_Model extends Core_Model{
     return $this->db->where(array('pid' => $pid))->get('match_user_role', $select);
   }
 
-  function get_admin_names($pid) {
+  function get_admins($pid) {
     $padmins = $this->db->where(array('pid' => $pid, 'status' => 1, 'role' => 'admin'))->get('match_user_role');
     $ids = array();
     foreach ($padmins as $padmin) {

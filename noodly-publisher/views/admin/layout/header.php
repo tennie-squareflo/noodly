@@ -22,12 +22,7 @@
         >
           <span></span>
         </button>
-        <button
-          class="k-header-mobile__toolbar-topbar-toggler"
-          id="k_header_mobile_topbar_toggler"
-        >
-          <i class="flaticon-more-1"></i>
-        </button>
+        
       </div>
     </div>
     <!-- end:: Header Mobile -->

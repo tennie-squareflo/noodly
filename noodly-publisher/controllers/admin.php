@@ -1,20 +1,20 @@
 <?php
 require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
-class Contributor_Controller extends Auth_Controller {
+class Admin_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
   }
 
   function index() {
     $this->load_model('publisher');
-    $this->view_data['script_files'] = array('custom/publisher/contributors/invite_contributor.js', 'custom/publisher/contributors/list.js');
-    $this->view_data['style_files'] = array('custom/publisher/contributors/list.css');
+    $this->view_data['script_files'] = array('custom/publisher/admins/invite_admin.js', 'custom/publisher/admins/list.js');
+    $this->view_data['style_files'] = array('custom/publisher/admins/list.css');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
       $uuid = $_SESSION['user']['uuid'];
-      $this->view_data['contributors'] = $this->publisher_model->get_contributors($pid);
-      $this->load_view('/admin/admin/contributors', $this->view_data);
+      $this->view_data['admins'] = $this->publisher_model->get_admins($pid);
+      $this->load_view('/admin/admin/admins', $this->view_data);
     } else {    // contributor
       header("Location: ".BASE_URL."error/access_denied");
     }
@@ -35,7 +35,7 @@ class Contributor_Controller extends Auth_Controller {
       }
 
       $role = $this->user_model->get_role($user['uuid'], $pid);
-      if (!($role === false || $role['role'] === 'contributor')) {
+      if (!($role === false || $role['role'] === 'admin')) {
         $this->response(array('code' => 2, 'message' => 'This user has already a different role in this publisher'), 500);
       }
     } else {
@@ -53,7 +53,7 @@ class Contributor_Controller extends Auth_Controller {
     }
 
     if ($this->user_model->get_role($user['uuid'], $pid) === false) {
-      if (!($this->user_model->set_publisher_role($user['uuid'], $pid, 'contributor')
+      if (!($this->user_model->set_publisher_role($user['uuid'], $pid, 'admin')
         && $new_role = true)) {
         $this->response(array('code' => 3, 'message' => 'Role setting failed.'), 500);
       }

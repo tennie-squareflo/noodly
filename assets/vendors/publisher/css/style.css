@@ -2817,7 +2817,7 @@ footer.v2 {
     margin-bottom: 70px; }
     .blog-detail .post-author-detail .author-avatar {
       width: 100%;
-      background-color: #f7f7f7;
+      /* background-color: #f7f7f7; */
       text-align: center;
       padding: 20px 0; }
       .blog-detail .post-author-detail .author-avatar img {

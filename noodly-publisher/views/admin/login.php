@@ -18,7 +18,7 @@
 				<div class="k-login-v2__body">
 					<!--begin::Wrapper-->
 					<div class="k-login-v2__body-wrapper">
-					<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>"></a>
+					<a href="#"><img alt="" width="160px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>" style="padding-bottom: 30px;"></a>
 						<div class="k-login-v2__body-container">
 							<div class="k-login-v2__body-title">
 								<h3> </h3>

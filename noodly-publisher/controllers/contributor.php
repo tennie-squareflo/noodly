@@ -102,6 +102,7 @@ class Contributor_Controller extends Auth_Controller {
     
     $view_data['new_user'] = $new_user;
     $view_data['new_role'] = $new_role;
+    $view_data['role'] = $role['role'];
 
     return $this->send_email($id, $pid, $subject, $link, 'invite_user', $view_data);
   }

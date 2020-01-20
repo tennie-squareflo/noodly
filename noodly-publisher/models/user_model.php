@@ -33,11 +33,11 @@ class User_Model extends Core_Model{
   }
 
   function delete_user_role($uuid, $pid) {
-    return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->delete('match_user_role', $data);
+    return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->delete('match_user_role');
   }
 
   function delete_multi_user_role($uuid, $pid) {
-    return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->delete('match_user_role', $data);
+    return $this->db->where(array('uuid' => $uuid, 'pid' => $pid))->delete('match_user_role');
   }
 
   function block_user_role($uuid, $pid) {

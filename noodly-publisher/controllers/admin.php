@@ -13,7 +13,7 @@ class Admin_Controller extends Auth_Controller {
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
       $uuid = $_SESSION['user']['uuid'];
-      $this->view_data['admins'] = $this->publisher_model->get_admins($pid);
+      $this->view_data['admins'] = $this->publisher_model->get_all_admins($pid);
       $this->load_view('/admin/admin/admins', $this->view_data);
     } else {    // contributor
       header("Location: ".BASE_URL."error/access_denied");

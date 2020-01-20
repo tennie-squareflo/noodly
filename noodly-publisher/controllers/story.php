@@ -124,6 +124,7 @@ class Story_Controller extends Auth_Controller {
               'summary' => $main_data['summary'],
               'first_paragraph' => $main_data['first_paragraph'],
               'url' => $main_data['url'],
+              'hashtags' => $main_data['hashtags']
             );
             if (count($other_data) === 0) {
               $new_story_data['first_pid'] = 0;

@@ -299,7 +299,7 @@ $(function() {
         required: true,
         checkUrl: true
       },
-      category: {
+      cid: {
         required: true
       },
       thumb_image: {

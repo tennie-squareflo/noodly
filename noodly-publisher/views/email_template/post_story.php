@@ -268,7 +268,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="border-radius: 8px; padding: 13px 17px; background-color: #5654dd" bgcolor="#5654dd" valign="top" align="center">
-                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">View Story.</a>
+                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">View Story</a>
                                                 </td>
                                               </tr>
                                             </tbody>

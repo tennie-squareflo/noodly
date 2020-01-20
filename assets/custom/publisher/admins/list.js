@@ -2,7 +2,7 @@
 
 const call_api = (action, id, refresh = false) => {
   $.ajax({
-    url: BASE_URL + "contributor/action/" + action,
+    url: BASE_URL + "admin/action/" + action,
     data: { id },
     dataType: "json",
     method: "POST",
@@ -128,7 +128,7 @@ $(function() {
     });
     if (confirm("Really?")) {
       $.ajax({
-        url: BASE_URL + "contributor/action/block_selected",
+        url: BASE_URL + "admin/action/block_selected",
         data: { id: selectedIds },
         dataType: "json",
         method: "POST",
@@ -153,7 +153,7 @@ $(function() {
 
           toastr.success(res.message);
           setTimeout(() => {
-            location.href = BASE_URL + `contributors`;
+            location.href = BASE_URL + `admins`;
           }, 3000);
         },
         error: function(res) {

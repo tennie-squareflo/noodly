@@ -13,4 +13,8 @@ class Index_Controller extends Auth_Controller {
   function contact() {
     $this->load_view('common/contact', $this->view_data);
   }
+
+  function popular() {
+    $this->load_view('common/popular', $this->view_data);
+  }
 } 

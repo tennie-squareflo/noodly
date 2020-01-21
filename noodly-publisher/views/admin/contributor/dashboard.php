@@ -149,7 +149,7 @@
 														?>
 															<tr>
 																<td>
-																	<strong><a href="#"><?php echo $story['title']; ?></a></strong>
+																	<strong><a href="<?php echo BASE_URL.'story/preview/'.$story['url'];?>" target="_blank"><?php echo $story['title']; ?></a></strong>
 																</td>
 																<td>
 																	<strong><a href="#"><?php echo $story['username']; ?></a></strong>

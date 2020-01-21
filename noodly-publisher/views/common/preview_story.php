@@ -40,9 +40,17 @@
         const firstPid = <?php echo $post['first_pid']; ?>;
       </script>
     </div>
-    
+    <div class="post-footer">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="post-tags">
+            <a href="index.html"><?php echo $post['hashtags'] ?></a><a href="index.html">#PHOTOGRAHY</a><a href="index.html">#TIPS</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="post-author-detail">
-      <div class="row no-gutters align-items-center">
+      <div class="row no-gutters align-items-start">
         <div class="col-sm-1 col-md-2">
           <div class="author-avatar">
           <?php
@@ -111,24 +119,38 @@
           </div>
         </div>
       </div>
-      <div class="another-posts"><a class="arrow-control arrow-prev" href="blog_detail.html"><i class="arrow_left"></i></a><a class="arrow-control arrow-next" href="blog_detail.html"><i class="arrow_right"></i></a>
+      <div class="another-posts">
+        <?php if(!empty($prev_story['sid'])) { ?>
+          <a class="arrow-control arrow-prev" href="<?php echo BASE_URL.'story/'.$prev_story['url'];?>"><i class="arrow_left"></i></a>
+        <?php } ?>
+        <?php if(!empty($next_story['sid'])) { ?>
+          <a class="arrow-control arrow-next" href="<?php echo BASE_URL.'story/'.$next_story['url'];?>"><i class="arrow_right"></i></a>
+        <?php } ?>
       <div class="row no-gutters">
+        
         <div class="col-12 col-md-6"><a href=""></a>
-          <div class="another-post_block prev-post">
-            <div class="post-mini-img text-left"><a href="blog_detail.html"><img src="https://images.pexels.com/photos/999248/pexels-photo-999248.png?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
-            <div class="post-title">
-              <p>Previous post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
+          <?php if(!empty($prev_story['sid'])) { ?>
+            <div class="another-post_block prev-post">
+              <div class="post-mini-img text-left"><a href="<?php echo BASE_URL.'story/'.$prev_story['url'];?>"><img src="<?php echo ASSETS_URL;?>media/stories/<?php echo $prev_story['thumb_image'] ?>?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
+              <div class="post-title">
+                <p>Previous post</p><a href="<?php echo BASE_URL.'story/'.$prev_story['url'];?>"><?php echo $prev_story['title']; ?></a>
+              </div>
             </div>
-          </div>
+          <?php } ?>
         </div>
+        
+        
         <div class="col-12 col-md-6">
-          <div class="another-post_block text-right next-post">
-            <div class="post-title">
-              <p>Next post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
+          <?php if(!empty($next_story['sid'])) { ?>
+            <div class="another-post_block text-right next-post">
+              <div class="post-title">
+                <p>Next post</p><a href="<?php echo BASE_URL.'story/'.$next_story['url'];?>"><?php echo $next_story['title'] ?></a>
+              </div>
+              <div class="post-mini-img text-right"><a href="<?php echo BASE_URL.'story/'.$next_story['url'];?>"><img src="<?php echo ASSETS_URL;?>media/stories/<?php echo $next_story['thumb_image'] ?>?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
             </div>
-            <div class="post-mini-img text-right"><a href="blog_detail.html"><img src="https://images.pexels.com/photos/3133688/pexels-photo-3133688.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
-          </div>
+          <?php } ?>
         </div>
+        
       </div>
     </div>
     </div>

@@ -2760,7 +2760,7 @@ footer.v2 {
           color: #f17070;
           text-decoration: none; }
   .blog-detail .another-posts {
-    margin-bottom: 60px;
+    margin-top: 60px;
     position: relative; }
     .blog-detail .another-posts .arrow-control {
       font-size: 20px;
@@ -2824,7 +2824,8 @@ footer.v2 {
       width: 100%;
       /* background-color: #f7f7f7; */
       text-align: center;
-      padding: 20px 0; }
+      padding: 20px 0; 
+      padding-top: 0;}
       .blog-detail .post-author-detail .author-avatar img {
         width: 100%;
         height: 100%;

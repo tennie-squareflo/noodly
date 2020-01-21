@@ -405,5 +405,4 @@ jQuery(document).ready(function($) {
 	    + '<div class="countdown-number"><b>%M</b><p>min</p></div> '
 	    + '<div class="countdown-number"><b>%S</b><p>sec</p></div>'));
 	});
-
 });

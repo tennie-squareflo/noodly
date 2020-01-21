@@ -9,6 +9,39 @@ class Environment_Model extends Core_Model{
     foreach ($db_results as $db_result) {
       $result[$db_result['env_name']] = $db_result['env_value'];
     }
+    if (count($result) === 0) {
+      $field_array = array(
+        'email_expiration_time',
+        'email_background_image',
+        'email_background_color',
+        'email_foreground_color',
+        'email_new_user_title',
+        'email_new_user_message',
+        'email_new_role_title',
+        'email_new_role_message',
+        'email_invitation_title',
+        'email_invitation_message',
+        'email_heading_color',
+        'email_button_color',
+        'email_button_text_color',
+        'email_logo_size',
+        'email_invitation_subject',
+        'email_new_user_subject',
+        'email_logo',
+        'admin_logo',
+        'admin_color_primary',
+        'admin_color_secondary',
+      );
+
+      foreach ($field_array as $field) {
+        $this->create(
+          array(
+            'env_name' => $field,
+            'pid' => $pid,
+          )
+        );
+      }
+    }
     return $result;
   }
 

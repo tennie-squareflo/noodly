@@ -2,6 +2,14 @@
   #main {
     padding-top: 150px;
   }
+
+  .normal-btn {
+    <?php if(!empty($publisher['loadmore_color'])) { ?>
+      background-color: <?php echo $publisher['loadmore_color']; ?> !important;
+    <?php } else { ?>
+      background-color: #f17070;
+    <?php } ?>
+  }
 </style>
 <section class="posts blog-masonry">
   <div class="container">

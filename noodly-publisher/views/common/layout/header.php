@@ -31,7 +31,15 @@
                         </ul>
                       </li>
                       <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a><i class="submenu-opener fas fa-plus"></i>
+                      <li class="nav-item"><a class="pisen-nav-link" href="#"><i class="fa fa-ellipsis-h"></i></a><i class="submenu-opener fas fa-plus"></i>
+                        <ul class="sub-menu">
+                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">About Us</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">Post A Story</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'login' ?>">Log In</a></li>
+                        </ul>
+                      </li>
+                      
                     </ul>
                   </nav>
                 </div>

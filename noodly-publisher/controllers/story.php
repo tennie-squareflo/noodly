@@ -306,11 +306,11 @@ class Story_Controller extends Auth_Controller {
     }
 
     $story = $this->story_model->get_one(array('url' => $slug));
-    
+    $this->view_data['prev_story'] = $this->story_model->get_prev_story($story['sid'], $story['pid']);
+    $this->view_data['next_story'] = $this->story_model->get_next_story($story['sid'], $story['pid']);
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
-    // $this->story_model->visits_plus($story['sid']);
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

@@ -44,7 +44,12 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="post-tags">
-            <a href="index.html"><?php echo $post['hashtags'] ?></a><a href="index.html">#PHOTOGRAHY</a><a href="index.html">#TIPS</a>
+            <?php //
+              $hashtags = explode(' ', $post['hashtags']);
+
+              for($i =0; $i < count($hashtags); $i++) {?>
+                <a href="index.html"><?php echo $hashtags[$i] ?></a>
+            <?php } ?>
           </div>
         </div>
       </div>

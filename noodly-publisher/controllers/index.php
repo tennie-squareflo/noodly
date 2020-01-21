@@ -35,4 +35,8 @@ class Index_Controller extends Auth_Controller {
     $this->view_data['contributors'] = $this->publisher_model->get_active_contributors($this->pid);
     $this->load_view('common/contributors', $this->view_data);
   }
+
+  function signup() {
+    $this->load_view('common/signup', $this->view_data); 
+  }
 } 

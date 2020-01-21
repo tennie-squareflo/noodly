@@ -155,8 +155,212 @@ $(function() {
     }
   });
 
+  $("#register-form-email").validate({
+    rules: {
+      logo: {
+        required: true
+      },
+      admin_logo: {
+        required: true
+      },
+      // size: {
+      //   required: true
+      // },
+      color_bg: {
+        required: true
+      },
+      color_heading: {
+        required: true
+      },
+      color_text: {
+        required: true
+      },
+      color_button: {
+        required: true
+      },
+      color_button_text: {
+        required: true
+      }
+    },
+    submitHandler: function(form) {
+      $.ajax({
+        url: BASE_URL + "settings/action/email",
+        data: $(form).serialize(),
+        dataType: "json",
+        method: "POST",
+        success: function(res) {
+          if (res.code == 0) {
+            //location.href = 'dashboard.php';
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.success(res.message);
+          } else {
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.warning(res.message);
+          }
+        },
+        error: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
+        }
+      });
+    }
+  });
+
+  $("#register-form-notifications").validate({
+    rules: {
+      invite_subject: {
+        required: true
+      },
+      invite_heading: {
+        required: true
+      },
+      invite_message: {
+        required: true
+      },
+      new_subject: {
+        required: true
+      },
+      new_heading: {
+        required: true
+      },
+      new_message: {
+        required: true
+      }
+    },
+    submitHandler: function(form) {
+      $.ajax({
+        url: BASE_URL + "settings/action/notifications",
+        data: $(form).serialize(),
+        dataType: "json",
+        method: "POST",
+        success: function(res) {
+          if (res.code == 0) {
+            //location.href = 'dashboard.php';
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.success(res.message);
+          } else {
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.warning(res.message);
+          }
+        },
+        error: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
+        }
+      });
+    }
+  });
+
   $("#save-btn").click(() => {
     $("#register-form").submit();
+  });
+
+  $("#save-btn-notifications").click(() => {
+    $("#register-form-notifications").submit();
+  });
+
+  $("#save-btn-email").click(() => {
+    $("#register-form-email").submit();
   });
   setTimeout(() => {
     $("#register-form")
@@ -174,4 +378,25 @@ $(function() {
           .attr("data-value")
       );
   }, 500);
+
+  setTimeout(() => {
+
+    console.log($("#register-form")
+          .find('input[type="file"]'), "sddfdf");
+    $("#register-form-email")
+      .find('input[name="logo"]')
+      .val(
+        $("#register-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+    $("#register-form-email")
+      .find('input[name="adminlogo"]')
+      .val(
+        $("#register-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+  }, 1000);
+
 });

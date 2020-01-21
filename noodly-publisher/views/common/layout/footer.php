@@ -20,8 +20,8 @@
                     <ul>
                       
                       <li><a class="footer-link" href="">Post A Story</a></li>
-                      <li><a class="footer-link" href="about_us.html">Sign Up</a></li>
-                      <li><a class="footer-link" href="contact.html">Sign In</a></li>
+                      <li><a class="footer-link" href="<?php echo BASE_URL.'index/signup' ?>">Sign Up</a></li>
+                      <li><a class="footer-link" href="">Sign In</a></li>
                     </ul>
                   </div>
                 </div>

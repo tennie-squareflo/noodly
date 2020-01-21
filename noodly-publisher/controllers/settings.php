@@ -5,14 +5,45 @@ class Settings_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
     $this->load_model('publisher');
+    $this->load_model('environment');
   }
 
   function index() {
-    $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/publisher/settings/settings.js');
-    $view_data['publisher_id'] = $_SESSION['user']['pid'];
-    $view_data['publisher'] = $this->publisher_model->get_one(intval($view_data['publisher_id']));
-    $this->load_view('/admin/admin/settings', $view_data);
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
+    $this->load_view('/admin/admin/settings', $this->view_data);
+  }
+
+  function admin_setting() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/no-ui-slider/nouislider.min.css');
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js', 'vendors/custom/no-ui-slider/nouislider.js');
+    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings/admin', $this->view_data);
+  }
+
+  function email_setting() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
+    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['emails'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings/email', $this->view_data);
+  }
+
+  function website_setting() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
+    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings/website', $this->view_data);
+  }
+
+  function notifications_setting() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
+    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['notifications'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings/notifications', $this->view_data);
   }
 
   function action($action) {
@@ -20,6 +51,40 @@ class Settings_Controller extends Auth_Controller {
     
     $this->load_helper('validation');
     switch ($action) {
+      case 'notifications': {
+        $new_data = array(
+          'email_invitation_subject' => test_input($_POST['invite_subject']),
+          'email_invitation_title' => test_input($_POST['invite_heading']),
+          'email_invitation_message' => test_input($_POST['invite_message']),
+          'email_new_user_subject' => test_input($_POST['new_subject']),
+          'email_new_user_title' => test_input($_POST['new_heading']),
+          'email_new_user_message' => test_input($_POST['new_message'])
+        );
+        if ($this->environment_model->update_env($new_data, $id)) {
+          $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+        }
+        break;
+      }
+      case 'email': {
+        $new_data = array(
+          'email_logo' => test_input($_POST['logo']),
+          'admin_admin_logo' => test_input($_POST['adminlogo']),
+          'email_logo_size' => test_input($_POST['adminlogo']),
+          'email_background_color' => test_input($_POST['color_bg']),
+          'email_heading_color' => test_input($_POST['color_heading']),
+          'email_foreground_color' => test_input($_POST['color_text']),
+          'email_button_color' => test_input($_POST['color_button']),
+          'email_button_text_color' => test_input($_POST['color_button_text'])
+        );
+        if ($this->environment_model->update_env($new_data, $id)) {
+          $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+        }
+        break;
+      }
       case 'edit': {
         $new_data = array(
           'name' => test_input($_POST['name']),

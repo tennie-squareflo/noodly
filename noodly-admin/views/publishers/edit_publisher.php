@@ -138,7 +138,15 @@
 															</div>
 														</div>
 													</div>
-													
+													<div class="form-group">
+														<label class="col-7 col-form-label">Load More Button Color</label>
+														<div class="col-12">
+															<div class="input-group">
+																<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
+																<input type="text" class="form-control" name="loadmore_color" value="<?php echo count($publisher) ? $publisher['loadmore_color'] : ''; ?>" placeholder="Load More Button Color" aria-describedby="basic-addon1">
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
@@ -184,6 +192,13 @@
 														<label class="col-7 col-form-label">Zip / Postal Code</label>
 														<div class="col-12">
 															<input class="form-control" placeholder="ZipCode" name="zipcode" type="text" value="<?php echo count($publisher) ? $publisher['zipcode'] : ''; ?>">
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-3 col-form-label">Google Map</label>
+														<div class="col-12">
+															<input class="form-control" placeholder="Google Map" name="map" type="text" value="<?php echo count($publisher) ? $publisher['map'] : ''; ?>">
 														</div>
 													</div>
 												</div>

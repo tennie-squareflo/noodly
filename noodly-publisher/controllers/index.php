@@ -40,6 +40,9 @@ class Index_Controller extends Auth_Controller {
   }
 
   function channels($channel) {
-    
+  }
+  
+  function signup() {
+    $this->load_view('common/signup', $this->view_data); 
   }
 } 

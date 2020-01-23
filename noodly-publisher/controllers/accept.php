@@ -100,6 +100,49 @@ class Accept_Controller extends Auth_Controller {
   }
 
   function save_profile() {
+    $id = $_SESSION['user']['uuid'];
+    $pid = $_SESSION['user']['pid'];
+
+    $new_data = $this->check_vaidation();
+
+    //
+    if ($this->user_model->update($new_data, $id) &&
+      $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $pid))) {
+      if (isset($role['status']) && intval($role['status']) === 1) {
+        $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
+      }
+      else {
+        $this->load_model('publisher');
+        $publisher = $this->publisher_model->get_one($pid);
+        $subject = 'Welcome to '.$publisher['domain'];
+
+        if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
+          $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
+        }
+      }
+    } else {
+      $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
+    }
+  }
+
+  function update_profile() {
+    //
+    $id = $_POST['id'];
+    $pid = $_SESSION['user']['pid']; // $this->pid
+    $new_data = $this->check_vaidation();
+
+    if ($this->user_model->update($new_data, $id) &&
+      $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $pid))) {
+      $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
+      /**/
+    } else {
+      $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
+    }
+  }
+
+  function check_vaidation() {
     $this->load_model('user');
     $this->load_model('match_user_role');
     $this->load_helper('validation');
@@ -126,8 +169,8 @@ class Accept_Controller extends Auth_Controller {
       'websiteurl' => test_input($_POST['websiteurl']),
       'otherurl' => test_input($_POST['otherurl']),
     );
-    $id = $_SESSION['user']['uuid'];
-    $pid = $_SESSION['user']['pid'];
+    $id = $_POST['id'];
+    $pid = $_SESSION['user']['pid']; // $this->pid
     $user = $this->user_model->get_one($id);
     $role = $this->match_user_role_model->get_one(array('uuid' => $id, 'pid' => $pid));
     if ($user['password'] != $_POST['password']) {
@@ -155,27 +198,8 @@ class Accept_Controller extends Auth_Controller {
         return;
       }
     }
-    
-    //
-    if ($this->user_model->update($new_data, $id) &&
-      $this->match_user_role_model->update(array('status' => 1), array('uuid' => $id, 'pid' => $pid))) {
-      if (isset($role['status']) && intval($role['status']) === 1) {
-        $this->response(array('code' => 0, 'message' => 'Profile Updated Successfully.', 'navigate' => false));
-      }
-      else {
-        $this->load_model('publisher');
-        $publisher = $this->publisher_model->get_one($pid);
-        $subject = 'Welcome to '.$publisher['domain'];
 
-        if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
-          $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
-        } else {
-          $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);
-        }
-      }
-    } else {
-      $this->response(array('code' => 1, 'message' => 'User update failed!'), 500);
-    }
+    return $new_data;
   }
 
   function success() {

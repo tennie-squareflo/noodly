@@ -82,6 +82,7 @@
                             <i class="fa fa-globe"></i>
                           </a>
                           <?php } ?>
+                        </div>
                     </div>
                   </div>
                 </div>

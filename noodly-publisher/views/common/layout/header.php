@@ -16,9 +16,9 @@
                   <nav class="navigation">
                     <ul>
 
-                      <li class="nav-item"><a class="pisen-nav-link active" href="<?php echo BASE_URL; ?>">Latest</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="#">Sections</a><i class="submenu-opener fas fa-plus"></i>
+                      <li class="nav-item"><a class="pisen-nav-link latest_menu <?php echo $current_page === 'latest' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>">Latest</a></li>
+                      <li class="nav-item"><a class="pisen-nav-link popular_menu <?php echo $current_page === 'popular' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
+                      <li class="nav-item"><a class="pisen-nav-link channel_menu <?php echo $current_page === 'channels' ? 'active' : ''; ?>" href="#">Channels</a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
                           <?php
                             
@@ -28,15 +28,16 @@
                           <?php
                             }
                           ?>
+                            <li class="sub-menu_item"><a class="sub-menu-link" href="#">All</a></li>
                         </ul>
                       </li>
-                      <li class="nav-item"><a class="pisen-nav-link" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
+                      <li class="nav-item"><a class="pisen-nav-link <?php echo $current_page === 'contributors' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
                       <li class="nav-item"><a class="pisen-nav-link" href="#"><i class="fa fa-ellipsis-h"></i></a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
-                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">About Us</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">Post A Story</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'login' ?>">Log In</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'aboutus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">About Us</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'contactus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'post_story' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Post A Story</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'login' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'login' ?>">Log In</a></li>
                         </ul>
                       </li>
                       

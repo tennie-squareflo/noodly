@@ -48,7 +48,7 @@
               $hashtags = explode(' ', $post['hashtags']);
 
               for($i =0; $i < count($hashtags); $i++) {?>
-                <a href="index.html"><?php echo $hashtags[$i] ?></a>
+                <a href="#"><?php echo $hashtags[$i] ?></a>
             <?php } ?>
           </div>
         </div>
@@ -120,7 +120,7 @@
               <?php } ?>
             </div>
             <p><?php echo $author['shortbio']; ?></p>
-            <button class="normal-btn btn-secondary">Contact</button> &nbsp; <button class="normal-btn">Subscribe</button>
+            <button class="normal-btn">Subscribe</button>
           </div>
         </div>
       </div>

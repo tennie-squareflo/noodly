@@ -3,11 +3,11 @@
 						<!-- begin:: Content Head -->
 						<div class="k-content__head k-grid__item">
 							<div class="k-content__head-main">
-								<h3 class="k-content__head-title"><?php echo $is_new ? 'Add A Section' : 'Edit A Section'; ?></h3>
+								<h3 class="k-content__head-title"><?php echo $is_new ? 'Add A Channel' : 'Edit A Channel'; ?></h3>
 							</div>
 							<div class="k-content__head-toolbar">
 								<div class="k-content__head-toolbar-wrapper">
-									<a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $is_new ? 'Add Section' : 'Update'; ?></a>
+									<a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $is_new ? 'Add Channel' : 'Update'; ?></a>
 								</div>
 							</div>
 						</div><!-- end:: Content Head -->
@@ -27,7 +27,7 @@
 															<div class="k-section__body">
 																<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 																<div class="form-group">
-																	<label class="col-12 col-form-label">Section Name</label>
+																	<label class="col-12 col-form-label">Channel Name</label>
 																	<div class="col-12">
 																		<input class="form-control" name="name" type="text" value="<?php echo $is_new ? '' : $category['name']; ?>">
 																	</div>

@@ -21,7 +21,7 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>section"><i class="k-menu__link-icon fa fa-list"></i><span class="k-menu__link-text">Sections</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>channel"><i class="k-menu__link-icon fa fa-list"></i><span class="k-menu__link-text">Channels</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">

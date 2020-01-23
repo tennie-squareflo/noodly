@@ -31,7 +31,7 @@ class Environment_Model extends Core_Model{
         'admin_logo',
         'admin_color_primary',
         'admin_color_secondary',
-        'adming_logo_size',
+        'admin_logo_size',
         'website_logo',
         'website_logo_size',
         'website_color_primary',
@@ -45,6 +45,7 @@ class Environment_Model extends Core_Model{
             'pid' => $pid,
           )
         );
+        $result[$field] = '';
       }
     }
     return $result;

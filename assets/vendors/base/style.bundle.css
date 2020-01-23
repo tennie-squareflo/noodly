@@ -61201,7 +61201,7 @@ input:-webkit-autofill:active {
 }
 
 .btn-success {
-    color: #fff;
+    color: #fff !important;
     background-color: #1dc9b7;
     border-color: #1dc9b7
 }

@@ -5,7 +5,7 @@ $(function() {
     const id = $(this).data("id");
     if (confirm("Really?")) {
       $.ajax({
-        url: BASE_URL + "section/action/delete",
+        url: BASE_URL + "channel/action/delete",
         data: { id },
         dataType: "json",
         method: "POST",
@@ -73,7 +73,7 @@ $(function() {
     });
     if (confirm("Really?")) {
       $.ajax({
-        url: BASE_URL + "section/action/delete_selected",
+        url: BASE_URL + "channel/action/delete_selected",
         data: { selectedIds },
         dataType: "json",
         method: "POST",

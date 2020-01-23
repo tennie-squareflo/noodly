@@ -1,7 +1,7 @@
 <?php
 require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
-class Section_Controller extends Auth_Controller {
+class Channel_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
   }
@@ -58,7 +58,7 @@ class Section_Controller extends Auth_Controller {
           ), 500);
         }
         $this->response(array(
-          'message' => "A Section ".($post['id'] == '0' ? 'Created' : 'Updated')." Successfully!",
+          'message' => "A Channel ".($post['id'] == '0' ? 'Created' : 'Updated')." Successfully!",
           'id' => $id
         ), 200);
       }
@@ -68,7 +68,7 @@ class Section_Controller extends Auth_Controller {
         try {
           $this->category_model->delete($id);
           $this->response(array(
-            'message' => "A Section Deleted Successfully!",
+            'message' => "A Channel Deleted Successfully!",
           ), 200);
         } catch(Exception $e) {
           $this->response(array(
@@ -83,7 +83,7 @@ class Section_Controller extends Auth_Controller {
         try {
           $this->category_model->deleteRows($ids);
           $this->response(array(
-            'message' => "Sections Deleted Successfully!",
+            'message' => "Channels Deleted Successfully!",
           ), 200);
         } catch(Exception $e) {
           $this->response(array(

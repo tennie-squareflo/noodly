@@ -78,7 +78,7 @@ $(function() {
   $('.form-control[name=name]').change((e) => {
     if (getSlug === true) {
       $.ajax({
-        url: `${BASE_URL}section/get_slug`,
+        url: `${BASE_URL}channel/get_slug`,
         method: "post",
         dataType: "JSON",
         data: { title: e.target.value },
@@ -99,7 +99,7 @@ const submitForm = type => {
   }
 
   $.ajax({
-    url: `${BASE_URL}section/action/edit`,
+    url: `${BASE_URL}channel/action/edit`,
     method: "post",
     dataType: "JSON",
     data: $('#k_form').serialize(),
@@ -124,7 +124,7 @@ const submitForm = type => {
 
       toastr.success(res.message);
       setTimeout(() => {
-        location.href= BASE_URL + 'section/edit/' + res.id;
+        location.href= BASE_URL + 'channel/edit/' + res.id;
       }, 3000);
     },
     error: function(res) {

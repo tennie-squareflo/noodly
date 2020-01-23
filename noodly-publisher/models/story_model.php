@@ -90,13 +90,13 @@ class Story_Model extends Core_Model{
   }
 
   function get_prev_story($sid, $pid) {
-    $query = "SELECT * FROM stories WHERE sid < ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
+    $query = "SELECT * FROM stories WHERE sid > ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
     return $this->db->query($query, true);
 
   }
 
   function get_next_story($sid, $pid) {
-    $query = "SELECT * FROM stories WHERE sid > ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
+    $query = "SELECT * FROM stories WHERE sid < ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
     return $this->db->query($query, true);
 
   }

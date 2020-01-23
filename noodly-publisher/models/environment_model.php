@@ -31,6 +31,11 @@ class Environment_Model extends Core_Model{
         'admin_logo',
         'admin_color_primary',
         'admin_color_secondary',
+        'adming_logo_size',
+        'website_logo',
+        'website_logo_size',
+        'website_color_primary',
+        'website_color_secondary'
       );
 
       foreach ($field_array as $field) {

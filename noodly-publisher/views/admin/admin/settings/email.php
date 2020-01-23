@@ -68,14 +68,14 @@
 													<label class="col-3 col-form-label">Background Image</label>
 													<div class="col-9">
 							                          <div class="slim"
-							                            data-service="<?php echo BASE_URL; ?>settings/admin_logo_upload"
+							                            data-service="<?php echo BASE_URL; ?>settings/bg_upload"
 																						data-push="true"
 							                            data-did-throw-error="handleError">
-							                            <input type="file" name="admin_logo" data-value='<?php echo count($emails) ? '{"file": "'.$emails['admin_logo'].'"}' : ''; ?>'/>
+							                            <input type="file" name="logo_back" data-value='<?php echo count($emails) ? '{"file": "'.$emails['email_background_image'].'"}' : ''; ?>'/>
 							                            <?php
 							                              if (count($emails)) {
 							                            ?>
-							                            <img src="<?php echo ASSETS_URL.'media/logos/'.$emails['admin_logo']; ?>" alt="">
+							                            <img src="<?php echo ASSETS_URL.'media/logos/'.$emails['email_background_image']; ?>" alt="">
 							                            <?php
 							                              }?>
 							                          </div>
@@ -86,7 +86,7 @@
 												<div class="form-group">
 													<label class="col-7 col-form-label">Logo Size:</label>
 													<div class="col-12">
-														<div id="admin_logo_size" class="nouislider nouislider--handle-danger noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.15, 1);"></div></div><div class="noUi-origin" style="transform: translate(-85%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="20000.0" aria-valuemax="80000.0" aria-valuenow="29000.0" aria-valuetext="29.000 (US $)"><div class="noUi-touch-area"></div></div></div></div></div>
+														<input class="form-control" placeholder="30px" name="logo_size" type="text" value="<?php echo count($emails) ? $emails['email_logo_size'] : ''; ?>">
 													</div>
 												</div>
 												<div class="form-group">

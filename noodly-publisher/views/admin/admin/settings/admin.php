@@ -12,7 +12,7 @@
 			<div class="k-content__head-toolbar">
 				<div class="k-content__head-toolbar-wrapper">
 					
-					<a class="btn btn-success" id="save-btn">
+					<a class="btn btn-success" id="save-btn-admin">
 						<i class="la la-check"></i> Save!
 					</a>
 				</div>
@@ -29,7 +29,7 @@
 					<div class="k-portlet" id="k_page_portlet">
 						<div class="k-portlet__body">
             <?php
-              if ($publisher_id !== 0 && count($publisher) === 0) {
+              if ($publisher_id !== 0 && count($admins) === 0) {
                 $publisher_id = 0;
             ?>
               <div class="alert alert-danger" id="error-message" role="alert">
@@ -38,7 +38,7 @@
             <?php
               }
             ?>
-            <form class="k-form" id="register-form"  method="post" enctype="multipart/form-data">
+            <form class="k-form" id="register-form-admin"  method="post" enctype="multipart/form-data">
               <input type="hidden" name="id" value="<?php echo $publisher_id; ?>" />
 								<div class="row">
 									<div class="col-xl-2"></div>
@@ -52,13 +52,14 @@
 													<div class="col-9">
                           <div class="slim"
                             data-service="<?php echo BASE_URL; ?>settings/logo_upload"
-															data-push="true"
+							data-push="true"
+							data-size="200, 50"								
                             data-did-throw-error="handleError">
-                            <input type="file" name="logo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>'/>
+                            <input type="file" name="logo" data-value='<?php echo count($admins) ? '{"file": "'.$admins['admin_logo'].'"}' : ''; ?>'/>
                             <?php
-                              if (count($publisher)) {
+                              if (count($admins)) {
                             ?>
-                            <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" alt="">
+                            <img src="<?php echo ASSETS_URL.'media/logos/'.$admins['admin_logo']; ?>" alt="">
                             <?php
                               }?>
                           </div>
@@ -67,19 +68,19 @@
 												<div class="form-group">
 													<label class="col-7 col-form-label">Logo Size:</label>
 													<div class="col-12">
-														<div id="admin_logo_size" class="nouislider nouislider--handle-danger noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.15, 1);"></div></div><div class="noUi-origin" style="transform: translate(-85%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="20000.0" aria-valuemax="80000.0" aria-valuenow="29000.0" aria-valuetext="29.000 (US $)"><div class="noUi-touch-area"></div></div></div></div></div>
+														<input class="form-control" placeholder="30px" name="logo_size" type="text" value="<?php echo count($admins) ? $admins['admin_logo_size'] : ''; ?>">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-7 col-form-label">Color 1:</label>
 													<div class="col-12">
-														<input class="form-control" placeholder="#f17070" name="color_primary" type="text" value="<?php echo count($publisher) ? $publisher['address2'] : ''; ?>">
+														<input class="form-control" placeholder="#f17070" name="color_primary" type="text" value="<?php echo count($admins) ? $admins['admin_color_primary'] : ''; ?>">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-7 col-form-label">Color 2:</label>
 													<div class="col-12">
-														<input class="form-control" placeholder="#f17070" name="colorSecondary" type="text" value="<?php echo count($publisher) ? $publisher['address2'] : ''; ?>">
+														<input class="form-control" placeholder="#f17070" name="color_secondary" type="text" value="<?php echo count($admins) ? $admins['admin_color_secondary'] : ''; ?>">
 													</div>
 												</div>	
 											</div>

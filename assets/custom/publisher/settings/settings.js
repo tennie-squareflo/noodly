@@ -39,51 +39,114 @@ $(function() {
     "Domain must be valid"
   );
 
-  $("#register-form").validate({
+  $("#register-form-website").validate({
     rules: {
-      name: {
-        required: true
-      },
       logo: {
         required: true
       },
-      adminlogo: {
+      logo_size: {
         required: true
       },
-      domain: {
-        required: true,
-        checkDomain: true
-      },
-      phone: {
+      color_bg: {
         required: true
       },
-      email: {
-        required: true,
-        email: true
-      },
-      country: {
-        required: true
-      },
-      state: {
-        required: true
-      },
-      address1: {
-        required: true
-      },
-      city: {
-        required: true
-      },
-      zipcode: {
+      color_text: {
         required: true
       }
     },
-    messages: {
-      email: "Please enter a valid email address",
-      checkDomain: "Please enter a valid domain"
-    },
     submitHandler: function(form) {
       $.ajax({
-        url: BASE_URL + "settings/action/edit",
+        url: BASE_URL + "settings/action/website",
+        data: $(form).serialize(),
+        dataType: "json",
+        method: "POST",
+        success: function(res) {
+          if (res.code == 0) {
+            //location.href = 'dashboard.php';
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.success(res.message);
+          } else {
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.warning(res.message);
+          }
+        },
+        error: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
+        }
+      });
+    }
+  });
+
+  $("#register-form-admin").validate({
+    rules: {
+      logo: {
+        required: true
+      },
+      logo_size: {
+        required: true
+      },
+      color_primary: {
+        required: true
+      },
+      color_secondary: {
+        required: true
+      }
+    },
+    submitHandler: function(form) {
+      console.log('ssss');
+      $.ajax({
+        url: BASE_URL + "settings/action/admin",
         data: $(form).serialize(),
         dataType: "json",
         method: "POST",
@@ -160,12 +223,12 @@ $(function() {
       logo: {
         required: true
       },
-      admin_logo: {
+      logo_back: {
         required: true
       },
-      // size: {
-      //   required: true
-      // },
+      logo_size: {
+        required: true
+      },
       color_bg: {
         required: true
       },
@@ -351,8 +414,8 @@ $(function() {
     }
   });
 
-  $("#save-btn").click(() => {
-    $("#register-form").submit();
+  $("#save-btn-admin").click(() => {
+    $("#register-form-admin").submit();
   });
 
   $("#save-btn-notifications").click(() => {
@@ -361,6 +424,10 @@ $(function() {
 
   $("#save-btn-email").click(() => {
     $("#register-form-email").submit();
+  });
+
+  $("#save-btn-website").click(() => {
+    $("#register-form-website").submit();
   });
   setTimeout(() => {
     $("#register-form")
@@ -381,22 +448,55 @@ $(function() {
 
   setTimeout(() => {
 
-    console.log($("#register-form")
-          .find('input[type="file"]'), "sddfdf");
     $("#register-form-email")
       .find('input[name="logo"]')
       .val(
-        $("#register-form")
+        $("#register-form-email")
           .find('input[type="file"]')
           .attr("data-value")
       );
     $("#register-form-email")
-      .find('input[name="adminlogo"]')
+      .find('input[name="admin_logo"]')
       .val(
-        $("#register-form")
+        $("#register-form-email")
           .find('input[type="file"]')
           .attr("data-value")
       );
-  }, 1000);
+  }, 500);
 
+  setTimeout(() => {
+
+    $("#register-form-website")
+      .find('input[name="logo"]')
+      .val(
+        $("#register-form-website")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+    $("#register-form-website")
+      .find('input[name="admin_logo"]')
+      .val(
+        $("#register-form-website")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+  }, 500);
+
+  setTimeout(() => {
+
+    $("#register-form-admin")
+      .find('input[name="logo"]')
+      .val(
+        $("#register-form-admin")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+    $("#register-form-admin")
+      .find('input[name="admin_logo"]')
+      .val(
+        $("#register-form-admin")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+  }, 500);
 });

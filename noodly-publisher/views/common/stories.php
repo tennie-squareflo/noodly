@@ -13,7 +13,14 @@
 </style>
 <section class="posts blog-masonry">
   <div class="container">
-    <h1 class="k-section__title k-section__title-lg" style="padding-bottom: 50px"><?php if(!empty($current_page) && $current_page !== 'Latest') echo $current_page; ?></h1>
+    <?php if(!empty($current_page) && $current_page !== 'Latest') { ?>
+      <div class="contact">
+        <div class="leave-message text-center">
+          <h1>Popular</h1>
+        </div>
+      </div>
+      
+    <?php } ?>
     <div class="blog-masonry_wrapper">
       <?php
         foreach ($stories as $key => $story) {

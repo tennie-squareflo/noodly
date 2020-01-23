@@ -40,7 +40,6 @@ class Publishers_Controller extends Admin_Controller {
           'email' => test_input($_POST['email']),
           'loadmore_color' => test_input($_POST['loadmore_color']),
           'country' => test_input($_POST['country']),
-          'map' => test_input($_POST['map']),
           'state' => test_input($_POST['state']),
           'address1' => test_input($_POST['address1']),
           'address2' => test_input($_POST['address2']),

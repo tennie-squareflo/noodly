@@ -194,13 +194,6 @@
 															<input class="form-control" placeholder="ZipCode" name="zipcode" type="text" value="<?php echo count($publisher) ? $publisher['zipcode'] : ''; ?>">
 														</div>
 													</div>
-
-													<div class="form-group">
-														<label class="col-3 col-form-label">Google Map</label>
-														<div class="col-12">
-															<input class="form-control" placeholder="Google Map" name="map" type="text" value="<?php echo count($publisher) ? $publisher['map'] : ''; ?>">
-														</div>
-													</div>
 												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>

@@ -1959,7 +1959,7 @@ footer.v2 {
    	Blog masonry
 *************************************/
 .blog-masonry .blog-masonry_wrapper {
-  margin: 0 -15px; }
+  /* margin: 0 -15px; */ } 
   .blog-masonry .blog-masonry_wrapper .post-block {
     display: inline-block;
     margin-bottom: 50px;

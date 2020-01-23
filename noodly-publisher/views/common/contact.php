@@ -5,10 +5,11 @@
 </style>
       <section class="contact">
           <div class="container">
+          <h1 class="k-section__title k-section__title-lg" style="padding-bottom: 50px">Contact Us</h1>
             <div class="row">
               <div class="col-12">
                 <div class="map-contact">
-                  <iframe src="https://www.google.com/maps/place/1814+westport+rd,+kansas+city" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                  <iframe src="<?php echo $publisher['map'] ?>" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                 </div>
               </div>
               

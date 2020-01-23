@@ -1,8 +1,3 @@
-<?php
-  $this->load_model('category');
-  $this->load_model('publisher');
-  $categories = $this->category_model->get_categories($publisher['pid'], 0);
-?>
 <body>
     <div id="main">
       <header>
@@ -37,7 +32,7 @@
                           <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'aboutus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">About Us</a></li>
                           <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'contactus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
                           <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'post_story' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Post A Story</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'login' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'login' ?>">Log In</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'login' ? 'active' : ''; ?>" href="<?php if(!isset($_SESSION['user'])) echo BASE_URL.'login'; else echo BASE_URL.'stories'; ?>"><?php if(!isset($_SESSION['user'])) echo 'Log In'; else echo 'Log Out'; ?></a></li>
                         </ul>
                       </li>
                       

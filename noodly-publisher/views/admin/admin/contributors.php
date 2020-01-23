@@ -13,7 +13,7 @@
     
     <div class="k-portlet k-portlet--mobile">
       <div class="k-portlet__head">
-        <div class="k-portlet__head-label">
+        <div class="k-portlet__head-label" id="contributor-action-search">
           <h3 class="k-portlet__head-title">
               <br /><div class="form-group ">
                   <div class="input-group">
@@ -25,7 +25,7 @@
               </div>
           </h3>
         </div>
-        <div class="k-portlet__head-toolbar">
+        <div class="k-portlet__head-toolbar" id="contributor-action-invite">
           <div class="k-portlet__head-toolbar-wrapper">
             <div class="dropdown dropdown-inline">
               <a class="btn btn-danger btn-delete-selected">
@@ -33,7 +33,7 @@
               </a>
             </div>
             <div class="dropdown dropdown-inline">
-              <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal">
+              <a class="btn btn-success" data-toggle="modal" data-target="#inviteModal" id="contributor-button-invite">
                 <i class="fa fa-paper-plane"></i> Invite A Contributor
               </a>
             </div>
@@ -46,16 +46,17 @@
       
             
               
-                <table class="table table-head-noborder table-striped">
+                <div class="table-responsive">
+                  <table class="table table-head-noborder table-striped">
                   <thead>
                     <tr>
                       
                         <th>&nbsp</th>
                         <th>Name</th>
-                        <th>Email Address</th>
-                        <th>Stories</th>
-                        <th>Subscribers</th>
-                        <th>Status</th>
+                        <th class="hide-mobile">Email Address</th>
+                        <th class="hide-mobile">Stories</th>
+                        <th class="hide-mobile">Subscribers</th>
+                        <th class="hide-mobile">Status</th>
                         <th>&nbsp;</th>
                     </tr>
                   </thead>
@@ -71,10 +72,10 @@
                           </div>
                         </td>
                         <td><h5><a href="#"><?php echo $contributor['username'];?></a></h5></td>
-                        <td><?php echo $contributor['email'];?></td>
-                        <td><?php echo number_k($contributor['stories']); ?></td>
-                        <td><span class="badge badge-warning"><?php echo number_k($contributor['subscribers']); ?></span></td>
-                        <td><?php 
+                        <td class="hide-mobile"><?php echo $contributor['email'];?></td>
+                        <td class="hide-mobile"><?php echo number_k($contributor['stories']); ?></td>
+                        <td class="hide-mobile"><span class="badge badge-warning"><?php echo number_k($contributor['subscribers']); ?></span></td>
+                        <td class="hide-mobile"><?php 
                           echo intval($contributor['status']) == 0 
                                 ? '<span class="badge badge-warning">Suspended</span>' 
                                 : (intval($contributor['status']) == 1 
@@ -113,6 +114,7 @@
 
                   </tbody>
                 </table>
+                </div>
           
 
             

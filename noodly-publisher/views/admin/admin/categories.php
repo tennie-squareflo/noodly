@@ -15,26 +15,27 @@
 										</div>
 									</div>
 								</div>
-								<div class="k-portlet__head-toolbar">
+								<div class="k-portlet__head-toolbar" id="contributor-action-invite">
 									<div class="k-portlet__head-toolbar-wrapper">
 										<div class="dropdown dropdown-inline">
-											<a class="btn btn-success" href="<?php echo BASE_URL;?>channel/edit"><i class="la la-user-plus"></i> Add A Channel</a>
+											<a class="btn btn-success" id="contributor-button-invite" href="<?php echo BASE_URL;?>channel/edit"><i class="la la-user-plus"></i> Add A Channel</a>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="k-portlet__body">
 								<!--begin::Portlet-->
-								<table class="table table-head-noborder table-striped">
+								<div class="table-responsive">
+									<table class="table table-head-noborder table-striped">
 									<thead>
 										<tr>
 											<th>&nbsp;</th>
 											<th>Channel</th>
-											<th>Stories</th>
-											<th>&nbsp</th>
-											<th>&nbsp</th>
-											<th>&nbsp</th>
-											<th>Views</th>
+											<th class="hide-mobile">Stories</th>
+											<th class="hide-mobile">&nbsp</th>
+											<th class="hide-mobile">&nbsp</th>
+											<th class="hide-mobile">&nbsp</th>
+											<th class="hide-mobile">Views</th>
 											<th>&nbsp</th>
 										</tr>
 									</thead>
@@ -51,11 +52,11 @@
 											<td>
 												<h5><?php echo $category['name']; ?></h5>
 											</td>
-											<td><?php echo $category['storiescount']; ?></td>
-											<td>&nbsp;</td>
-											<td>&nbsp;</td>
-											<td>&nbsp;</td>
-											<td><?php echo $category['visits']; ?></td>
+											<td class="hide-mobile"><?php echo $category['storiescount']; ?></td>
+											<td class="hide-mobile">&nbsp;</td>
+											<td class="hide-mobile">&nbsp;</td>
+											<td class="hide-mobile">&nbsp;</td>
+											<td class="hide-mobile"><?php echo $category['visits']; ?></td>
 											<td class="text-right">
 												<div class="btn-group" role="group">
 													<button aria-expanded="false" aria-haspopup="true" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" id="btnGroupDrop1" type="button"><i class="fa fa-bars"></i> Actions</button>
@@ -71,6 +72,7 @@
                     ?>
 									</tbody>
 								</table><!--end::Form-->
+								</div>
 							</div><!--end::Portlet-->
 							<!--end: Datatable -->
 						</div>

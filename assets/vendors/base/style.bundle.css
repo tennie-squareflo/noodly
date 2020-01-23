@@ -1,4 +1,4 @@
-/*!
+!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2/*!
@@ -99594,4 +99594,25 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):not(.k-sweetale
 
 .logo-images:hover {
     z-index: 1;
+}
+
+@media (max-width: 576px) {
+    #latest-stories,
+    #contributor-action-search,
+    .hide-mobile {
+        display: none !important;
+    }
+
+    #contributor-action-invite,
+    #contributor-action-invite > div,
+    #contributor-action-invite .dropdown,
+    #contributor-button-invite {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) {
+    .show-mobile {
+        display: none !important;
+    }
 }

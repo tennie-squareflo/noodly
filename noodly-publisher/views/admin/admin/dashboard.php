@@ -150,7 +150,7 @@
 								<!--begin::Row-->
 								<div class="row">
 									<div class="col-xl-12 col-xxl-12 order-lg-12">
-										<div class="k-portlet k-portlet--mobile">
+										<div class="k-portlet k-portlet--mobile" id="latest-stories">
 											<div class="k-portlet__head">
 												<div class="k-portlet__head-label">
 													<h3 class="k-portlet__head-title">Latest Stories</h3>

@@ -45,6 +45,7 @@ class Environment_Model extends Core_Model{
             'pid' => $pid,
           )
         );
+        $result[$field] = '';
       }
     }
     return $result;

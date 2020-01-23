@@ -13,7 +13,7 @@
     
     <div class="k-portlet k-portlet--mobile">
       <div class="k-portlet__head">
-        <div class="k-portlet__head-label">
+        <div class="k-portlet__head-label" id="contributor-action-search">
           <h3 class="k-portlet__head-title">
               <br /><div class="form-group ">
                   <div class="input-group">
@@ -25,7 +25,7 @@
               </div>
           </h3>
         </div>
-        <div class="k-portlet__head-toolbar">
+        <div class="k-portlet__head-toolbar" id="contributor-action-invite">
           <div class="k-portlet__head-toolbar-wrapper">
           <div class="dropdown dropdown-inline">
             
@@ -35,8 +35,8 @@
           </div>
             <div class="dropdown dropdown-inline">
             
-              <a href="<?php echo BASE_URL;?>story/edit" class="btn btn-success">
-                <i class="la la-pencil"></i> Add A Story
+              <a href="<?php echo BASE_URL;?>story/edit" class="btn btn-success" id="contributor-button-invite">
+                <i class="la la-pencil"></i> <span class="hide-mobile">Add A Story</span> <span class="show-mobile">Add</span>
               </a>
             </div>
           </div>
@@ -48,15 +48,16 @@
       
             
               
-                <table class="table table-head-noborder table-striped">
+                <div class="table-responsive">
+                  <table class="table table-head-noborder table-striped">
                   <thead>
                     <tr>                      
                         <th>&nbsp</th>
                         <th>Title</th>
-                        <th>Contributor</th>
-                        <th>Posted</th>
-                        <th>Views</th>
-                        <th>Status</th>
+                        <th class="hide-mobile">Contributor</th>
+                        <th class="hide-mobile">Posted</th>
+                        <th class="hide-mobile">Views</th>
+                        <th class="hide-mobile">Status</th>
                         <th>&nbsp</th>
                     </tr>
                   </thead>
@@ -74,13 +75,13 @@
                         </td>
                         <td><h5><a href="<?php echo BASE_URL.'story/preview/'.$story['url'];?>" target="_blank"><?php echo $story['title'];?></a></h5></td>
 
-                        <td>
+                        <td class="hide-mobile">
                           <strong><a href="#"><?php echo $story['username']; ?></a></strong>
                         </td>
 
-                        <td><?php echo time_diff_format($story['created_at']); ?></td>
-                        <td><?php echo number_k($story['visits']); ?></td>
-                        <td>
+                        <td class="hide-mobile"><?php echo time_diff_format($story['created_at']); ?></td>
+                        <td class="hide-mobile"><?php echo number_k($story['visits']); ?></td>
+                        <td class="hide-mobile">
                         <?php
                           switch ($story['status']) {
                             case 'DRAFT':
@@ -127,6 +128,7 @@
                     ?>
                   </tbody>
                 </table>
+                </div>
           
 
             

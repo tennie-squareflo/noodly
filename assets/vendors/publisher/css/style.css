@@ -2445,7 +2445,7 @@ footer.v2 {
       font-family: "Cerebri-bold";
       font-size: calc(32px + (70 - 32) * ((100vw - 300px) / (1600 - 300)));
       color: #fff;
-      line-height: 65px;
+      line-height: calc(48px + (70 - 32) * ((100vw - 300px) / (1600 - 300)));
       display: block;
       margin-bottom: 30px; }
     .blog-creative .post-classic-tib.big-post .post-detail .post-describe, .blog-creative .posts .big-post.post-video-text-in_block .post-detail .post-describe, .posts .blog-creative .big-post.post-video-text-in_block .post-detail .post-describe {
@@ -2483,7 +2483,7 @@ footer.v2 {
 
 @media (max-width: 576px) {
   .blog-creative .post-classic-tib.big-post, .blog-creative .posts .big-post.post-video-text-in_block, .posts .blog-creative .big-post.post-video-text-in_block {
-    padding: 200px 0; }
+    padding: 64px 0; }
   .blog-creative .creative-news_block .hot-news-bundle {
     margin-bottom: 30px; }
     .blog-creative .creative-news_block .hot-news-bundle .post-classic {

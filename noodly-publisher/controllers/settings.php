@@ -18,7 +18,8 @@ class Settings_Controller extends Auth_Controller {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/no-ui-slider/nouislider.min.css');
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js', 'vendors/custom/no-ui-slider/nouislider.js');
     $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
-    $this->view_data['publisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
+    $this->view_data['pbulisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
+    $this->view_data['admins'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/admin', $this->view_data);
   }
 
@@ -35,6 +36,7 @@ class Settings_Controller extends Auth_Controller {
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
     $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
     $this->view_data['publisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
+    $this->view_data['website'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/website', $this->view_data);
   }
 
@@ -69,14 +71,42 @@ class Settings_Controller extends Auth_Controller {
       }
       case 'email': {
         $new_data = array(
-          'email_logo' => test_input($_POST['logo']),
-          'admin_admin_logo' => test_input($_POST['adminlogo']),
-          'email_logo_size' => test_input($_POST['adminlogo']),
+          'email_logo' => json_decode($_POST['logo'])->file,
+          'email_background_image' => json_decode($_POST['logo_back'])->file,
+          'email_logo_size' => test_input($_POST['logo_size']),
           'email_background_color' => test_input($_POST['color_bg']),
           'email_heading_color' => test_input($_POST['color_heading']),
           'email_foreground_color' => test_input($_POST['color_text']),
           'email_button_color' => test_input($_POST['color_button']),
           'email_button_text_color' => test_input($_POST['color_button_text'])
+        );
+        if ($this->environment_model->update_env($new_data, $id)) {
+          $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+        }
+        break;
+      }
+      case 'website': {
+        $new_data = array(
+          'website_logo' => json_decode($_POST['logo'])->file,
+          'website_logo_size' => test_input($_POST['logo_size']),
+          'email_background_color' => test_input($_POST['color_bg']),
+          'email_foreground_color' => test_input($_POST['color_text']),
+        );
+        if ($this->environment_model->update_env($new_data, $id)) {
+          $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+        }
+        break;
+      }
+      case 'admin': {
+        $new_data = array(
+          'admin_logo' => json_decode($_POST['logo'])->file,
+          'admin_logo_size' => test_input($_POST['logo_size']),
+          'admin_color_primary' => test_input($_POST['color_primary']),
+          'admin_color_secondary' => test_input($_POST['color_secondary']),
         );
         if ($this->environment_model->update_env($new_data, $id)) {
           $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
@@ -135,6 +165,10 @@ class Settings_Controller extends Auth_Controller {
   function logo_upload() {
     $this->load_library('slim_image_uploader');
     $this->slim_image_uploader->image_upload('logo', ASSETS_PATH.'media/logos/');
+  }
+  function bg_upload() {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload('logo_back', ASSETS_PATH.'media/logos/');
   }
   function admin_logo_upload() {
     $this->load_library('slim_image_uploader');

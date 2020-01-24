@@ -51,11 +51,11 @@
 																</div>
 																<div class="form-group">
 																	<label class="col-5 col-form-label">Image</label>
-																	<div class="col-9">
+																	<div class="col-5">
 																		<div class="slim"
 																				data-service="<?php echo BASE_URL; ?>api/section_image_upload/image"
 																				data-push="true"
-																				data-did-throw-error="handleError">
+																				data-did-throw-error="handleError" style="width: 120px; height: 120px;">
 																				<input type="file" name="image" data-value='<?php echo !$is_new ? '{"file": "'.$category['image'].'"}' : ''; ?>'/>
 																				<?php
 																					if (!$is_new && $category['image'] != '') {

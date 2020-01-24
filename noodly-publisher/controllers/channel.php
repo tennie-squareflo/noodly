@@ -44,6 +44,7 @@ class Channel_Controller extends Auth_Controller {
           $new_data = array(
             'name' => $post['name'],
             'slug' => $post['slug'],
+            'channel_color' => $post['channel_color'],
             'image' => !empty($post['image']) ? json_decode($post['image'])->file : '',
             'pid' => $_SESSION['user']['pid']
           );

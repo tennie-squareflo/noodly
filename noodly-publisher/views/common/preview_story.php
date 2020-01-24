@@ -9,7 +9,7 @@
             <div class="col-10 col-lg-12">
               <div class="post-detail">
                 <div class="post-credit">
-                  <div class="post-tag"><a href="index.html"><?php echo $category['name']; ?></a></div>
+                  <div class="post-tag"><a href="index.html" style="background-color: <?php echo $category['channel_color'] ?>;"><?php echo $category['name']; ?></a></div>
                 </div>
                 <h1 class="post-title title"><?php echo $post['title'];?></h1>
                 <div class="post-credit">

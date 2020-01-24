@@ -28,6 +28,14 @@ class Category_Model extends Core_Model {
     return $result;
   }
 
+  function get_trend_channels($pid) {
+    $query = "SELECT categories.*,
+    (select count(stories.sid) from stories where stories.cid = categories.cid) storiescount,
+    (select sum(visits) from stories where stories.cid = categories.cid) visits FROM categories WHERE pid = ".$pid." ORDER BY visits DESC LIMIT 5";
+    // echo $query;exit;
+    return $this->db->query($query, true);
+  }
+
   function slug_exists($slug) {
     return $this->count(array('slug' => $slug)) > 0;
   }

@@ -1,8 +1,3 @@
-<?php
-  $this->load_model('category');
-  $this->load_model('publisher');
-  $categories = $this->category_model->get_categories($publisher['pid'], 0);
-?>
 <body>
     <div id="main">
       <header>
@@ -22,9 +17,9 @@
                         <ul class="sub-menu">
                           <?php
                             
-                            foreach ($categories as $key => $category) {
+                            foreach ($trendings as $key => $trending) {
                           ?>
-                            <li class="sub-menu_item"><a class="sub-menu-link" href="#"><?php echo $category['name']; ?></a></li>
+                            <li class="sub-menu_item"><a class="sub-menu-link" href="#"><?php echo $trending['name']; ?></a></li>
                           <?php
                             }
                           ?>
@@ -34,10 +29,10 @@
                       <li class="nav-item"><a class="pisen-nav-link <?php echo $current_page === 'contributors' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
                       <li class="nav-item"><a class="pisen-nav-link" href="#"><i class="fa fa-ellipsis-h"></i></a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
-                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'aboutus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">About Us</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'aboutus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'aboutus' ?>">About Us</a></li>
                           <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'contactus' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'post_story' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contact' ?>">Post A Story</a></li>
-                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'login' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'login' ?>">Log In</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'post_story' ? 'active' : ''; ?>" href="<?php if(!isset($_SESSION['user'])) echo BASE_URL.'contact'; else echo BASE_URL.'story'; ?>">Post A Story</a></li>
+                          <li class="sub-menu_item"><a class="sub-menu-link <?php echo $current_page === 'login' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'login' ?>"><?php if(!isset($_SESSION['user'])) echo 'Log In'; else echo 'Log Out'; ?></a></li>
                         </ul>
                       </li>
                       

@@ -3670,7 +3670,7 @@ footer.v2 {
    	Contact
 *************************************/
 .contact {
-  margin: 70px 0; }
+  /* margin: 70px 0; */ } 
   .contact .map-contact {
     margin-bottom: 70px; }
     .contact .map-contact iframe {

@@ -6,7 +6,11 @@
 
 <section class="blog-detail">
         <div class="container">
-        <h1 class="k-section__title k-section__title-lg" style="padding-bottom: 50px">Contributors</h1>
+          <div class="contact">
+            <div class="leave-message text-center">
+              <h1>Contributors</h1>
+            </div>
+          </div>
           <div class="row justify-content-center">
             
           <?php
@@ -82,6 +86,8 @@
                             <i class="fa fa-globe"></i>
                           </a>
                           <?php } ?>
+                        </div>
+                        
                     </div>
                   </div>
                 </div>

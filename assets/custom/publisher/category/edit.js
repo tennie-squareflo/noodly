@@ -66,6 +66,58 @@ $(function() {
       image: {
         required: true
       }
+    },
+    submitHandler: function() {
+      $.ajax({
+      url: `${BASE_URL}channel/action/edit`,
+      method: "post",
+      dataType: "JSON",
+      data: $('#k_form').serialize(),
+      success: function(res) {
+        toastr.options = {
+          closeButton: false,
+          debug: false,
+          newestOnTop: false,
+          progressBar: false,
+          positionClass: "toast-top-right",
+          preventDuplicates: false,
+          onclick: null,
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut"
+        };
+
+        toastr.success(res.message);
+        setTimeout(() => {
+          location.href= BASE_URL + 'channel/edit/' + res.id;
+        }, 3000);
+      },
+      error: function(res) {
+        toastr.options = {
+          closeButton: false,
+          debug: false,
+          newestOnTop: false,
+          progressBar: false,
+          positionClass: "toast-top-right",
+          preventDuplicates: false,
+          onclick: null,
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut"
+        };
+        toastr.error(res.responseJSON.message);
+      }
+    });
     }
   });
 
@@ -93,59 +145,5 @@ $(function() {
 
 const submitForm = type => {
   let valid = false;
-
-  if (!$("#k_form").valid()) {
-    valid = true;
-  }
-
-  $.ajax({
-    url: `${BASE_URL}channel/action/edit`,
-    method: "post",
-    dataType: "JSON",
-    data: $('#k_form').serialize(),
-    success: function(res) {
-      toastr.options = {
-        closeButton: false,
-        debug: false,
-        newestOnTop: false,
-        progressBar: false,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut"
-      };
-
-      toastr.success(res.message);
-      setTimeout(() => {
-        location.href= BASE_URL + 'channel/edit/' + res.id;
-      }, 3000);
-    },
-    error: function(res) {
-      toastr.options = {
-        closeButton: false,
-        debug: false,
-        newestOnTop: false,
-        progressBar: false,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut"
-      };
-      toastr.error(res.responseJSON.message);
-    }
-  });
+  $("#k_form").submit();
 };

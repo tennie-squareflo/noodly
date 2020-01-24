@@ -3887,3 +3887,9 @@ footer.v2 {
 @media (min-width: 768px) and (max-width: 991px) {
   .main-coming-soon .coming-soon #countdown .countdown-number b {
     font-size: 35px; } }
+
+@media (max-width: 576px) {
+  .post-block .img-fluid {
+    margin: 0 -50px;
+  }
+}

@@ -377,8 +377,8 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('category');
     $this->load_model('user');
     $story = $this->story_model->get_one(array('url' => $slug));
-//$story['status'] === 'REQUEST' && 
-    if (!empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
+
+    if ($story['status'] === 'REQUEST' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
       // increase client view      
       $this->show_story($story, $preview);
     } else if (empty($_SESSION['client'])) {
@@ -389,7 +389,7 @@ class Story_Controller extends Auth_Controller {
       }
     } else  {
       // $this->show_story($story, $preview);
-      header("Location: ".BASE_URL."error/error404");
+      $this->show_story($story, $preview);
     }
   }
   function show_story($story, $preview = true) {

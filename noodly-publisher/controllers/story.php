@@ -311,6 +311,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
+    $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

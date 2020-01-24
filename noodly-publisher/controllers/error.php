@@ -2,7 +2,7 @@
 
 class Error_Controller extends Core_Controller{
   function __construct() {
-    parent::__construct('admin');
+    parent::__construct(PUBLISHER_DOMAIN);
   }
   function error404() {
     $this->load_view('common/error/error404');

@@ -64,14 +64,14 @@ class Index_Controller extends Auth_Controller {
     $this->load_view('common/channels', $this->view_data);
   }
 
-  function channel($channel) {
+  function channel_view($cid) {
     $this->load_model('category');
     $this->load_model('story');
     $this->load_model('publisher');
-    $this->view_data['current_page'] = 'popular';
+    $this->view_data['current_page'] = 'channels';
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
-    $this->view_data['stories'] = $this->story_model->get_published_popular_stories($this->pid, 0);
+    $this->view_data['stories'] = $this->story_model->get_channel_stories($this->pid, 0, $cid);
     $this->load_view('common/stories', $this->view_data);
   }
   

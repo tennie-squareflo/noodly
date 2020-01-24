@@ -37,6 +37,30 @@ class Story_Model extends Core_Model{
     return $this->get($select, array(), $limit, 'sid');
   }
 
+  function get_channel_stories($pid =0, $uuid = 0, $cid = 0, $limit = 0) {
+    $select = "
+      stories.sid,
+      stories.cid,
+      stories.title,
+      stories.visits,
+      stories.url,
+      stories.thumb_image,
+      stories.created_at,
+      (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = stories.uuid) username,
+      (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername,
+      stories.status,
+      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
+    ";
+    if ($pid !== 0) {
+      $this->db->where(array('pid' => $pid));
+    }
+    if ($uuid !== 0) {
+      $this->db->where(array('uuid' => $uuid));
+    }
+    $this->db->where(array('cid' => $cid));
+    return $this->get($select, array(), $limit, 'sid');
+  }
+
   function get_published_recent_stories($pid = 0, $uuid = 0, $limit = 0) {
     $select = "
       stories.sid,

@@ -7,10 +7,10 @@
                   <div class="footer-links">
                     <h5 class="footer-link--title">Quick Link</h5>
                     <ul>
-                        <li><a class="footer-link" href="">The Latest</a></li>
-                        <li><a class="footer-link" href="">Popular</a></li>
-                        <li><a class="footer-link" href="">About Us</a></li>
-                        <li><a class="footer-link" href="">Contact Us</a></li>
+                        <li><a class="footer-link" href="<?php echo BASE_URL; ?>">The Latest</a></li>
+                        <li><a class="footer-link" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
+                        <li><a class="footer-link" href="<?php echo BASE_URL.'channels' ?>">Channels</a></li>
+                        <li><a class="footer-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>
                     </ul>
                   </div>
                 </div>
@@ -20,8 +20,8 @@
                     <ul>
                       
                       <li><a class="footer-link" href="">Post A Story</a></li>
-                      <li><a class="footer-link" href="<?php echo BASE_URL.'index/signup' ?>">Sign Up</a></li>
-                      <li><a class="footer-link" href="">Sign In</a></li>
+                      <li><a class="footer-link" href="<?php echo BASE_URL.'index/signup' ?>">My Account</a></li>
+                      <li><a class="footer-link" href="<?php echo BASE_URL.'login' ?>"><?php if(!isset($_SESSION['user'])) echo 'Sign In'; else echo 'Sign Out'; ?></a></li>
                     </ul>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
               <h5 class="footer-link--title">Subscribe To Our Mailing List </h5>
               <form action="" method="post">
                 <div class="email-form">
-                  <input class="input-form" type="text" placeholder="Enter Your First Name" style="width: 70%">
+                  <input class="input-form" type="text" placeholder="Enter Your First Name">
                 </div>
                 <div class="email-form">
                   <input class="input-form" type="text" placeholder="Enter Your Email Address">

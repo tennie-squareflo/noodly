@@ -28,11 +28,22 @@ class Category_Model extends Core_Model {
     return $result;
   }
 
-  function get_trend_channels($pid) {
+  function get_channels($pid) {
     $query = "SELECT categories.*,
     (select count(stories.sid) from stories where stories.cid = categories.cid) storiescount,
-    (select sum(visits) from stories where stories.cid = categories.cid) visits FROM categories WHERE pid = ".$pid." ORDER BY visits DESC LIMIT 5";
+    (select sum(visits) from stories where stories.cid = categories.cid) visits FROM categories WHERE pid = ".$pid;
     // echo $query;exit;
+    $order_by = '';
+    if($order = 'az') {
+      $order_by = " ORDER BY name ASC";
+    } elseif($order = 'za') {
+      $order_by = " ORDER BY name DESC";
+    } elseif($order = 'newest') {
+      $order_by = " ORDER BY cid DESC";
+    } elseif($order = 'most_popular') {
+      $order_by = " ORDER BY visits DESC";
+    }
+    $query.= $order_by;
     return $this->db->query($query, true);
   }
 

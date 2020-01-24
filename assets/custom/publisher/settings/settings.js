@@ -219,32 +219,6 @@ $(function() {
   });
 
   $("#register-form-email").validate({
-    rules: {
-      logo: {
-        required: true
-      },
-      logo_back: {
-        required: true
-      },
-      logo_size: {
-        required: true
-      },
-      color_bg: {
-        required: true
-      },
-      color_heading: {
-        required: true
-      },
-      color_text: {
-        required: true
-      },
-      color_button: {
-        required: true
-      },
-      color_button_text: {
-        required: true
-      }
-    },
     submitHandler: function(form) {
       $.ajax({
         url: BASE_URL + "settings/action/email",

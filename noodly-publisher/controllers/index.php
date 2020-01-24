@@ -18,7 +18,9 @@ class Index_Controller extends Auth_Controller {
   }
 
   function contact() {
+    $this->load_model('category');
     $this->view_data['current_page'] = 'contactus';
+    $this->view_data['trendings'] = $this->category_model->get_trend_channels($this->pid, 0);
     $this->load_view('common/contact', $this->view_data);
   }
 
@@ -44,17 +46,35 @@ class Index_Controller extends Auth_Controller {
   }
 
   function contributors() {
-
+    $this->load_model('category');
     $this->load_model('publisher');
     $this->view_data['current_page'] = 'contributors';
     $this->view_data['contributors'] = $this->publisher_model->get_active_contributors($this->pid);
+    $this->view_data['trendings'] = $this->category_model->get_trend_channels($this->pid, 0);
     $this->load_view('common/contributors', $this->view_data);
   }
 
-  function channels($channel) {
+  function channels() {
+    $this->load_model('category');
+    $this->view_data['current_page'] = 'channels';
+    $this->view_data['channels'] = $this->category_model->get_channels($this->pid, 0);
+    $this->load_view('common/channels', $this->view_data);
+  }
+
+  function channel($channel) {
+    $this->load_model('category');
+    $this->load_model('story');
+    $this->load_model('publisher');
+    $this->view_data['current_page'] = 'popular';
+    $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
+    $this->view_data['trendings'] = $this->category_model->get_trend_channels($this->pid, 0);
+    $this->view_data['stories'] = $this->story_model->get_published_popular_stories($this->pid, 0);
+    $this->load_view('common/stories', $this->view_data);
   }
   
   function signup() {
+    $this->load_model('category');
+    $this->view_data['trendings'] = $this->category_model->get_trend_channels($this->pid, 0);
     $this->load_view('common/signup', $this->view_data); 
   }
 } 

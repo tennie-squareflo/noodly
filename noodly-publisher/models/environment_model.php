@@ -35,7 +35,10 @@ class Environment_Model extends Core_Model{
         'website_logo',
         'website_logo_size',
         'website_color_primary',
-        'website_color_secondary'
+        'website_color_secondary',
+        'about_image',
+        'about_video',
+        'about_content',
       );
 
       foreach ($field_array as $field) {

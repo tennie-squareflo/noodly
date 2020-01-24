@@ -48,6 +48,14 @@ class Settings_Controller extends Auth_Controller {
     $this->load_view('/admin/admin/settings/notifications', $this->view_data);
   }
 
+  function about_setting() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css',);
+    $this->view_data['script_files'] = array('custom/publisher/settings/settings.js', 'vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/quill/quill.min.js', 'vendors/custom/slim/slim.jquery.min.js');
+    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['aboutus'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
+    $this->load_view('/admin/admin/settings/about', $this->view_data);
+  }
+
   function action($action) {
     $id = $_SESSION['user']['pid'];
     
@@ -61,6 +69,19 @@ class Settings_Controller extends Auth_Controller {
           'email_new_user_subject' => test_input($_POST['new_subject']),
           'email_new_user_title' => test_input($_POST['new_heading']),
           'email_new_user_message' => test_input($_POST['new_message'])
+        );
+        if ($this->environment_model->update_env($new_data, $id)) {
+          $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));
+        } else {
+          $this->response(array('code' => 1, 'message' => 'Publisher update failed!'), 500);
+        }
+        break;
+      }
+      case 'about': {
+        $new_data = array(
+          'about_content' => $_POST['content'],
+          'about_image' => json_decode($_POST['imageurl'])->file,
+          'about_video' => test_input($_POST['videourl'])
         );
         if ($this->environment_model->update_env($new_data, $id)) {
           $this->response(array('code' => 0, 'id' => $id, 'message' => 'Notifications updated successfully!'));

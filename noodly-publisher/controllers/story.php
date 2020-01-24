@@ -40,13 +40,25 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('story');
     $this->load_model('paragraph');
     $this->load_model('category');
+    $this->load_model('client');
 
     $this->view_data['post'] = $this->story_model->get_one($id);
+    $this->view_data['clients'] = $this->client_model->get_clients();
     $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($id);
     $this->view_data['categories'] = $this->category_model->get_category_names($this->pid);
     $this->view_data['is_new'] = count($this->view_data['post']) === 0;
     
     $this->load_view('/admin/edit_story', $this->view_data);
+  }
+
+  function change_status($sid, $status) {
+    $this->load_model('story');
+    $new_story_data = array(
+      'status' => $status
+    );
+    $this->story_model->update($new_story_data, $sid);
+    $story = $this->story_model->get_one($sid);
+    header("Location: ".BASE_URL."story/view_story/".$story['url']);
   }
 
   function action($type) {
@@ -55,6 +67,7 @@ class Story_Controller extends Auth_Controller {
     $post = $_POST;
     $this->load_model('story');
     $this->load_model('paragraph');
+    $this->load_model('client');
     switch ($type) {
       case 'edit': {
         $main_data = $post['data']['mainForm'];
@@ -69,13 +82,14 @@ class Story_Controller extends Auth_Controller {
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
+              'clientid' => $main_data['client_id'],
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
               'summary' => $main_data['summary'],
               'visits' => 0,
               'hashtags' => $main_data['hashtags'],
-              'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? 'PUBLISHED' : 'SUBMITTED') : 'DRAFT',
+              'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? (empty($main_data['client_id']) ? 'PUBLISHED' : 'REQUEST') : 'SUBMITTED') : 'DRAFT',
               'pid' => $_SESSION['user']['pid'],
               'created_at' => date('Y-m-d H:i:s'),
               'first_paragraph' => $main_data['first_paragraph'],
@@ -117,6 +131,7 @@ class Story_Controller extends Auth_Controller {
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
+              'clientid' => $main_data['client_id'],
               'hashtags' => $main_data['hashtags'],
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
@@ -172,6 +187,32 @@ class Story_Controller extends Auth_Controller {
               }
             }
           }
+          if (empty($main_data['client_id']) !== true) {
+            // handle send message
+            $this->load_model('user');
+            $this->load_model('environment');
+            $this->load_model('client');
+            $this->load_library('encryption', true);
+
+            $author = $this->user_model->get_one($_SESSION['user']['uuid']);
+            $client = $this->client_model->get_one($main_data['client_id']);
+            $env = $this->environment_model->get_env();
+            
+            $view_data = array();
+            $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+            $view_data['title'] = "$author[firstname] has posted a story";
+
+            $token = array(
+              'slug' => $main_data['url'],
+              'client_id' => $main_data['client_id'],
+              'client_email' => $client['email']
+            );
+            
+            $link = "/accept/approve_story/".Encryption::encrypt($token);
+            $view_data['client'] = $client;
+            $view_data['message'] = "$author[firstname] has just submitted a new story entitled $main_data[title]";
+            $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
+          }
         } catch (Exception $e) {
           $this->response(array(
             'message' => $e->getMessage()
@@ -184,6 +225,43 @@ class Story_Controller extends Auth_Controller {
         ), 200);
       }
       break;
+      case 'addclient':
+        $this->load_helper('validation');
+        $firstname = test_input($_POST['firstname']);
+        $lastname = test_input($_POST['lastname']);
+        $email = test_input($_POST['email']);
+        $company = test_input($_POST['company']);
+
+        try {
+          $new_data = array(
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'company' => $company
+          );
+          $new_id = $this->client_model->create(array(
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'company' => $company
+          ));
+          $this->response(array(
+            'message' => "Client Registered Successfully",
+            'data' => json_encode(array(
+              'cid' => $new_id,
+              'firstname' => $firstname,
+              'lastname' => $lastname,
+              'email' => $email,
+              'company' => $company
+            ))
+          ), 200);
+        } catch(Exception $e) {
+          $this->response(array(
+            'message' => $e->getMessage()
+          ), 500);
+          return;
+        }
+        break;
       case 'submit':
         $id = $post['id'];
         try {
@@ -298,19 +376,39 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('story');
     $this->load_model('category');
     $this->load_model('user');
-
+    $story = $this->story_model->get_one(array('url' => $slug));
+//$story['status'] === 'REQUEST' && 
+    if (!empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
+      // increase client view      
+      $this->show_story($story, $preview);
+    } else if (empty($_SESSION['client'])) {
+      if ($preview === true) {
+        $this->show_story($story, $preview);
+      } else if ($story['status'] === 'PUBLISHED') {
+        $this->show_story($story, $preview);
+      }
+    } else  {
+      // $this->show_story($story, $preview);
+      header("Location: ".BASE_URL."error/error404");
+    }
+  }
+  function show_story($story, $preview = true) {
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
     
     if($preview === false) {
-      $this->story_model->visits_plus($slug);
+      $this->story_model->visits_plus($story['url']);
     }
-
-    $story = $this->story_model->get_one(array('url' => $slug));
+    $this->load_model('category');
+    $this->load_model('user');
     $this->view_data['prev_story'] = $this->story_model->get_prev_story($story['sid'], $story['pid']);
     $this->view_data['next_story'] = $this->story_model->get_next_story($story['sid'], $story['pid']);
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
+    if (!empty($_SESSION['client'])) {
+      $this->view_data['client'] = $_SESSION['client'];
+      $this->view_data['sid'] = $story['sid'];
+    }
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

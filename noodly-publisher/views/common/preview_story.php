@@ -17,6 +17,13 @@
                     <h5 class="author-name"><?php echo 'By '.$author['firstname'].' '.$author['lastname']; ?></h5>
                   </div>
                 </div>
+                <? if(!empty($client)): ?>
+                  <div class="post-credit mt-4">
+                    <a class="btn btn-success btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/APPROVE' ?>">PUBLISH</a>
+                    <a class="btn bg-white btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/SUBMITTED' ?>">Request Changes</a>
+                    <a class="btn btn-danger btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/SUBMITTED' ?>">Reject</a>
+                  </div>
+                <? endif; ?>
               </div>
             </div>
           </div>

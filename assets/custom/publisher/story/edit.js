@@ -242,6 +242,76 @@ $(function() {
     "URL must be valid and unique"
   );
 
+  $("#add-client-form").validate({
+    rules: {
+      firstname: {
+        required: true
+      },
+      lastname: {
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      company: {
+        required: true
+      }
+    },
+    submitHandler: function() {
+      console.log('ssss');
+      $.ajax({
+        url: `${BASE_URL}story/action/addclient`,
+        method: "post",
+        dataType: "JSON",
+        data: $("#add-client-form").serialize(),
+        success: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          const newItem = JSON.parse(res.data);
+          $('#client_list').append(`<option value='${newItem.cid}'>${newItem.firstname + ' ' + newItem.lastname}</option>`)
+          $('#addClientModal').modal('hide');
+          toastr.success(res.message);
+        },
+        error: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
+        }
+      });
+    }
+  });
+
   $(".quilltext").each(function() {
     const name = $(this).attr("name");
     const id = $(this).data("block-id");
@@ -325,6 +395,9 @@ $(function() {
     submitForm("draft");
   });
 
+  $("#add-client-btn").click(() => {
+    submitClient();
+  });
   let getSlug = $(".form-control[name=url]").val() === "";
   // get default slug
   $(".form-control[name=title]").change(e => {
@@ -453,4 +526,8 @@ const submitForm = type => {
       toastr.error(res.responseJSON.message);
     }
   });
+};
+
+const submitClient = () => {
+  $("#add-client-form").submit();
 };

@@ -38,6 +38,20 @@ $(function() {
     },
     "Domain must be valid"
   );
+  const quillSettings = {
+    modules: {
+      toolbar: [
+        ['bold', 'italic', 'link', 'strike', 'underline']
+      ]
+    },
+    placeholder: "Compose an epic...",
+    theme: "snow" // or 'bubble'
+  };
+  const quill = new Quill(
+    `.form-control[name="content"]`,
+    quillSettings
+  );
+
 
   $("#register-form-website").validate({
     rules: {
@@ -414,6 +428,89 @@ $(function() {
     }
   });
 
+  $("#register-form-about").validate({
+    rules: {
+    },
+    submitHandler: function(form) {
+      const ret = $(form).serializeArray();
+      ret.push({
+        name: "content",
+        value: quill.root.innerHTML
+      });
+      console.log(ret);
+      $.ajax({
+        url: BASE_URL + "settings/action/about",
+        data: ret,
+        dataType: "json",
+        method: "POST",
+        success: function(res) {
+          if (res.code == 0) {
+            //location.href = 'dashboard.php';
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.success(res.message);
+          } else {
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-right",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut"
+            };
+
+            toastr.warning(res.message);
+          }
+        },
+        error: function(res) {
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
+          toastr.error(res.responseJSON.message);
+        }
+      });
+    }
+  });
+
   $("#save-btn-admin").click(() => {
     $("#register-form-admin").submit();
   });
@@ -428,6 +525,10 @@ $(function() {
 
   $("#save-btn-website").click(() => {
     $("#register-form-website").submit();
+  });
+
+  $("#save-btn-about").click(() => {
+    $("#register-form-about").submit();
   });
   setTimeout(() => {
     $("#register-form")
@@ -493,6 +594,17 @@ $(function() {
       );
     $("#register-form-admin")
       .find('input[name="admin_logo"]')
+      .val(
+        $("#register-form-admin")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+  }, 500);
+
+  setTimeout(() => {
+
+    $("#register-form-admin")
+      .find('input[name="imageurl"]')
       .val(
         $("#register-form-admin")
           .find('input[type="file"]')

@@ -58,6 +58,15 @@
 							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/notifications_setting"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
+							    <tr>
+							      <td>
+							      	<h5 class="text-primary">About Us</h5>
+							      	<p>Text, Image, Video</p>
+							      </td>
+							      <td class="text-right">
+							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/about_setting"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      </td>
+							    </tr>
 							  </tbody>
 							</table>
 						</div>

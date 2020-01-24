@@ -38,12 +38,17 @@
 																		<div class="col-12">
 																			<div class="input-group">
 																				<div class="input-group-append">
-																					<span class="input-group-text">http://<?php echo $publisher['domain'];?>.noodly.io/section/</span>
+																					<span class="input-group-text">http://<?php echo $publisher['domain'];?>.noodly.io/channel/</span>
 																				</div><input class="form-control" type="text" placeholder="story-title-goes-here" value="<?php echo $is_new ? '' : $category['slug']; ?>" name="slug">
 																			</div>
 																		</div>
 																	</div>
-															
+																<div class="form-group">
+																	<label class="col-12 col-form-label">Color</label>
+																	<div class="col-12">
+																		<input class="form-control" name="channel_color" placeholder="ex: #ff7310 or navy" type="text" value="<?php echo $is_new ? '' : $category['channel_color']; ?>">
+																	</div>
+																</div>
 																<div class="form-group">
 																	<label class="col-5 col-form-label">Image</label>
 																	<div class="col-9">

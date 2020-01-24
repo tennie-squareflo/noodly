@@ -158,4 +158,55 @@ class Core_Controller {
       return false;
     }
   }
+
+  function send_grid_mail($user, $pid, $subject, $link, $view, $view_data) {
+    $this->load_model('publisher');
+    $this->load_model('environment');
+    $this->load_helper('string');
+
+    $publisher = $this->publisher_model->get_one($pid);
+    $env = $this->environment_model->get_env();
+
+    $to = $user['email'];
+    $from = $publisher['email'];
+    
+    $headers = "From: $publisher[name]\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    if (ENV === 'local') {
+      $domain = $publisher['domain'] == '' 
+                ? 'dev.noodly.com/admin' 
+                : 'dev.noodly.com/'.$publisher['domain'];
+      $server = 'dev.noodly.com';
+    } else {
+      $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
+      $server = $domain;
+    }
+    
+    $view_data['accept_url'] = $domain.$link;
+    $view_data['user'] = $user;
+    $view_data['publisher'] = $publisher;
+    $view_data['env'] = $env;
+    $view_data['domain'] = $domain;
+    $view_data['server'] = $server;
+
+    $body = $this->single_load('email_template/'.$view, $view_data, true);
+    
+    $this->load_helper('sendgrid_mail');
+
+    $params = array(
+      'to' => $to,
+      'from' => $from,
+      'fromname' => $publisher['name'],
+      'subject' => $subject,
+      'html' => $body,
+    );
+    
+    if (sendgridMail($params)) {
+      return true;
+    } else {
+      return false;
+    }  
+  }
 }

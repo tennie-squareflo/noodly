@@ -65,7 +65,7 @@
                 </div>
                 <div class="email-form">
                   <input class="input-form" type="text" placeholder="Enter Your Email Address">
-                  <button> <i class="fas fa-paper-plane"></i></button>
+                  <button> <a href="mailto:srdev5008@gmail.com"><i class="fas fa-paper-plane"></i></a></button>
                 </div>
               </form>
               <p class="copyright">Copyright ©2019 <?php echo $publisher['name'] ?></p>

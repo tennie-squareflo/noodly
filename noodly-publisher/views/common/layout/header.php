@@ -19,7 +19,7 @@
                             
                             foreach ($trendings as $key => $trending) {
                           ?>
-                            <li class="sub-menu_item"><a class="sub-menu-link" href="#"><?php echo $trending['name']; ?></a></li>
+                            <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'channel_view/'.$trending['cid']; ?>"><?php echo $trending['name']; ?></a></li>
                           <?php
                             }
                           ?>

@@ -26,7 +26,7 @@
                   </div>
                  
                   <div class="col-4 col-md-4 text-center">
-                    <div class="count-up_block"><span class="count-number numscroller" data-min="1" data-max="4" data-delay="0" data-increment="9">4</span>
+                    <div class="count-up_block"><span class="count-number numscroller" data-min="1" data-max="<?php echo count($contributors) ?>" data-delay="0" data-increment="9"><?php echo count($contributors) ?></span>
                       <p>Contributors</p>
                     </div>
                   </div>

@@ -5,7 +5,7 @@
 </style>
 <section class="posts blog-masonry">
   <div class="container">
-    <?php if(!empty($current_page) && $current_page !== 'latest') { ?>
+    <?php if(!empty($current_page) && $current_page !== 'latest' && $current_page !== 'channels') { ?>
       <div class="contact">
         <div class="leave-message text-center">
           <h1>Popular</h1>

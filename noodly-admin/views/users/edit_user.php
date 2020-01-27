@@ -82,7 +82,7 @@
 													<div class="form-group">
 														<label class="col-5 col-form-label">Short Bio</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="Short Bio" name="shortbio" type="text" maxlength="320" value="<?php echo count($user) ? $user['shortbio'] : ''; ?>">
+															<input class="form-control" placeholder="Short Bio" name="shortbio" type="text" value="<?php echo count($user) ? $user['shortbio'] : ''; ?>">
 														</div>
                           </div>
 

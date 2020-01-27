@@ -13,6 +13,8 @@ import(
 });
 
 $(function() {
+  $('input[name="shortbio"]').limitLength(340);
+  
   $("#register-form").validate({
     rules: {
       firstname: {

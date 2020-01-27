@@ -185,7 +185,7 @@ class Contributor_Controller extends Auth_Controller {
     $this->load_model('user');
 
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'custom/admin/users/edit_users.css');
-    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/publisher/users/edit_user.js');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/length-limit/length-limit.js', 'custom/publisher/users/edit_user.js');
     $this->view_data['user_id'] = intval($id);
     $this->view_data['user'] = $this->user_model->get_one(intval($id));
     $this->view_data['edit_user'] = true;

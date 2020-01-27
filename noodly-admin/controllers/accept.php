@@ -39,7 +39,7 @@ class Accept_Controller extends Admin_Controller {
     $user = $this->user_model->get_one($_SESSION['user']['uuid']);
 
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/admin/users/complete_profile.js');
+    $view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/length-limit/length-limit.js', 'custom/admin/users/complete_profile.js');
     $view_data['user_id'] = intval($user['uuid']);
     $view_data['user'] = $user;
     $this->load_model('publisher');

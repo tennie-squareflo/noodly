@@ -132,7 +132,7 @@ class Accept_Controller extends Auth_Controller {
     $user = $this->user_model->get_one($_SESSION['user']['uuid']);
 
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/publisher/users/complete_profile.js');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/length-limit/length-limit.js', 'custom/publisher/users/complete_profile.js');
     $this->view_data['user_id'] = intval($user['uuid']);
     $this->view_data['user'] = $user;
     $this->load_view('/admin/edit_user', $this->view_data);

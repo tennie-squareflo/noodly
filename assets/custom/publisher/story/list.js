@@ -72,6 +72,11 @@ $(function() {
     update(id, 'delete');
   });
 
+  $('.request-btn').click(function() {
+    const id = $(this).data('id');
+    update(id, 'request');
+  });
+
   $('.block-btn').click(function() {
     const id = $(this).data('id');
     update(id, 'block');

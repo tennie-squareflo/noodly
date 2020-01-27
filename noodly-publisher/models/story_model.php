@@ -125,4 +125,9 @@ class Story_Model extends Core_Model{
 
   }
 
+  function increase_client_view($sid) {
+    $query = "UPDATE stories SET client_view = client_view + 1 WHERE sid = $sid";
+    return $this->db->query($query);
+  }
+
 }

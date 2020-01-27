@@ -86,6 +86,9 @@
                             case 'SUBMITTED':
                               echo '<span class="badge badge-info">SUBMITTED</span>';
                             break;
+                            case 'REQUESTED':
+                              echo '<span class="badge badge-info">REQUESTED</span>';
+                            break;
                             case 'PUBLISHED':
                               echo '<span class="badge badge-success">PUBLISHED</span>';
                             break;

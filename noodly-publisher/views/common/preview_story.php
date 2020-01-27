@@ -14,12 +14,12 @@
                 <h1 class="post-title title"><?php echo $post['title'];?></h1>
                 <div class="post-credit">
                   <div class="author">
-                    <h5 class="author-name"><?php echo 'By '.$author['firstname'].' '.$author['lastname']; ?></h5>
+                    <h5 class="author-name"><?php echo date('F d, Y', strtotime($post['created_at'])).' by '.$author['firstname'].' '.$author['lastname']; ?></h5>
                   </div>
                 </div>
                 <? if(!empty($client)): ?>
                   <div class="post-credit mt-4">
-                    <a class="btn btn-success btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/APPROVE' ?>">PUBLISH</a>
+                    <a class="btn btn-success btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/PUBLISHED' ?>">PUBLISH</a>
                     <a class="btn bg-white btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/SUBMITTED' ?>">Request Changes</a>
                     <a class="btn btn-danger btn-font-sm font-weight-bold" style="font-size: 12px" href="<?php echo BASE_URL.'story/change_status/'.$sid.'/SUBMITTED' ?>">Reject</a>
                   </div>

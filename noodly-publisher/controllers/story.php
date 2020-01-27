@@ -188,30 +188,7 @@ class Story_Controller extends Auth_Controller {
             }
           }
           if (empty($main_data['client_id']) !== true) {
-            // handle send message
-            $this->load_model('user');
-            $this->load_model('environment');
-            $this->load_model('client');
-            $this->load_library('encryption', true);
-
-            $author = $this->user_model->get_one($_SESSION['user']['uuid']);
-            $client = $this->client_model->get_one($main_data['client_id']);
-            $env = $this->environment_model->get_env();
-            
-            $view_data = array();
-            $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
-            $view_data['title'] = "$author[firstname] has posted a story";
-
-            $token = array(
-              'slug' => $main_data['url'],
-              'client_id' => $main_data['client_id'],
-              'client_email' => $client['email']
-            );
-            
-            $link = "/accept/approve_story/".Encryption::encrypt($token);
-            $view_data['client'] = $client;
-            $view_data['message'] = "$author[firstname] has just submitted a new story entitled $main_data[title]";
-            $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
+            $this->send_to_client($_SESSION['user']['uuid'], $main_data['client_id'], $main_data['url']);
           }
         } catch (Exception $e) {
           $this->response(array(
@@ -267,6 +244,20 @@ class Story_Controller extends Auth_Controller {
         try {
           $this->story_model->update(array('status' => 'SUBMITTED'), $id);
           $this->response(array('message' => "This Story Submitted Successfully!"));
+        } catch(Exception $e) {
+          $this->response(array(
+            'message' => $e->getMessage()
+          ), 500);
+          return;
+        }
+      break;
+      case 'request':
+        $id = $post['id'];
+        try {
+          $this->story_model->update(array('status' => 'REQUESTED'), $id);
+          $story = $this->story_model->get_one($id);
+          $this->send_to_client($story['uuid'], $story['clientid'], $story['url']);
+          $this->response(array('message' => "This Story Requested to Client Successfully!"));
         } catch(Exception $e) {
           $this->response(array(
             'message' => $e->getMessage()
@@ -339,6 +330,33 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
+  function send_to_client($author_id, $client_id, $slug) {
+    // handle send message
+    $this->load_model('user');
+    $this->load_model('environment');
+    $this->load_model('client');
+    $this->load_library('encryption', true);
+
+    $author = $this->user_model->get_one($author_id);
+    $client = $this->client_model->get_one($client_id);
+    $env = $this->environment_model->get_env();
+
+    $view_data = array();
+    $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+    $view_data['title'] = "$author[firstname] has posted a story";
+
+    $token = array(
+      'slug' => $slug,
+      'client_id' => $client_id,
+      'client_email' => $client['email']
+    );
+
+    $link = "/accept/approve_story/".Encryption::encrypt($token);
+    $view_data['client'] = $client;
+    $view_data['message'] = "$author[firstname] has just submitted a new story entitled $main_data[title]";
+    $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
+  }
+
   function send_new_story_email($uuid, $pid, $sid) {
     $this->redirect_auth();
 
@@ -380,17 +398,10 @@ class Story_Controller extends Auth_Controller {
 
     if ($story['status'] === 'REQUEST' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
       // increase client view      
-      $this->show_story($story, $preview);
-    } else if (empty($_SESSION['client'])) {
-      if ($preview === true) {
-        $this->show_story($story, $preview);
-      } else if ($story['status'] === 'PUBLISHED') {
-        $this->show_story($story, $preview);
-      }
-    } else  {
-      // $this->show_story($story, $preview);
-      $this->show_story($story, $preview);
+      $this->story_model->increase_client_view($story['storyid']);
+      $this->view_data['client'] = $_SESSION['client'];
     }
+    $this->show_story($story, $preview);
   }
   function show_story($story, $preview = true) {
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
@@ -405,10 +416,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
-    if (!empty($_SESSION['client'])) {
-      $this->view_data['client'] = $_SESSION['client'];
-      $this->view_data['sid'] = $story['sid'];
-    }
+    $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

@@ -8,5 +8,5 @@ $ROUTING = array(
   'contributors' => 'index/contributors',
   'aboutus' => 'index/aboutus',
   'channels' => 'index/channels',
-  'channel_view' => 'index/channel_view'
+  'channel/view/' => 'index/channel_view/'
 );

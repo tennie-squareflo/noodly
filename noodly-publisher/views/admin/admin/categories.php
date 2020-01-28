@@ -18,7 +18,7 @@
 								<div class="k-portlet__head-toolbar" id="contributor-action-invite">
 									<div class="k-portlet__head-toolbar-wrapper">
 										<div class="dropdown dropdown-inline">
-											<a class="btn btn-success" id="contributor-button-invite" href="<?php echo BASE_URL;?>channel/edit"><i class="la la-user-plus"></i> Add A Channel</a>
+											<a class="btn btn-success" id="contributor-button-invite" href="<?php echo BASE_URL;?>channels/edit"><i class="la la-user-plus"></i> Add A Channel</a>
 										</div>
 									</div>
 								</div>
@@ -54,14 +54,14 @@
 											</td>
 											<td class="hide-mobile"><?php echo $category['storiescount']; ?></td>
 											<td class="hide-mobile">&nbsp;</td>
-											<td class="hide-mobile">&nbsp;</td>
+											<td class="hwide-mobile">&nbsp;</td>
 											<td class="hide-mobile">&nbsp;</td>
 											<td class="hide-mobile"><?php echo $category['visits']; ?></td>
 											<td class="text-right">
 												<div class="btn-group" role="group">
 													<button aria-expanded="false" aria-haspopup="true" class="btn btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" id="btnGroupDrop1" type="button"><i class="fa fa-bars"></i> Actions</button>
 													<div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo BASE_URL.'channel/edit/'.$category['cid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
+                            <a class="dropdown-item" href="<?php echo BASE_URL.'channels/edit/'.$category['cid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
                             <a class="dropdown-item delete-btn" data-id="<?php echo $category['cid'];?>"><i class="fa fa-trash"></i> Delete</a>
 													</div>
 												</div>

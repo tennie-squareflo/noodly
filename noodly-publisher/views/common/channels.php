@@ -39,7 +39,7 @@
               foreach ($channels as $key => $channel) {
             ?>
 						<div class="col-md-4 col-lg-3 col-xl">
-						  <div class="product-block"><a class="product-img" href="<?php echo BASE_URL.'channel/view/'.$channel['slug']; ?>">
+						  <div class="product-block"><a class="product-img" href="<?php echo BASE_URL.'channel/'.$channel['slug']; ?>">
               <?php
                 if (empty($channel['image'])
                   || !file_exists(ASSETS_URL.'media/sections/'.$channel['image'])) {

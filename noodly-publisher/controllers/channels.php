@@ -1,7 +1,7 @@
 <?php
 require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
-class Channel_Controller extends Auth_Controller {
+class Channels_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
   }

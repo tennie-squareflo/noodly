@@ -75,7 +75,7 @@ class Story_Model extends Core_Model{
       stories.status,
       (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
     ";
-    $this->db->where(array('status' => 'published'));
+    $this->db->where(array('status' => 'PUBLISHED'));
     if ($pid !== 0) {
       $this->db->where(array('pid' => $pid));
     }

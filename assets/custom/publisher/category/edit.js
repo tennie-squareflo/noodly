@@ -69,7 +69,7 @@ $(function() {
     },
     submitHandler: function() {
       $.ajax({
-      url: `${BASE_URL}channel/action/edit`,
+      url: `${BASE_URL}channels/action/edit`,
       method: "post",
       dataType: "JSON",
       data: $('#k_form').serialize(),
@@ -130,7 +130,7 @@ $(function() {
   $('.form-control[name=name]').change((e) => {
     if (getSlug === true) {
       $.ajax({
-        url: `${BASE_URL}channel/get_slug`,
+        url: `${BASE_URL}channels/get_slug`,
         method: "post",
         dataType: "JSON",
         data: { title: e.target.value },

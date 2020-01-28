@@ -96,7 +96,7 @@ class Story_Model extends Core_Model{
     (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname 
     FROM stories 
     WHERE 
-      `status`='published'"
+      `status`='PUBLISHED'"
       .(($pid !== 0) ? " AND `pid` = $pid" : "")
       .(($uuid !== 0) ? " AND `uuid` = $uuid" : "")
     ." AND `created_at` BETWEEN (NOW() - INTERVAL 14 DAY) AND NOW() ORDER BY `visits` DESC, `sid` DESC";
@@ -114,13 +114,13 @@ class Story_Model extends Core_Model{
   }
 
   function get_prev_story($sid, $pid) {
-    $query = "SELECT * FROM stories WHERE sid > ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
+    $query = "SELECT * FROM stories WHERE sid > ".$sid." AND pid = ".$pid." AND status='PUBLISHED' ORDER BY sid ASC LIMIT 1";
     return $this->db->query($query, true);
 
   }
 
   function get_next_story($sid, $pid) {
-    $query = "SELECT * FROM stories WHERE sid < ".$sid." AND pid = ".$pid." ORDER BY sid ASC LIMIT 1";
+    $query = "SELECT * FROM stories WHERE sid < ".$sid." AND pid = ".$pid." AND status='PUBLISHED' ORDER BY sid ASC LIMIT 1";
     return $this->db->query($query, true);
 
   }
@@ -128,6 +128,17 @@ class Story_Model extends Core_Model{
   function increase_client_view($sid) {
     $query = "UPDATE stories SET client_view = client_view + 1 WHERE sid = $sid";
     return $this->db->query($query);
+  }
+
+  function get_stories_by_hashtag($pid, $uuid, $hashtag) {
+    $condition = '';
+    if ($pid) {
+      $condition .= " AND pid = '$pid'";
+    }
+    if ($uuid) {
+      $condition .= " AND uuid = '$uuid'";
+    }
+    return $this->db->query("SELECT * FROM stories WHERE hashtags like '%#$hashtag%' AND status='PUBLISHED' $condition", true);
   }
 
 }

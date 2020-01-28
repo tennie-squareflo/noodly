@@ -9,7 +9,7 @@
             <div class="col-10 col-lg-12">
               <div class="post-detail">
                 <div class="post-credit">
-                  <div class="post-tag"><a href="index.html" style="background-color: <?php echo $category['channel_color'] ?>;"><?php echo $category['name']; ?></a></div>
+                  <div class="post-tag"><a href="<?php echo BASE_URL.'channel/view/'.$category['slug'] ?>" style="background-color: <?php echo $category['channel_color'] ?>;"><?php echo $category['name']; ?></a></div>
                 </div>
                 <h1 class="post-title title"><?php echo $post['title'];?></h1>
                 <div class="post-credit">
@@ -55,7 +55,7 @@
               $hashtags = explode(' ', $post['hashtags']);
 
               for($i =0; $i < count($hashtags); $i++) {?>
-                <a href="#"><?php echo $hashtags[$i] ?></a>
+                <a href="<?php echo BASE_URL.'hash/'.substr($hashtags[$i], 1) ?>"><?php echo $hashtags[$i] ?></a>
             <?php } ?>
           </div>
         </div>

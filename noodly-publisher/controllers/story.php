@@ -386,7 +386,7 @@ class Story_Controller extends Auth_Controller {
 
     if ($story['status'] === 'CLIENT-DRAFT' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
       // increase client view      
-      $this->story_model->increase_client_view($story['storyid']);
+      $this->story_model->increase_client_view($story['sid']);
       $this->view_data['client'] = $_SESSION['client'];
     }
     $this->show_story($story, $preview);

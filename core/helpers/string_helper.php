@@ -4,7 +4,7 @@ function generate_random_string($length = 10, $charset = 'abcdefghijklmnopqrstuv
   $charactersLength = strlen($charset);
   $randomString = '';
   for ($i = 0; $i < $length; $i++) {
-      $randomString .= $characters[rand(0, $charactersLength - 1)];
+      $randomString .= $charset[rand(0, $charactersLength - 1)];
   }
   return $randomString;
 }

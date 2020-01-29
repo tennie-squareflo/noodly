@@ -430,7 +430,7 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('story');
     $this->load_helper('string_helper');
     while ($this->story_model->slug_exists($slug)) {
-      $slug .= generate_random_string(1);
+      $slug .= '-'.generate_random_string(10);
     }
     $this->response(array('slug' => $slug));
   }

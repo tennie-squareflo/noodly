@@ -393,6 +393,12 @@ class Story_Controller extends Auth_Controller {
   }
   function show_story($story, $preview = true) {
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
+
+    // check validation
+    if ($preview === false && $story['STATUS'] !== 'PUBLISHED') {
+      header("Location: ".BASE_URL."error/error404");
+      return;
+    }
     
     if($preview === false) {
       $this->story_model->visits_plus($story['url']);

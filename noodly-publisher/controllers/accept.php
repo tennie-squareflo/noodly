@@ -53,7 +53,7 @@ class Accept_Controller extends Auth_Controller {
       $this->load_model('story');
       $story = $this->story_model->get_one(array('url' => $token['slug']));
 
-      if ($story['clientid'] !== $token['client_id']) {
+      if ($story['clientid'] !== $token['client_id'] || $story['status'] !== 'CLIENT-DRAFT') {
         header("Location: ".BASE_URL."error/expired");
         return;
       }

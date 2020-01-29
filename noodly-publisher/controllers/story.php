@@ -387,6 +387,11 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('story');
     $this->load_model('category');
     $this->load_model('user');
+
+    if ($preview !== true) {
+      $preview = false;
+    }
+
     $story = $this->story_model->get_one(array('url' => $slug));
 
     if ($story['status'] === 'CLIENT-DRAFT' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {

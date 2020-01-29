@@ -1,0 +1,7 @@
+// STORY STATUS
+//  > DRAFT
+//  > SUBMITTED
+//  > CLIENT-DRAFT
+//  > REJECTED
+//  > BLOCKED
+//  > PUBLISHED

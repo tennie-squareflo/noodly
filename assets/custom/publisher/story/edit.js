@@ -163,7 +163,6 @@ const quills = [];
 
 function deleteForm(){
   const parent = $(this).parents(".new-form-row");
-  console.log('----- deleteForm ------ ', $(this));
   if (parent.data('type') === 'text') {
     const id = parent.find(".form-control[name='content']").data('block-id');
     delete(quills[`content${id}`]);
@@ -242,6 +241,12 @@ $(function() {
     "URL must be valid and unique"
   );
 
+  $('#direct-draft-btn').click((e) => {
+    if (isStoryFormValid()) {
+      $('#add-client-modal').modal();
+    }
+  })
+
   $("#add-client-form").validate({
     rules: {
       firstname: {
@@ -259,7 +264,6 @@ $(function() {
       }
     },
     submitHandler: function() {
-      console.log('ssss');
       $.ajax({
         url: `${BASE_URL}story/action/addclient`,
         method: "post",
@@ -284,9 +288,9 @@ $(function() {
             hideMethod: "fadeOut"
           };
           const newItem = JSON.parse(res.data);
-          $('#client_list').append(`<option value='${newItem.cid}'>${newItem.firstname + ' ' + newItem.lastname}</option>`)
-          $('#addClientModal').modal('hide');
-          toastr.success(res.message);
+          $('#client-id').val(newItem.cid);
+          $('#add-client-modal').modal('hide');
+          submitForm('client-draft');
         },
         error: function(res) {
           toastr.options = {
@@ -395,9 +399,25 @@ $(function() {
     submitForm("draft");
   });
 
-  $("#add-client-btn").click(() => {
+  $("#send-client-btn").click(() => {
     submitClient();
   });
+
+  $('#client_list').change((v) => {
+    if (v.target.value === '') {
+      $('.hidden-client-exists').show();
+    }
+    else {
+      $('.hidden-client-exists').hide();
+    }
+  });
+  if ($('#client_list').val() === '') {
+    $('.hidden-client-exists').show();
+  }
+  else {
+    $('.hidden-client-exists').hide();
+  }
+
   let getSlug = $(".form-control[name=url]").val() === "";
   // get default slug
   $(".form-control[name=title]").change(e => {
@@ -416,9 +436,8 @@ $(function() {
   });
 });
 
-const submitForm = type => {
+const isStoryFormValid = () => {
   let invalid = false;
-
   if (!$(".main-form").valid()) {
     invalid = true;
   }
@@ -429,7 +448,6 @@ const submitForm = type => {
   });
 
   // quilltext validation
-  console.log("quills", quills);
   Object.keys(quills).forEach(key => {
     const quill = quills[key];
     if (quill.root.innerHTML === "<p><br></p>") {
@@ -440,7 +458,13 @@ const submitForm = type => {
     }
   });
 
-  if (invalid) {
+  return !invalid;
+}
+
+const submitForm = type => {
+  const valid = isStoryFormValid();
+
+  if (!valid) {
     return;
   }
 
@@ -529,5 +553,11 @@ const submitForm = type => {
 };
 
 const submitClient = () => {
-  $("#add-client-form").submit();
+  const cid = $('#client_list').val();
+  if (cid === '') {
+    $("#add-client-form").submit();
+  } else{
+    $('#client-id').val(cid);
+    submitForm('client-draft');
+  }
 };

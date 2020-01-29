@@ -87,14 +87,17 @@
                             case 'DRAFT':
                               echo '<span class="badge badge-warning">DRAFT</span>';
                             break;
-                            case 'BLOCKED':
-                              echo '<span class="badge badge-error">BLOCKED</span>';
-                            break;
                             case 'SUBMITTED':
                               echo '<span class="badge badge-info">SUBMITTED</span>';
                             break;
-                            case 'REQUESTED':
-                              echo '<span class="badge badge-info">REQUESTED</span>';
+                            case 'CLIENT-DRAFT':
+                              echo '<span class="badge badge-info">CLIENT-DRAFT</span>';
+                            break;
+                            case 'REJECTED':
+                              echo '<span class="badge badge-error">REJECTED</span>';
+                            break;
+                            case 'BLOCKED':
+                              echo '<span class="badge badge-error">BLOCKED</span>';
                             break;
                             case 'PUBLISHED':
                               echo '<span class="badge badge-success">PUBLISHED</span>';
@@ -109,19 +112,12 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                   <a class="dropdown-item" href="<?php echo BASE_URL.'story/edit/'.$story['sid'] ?>"><i class="fa fa-pencil-alt"></i>Edit</a>
-                                  <?php if($story['status'] === 'DRAFT' || $story['status'] === 'SUBMITTED') : ?>
-                                    <?php if (empty($story['clientid'])) : ?>
-                                      <a class="dropdown-item publish-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-newspaper"></i>Publish</a>
-                                    <?php else : ?>
-                                      <a class="dropdown-item request-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-newspaper"></i>Request to Client</a>
-                                    <?php endif; ?>
-                                  <?php endif; ?>
                                   <?php if($story['status'] === 'BLOCKED') : ?>
                                     <a class="dropdown-item activate-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-check"></i>Activate</a>
                                   <?php endif; ?>
-                                  <!-- <?php if($story['status'] === 'PUBLISHED') : ?>
+                                  <?php if($story['status'] === 'PUBLISHED') : ?>
                                     <a class="dropdown-item block-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-ban"></i>Block</a>
-                                  <?php endif; ?> -->
+                                  <?php endif; ?>
                                   
                                   
                                   <a class="dropdown-item delete-btn" data-id="<?php echo $story['sid']; ?>"><i class="fa fa-trash"></i> Delete</a>

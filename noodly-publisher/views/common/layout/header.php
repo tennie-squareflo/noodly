@@ -16,7 +16,6 @@
                       <li class="nav-item"><a class="pisen-nav-link channel_menu <?php echo $current_page === 'channels' ? 'active' : ''; ?>" href="#">Channels</a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
                           <?php
-                            
                             foreach ($trendings as $key => $trending) {
                           ?>
                             <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'channel/'.$trending['slug']; ?>"><?php echo $trending['name']; ?></a></li>

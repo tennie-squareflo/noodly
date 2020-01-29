@@ -80,14 +80,17 @@
                             case 'DRAFT':
                               echo '<span class="badge badge-warning">DRAFT</span>';
                             break;
-                            case 'BLOCKED':
-                              echo '<span class="badge badge-error">BLOCKED</span>';
-                            break;
                             case 'SUBMITTED':
                               echo '<span class="badge badge-info">SUBMITTED</span>';
                             break;
-                            case 'REQUESTED':
-                              echo '<span class="badge badge-info">REQUESTED</span>';
+                            case 'CLIENT-DRAFT':
+                              echo '<span class="badge badge-info">CLIENT-DRAFT</span>';
+                            break;
+                            case 'REJECTED':
+                              echo '<span class="badge badge-error">REJECTED</span>';
+                            break;
+                            case 'BLOCKED':
+                              echo '<span class="badge badge-error">BLOCKED</span>';
                             break;
                             case 'PUBLISHED':
                               echo '<span class="badge badge-success">PUBLISHED</span>';

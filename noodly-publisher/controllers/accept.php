@@ -50,34 +50,20 @@ class Accept_Controller extends Auth_Controller {
       header("Location: ".BASE_URL."error/invalid_token");
       return;
     } else {
-      print_r($token);
+      $this->load_model('story');
+      $story = $this->story_model->get_one(array('url' => $token['slug']));
+
+      if ($story['clientid'] !== $token['client_id']) {
+        header("Location: ".BASE_URL."error/expired");
+        return;
+      }
+
       $_SESSION['client'] = array(
         'slug' => $token['slug'],
         'client_id' => $token['client_id'],
         'client_email' => $token['client_email']
       );
       header("Location: ".BASE_URL."story/view_story/".$token['slug']);
-      // $this->load_model('user');
-      // $this->load_model('match_user_role');
-      // $user = $this->user_model->get_one($token['uuid']);
-      // $role = $this->match_user_role_model->get_one(array('pid' => $pid, 'uuid' => $user['uuid']));
-
-      // if (count($role)) {
-      //   $_SESSION['user'] = array(
-      //     'uuid' => $user['uuid'],
-      //     'name' => $user['firstname'],
-      //     'avatar' => $user['avatar'],
-      //     'role' => $user['role'] === 'super_admin' ? 'admin' : $role['role'],
-      //     'role_status' => (intval($role['status']) === 1),
-      //     'user_status' => (intval($user['status']) === 1),
-      //     'pid' => $pid
-      //   );
-
-      //   header("Location: ".BASE_URL."story/edit/".$token['sid']);
-      // } else {
-      //   header("Location: ".BASE_URL."error/invalid_token");
-      //   return;
-      // }
     }
   }
 

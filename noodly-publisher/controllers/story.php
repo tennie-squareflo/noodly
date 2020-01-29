@@ -82,14 +82,14 @@ class Story_Controller extends Auth_Controller {
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
-              'clientid' => $main_data['client_id'],
+              'clientid' => $main_data['client_id'] === '' ? 0 : $main_data['client_id'],
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
               'summary' => $main_data['summary'],
               'visits' => 0,
               'hashtags' => $main_data['hashtags'],
-              'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? (empty($main_data['client_id']) ? 'PUBLISHED' : 'REQUEST') : 'SUBMITTED') : 'DRAFT',
+              'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? 'PUBLISHED' : 'SUBMITTED') : ($post['type'] === 'client-draft' ? 'CLIENT-DRAFT' : 'DRAFT'),
               'pid' => $_SESSION['user']['pid'],
               'created_at' => date('Y-m-d H:i:s'),
               'first_paragraph' => $main_data['first_paragraph'],
@@ -131,11 +131,12 @@ class Story_Controller extends Auth_Controller {
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
-              'clientid' => $main_data['client_id'],
+              'clientid' => $main_data['client_id'] === '' ? 0 : $main_data['client_id'],
               'hashtags' => $main_data['hashtags'],
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
+              'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? 'PUBLISHED' : 'SUBMITTED') : ($post['type'] === 'client-draft' ? 'CLIENT-DRAFT' : 'DRAFT'),
               'summary' => $main_data['summary'],
               'first_paragraph' => $main_data['first_paragraph'],
               'url' => $main_data['url'],
@@ -187,8 +188,9 @@ class Story_Controller extends Auth_Controller {
               }
             }
           }
-          if (empty($main_data['client_id']) !== true) {
-            $this->send_to_client($_SESSION['user']['uuid'], $main_data['client_id'], $main_data['url']);
+
+          if ($post['type'] === 'client-draft') {
+            $this->send_to_client($_SESSION['user']['uuid'], $main_data['client_id'], $main_data['url'], $main_data['title']);
           }
         } catch (Exception $e) {
           $this->response(array(
@@ -244,20 +246,6 @@ class Story_Controller extends Auth_Controller {
         try {
           $this->story_model->update(array('status' => 'SUBMITTED'), $id);
           $this->response(array('message' => "This Story Submitted Successfully!"));
-        } catch(Exception $e) {
-          $this->response(array(
-            'message' => $e->getMessage()
-          ), 500);
-          return;
-        }
-      break;
-      case 'request':
-        $id = $post['id'];
-        try {
-          $this->story_model->update(array('status' => 'REQUESTED'), $id);
-          $story = $this->story_model->get_one($id);
-          $this->send_to_client($story['uuid'], $story['clientid'], $story['url']);
-          $this->response(array('message' => "This Story Requested to Client Successfully!"));
         } catch(Exception $e) {
           $this->response(array(
             'message' => $e->getMessage()
@@ -330,7 +318,7 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function send_to_client($author_id, $client_id, $slug) {
+  function send_to_client($author_id, $client_id, $slug, $title) {
     // handle send message
     $this->load_model('user');
     $this->load_model('environment');
@@ -342,7 +330,7 @@ class Story_Controller extends Auth_Controller {
     $env = $this->environment_model->get_env();
 
     $view_data = array();
-    $subject = "$author[firstname] has posted a story - ".date('g:i a m/d/Y');
+    $subject = "$author[firstname] has requested a story to approve - ".date('g:i a m/d/Y');
     $view_data['title'] = "$author[firstname] has posted a story";
 
     $token = array(
@@ -353,7 +341,7 @@ class Story_Controller extends Auth_Controller {
 
     $link = "/accept/approve_story/".Encryption::encrypt($token);
     $view_data['client'] = $client;
-    $view_data['message'] = "$author[firstname] has just submitted a new story entitled $main_data[title]";
+    $view_data['message'] = "$author[firstname] has just submitted a new story entitled $title";
     $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
   }
 
@@ -396,7 +384,7 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('user');
     $story = $this->story_model->get_one(array('url' => $slug));
 
-    if ($story['status'] === 'REQUEST' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
+    if ($story['status'] === 'CLIENT-DRAFT' && !empty($_SESSION['client']) && $story['url'] === $_SESSION['client']['slug'] && intval($story['client_view']) < 25) {
       // increase client view      
       $this->story_model->increase_client_view($story['storyid']);
       $this->view_data['client'] = $_SESSION['client'];

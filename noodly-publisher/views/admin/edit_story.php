@@ -7,16 +7,17 @@
 						</div>
 						<div class="k-content__head-toolbar">
 							<div class="k-content__head-toolbar-wrapper">
+								<?php if ($is_new || $post['status'] === 'DRAFT' || $post['status'] === 'SUBMITTED' || $post['status'] === 'REJECTED' || $post['status'] === 'CLIENT-DRAFT') : ?>
+									<a class="btn btn-metal direct-draft-button" id="direct-draft-btn"><i class="la la-save"></i> Send Private Draft</a>
+								<?php endif; ?>
 								<?php 
 								if ($is_new) :
 								?>
-								<a class="btn btn-metal draft-button"><i class="la la-save"></i> Save as Draft</a> <a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $_SESSION['user']['role'] === 'admin' ? 'Publish' : 'Submit'; ?></a>
-								<? else:
-								?>
-								<a class="btn btn-success save-button"><i class="la la-check"></i> Save</a>
+								<a class="btn btn-metal draft-button"><i class="la la-save"></i> Save as Draft</a>
 								<?php 
 								endif;
 								?>
+								<a class="btn btn-success save-button"><i class="la la-check"></i> <?php echo $_SESSION['user']['role'] === 'admin' ? 'Publish' : 'Submit'; ?></a>
 							</div>
 						</div>
 					</div><!-- end:: Content Head -->
@@ -29,8 +30,9 @@
 									<div class="k-portlet__body">
 										<form class="k-form main-form" id="k_form" name="k_form">
 											<input type="hidden" name="id" value="<?php echo $is_new ? '0' : $post['sid']; ?>" />
+											<input type="hidden" name="client_id" id="client-id"/>
 											<div class="row">
-												<div class="col-xl-2"></div>
+												<div class="col-xl-2CLIENT-DRAFT"></div>
 												<div class="col-xl-8">
 													<div class="k-section k-section--first">
 														<div class="k-section__body">
@@ -73,25 +75,6 @@
 																			<div class="input-group">
 																				<input class="form-control" placeholder="Hash Tags" type="text" name="hashtags" value="<?php echo $is_new ? '' : $post['hashtags'];?>">
 																		</div>
-																	</div>
-																	<div class="form-group">
-																		<div class="d-flex justify-content-between align-items-center">
-																			<label class="col-form-label">Select Client</label>
-																			<a class="btn btn-light btn-elevate btn-pill btn-sm" id="add-client" data-toggle="modal" data-target="#addClientModal">
-																				<i class="la la-plus"></i> Add Client
-																			</a>
-																		</div>
-																		<select class="form-control" id="client_list" name="client_id">
-																			<option selected value=""></option>
-																			<?php
-																				foreach ($clients as $client) {
-																					if ($post['clientid'] === $client['cid'])
-																						echo "<option selected value='$client[cid]'>$client[firstname] $client[lastname]</option>";
-																					else
-																						echo "<option value='$client[cid]'>$client[firstname] $client[lastname]</option>";
-																				}
-																			?>
-																		</select>
 																	</div>
 																	<div class="form-group">
 																		<label class="col-form-label">Thumbnail Image</label>
@@ -272,19 +255,16 @@
 										</div>
 									</div>
 								</div>
-							</div><!--end::Portlet-->
-
-
-						
+							</div><!--end::Portlet-->						
 					</div>
 				</div>
 			</div><!-- end:: Content Body -->
 
-<div class="modal" tabindex="-1" role="dialog" id="addClientModal">
+<div class="modal" tabindex="-1" role="dialog" id="add-client-modal">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 	  <div class="modal-content">
 	    <div class="modal-header">
-	      <h5 class="modal-title">Add Client</h5>
+	      <h5 class="modal-title">Send to Client</h5>
 	      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	        <span aria-hidden="true">&times;</span>
 	      </button>
@@ -297,29 +277,46 @@
 	            <div class="k-section k-section--first">
 	              <div class="k-section__body">
 	                <h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
+
+									<div class="form-group row">
+	                  <label class="col-3 col-form-label">client:</label>
+	                  <div class="col-9">
+											<select class="form-control" id="client_list" name="client_id">
+												<option selected value="">Create Client</option>
+												<?php
+													foreach ($clients as $client) {
+														if ($post['clientid'] === $client['cid'])
+															echo "<option selected value='$client[cid]'>$client[firstname] $client[lastname]</option>";
+														else
+															echo "<option value='$client[cid]'>$client[firstname] $client[lastname]</option>";
+													}
+												?>
+											</select>
+	                  </div>
+	                </div>
 	                
-	                <div class="form-group row">
+	                <div class="form-group row hidden-client-exists">
 	                  <label class="col-3 col-form-label">FirstName</label>
 	                  <div class="col-9">
 	                    <input type="text" name="firstname" class="form-control" placeholder="FirstName">
 	                  </div>
 	                </div>
 
-	                <div class="form-group row">
+	                <div class="form-group row hidden-client-exists">
 	                  <label class="col-3 col-form-label">LastName</label>
 	                  <div class="col-9">
 	                    <input type="text" name="lastname" class="form-control" placeholder="LastName">
 	                  </div>
 	                </div>
 
-	                <div class="form-group row">
+	                <div class="form-group row hidden-client-exists">
 	                  <label class="col-3 col-form-label">E-Mail</label>
 	                  <div class="col-9">
 	                    <input type="text" name="email" class="form-control" placeholder="E-Mail">
 	                  </div>
 	                </div>
 
-	                <div class="form-group row">
+	                <div class="form-group row hidden-client-exists">
 	                  <label class="col-3 col-form-label">Company</label>
 	                  <div class="col-9">
 	                    <input type="text" name="company" class="form-control" placeholder="Company">
@@ -335,7 +332,7 @@
 	      </form>
 	    </div>
 	    <div class="modal-footer">
-	      <button type="button" class="btn btn-primary" id="add-client-btn">Add</button>
+	      <button type="button" class="btn btn-primary" id="send-client-btn">Send</button>
 	      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	    </div>
 	  </div>

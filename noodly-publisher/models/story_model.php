@@ -37,7 +37,7 @@ class Story_Model extends Core_Model{
     return $this->get($select, array(), $limit, 'sid');
   }
 
-  function get_channel_stories($pid =0, $uuid = 0, $cid = 0, $limit = 0) {
+  function get_published_channel_stories($pid =0, $uuid = 0, $cid = 0, $limit = 0) {
     $select = "
       stories.sid,
       stories.cid,
@@ -51,6 +51,7 @@ class Story_Model extends Core_Model{
       stories.status,
       (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
     ";
+    $this->db->where(array('status' => 'PUBLISHED'));
     if ($pid !== 0) {
       $this->db->where(array('pid' => $pid));
     }

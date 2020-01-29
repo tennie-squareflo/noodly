@@ -378,7 +378,12 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function view_story($slug, $preview = true) {
+  function preview($slug) {
+    $this->redirect_auth();
+    $this->view_story($slug, true);
+  }
+
+  function view_story($slug, $preview = false) {
     $this->load_model('story');
     $this->load_model('category');
     $this->load_model('user');
@@ -395,7 +400,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
 
     // check validation
-    if ($preview === false && $story['STATUS'] !== 'PUBLISHED') {
+    if ($preview === false && $story['status'] !== 'PUBLISHED' && empty($_SESSION['client'])) {
       header("Location: ".BASE_URL."error/error404");
       return;
     }

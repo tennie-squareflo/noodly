@@ -31,7 +31,7 @@ class Category_Model extends Core_Model {
   function get_channels($pid, $order_by = '', $limit = '') {
     $query = "SELECT categories.*,
     (select count(stories.sid) from stories where stories.cid = categories.cid) storiescount,
-    (select sum(visits) from stories where stories.cid = categories.cid) visits FROM categories WHERE pid = ".$pid;
+    (select sum(visits) from stories where stories.cid = categories.cid and stories.status = 'PUBLISHED') visits FROM categories WHERE pid = ".$pid;
     // echo $query;exit;
     if($order_by ==='az') {
       $order= " ORDER BY name ASC";

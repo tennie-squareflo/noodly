@@ -2,16 +2,16 @@
 
 $(function() {
   // intialize images
-  setTimeout(() => {
-    $("#k_form")
-      .find('input[name="image"]')
-      .val(
-        $(".main-form")
-          .find('input[name="image"]')
-          .siblings('input[type="file"]')
-          .attr("data-value")
-      );
-  }, 500);
+  // setTimeout(() => {
+  //   $("#k_form")
+  //     .find('input[name="image"]')
+  //     .val(
+  //       $(".main-form")
+  //         .find('input[name="image"]')
+  //         .siblings('input[type="file"]')
+  //         .attr("data-value")
+  //     );
+  // }, 500);
 
   jQuery.validator.setDefaults({
     errorElement: "span",
@@ -63,9 +63,9 @@ $(function() {
         required: true,
         checkUrl: true
       },
-      image: {
-        required: true
-      }
+      // image: {
+      //   required: true
+      // }
     },
     submitHandler: function() {
       $.ajax({
@@ -94,7 +94,7 @@ $(function() {
 
         toastr.success(res.message);
         setTimeout(() => {
-          location.href= BASE_URL + 'channel/edit/' + res.id;
+          location.href= BASE_URL + 'channels/edit/' + res.id;
         }, 3000);
       },
       error: function(res) {

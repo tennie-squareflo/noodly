@@ -87,10 +87,10 @@
                               echo '<span class="badge badge-info">CLIENT-DRAFT</span>';
                             break;
                             case 'REJECTED':
-                              echo '<span class="badge badge-error">REJECTED</span>';
+                              echo '<span class="badge badge-danger">REJECTED</span>';
                             break;
                             case 'BLOCKED':
-                              echo '<span class="badge badge-error">BLOCKED</span>';
+                              echo '<span class="badge badge-danger">BLOCKED</span>';
                             break;
                             case 'PUBLISHED':
                               echo '<span class="badge badge-success">PUBLISHED</span>';

@@ -25,7 +25,7 @@
                             <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'channel/all' ?>">All</a></li>
                         </ul>
                       </li>
-                      <li class="nav-item"><a class="pisen-nav-link <?php echo $current_page === 'contributors' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li>
+                      <!-- <li class="nav-item"><a class="pisen-nav-link <?php echo $current_page === 'contributors' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li> -->
                       <li class="nav-item"><a class="pisen-nav-link" href="#"><i class="fa fa-ellipsis-h"></i></a><i class="submenu-opener fas fa-plus"></i>
                         <ul class="sub-menu">
                           <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'aboutus' ?>">About Us</a></li>

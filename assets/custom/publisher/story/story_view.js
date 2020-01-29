@@ -83,7 +83,7 @@ $(function() {
             case 'image':
               newSection = $(`
               <div class="">
-                  <img class="img-fluid" src="${ASSETS_URL + 'media/stories/' + res.content}" alt="post image">
+                  <img class="img-fluid" src="${ASSETS_URL + 'media/stories/' + res.content}" alt="post image" onError="this.src='${ASSETS_URL + 'media/images/no-image-found.png'}';">
                   <div class="blog-pragraph image-caption">${res.caption ? res.caption : ''}</div>
               </div>
               `);

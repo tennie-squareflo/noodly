@@ -507,8 +507,7 @@ header.mobile .header-wrapper .menu-function {
       color: #f17070;
       text-decoration: none; }
   .posts .post-img {
-    width: 100%;
-    overflow: hidden; }
+    width: 100%;}
     .posts .post-img img {
       object-fit: cover;
       height: 100%;
@@ -3892,6 +3891,11 @@ footer.v2 {
 
 @media (max-width: 576px) {
   .post-block .img-fluid {
-    margin: 0 -50px;
+    margin: 0 -42px;
+    width: 100vw !important;
+    max-width: none;
+  }
+  .post-img .img-fluid {
+    margin: 0 -30px;
   }
 }

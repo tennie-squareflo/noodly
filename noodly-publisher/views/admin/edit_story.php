@@ -53,10 +53,10 @@
 															<div class="k-section">
 																<div class="k-section__body">
 																	<div class="form-group">
-																		<label class="col-form-label">Category</label>
+																		<label class="col-form-label">Channel</label>
 																		<select class="form-control" name="cid">
 																			<option value="">
-																				Select A Category
+																				Select A Channel
 																			</option>
 																			<?php
 																				foreach ($categories as $key => $value) {

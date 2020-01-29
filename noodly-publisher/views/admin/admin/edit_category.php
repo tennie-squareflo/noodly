@@ -49,7 +49,7 @@
 																		<input class="form-control" name="channel_color" placeholder="ex: #ff7310 or navy" type="text" value="<?php echo $is_new ? '' : $category['channel_color']; ?>">
 																	</div>
 																</div>
-																<div class="form-group">
+																<!-- <div class="form-group">
 																	<label class="col-5 col-form-label">Image</label>
 																	<div class="col-5">
 																		<div class="slim"
@@ -66,7 +66,7 @@
 																			</div>
 																	
 																	</div>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div>

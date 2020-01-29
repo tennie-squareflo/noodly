@@ -55,7 +55,7 @@
               $hashtags = explode(' ', $post['hashtags']);
 
               for($i =0; $i < count($hashtags); $i++) {?>
-                <a href="<?php echo BASE_URL.'hash/'.substr($hashtags[$i], 1) ?>"><?php echo $hashtags[$i] ?></a>
+                <a class="my-2" href="<?php echo BASE_URL.'hash/'.substr($hashtags[$i], 1) ?>"><?php echo $hashtags[$i] ?></a>
             <?php } ?>
           </div>
         </div>
@@ -131,7 +131,7 @@
           </div>
         </div>
       </div>
-      <div class="another-posts">
+      <!-- <div class="another-posts">
         <?php if(!empty($prev_story['sid'])) { ?>
           <a class="arrow-control arrow-prev" href="<?php echo BASE_URL.'story/'.$prev_story['url'];?>"><i class="arrow_left"></i></a>
         <?php } ?>
@@ -161,7 +161,7 @@
               <div class="post-mini-img text-right"><a href="<?php echo BASE_URL.'story/'.$next_story['url'];?>"><img src="<?php echo ASSETS_URL;?>media/stories/<?php echo $next_story['thumb_image'] ?>?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="post image"></a></div>
             </div>
           <?php } ?>
-        </div>
+        </div> -->
         
       </div>
     </div>

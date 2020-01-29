@@ -58,7 +58,7 @@ class Story_Controller extends Auth_Controller {
     );
     $this->story_model->update($new_story_data, $sid);
     $story = $this->story_model->get_one($sid);
-    header("Location: ".BASE_URL."story/view_story/".$story['url']);
+    header("Location: ".BASE_URL."story/".$story['url']);
   }
 
   function action($type) {
@@ -396,7 +396,7 @@ class Story_Controller extends Auth_Controller {
     }
     $this->show_story($story, $preview);
   }
-  function show_story($story, $preview = true) {
+  function show_story($story, $preview = false) {
     $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/slim/slim.jquery.min.js', 'custom/publisher/story/story_view.js');
 
     // check validation

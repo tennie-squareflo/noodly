@@ -63,7 +63,7 @@ class Accept_Controller extends Auth_Controller {
         'client_id' => $token['client_id'],
         'client_email' => $token['client_email']
       );
-      header("Location: ".BASE_URL."story/view_story/".$token['slug']);
+      header("Location: ".BASE_URL."story/".$token['slug']);
     }
   }
 

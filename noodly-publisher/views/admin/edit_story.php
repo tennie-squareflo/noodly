@@ -8,7 +8,7 @@
 						<div class="k-content__head-toolbar">
 							<div class="k-content__head-toolbar-wrapper">
 								<?php if ($is_new || $post['status'] === 'DRAFT' || $post['status'] === 'SUBMITTED' || $post['status'] === 'REJECTED' || $post['status'] === 'CLIENT-DRAFT') : ?>
-									<a class="btn btn-metal direct-draft-button" id="direct-draft-btn"><i class="la la-save"></i> Send Private Draft</a>
+									<a class="btn btn-metal direct-draft-button" id="direct-draft-btn"><i class="fa fa-paper-plane"></i> Send Private Draft</a>
 								<?php endif; ?>
 								<?php 
 								if ($is_new) :
@@ -32,7 +32,7 @@
 											<input type="hidden" name="id" value="<?php echo $is_new ? '0' : $post['sid']; ?>" />
 											<input type="hidden" name="client_id" id="client-id"/>
 											<div class="row">
-												<div class="col-xl-2CLIENT-DRAFT"></div>
+												<div class="col-xl-2"></div>
 												<div class="col-xl-8">
 													<div class="k-section k-section--first">
 														<div class="k-section__body">

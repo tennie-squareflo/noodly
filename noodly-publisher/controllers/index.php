@@ -70,6 +70,7 @@ class Index_Controller extends Auth_Controller {
     $this->load_model('publisher');
     $this->view_data['current_page'] = 'channels';
     $channel = $this->category_model->get_one(array('slug' => $slug));
+    $this->view_data['current_channel'] = $channel;
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
     $this->view_data['stories'] = $this->story_model->get_channel_stories($this->pid, 0, $channel['cid']);

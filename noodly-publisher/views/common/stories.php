@@ -5,13 +5,19 @@
 </style>
 <section class="posts blog-masonry">
   <div class="container">
-    <?php if(!empty($current_page) && $current_page !== 'latest' && $current_page !== 'channels') { ?>
+    <?php if(!empty($current_page) && $current_page === 'popular') { ?>
       <div class="contact">
-        <div class="leave-message text-center">
+        <div class="mb-4 leave-message text-center">
           <h1>Popular</h1>
         </div>
       </div>
       
+    <?php } else if(!empty($current_page) && $current_page === 'channels' && !empty($current_channel)) { ?>
+      <div class="contact">
+        <div class="mb-4 leave-message text-center">
+          <h1><?php echo $current_channel['name']; ?></h1>
+        </div>
+      </div>
     <?php } ?>
     <div class="blog-masonry_wrapper">
       <?php

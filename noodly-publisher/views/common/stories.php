@@ -1,8 +1,3 @@
-<style>
-  #main {
-    padding-top: 150px;
-  }
-</style>
 <section class="posts blog-masonry">
   <div class="container">
     <?php if(!empty($current_page) && $current_page === 'popular') { ?>

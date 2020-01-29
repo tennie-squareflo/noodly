@@ -10,7 +10,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <title></title>
   <style type="text/css">
-    @media screen {
+    @media screen {           
       @font-face {
         font-family: 'Fira Sans';
         font-style: normal;
@@ -238,23 +238,17 @@
                                     </tbody>
                                     <tbody>
                                       <tr>
-                                        <td class="pc-xs-lh-42 pc-xs-fs-30 pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 46px; letter-spacing: -0.6px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
-                                        <?php 
-                                        echo $title;
-                                        ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td height="30" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                      </tr>
-                                    </tbody>
-                                    <tbody>
-                                      <tr>
                                         <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
-                                        Hi <?php echo $client['firstname'];?>!<br>
                                         <?php 
-                                        echo $message;
+                                        echo "<p>".str_replace("\n", "<br/>", $message)."</p>";
+                                        echo "<hr/>";
+                                        echo "<h1>$title</h1>";
+                                        echo "<p>$summary</p>";
                                         ?>
+                                        <hr/>
+                                        <p>
+                                          Click on the button below to view a private draft of this story and either choose to publish or reject the story. 
+                                        </p>
                                         </td>
                                       </tr>
                                       <tr>

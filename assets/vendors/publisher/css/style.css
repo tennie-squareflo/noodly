@@ -408,7 +408,7 @@ header.mobile .header-wrapper .menu-function {
     width: 30vw; } }
 
 #main {
-  padding-top: 105px; }
+  padding-top: 150px; }
 
 .slider-image {
   width: 100%;
@@ -3866,6 +3866,9 @@ footer.v2 {
       box-shadow: 0; }
 
 @media (max-width: 576px) {
+  #main {
+    padding-top: 105px;
+  }
   .main-coming-soon {
     display: block;
     margin-top: 70px; }

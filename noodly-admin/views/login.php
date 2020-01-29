@@ -8,7 +8,7 @@
 				<!--begin::Heade-->
 				<div class="k-login-v2__head">
 					<div class="k-login-v2__head-logo">
-						<a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png"></a>
+						<a href="<?php echo BASE_URL; ?>"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png"></a>
 					</div>
 				</div><!--begin::Head-->
 			</div><!--end::Item-->

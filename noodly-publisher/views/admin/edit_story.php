@@ -31,6 +31,7 @@
 										<form class="k-form main-form" id="k_form" name="k_form">
 											<input type="hidden" name="id" value="<?php echo $is_new ? '0' : $post['sid']; ?>" />
 											<input type="hidden" name="client_id" id="client-id"/>
+											<input type="hidden" name="client_message" id="client-message"/>
 											<div class="row">
 												<div class="col-xl-2"></div>
 												<div class="col-xl-8">
@@ -279,48 +280,43 @@
 	                <h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 
 									<div class="form-group row">
-	                  <label class="col-3 col-form-label">client:</label>
-	                  <div class="col-9">
-											<select class="form-control" id="client_list" name="client_id">
-												<option selected value="">Create Client</option>
-												<?php
-													foreach ($clients as $client) {
-														if ($post['clientid'] === $client['cid'])
-															echo "<option selected value='$client[cid]'>$client[firstname] $client[lastname]</option>";
-														else
-															echo "<option value='$client[cid]'>$client[firstname] $client[lastname]</option>";
-													}
-												?>
-											</select>
-	                  </div>
+	                  <label class="col-form-label">Client</label>
+										<select class="form-control" id="client_list" name="client_id">
+											<option selected value="">Create Client</option>
+											<?php
+												foreach ($clients as $client) {
+													if ($post['clientid'] === $client['cid'])
+														echo "<option selected value='$client[cid]'>$client[firstname] $client[lastname]</option>";
+													else
+														echo "<option value='$client[cid]'>$client[firstname] $client[lastname]</option>";
+												}
+											?>
+										</select>
 	                </div>
 	                
 	                <div class="form-group row hidden-client-exists">
-	                  <label class="col-3 col-form-label">FirstName</label>
-	                  <div class="col-9">
-	                    <input type="text" name="firstname" class="form-control" placeholder="FirstName">
-	                  </div>
+	                  <label class="col-form-label">FirstName</label>
+	                  <input type="text" name="firstname" class="form-control" placeholder="FirstName">
 	                </div>
 
 	                <div class="form-group row hidden-client-exists">
-	                  <label class="col-3 col-form-label">LastName</label>
-	                  <div class="col-9">
-	                    <input type="text" name="lastname" class="form-control" placeholder="LastName">
-	                  </div>
+	                  <label class="col-form-label">LastName</label>
+	                  <input type="text" name="lastname" class="form-control" placeholder="LastName">
 	                </div>
 
 	                <div class="form-group row hidden-client-exists">
-	                  <label class="col-3 col-form-label">E-Mail</label>
-	                  <div class="col-9">
-	                    <input type="text" name="email" class="form-control" placeholder="E-Mail">
-	                  </div>
+	                  <label class="col-form-label">E-Mail</label>
+	                  <input type="text" name="email" class="form-control" placeholder="E-Mail">
 	                </div>
 
 	                <div class="form-group row hidden-client-exists">
-	                  <label class="col-3 col-form-label">Company</label>
-	                  <div class="col-9">
-	                    <input type="text" name="company" class="form-control" placeholder="Company">
-	                  </div>
+	                  <label class="col-form-label">Company</label>
+	                  <input type="text" name="company" class="form-control" placeholder="Company">
+									</div>
+									
+									<div class="form-group row">
+	                  <label class="col-form-label">Message</label>
+	                  <textarea type="text" name="message" id="message" class="form-control" placeholder="Write your message to client here" rows="8"> </textarea>
 	                </div>
 	              </div>
 	            </div>  

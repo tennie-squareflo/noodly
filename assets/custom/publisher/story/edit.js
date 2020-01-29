@@ -558,6 +558,7 @@ const submitClient = () => {
     $("#add-client-form").submit();
   } else{
     $('#client-id').val(cid);
+    $('#client-message').val($('#message').val());
     submitForm('client-draft');
   }
 };

@@ -83,6 +83,7 @@ class Story_Controller extends Auth_Controller {
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
               'clientid' => $main_data['client_id'] === '' ? 0 : $main_data['client_id'],
+              'client_view' => 0,
               'uuid' => $_SESSION['user']['uuid'],
               'thumb_image' => !empty($main_data['thumb_image']) ? json_decode($main_data['thumb_image'])->file : '',
               'cover_image' => !empty($main_data['cover_image']) ? json_decode($main_data['cover_image'])->file : '',
@@ -131,6 +132,7 @@ class Story_Controller extends Auth_Controller {
             $new_story_data = array(
               'title' => $main_data['title'],
               'cid' => $main_data['cid'],
+              'client_view' => 0,
               'clientid' => $main_data['client_id'] === '' ? 0 : $main_data['client_id'],
               'hashtags' => $main_data['hashtags'],
               'uuid' => $_SESSION['user']['uuid'],
@@ -190,7 +192,7 @@ class Story_Controller extends Auth_Controller {
           }
 
           if ($post['type'] === 'client-draft') {
-            $this->send_to_client($_SESSION['user']['uuid'], $main_data['client_id'], $main_data['url'], $main_data['title']);
+            $this->send_to_client($_SESSION['user']['uuid'], $main_data['client_id'], $main_data['url'], $main_data['title'], $main_data['summary'], $main_data['client_message']);
           }
         } catch (Exception $e) {
           $this->response(array(
@@ -318,7 +320,7 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function send_to_client($author_id, $client_id, $slug, $title) {
+  function send_to_client($author_id, $client_id, $slug, $title, $summary, $message) {
     // handle send message
     $this->load_model('user');
     $this->load_model('environment');
@@ -330,8 +332,9 @@ class Story_Controller extends Auth_Controller {
     $env = $this->environment_model->get_env();
 
     $view_data = array();
-    $subject = "$author[firstname] has requested a story to approve - ".date('g:i a m/d/Y');
-    $view_data['title'] = "$author[firstname] has posted a story";
+    $subject = "$author[firstname] sent you a private draft - ".date('g:i a m/d/Y');
+    $view_data['title'] = $title;
+    $view_data['summary'] = $summary;
 
     $token = array(
       'slug' => $slug,
@@ -341,7 +344,7 @@ class Story_Controller extends Auth_Controller {
 
     $link = "/accept/approve_story/".Encryption::encrypt($token);
     $view_data['client'] = $client;
-    $view_data['message'] = "$author[firstname] has just submitted a new story entitled $title";
+    $view_data['message'] = $message;
     $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
   }
 

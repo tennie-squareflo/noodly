@@ -1,6 +1,9 @@
 <?php
-class Index_Controller {
+class Index_Controller extends Core_Controller {
+  function __construct() {
+		parent::__construct('admin');
+	}
   function index() {
-    header('Location: '.BASE_URL.'dashboard');
+    $this->single_load('home');
   }
 }

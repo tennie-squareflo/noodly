@@ -32,6 +32,8 @@ function parseVideoURL(url) {
   return retVal;
 }
 
+let showFullBio = false;
+
 function getVideoInfo(link) {
   let video = parseVideoURL(link);
   let {id, provider} = video;
@@ -106,5 +108,26 @@ $(function() {
         }
       });
     }
+
+    lessBio();
 });
+
+function showBio() {
+  const text = $('#author-bio').data('text');
+  if (showFullBio) {
+    $('#author-bio').html(text + '<a class="text-primary btn" onclick="lessBio()">Less</a>');
+  } else {
+    $('#author-bio').html(text.substr(0, 60) + '<a class="text-primary btn" onclick="fullBio()">More</a>');
+  }
+}
+
+function lessBio() {
+  showFullBio = false;
+  showBio();
+}
+
+function fullBio() {
+  showFullBio = true;
+  showBio();
+}
 

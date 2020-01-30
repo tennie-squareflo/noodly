@@ -131,7 +131,7 @@
               </a>
               <?php } ?>
             </div>
-            <p><?php echo $author['shortbio']; ?></p>
+            <p data-text="<?php echo $author['shortbio']; ?>" id="author-bio"></p>
             <button class="normal-btn">Subscribe</button>
           </div>
         </div>

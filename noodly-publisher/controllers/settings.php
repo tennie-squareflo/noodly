@@ -189,7 +189,7 @@ class Settings_Controller extends Auth_Controller {
   }
   function bg_upload() {
     $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('logo_back', ASSETS_PATH.'media/logos/');
+    $this->slim_image_uploader->image_upload('logo_back', ASSETS_PATH.'media/email_background/');
   }
   function admin_logo_upload() {
     $this->load_library('slim_image_uploader');

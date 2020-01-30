@@ -142,42 +142,36 @@
       display: none !important;
     }
 
+    @media screen and (min-width: 621px) {
+      .pc-email-container {
+        width: 620px !important;
+      }
+    }
+
     @media screen and (max-width:620px) {
-      .pc-sm-p-34-30-55 {
-        padding: 34px 30px 55px !important
+      .pc-sm-p-20 {
+        padding: 20px !important
       }
-      .pc-sm-p-30 {
-        padding: 30px !important
-      }
-      .pc-sm-p-18-30 {
-        padding: 18px 30px !important
+      .pc-sm-p-35-30 {
+        padding: 35px 30px !important
       }
     }
 
     @media screen and (max-width:525px) {
-      .pc-xs-p-25-20-20 {
-        padding: 25px 20px 20px !important
+      .pc-xs-p-10 {
+        padding: 10px !important
       }
-      .pc-xs-h-53 {
-        height: 53px !important
+      .pc-xs-p-25-20 {
+        padding: 25px 20px !important
+      }
+      .pc-xs-br-disabled br {
+        display: none !important
       }
       .pc-xs-fs-30 {
         font-size: 30px !important
       }
       .pc-xs-lh-42 {
         line-height: 42px !important
-      }
-      .pc-xs-br-disabled br {
-        display: none !important
-      }
-      .pc-xs-p-25-20 {
-        padding: 25px 20px !important
-      }
-      .pc-xs-p-18-20 {
-        padding: 18px 20px !important
-      }
-      .pc-xs-p-0 {
-        padding: 0 !important
       }
     }
   </style>
@@ -191,7 +185,7 @@
   <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 </head>
 <body style="width: 100% !important; margin: 0; padding: 0; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #f4f4f4" class="">
-  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;"></span>
+  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
   <table class="pc-email-body" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed;">
     <tbody>
       <tr>
@@ -202,7 +196,7 @@
             </v:background>
             <![endif]-->
           <!--[if (gte mso 9)|(IE)]><table width="620" align="center" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td width="620" align="center" valign="top"><![endif]-->
-          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto;">
+          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; max-width: 620px;">
             <tbody>
               <tr>
                 <td align="left" valign="top" style="padding: 0 10px;">
@@ -213,120 +207,69 @@
                       </tr>
                     </tbody>
                   </table>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)" background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/email_background/'.$env['email_background_image']; ?>" bgcolor="<?php echo $env['email_background_image']; ?>">
                     <tbody>
                       <tr>
                         <td valign="top">
-                          <!-- BEGIN MODULE: Header 2 -->
+                          <!-- BEGIN MODULE: Menu 6 -->
                           <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tbody>
                               <tr>
-                                <td  <?php echo $env['email_background_image'] !== '' ? "background='".PROTOCOL.'://'.$server.ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover">
-                                  <!--[if gte mso 9]>
-            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
-                <v:fill type="frame" src="images/header-2-image-2.jpg" color="#1B1B1B"></v:fill>
-                <v:textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">
-                    <div style="font-size: 0; line-height: 0;">
-                        <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center">
-                            <tr>
-                                <td style="font-size: 14px; line-height: 1.5;" valign="top">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
-                                        <tr>
-                                            <td colspan="3" height="34" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="40" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
-                                            <td valign="top" align="left">
-            <![endif]-->
-                                  <!--[if !gte mso 9]><!-->
-                                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                <td class="pc-sm-p-20 pc-xs-p-10"  valign="top" style="padding: 25px 30px; ">
+                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td class="pc-sm-p-34-30-55 pc-xs-p-25-20-20" style="padding: 34px 40px 55px;" valign="top">
-                                          <!--<![endif]-->
-                                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
-                                            <tbody>
-                                              <tr>
-                                                <td valign="top" align="center">
-                                                <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
-                                                </td>
-                                              </tr>
-                                              <tr>
-                                                <td class="pc-xs-h-53" height="61" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                              </tr>
-                                            </tbody>
-                                            <tbody>
-                                              <tr>
-                                                <td class="pc-xs-lh-42 pc-xs-fs-30 pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 46px; letter-spacing: -0.6px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">Profile completed!</td>
-                                              </tr>
-                                              <tr>
-                                                <td height="30" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                              </tr>
-                                            </tbody>
-                                            <tbody>
-                                              <tr>
-                                                <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">Hi <?php echo $user['firstname'];?>!<br>Thanks for completing your profile. You can now login and do stuff.</td>
-                                              </tr>
-                                              <tr>
-                                                <td height="24" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                              </tr>
-                                            </tbody>
-                                            <tbody>
-                                              <tr>
-                                                <td style="padding: 5px 0;" valign="top" align="center">
-                                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                                                    <tbody>
-                                                      <tr>
-                                                        <td style="border-radius: 8px; padding: 13px 17px; background-color: #5654dd" bgcolor="#5654dd" valign="top" align="center">
-                                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/login" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Go to Login</a>
-                                                        </td>
-                                                      </tr>
-                                                    </tbody>
-                                                  </table>
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                          <!--[if !gte mso 9]><!-->
+                                        <td align="center" valign="top" style="padding: 10px;">
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$env['email_logo']; ?>" width="<?php echo $env['email_logo_size'];?>" alt="" style="height: auto; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
                                         </td>
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <!--<![endif]-->
-                                  <!--[if gte mso 9]>
-                                            </td>
-                                            <td width="40" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" height="55" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </v:textbox>
-            </v:rect>
-            <![endif]-->
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                          <!-- END MODULE: Header 2 -->
-                          <!-- BEGIN MODULE: Menu 4 -->
-                          <!-- <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                          <!-- END MODULE: Menu 6 -->
+                          <!-- BEGIN MODULE: Content 14 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td valign="top" bgcolor="#1B1B1B" style="background-color: #1B1B1B">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" valign="top"  style="padding: 40px; ">
+                                  <table border="0" cellpadding="0" cellspacing="0" style="text-align: center;" width="100%" align="center" role="presentation">
+                                    <tbody>
+                                      <tr>
+                                        <td class="pc-fb-font" valign="top" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color']; ?>">Hi <?php echo $user['firstname']; ?>!<br>Thanks for completing your profile. Your account is now active. Click on the button below to sign in to <?php echo $publisher['name']; ?> as a <?php echo $role['role']; ?>.&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                      </tr>
+                                    </tbody>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- END MODULE: Content 14 -->
+                          <!-- BEGIN MODULE: Call to Action 1 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                              <tr>
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top" >
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td class="pc-sm-p-18-30 pc-xs-p-18-20 pc-fb-font" valign="top" style="padding: 18px 40px; text-align: center; font-family: Helvetica, sans-serif; line-height: 20px; font-size: 14px;">
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">Home</a>
-                                          <span class="pc-xs-p-0" style="padding: 0 23px;">&nbsp;&nbsp;</span>
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/login" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">My Dashboard</a>
-                                          <span class="pc-xs-p-0" style="padding: 0 23px;">&nbsp;&nbsp;</span>
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain;?>/my-account" style="text-decoration: none; color: <?php echo $env['email_foreground_color'];?>; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;">My Account</a>
+                                        <td style="padding: 8px 0;" valign="top" align="center">
+                                          <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tbody>
+                                              <tr>
+                                                <td style="padding: 13px 17px; border-radius: 8px; background-color: <?php echo $env['email_button_color']; ?>;" bgcolor="#41dc84" valign="top" align="center">
+                                                  <a class="pc-fb-font" href="<?php echo $accept_url; ?>" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_button_text_color']; ?>;">&nbsp;<span>Log In Now</span></a>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -334,8 +277,20 @@
                                 </td>
                               </tr>
                             </tbody>
-                          </table> -->
-                          <!-- END MODULE: Menu 4 -->
+                          </table>
+                          <!-- END MODULE: Call to Action 1 -->
+                          <!-- BEGIN MODULE: Call to Action 1 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                              <tr>
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top" >
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- END MODULE: Call to Action 1 -->
                         </td>
                       </tr>
                     </tbody>

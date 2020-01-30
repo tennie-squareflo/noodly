@@ -140,8 +140,9 @@ class Accept_Controller extends Auth_Controller {
         $this->load_model('publisher');
         $publisher = $this->publisher_model->get_one($pid);
         $subject = 'Welcome to '.$publisher['domain'];
+        $link = '/login';
 
-        if ($this->send_email($id, $pid, $subject, '', 'profile_complete', array())) {
+        if ($this->send_email($id, $pid, $subject, $link, 'profile_complete', array())) {
           $this->response(array('code' => 0, 'message' => 'Thanks for updating your profile. Please check your inbox for a confirmation E-mail, with a button to sign in.', 'navigate' => true));
         } else {
           $this->response(array('code' => 1, 'message' => 'Confirmation E-mail is not sent, please try again.'), 500);

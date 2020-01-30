@@ -125,11 +125,13 @@ class Core_Controller {
     $this->load_model('user');
     $this->load_model('publisher');
     $this->load_model('environment');
+    $this->load_model('match_user_role');
     $this->load_helper('string');
 
     $user = $this->user_model->get_one($uuid);
     $publisher = $this->publisher_model->get_one($pid);
-    $env = $this->environment_model->get_env();
+    $env = $this->environment_model->get_env($pid);
+    $role = $this->match_user_role->get_one(array('uuid' => $uuid, 'pid' => $pid));
 
     $to = $user['email'];
     $from = $publisher['email'];
@@ -151,6 +153,7 @@ class Core_Controller {
     $view_data['accept_url'] = $domain.$link;
     $view_data['user'] = $user;
     $view_data['publisher'] = $publisher;
+    $view_data['role'] = $role;
     $view_data['env'] = $env;
     $view_data['domain'] = $domain;
     $view_data['server'] = $server;

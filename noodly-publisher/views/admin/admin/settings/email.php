@@ -75,7 +75,7 @@
 							                            <?php
 							                              if (count($emails)) {
 							                            ?>
-							                            <img src="<?php echo ASSETS_URL.'media/logos/'.$emails['email_background_image']; ?>" alt="">
+							                            <img src="<?php echo ASSETS_URL.'media/email_background/'.$emails['email_background_image']; ?>" alt="">
 							                            <?php
 							                              }?>
 							                          </div>

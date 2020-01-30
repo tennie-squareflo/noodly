@@ -3,11 +3,26 @@ class Core_Controller {
   private $view_path;
   private $base_path;
   private $role;
+
+  public $publisher_domain;
+  public $view_data;
+  public $pid;
+  
   function __construct($role) {
     $this->role = $role;
     $this->base_path = $this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH;
     $this->view_path = ($this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH).VIEW_PATH;
     $this->load_helper('string');
+
+    if ($role === 'admin') {
+      $this->pid = 0;
+    } else {
+      $this->publisher_domain = PUBLISHER_DOMAIN;
+      $this->load_model("publisher");
+      $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
+      $this->pid = $publisher['pid'];
+      $this->view_data['publisher'] = $publisher;
+    }
   }
 
   function load_view($filename, $vars = array(), $return = false) {

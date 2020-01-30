@@ -1,8 +1,3 @@
-<style>
-  #main {
-    padding-top: 150px;
-  }
-</style>
 <section class="shop">
 			<div class="container">
 			  <div class="shop-5col">

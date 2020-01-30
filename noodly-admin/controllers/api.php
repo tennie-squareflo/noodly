@@ -22,4 +22,31 @@ class Api_Controller extends Core_Controller {
       $this->response(array('code' => 1));
     }
   }
+
+  public function send_message() {
+    $this->load_model('user');
+    $this->load_model('message');
+
+    $admins = $this->user_model->get('uuid', array('role' => 'super_admin', 'status' => 1));
+
+    $new_data = array(
+      'admin_uuid' => 0,
+      'firstname' => $_POST['firstname'],
+      'lastname' => $_POST['lastname'],
+      'email' => $_POST['contact-email'],
+      'phone' => $_POST['contact-phone'],
+      'message' => $_POST['contact-message'],
+      'created_at' => date('Y-m-d H:i:s')
+    );
+
+    try {
+      foreach ($admins as $admin) {
+        $new_data['admin_uuid'] = $admin['uuid'];
+        $this->message_model->create($new_data);
+      }      
+      $this->response(array('status' => 'success', 'message' => 'Message is sent successfully!'), 200);
+    } catch (Exception $e) {
+      $this->response(array('status' => 'fail', 'message' => 'Message sending is failed. Please try again.'), 500);
+    }
+  }
 }

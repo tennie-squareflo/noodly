@@ -1,8 +1,3 @@
-<style>
-  #main {
-    padding-top: 150px;
-  }
-</style>
       <section class="contact">
         <div class="container">
             <div class="row">
@@ -17,30 +12,30 @@
                 <div class="leave-message text-center">
                   <h1>Contact Us</h1>
                   <p>Fill out the form below to get in touch with us</p>
-                  <form>
+                  <form id="contact-form">
                     <div class="form-row mb-2">
                       <div class="form-group col-md-6 text-left">
-                        <label for="firstname">Fistname</label>
-                        <input class="input-form" name="firstname" id="firstname" type="text" placeholder="Fistname" required>
+                        <label for="firstname">Firstname</label>
+                        <input class="input-form" name="firstname" id="firstname" type="text" placeholder="Fistname">
                       </div>
                       <div class="form-group col-md-6 text-left">
                         <label for="lastname">Lastname</label>
-                        <input class="input-form" name="lastname" id="lastname" type="text" placeholder="Lastname" required>
+                        <input class="input-form" name="lastname" id="lastname" type="text" placeholder="Lastname">
                       </div>
                       <div class="form-group col-md-12 text-left">
                         <label for="email">Email</label>
-                        <input class="input-form" name="email" id="email" type="email" placeholder="Email" required>
+                        <input class="input-form" name="email" id="email" type="email" placeholder="Email">
                       </div>
                       <div class="form-group col-md-12 text-left">
                         <label for="phone">Phone #</label>
-                        <input class="input-form" name="phone" id="phone" type="text" placeholder="Phone #" required>
+                        <input class="input-form" name="phone" id="phone" type="text" placeholder="Phone #">
                       </div>
                       <div class="form-group col-12 text-left">
                         <label for="phone">Message</label>
-                        <textarea class="textarea-form" name="messages" id="messages" name="" cols="30" rows="6" placeholder="Message"></textarea>
+                        <textarea class="textarea-form" name="message" id="messages" name="" cols="30" rows="6" placeholder="Message"></textarea>
                       </div>
                     </div>
-                    <button class="normal-btn mb-5">Send message</button>
+                    <button class="send-button normal-btn mb-5">Send message</button>
                   </form>
                 </div>
               </div>

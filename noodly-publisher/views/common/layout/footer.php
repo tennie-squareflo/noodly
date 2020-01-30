@@ -19,7 +19,7 @@
                     <h5 class="footer-link--title">Contributors</h5>
                     <ul>
                       
-                      <li><a class="footer-link" href="">Post A Story</a></li>
+                      <li><a class="footer-link" href="<?php if(!isset($_SESSION['user'])) echo BASE_URL.'contact'; else echo BASE_URL.'story'; ?>">Post A Story</a></li>
                       <li><a class="footer-link" href="<?php echo BASE_URL.'index/signup' ?>">My Account</a></li>
                       <li><a class="footer-link" href="<?php echo BASE_URL.'login' ?>"><?php if(!isset($_SESSION['user'])) echo 'Sign In'; else echo 'Sign Out'; ?></a></li>
                     </ul>
@@ -34,7 +34,7 @@
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
                       <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['zipcode']; ?></p>
-                      <p><?php echo '<a href="'.BASE_URL.'index/contact">Email Us</a>'; ?></p>
+                      <p><?php echo '<a href="'.BASE_URL.'contact">Email Us</a>'; ?></p>
                     </div>
                     <div class="social-contact">
                       <?php if (!empty($publisher['facebookurl'])): ?>
@@ -88,6 +88,9 @@
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/numscroller-1.0.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.countdown.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/main.js"></script>
+
+      <script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
+	</script> 
 
       <?php
 	if (isset($script_files) && is_array($script_files)) {

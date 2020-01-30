@@ -1,8 +1,3 @@
-<style>
-  #main {
-    padding-top: 150px;
-  }
-</style>
 <section class="about-us">
             <div class="container">
               <h1 class="text-center about-title">About us</h1>

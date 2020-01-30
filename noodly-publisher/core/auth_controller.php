@@ -1,13 +1,8 @@
 <?php
 class Auth_Controller extends Core_Controller {
 
-  public $publisher_domain;
-  public $pid;
-  public $view_data;
-
   function __construct($no_auth = false, $no_profile = false) {
     parent::__construct(PUBLISHER_DOMAIN);
-    $this->init();
 
     if (!$no_auth && !$this->check_logged_in()) {
       header("Location: ".BASE_URL."login");
@@ -28,14 +23,6 @@ class Auth_Controller extends Core_Controller {
       header("Location: ".BASE_URL."my-account");
       exit();
     }
-  }
-
-  function init() {
-    $this->publisher_domain = PUBLISHER_DOMAIN;
-    $this->load_model("publisher");
-    $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
-    $this->pid = $publisher['pid'];
-    $this->view_data['publisher'] = $publisher;
   }
 
   function check_logged_in() {

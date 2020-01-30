@@ -1,9 +1,9 @@
 <?php
-require_once(PUBLISHER_PATH.'core/auth_controller.php');
+require_once(ADMIN_PATH.'core/admin_controller.php');
 
-class Messages_Controller extends Auth_Controller {
+class Messages_Controller extends Admin_Controller {
   function __construct() {
-    parent::__construct(true, true);
+    parent::__construct();
   }
 
   function index() {
@@ -11,7 +11,7 @@ class Messages_Controller extends Auth_Controller {
     $this->load_helper('string');
     $this->view_data['script_files'] = array('custom/common/message/list.js');
     $this->view_data['messages'] = $this->message_model->get('*', array('admin_uuid' => $_SESSION['user']['uuid']));
-    $this->load_view('/admin/admin/messages', $this->view_data);
+    $this->load_view('messages', $this->view_data);
   }
 
   function delete() {

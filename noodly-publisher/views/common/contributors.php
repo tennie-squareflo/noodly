@@ -1,8 +1,3 @@
-<style>
-  #main {
-    padding-top: 150px;
-  }
-</style>
 
 <section class="blog-detail">
         <div class="container">

@@ -19,6 +19,7 @@ class Index_Controller extends Auth_Controller {
 
   function contact() {
     $this->load_model('category');
+    $this->view_data['script_files'] = array('custom/publisher/contact/index.js');
     $this->view_data['current_page'] = 'contactus';
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
     $this->load_view('common/contact', $this->view_data);

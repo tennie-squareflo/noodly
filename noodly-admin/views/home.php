@@ -11,6 +11,7 @@
     <link rel="preload" as="font" href="<?php echo ASSETS_URL; ?>custom/admin/homepage/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="<?php echo ASSETS_URL; ?>custom/admin/homepage/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/55a4c8757d.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/jpg" href="<?php echo ASSETS_URL; ?>/media/logos/favico.jpg" />
   </head>
 
   <body>
@@ -46,7 +47,7 @@
       <div class="container">
         <div class="row align-items-center min-vh-50">
           <div class="col-lg-12 text-center text-lg-left mb-4 mb-lg-0">
-            <h1 class="display-3">Online publishing, perfected.</h1>
+            <h1 class="display-3">Digital publishing, perfected.</h1>
             <div class="my-4">
               <p class="lead">Noodly is the perfect, <strong>white-label</strong>, multi-contributor platform for digital publishers.
             </div>
@@ -67,14 +68,23 @@
               <p class="lead">Want early access to our platform? Please get in touch below.
               </p>
             </div>
-            <form action="/forms/smtp.php" data-form-email novalidate>
+            <form id="mail-form" action="<?php echo BASE_URL;?>api/send_message" data-form-email data-success-message novalidate>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <div class="form-group">
-                    <label>Your Name *</label>
-                    <input name="contact-name" type="text" class="form-control" required>
+                    <label>First Name *</label>
+                    <input name="firstname" type="text" class="form-control" required>
                     <div class="invalid-feedback">
-                      Please type your name.
+                      Please type your first name.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Last Name *</label>
+                    <input name="lastname" type="text" class="form-control" required>
+                    <div class="invalid-feedback">
+                      Please type your last name.
                     </div>
                   </div>
                 </div>
@@ -86,12 +96,6 @@
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>Company Name</label>
-                    <input name="contact-company" type="text" class="form-control" required>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
                     <label>Contact Number *</label>
                     <input name="contact-phone" type="tel" class="form-control" required>
                   </div>
@@ -99,7 +103,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label>Message: *</label>
-                    <textarea class="form-control" name="contact-message" rows="10" placeholder="How can we help?"></textarea>
+                    <textarea class="form-control" name="contact-message" rows="10" placeholder="How can we help?" required></textarea>
                   </div>
                 </div>
                 <div class="col-12">
@@ -232,6 +236,7 @@
       function gotoEarlyAccess() {
         $("html, body").animate({ scrollTop: $('#get-early-access').offset().top - 80 }, "slow");
       }
+
     </script>
 
   </body>

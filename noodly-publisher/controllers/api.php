@@ -58,4 +58,32 @@ class Api_Controller extends Core_Controller {
       'nextPid' => $paragraph['next_pid']
     ));
   }
+
+  // send messages to all super admins & publisher_admins
+  public function send_message() {
+    $this->load_model('publisher');
+    $this->load_model('message');
+
+    $admins = $this->publisher_model->get_admins($this->pid);
+
+    $new_data = array(
+      'admin_uuid' => 0,
+      'firstname' => $_POST['firstname'],
+      'lastname' => $_POST['lastname'],
+      'email' => $_POST['email'],
+      'phone' => $_POST['phone'],
+      'message' => $_POST['message'],
+      'created_at' => date('Y-m-d H:i:s')
+    );
+
+    try {
+      foreach ($admins as $admin) {
+        $new_data['admin_uuid'] = $admin['uuid'];
+        $this->message_model->create($new_data);
+      }      
+      $this->response(array('status' => 'success', 'message' => 'Message is sent successfully!'), 200);
+    } catch (Exception $e) {
+      $this->response(array('status' => 'fail', 'message' => 'Message sending is failed. Please try again.'), 500);
+    }
+  }
 }

@@ -15,11 +15,11 @@
                   <form id="contact-form">
                     <div class="form-row mb-2">
                       <div class="form-group col-md-6 text-left">
-                        <label for="firstname">Firstname</label>
+                        <label for="firstname">First Name</label>
                         <input class="input-form" name="firstname" id="firstname" type="text" placeholder="Fistname">
                       </div>
                       <div class="form-group col-md-6 text-left">
-                        <label for="lastname">Lastname</label>
+                        <label for="lastname">Last Name</label>
                         <input class="input-form" name="lastname" id="lastname" type="text" placeholder="Lastname">
                       </div>
                       <div class="form-group col-md-12 text-left">

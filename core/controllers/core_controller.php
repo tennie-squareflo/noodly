@@ -2,27 +2,55 @@
 class Core_Controller {
   private $view_path;
   private $base_path;
-  private $role;
 
   public $publisher_domain;
   public $view_data;
-  public $pid;
+  public $publisher;
+  public $user;
+  public $env;
+  
+  /*
+  ** user role
+  ** role => admin / contributor
+  ** user_status 
+  ** role_status
+  */
+  public $role;
   
   function __construct($role) {
-    $this->role = $role;
     $this->base_path = $this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH;
     $this->view_path = ($this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH).VIEW_PATH;
+
     $this->load_helper('string');
 
+    // set publisher information
+    $this->load_model("publisher");
     if ($role === 'admin') {
-      $this->pid = 0;
+      $this->publisher = $this->publisher_model->get_one(0);
+      $this->publisher_domain = '';
     } else {
       $this->publisher_domain = PUBLISHER_DOMAIN;
-      $this->load_model("publisher");
-      $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
-      $this->pid = $publisher['pid'];
-      $this->view_data['publisher'] = $publisher;
+      $this->publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
     }
+
+    // load environment
+    $this->load_model("environment");
+    $this->env = $this->environment_model->getByPid($this->publisher['pid']);
+
+    // set user and role information
+    if ($_SESSION['user']) {
+      $this->user = $_SESSION['user']['info'];
+      $this->role = $_SESSION['user']['role'];
+    } else {
+      $this->user = null;
+      $this->role = null;
+    }
+
+    // set default view data
+    $this->view_data['publisher'] = $this->publisher;
+    $this->view_data['user'] = $this->user;
+    $this->view_data['role'] = $this->role;
+    $this->view_data['env'] = $this->env;
   }
 
   function load_view($filename, $vars = array(), $return = false) {
@@ -121,40 +149,33 @@ class Core_Controller {
     }
   }
 
-  function send_email($uuid, $pid, $subject, $link, $view, $view_data) {
-    $this->load_model('user');
-    $this->load_model('publisher');
-    $this->load_model('environment');
-    $this->load_model('match_user_role');
-    $this->load_helper('string');
-
-    $user = $this->user_model->get_one($uuid);
-    $publisher = $this->publisher_model->get_one($pid);
-    $env = $this->environment_model->get_env($pid);
-    $role = $this->match_user_role->get_one(array('uuid' => $uuid, 'pid' => $pid));
-
-    $to = $user['email'];
-    $from = $publisher['email'];
+  // send email to user from publisher with subject, link, data
+  function send_email($receiver_uuid, $view, $subject, $link, $view_data) {
     
-    $headers = "From: $publisher[name]\r\n";
+    $this->load_model('user');    
+    $receiver = $this->user_model->get_one($receiver_uuid);
+
+    $to = $receiver['email'];
+    $from = $this->publisher['email'];
+    
+    $headers = "From: $this->publisher[name]\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
     if (ENV === 'local') {
-      $domain = $publisher['domain'] == '' 
+      $domain = $this->publisher['domain'] == '' 
                 ? 'dev.noodly.com/admin' 
-                : 'dev.noodly.com/'.$publisher['domain'];
+                : 'dev.noodly.com/'.$this->publisher['domain'];
       $server = 'dev.noodly.com';
     } else {
-      $domain = $publisher['domain'] == '' ? 'noodly.io' : $publisher['domain'].'.noodly.io';
+      $domain = $this->publisher['domain'] == '' ? 'noodly.io' : $this->publisher['domain'].'.noodly.io';
       $server = $domain;
     }
     
     $view_data['accept_url'] = $domain.$link;
-    $view_data['user'] = $user;
-    $view_data['publisher'] = $publisher;
-    $view_data['role'] = $role;
-    $view_data['env'] = $env;
+    $view_data['receiver'] = $receiver;
+    $view_data['publisher'] = $this->publisher;
+    $view_data['env'] = $this->env;
     $view_data['domain'] = $domain;
     $view_data['server'] = $server;
 
@@ -165,7 +186,7 @@ class Core_Controller {
     $params = array(
       'to' => $to,
       'from' => $from,
-      'fromname' => $publisher['name'],
+      'fromname' => $this->publisher['name'],
       'subject' => $subject,
       'html' => $body,
     );

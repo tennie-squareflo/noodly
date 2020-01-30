@@ -17,7 +17,7 @@ class Settings_Controller extends Auth_Controller {
   function admin_setting() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/no-ui-slider/nouislider.min.css');
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js', 'vendors/custom/no-ui-slider/nouislider.js');
-    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher_id'] = $this->publisher['pid'];
     $this->view_data['pbulisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
     $this->view_data['admins'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/admin', $this->view_data);
@@ -26,7 +26,7 @@ class Settings_Controller extends Auth_Controller {
   function email_setting() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
-    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher_id'] = $this->publisher['pid'];
     $this->view_data['emails'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/email', $this->view_data);
   }
@@ -34,7 +34,7 @@ class Settings_Controller extends Auth_Controller {
   function website_setting() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
-    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher_id'] = $this->publisher['pid'];
     $this->view_data['publisher'] = $this->publisher_model->get_one(intval($this->view_data['publisher_id']));
     $this->view_data['website'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/website', $this->view_data);
@@ -43,7 +43,7 @@ class Settings_Controller extends Auth_Controller {
   function notifications_setting() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js');
-    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher_id'] = $this->publisher['pid'];
     $this->view_data['notifications'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/notifications', $this->view_data);
   }
@@ -51,13 +51,13 @@ class Settings_Controller extends Auth_Controller {
   function about_setting() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css',);
     $this->view_data['script_files'] = array('custom/publisher/settings/settings.js', 'vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/quill/quill.min.js', 'vendors/custom/slim/slim.jquery.min.js');
-    $this->view_data['publisher_id'] = $_SESSION['user']['pid'];
+    $this->view_data['publisher_id'] = $this->publisher['pid'];
     $this->view_data['aboutus'] = $this->environment_model->get_env(intval($this->view_data['publisher_id']));
     $this->load_view('/admin/admin/settings/about', $this->view_data);
   }
 
   function action($action) {
-    $id = $_SESSION['user']['pid'];
+    $id = $this->publisher['pid'];
     
     $this->load_helper('validation');
     switch ($action) {

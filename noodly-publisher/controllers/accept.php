@@ -9,7 +9,7 @@ class Accept_Controller extends Auth_Controller {
   function story($cypher) {
     $this->load_library('encryption', true);
     $token = Encryption::decrypt($cypher);
-    $pid = $this->pid;
+    $pid = $this->publisher['pid'];
     if ($token === NULL || !is_array($token)) {
       header("Location: ".BASE_URL."error/invalid_token");
       return;
@@ -45,7 +45,7 @@ class Accept_Controller extends Auth_Controller {
   function approve_story($cypher) {
     $this->load_library('encryption', true);
     $token = Encryption::decrypt($cypher);
-    $pid = $this->pid;
+    $pid = $this->publisher['pid'];
     if ($token === NULL || !is_array($token)) {
       header("Location: ".BASE_URL."error/invalid_token");
       return;
@@ -71,7 +71,7 @@ class Accept_Controller extends Auth_Controller {
     $this->load_library('encryption', true);
     $this->load_model('match_user_role');
     $token = Encryption::decrypt($cypher);
-    $pid = $this->pid;
+    $pid = $this->publisher['pid'];
     if ($token == NULL || !is_array($token)) {
       header("Location: ".BASE_URL."error/invalid_token");
       return;
@@ -126,7 +126,7 @@ class Accept_Controller extends Auth_Controller {
 
   function save_profile() {
     $id = $_SESSION['user']['uuid'];
-    $pid = $_SESSION['user']['pid'];
+    $pid = $this->publisher['pid'];
 
     $new_data = $this->check_vaidation();
 
@@ -156,7 +156,7 @@ class Accept_Controller extends Auth_Controller {
   function update_profile() {
     //
     $id = $_POST['id'];
-    $pid = $_SESSION['user']['pid']; // $this->pid
+    $pid = $this->publisher['pid']; // $this->publisher['pid']
     $new_data = $this->check_vaidation();
 
     if ($this->user_model->update($new_data, $id) &&
@@ -196,7 +196,7 @@ class Accept_Controller extends Auth_Controller {
       'otherurl' => test_input($_POST['otherurl']),
     );
     $id = $_POST['id'];
-    $pid = $_SESSION['user']['pid']; // $this->pid
+    $pid = $this->publisher['pid']; // $this->publisher['pid']
     $user = $this->user_model->get_one($id);
     $role = $this->match_user_role_model->get_one(array('uuid' => $id, 'pid' => $pid));
     if ($user['password'] != $_POST['password']) {

@@ -64,7 +64,7 @@ class Api_Controller extends Core_Controller {
     $this->load_model('publisher');
     $this->load_model('message');
 
-    $admins = $this->publisher_model->get_admins($this->pid);
+    $admins = $this->publisher_model->get_admins($this->publisher['pid']);
 
     $new_data = array(
       'admin_uuid' => 0,

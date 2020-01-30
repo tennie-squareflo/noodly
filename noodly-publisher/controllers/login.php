@@ -18,7 +18,7 @@ class Login_Controller extends Auth_Controller {
 
 		$email = $_POST['email'];
 		$password = $_POST['password'];
-    $res = $this->auth_model->login($email, $password, $this->pid);
+    $res = $this->auth_model->login($email, $password, $this->publisher['pid']);
     if ($res === true) {
 			$this->response(array('code' => true));
 		} else {

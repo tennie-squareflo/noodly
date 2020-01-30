@@ -11,7 +11,7 @@ class Contributor_Controller extends Auth_Controller {
     $this->view_data['script_files'] = array('custom/publisher/contributors/invite_contributor.js', 'custom/publisher/contributors/list.js');
     $this->view_data['style_files'] = array('custom/publisher/contributors/list.css');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
-      $pid = $_SESSION['user']['pid'];
+      $pid = $this->publisher['pid'];
       $uuid = $_SESSION['user']['uuid'];
       $this->view_data['contributors'] = $this->publisher_model->get_contributors($pid);
       $this->load_view('/admin/admin/contributors', $this->view_data);
@@ -28,7 +28,7 @@ class Contributor_Controller extends Auth_Controller {
     $new_role = false;
 
     $user = $this->user_model->get_one(array('email' => $post['email']));
-    $pid = $_SESSION['user']['pid'];
+    $pid = $this->publisher['pid'];
     if (count($user)) {
       if ($user['role'] === 'super_admin') {
         $this->response(array('code' => 2, 'message' => 'Can not send invitation to super admin'), 400);
@@ -109,7 +109,7 @@ class Contributor_Controller extends Auth_Controller {
 
   function action($action) {
     $id = $_POST['id'];
-    $pid = $_SESSION['user']['pid'];
+    $pid = $this->publisher['pid'];
     $this->load_model('user');
     $this->load_model('publisher');
     $publisher = $this->publisher_model->get_one($pid);

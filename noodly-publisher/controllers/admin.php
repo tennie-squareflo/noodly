@@ -11,7 +11,7 @@ class Admin_Controller extends Auth_Controller {
     $this->view_data['script_files'] = array('custom/publisher/admins/invite_admin.js', 'custom/publisher/admins/list.js');
     $this->view_data['style_files'] = array('custom/publisher/admins/list.css');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
-      $pid = $_SESSION['user']['pid'];
+      $pid = $this->publisher['pid'];
       $uuid = $_SESSION['user']['uuid'];
       $this->view_data['admins'] = $this->publisher_model->get_all_admins($pid);
       $this->load_view('/admin/admin/admins', $this->view_data);
@@ -28,7 +28,7 @@ class Admin_Controller extends Auth_Controller {
     $new_role = false;
 
     $user = $this->user_model->get_one(array('email' => $post['email']));
-    $pid = $_SESSION['user']['pid'];
+    $pid = $this->publisher['pid'];
     if (count($user)) {
       if ($user['role'] === 'super_admin') {
         $this->response(array('code' => 2, 'message' => 'Can not send invitation to super admin'), 400);
@@ -109,7 +109,7 @@ class Admin_Controller extends Auth_Controller {
 
   function action($action) {
     $id = $_POST['id'];
-    $pid = $_SESSION['user']['pid'];
+    $pid = $this->publisher['pid'];
     $this->load_model('user');
     $this->load_model('publisher');
     $publisher = $this->publisher_model->get_one($pid);

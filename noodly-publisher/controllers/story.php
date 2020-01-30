@@ -16,12 +16,12 @@ class Story_Controller extends Auth_Controller {
       $this->view_data['script_files'] = array('custom/publisher/story/list.js');
       $this->view_data['style_files'] = array('custom/publisher/story/list.css');
       if ($_SESSION['user']['role'] === 'admin') { // if admin
-        $pid = $_SESSION['user']['pid'];
+        $pid = $this->publisher['pid'];
         $uuid = $_SESSION['user']['uuid'];
         $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, 0);
         $this->load_view('/admin/admin/stories', $this->view_data);
       } else {    // contributor
-        $pid = $_SESSION['user']['pid'];
+        $pid = $this->publisher['pid'];
         $uuid = $_SESSION['user']['uuid'];
         $this->view_data['stories'] = $this->story_model->get_recent_stories($pid, $uuid);
         $this->load_view('/admin/contributor/stories', $this->view_data);
@@ -45,7 +45,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['post'] = $this->story_model->get_one($id);
     $this->view_data['clients'] = $this->client_model->get_clients();
     $this->view_data['paragraphs'] = $this->paragraph_model->get_paragraphs($id);
-    $this->view_data['categories'] = $this->category_model->get_category_names($this->pid);
+    $this->view_data['categories'] = $this->category_model->get_category_names($this->publisher['pid']);
     $this->view_data['is_new'] = count($this->view_data['post']) === 0;
     
     $this->load_view('/admin/edit_story', $this->view_data);
@@ -91,7 +91,7 @@ class Story_Controller extends Auth_Controller {
               'visits' => 0,
               'hashtags' => $main_data['hashtags'],
               'status' => $post['type'] === 'save' ? ($_SESSION['user']['role'] === 'admin' ? 'PUBLISHED' : 'SUBMITTED') : ($post['type'] === 'client-draft' ? 'CLIENT-DRAFT' : 'DRAFT'),
-              'pid' => $_SESSION['user']['pid'],
+              'pid' => $this->publisher['pid'],
               'created_at' => date('Y-m-d H:i:s'),
               'first_paragraph' => $main_data['first_paragraph'],
               'url' => $main_data['url'],
@@ -126,7 +126,7 @@ class Story_Controller extends Auth_Controller {
             }
 
             // send emails
-            $this->send_new_story_email($_SESSION['user']['uuid'], $_SESSION['user']['pid'], $new_story_id);
+            $this->send_new_story_email($_SESSION['user']['uuid'], $this->publisher['pid'], $new_story_id);
           } else {
             $new_story_id = $main_data['id'];
             $new_story_data = array(
@@ -345,7 +345,7 @@ class Story_Controller extends Auth_Controller {
     $link = "/accept/approve_story/".Encryption::encrypt($token);
     $view_data['client'] = $client;
     $view_data['message'] = $message;
-    $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
+    $this->send_grid_mail($client, $this->publisher['pid'], $subject, $link, 'approve_story', $view_data);
   }
 
   function send_new_story_email($uuid, $pid, $sid) {
@@ -423,7 +423,7 @@ class Story_Controller extends Auth_Controller {
     $this->view_data['post'] = $story;
     $this->view_data['category'] = $this->category_model->get_one($this->view_data['post']['cid']);
     $this->view_data['author'] = $this->user_model->get_one($this->view_data['post']['uuid']);
-    $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
+    $this->view_data['trendings'] = $this->category_model->get_channels($this->publisher['pid'], 'most_popular', 5);
     $this->load_view('/common/preview_story', $this->view_data);
   }
 

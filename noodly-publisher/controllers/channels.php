@@ -13,7 +13,7 @@ class Channels_Controller extends Auth_Controller {
     $this->view_data['style_files'] = array('custom/publisher/category/list.css');
     $this->view_data['script_files'] = array('custom/publisher/category/list.js');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
-      $pid = $_SESSION['user']['pid'];
+      $pid = $this->publisher['pid'];
       $uuid = $_SESSION['user']['uuid'];
       $this->view_data['categories'] = $this->category_model->get_categories($pid, 0);
       $this->load_view('/admin/admin/categories', $this->view_data);
@@ -46,7 +46,7 @@ class Channels_Controller extends Auth_Controller {
             'slug' => $post['slug'],
             'channel_color' => $post['channel_color'],
             'image' => !empty($post['image']) ? json_decode($post['image'])->file : '',
-            'pid' => $_SESSION['user']['pid']
+            'pid' => $this->publisher['pid']
           );
           if ($id) {
             $this->category_model->update($new_data, $id);

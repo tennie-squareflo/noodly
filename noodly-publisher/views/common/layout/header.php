@@ -8,7 +8,7 @@
                 <div class="col-4 col-md-2"><a class="logo" href="<?php echo BASE_URL; ?>"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
                 <div class="col-8 col-md-8">
                   <div class="mobile-menu"><a href="#" id="showMenu"><i class="fas fa-bars"></i></a></div>
-                  <nav class="navigation d-sm-none d-xs-none">
+                  <nav class="navigation">
                     <ul>
 
                       <li class="nav-item"><a class="pisen-nav-link latest_menu <?php echo $current_page === 'latest' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>">Latest</a></li>

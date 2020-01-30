@@ -407,9 +407,6 @@ header.mobile .header-wrapper .menu-function {
   header.mobile .header-wrapper .navigation {
     width: 30vw; } }
 
-#main {
-  padding-top: 150px; }
-
 .slider-image {
   width: 100%;
 }
@@ -3902,3 +3899,6 @@ footer.v2 {
     margin: 0 -30px;
   }
 }
+
+#main {
+  padding-top: 150px; }

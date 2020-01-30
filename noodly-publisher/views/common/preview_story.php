@@ -1,3 +1,8 @@
+<style>
+#main {
+  padding-top: 105px;
+}
+</style>
 <section class="posts blog-creative">
 <div class="container-fluid">
   <div class="row">

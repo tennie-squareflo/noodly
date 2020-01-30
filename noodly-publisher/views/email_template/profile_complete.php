@@ -207,7 +207,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)" background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/email_background/'.$env['email_background_image']; ?>" bgcolor="<?php echo $env['email_background_image']; ?>">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)" background="http://yqrdaily.noodly.io/assets/media/logos/yqrdaily.png" bgcolor="red">
                     <tbody>
                       <tr>
                         <td valign="top">
@@ -215,12 +215,12 @@
                           <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-20 pc-xs-p-10"  valign="top" style="padding: 25px 30px; ">
+                                <td class="pc-sm-p-20 pc-xs-p-10"  valign="top" style="padding: 25px 30px;">
                                   <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                                     <tbody>
                                       <tr>
                                         <td align="center" valign="top" style="padding: 10px;">
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$env['email_logo']; ?>" width="<?php echo $env['email_logo_size'];?>" alt="" style="height: auto; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
+                                          <a href="http://example.com" style="text-decoration: none;"><img src="http://yqrdaily.noodly.io/assets/media/logos/yqrdaily.png" width="200" height="61" alt="" style="height: auto; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -234,11 +234,11 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" valign="top"  style="padding: 40px; ">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" valign="top"  style="padding: 40px;;">
                                   <table border="0" cellpadding="0" cellspacing="0" style="text-align: center;" width="100%" align="center" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td class="pc-fb-font" valign="top" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color']; ?>">Hi <?php echo $user['firstname']; ?>!<br>Thanks for completing your profile. Your account is now active. Click on the button below to sign in to <?php echo $publisher['name']; ?> as a <?php echo $role['role']; ?>.&nbsp;</td>
+                                        <td class="pc-fb-font" valign="top" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444">Hi Erin!<br>Thanks for completing your profile. Your account is now active. Click on the button below to sign in to YQR Daily as a contributor.&nbsp;</td>
                                       </tr>
                                       <tr>
                                         <td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
@@ -256,7 +256,7 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top" >
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px;" valign="top" >
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
@@ -264,8 +264,8 @@
                                           <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                                             <tbody>
                                               <tr>
-                                                <td style="padding: 13px 17px; border-radius: 8px; background-color: <?php echo $env['email_button_color']; ?>;" bgcolor="#41dc84" valign="top" align="center">
-                                                  <a class="pc-fb-font" href="<?php echo $accept_url; ?>" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_button_text_color']; ?>;">&nbsp;<span>Log In Now</span></a>
+                                                <td style="padding: 13px 17px; border-radius: 8px; background-color: #41dc84" bgcolor="#41dc84" valign="top" align="center">
+                                                  <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Log In Now</span></a>
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -283,7 +283,7 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top" >
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px;" valign="top" >
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                   </table>
                                 </td>

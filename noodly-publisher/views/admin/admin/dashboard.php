@@ -89,7 +89,7 @@
 																
 																</div>
 																<div class="k-widget-3__content-section">
-																	<span class="k-widget-3__content-number">0</span>
+																	<span class="k-widget-3__content-number"><?php echo $messages_count; ?></span>
 																</div>
 																
 

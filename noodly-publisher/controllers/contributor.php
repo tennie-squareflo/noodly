@@ -81,8 +81,6 @@ class Contributor_Controller extends Auth_Controller {
 
     if ($pid != 0) {
       $subject = 'Invitation to join '.$publisher['name'].' as '.get_user_types($role['role'], true);
-    } else {
-      $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
     }
 
     $expiration_time = time() + (60 * $env['email_expiration_time']);

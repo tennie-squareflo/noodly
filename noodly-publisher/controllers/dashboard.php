@@ -10,6 +10,7 @@ class Dashboard_Controller extends Auth_Controller {
     $this->load_model('publisher');
     $this->load_model('story');
     $this->load_model('user');
+    $this->load_model('message');
     if ($_SESSION['user']['role'] === 'admin') { // if admin
       $pid = $_SESSION['user']['pid'];
       $uuid = $_SESSION['user']['uuid'];
@@ -17,6 +18,7 @@ class Dashboard_Controller extends Auth_Controller {
       $this->view_data['stories_cnt'] = $this->story_model->get_stories_count($pid);
       $this->view_data['subscribers_cnt'] = $this->publisher_model->get_users_count('subscriber', $pid);
       $this->view_data['latest_stories'] = $this->story_model->get_recent_stories($pid, 0, 5);
+      $this->view_data['messages_count'] = $this->message_model->count(array('admin_uuid' => $uuid));
       $this->load_view('/admin/admin/dashboard', $this->view_data);
     } else {    // contributor
       $pid = $_SESSION['user']['pid'];

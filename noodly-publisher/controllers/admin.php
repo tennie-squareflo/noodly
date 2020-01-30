@@ -79,11 +79,7 @@ class Admin_Controller extends Auth_Controller {
     $env = $this->environment_model->get_env();
     $role = $this->user_model->get_role($id, $pid);
 
-    if ($pid != 0) {
-      $subject = 'Invitation to join '.$publisher['name'].' as '.get_user_types($role['role'], true);
-    } else {
-      $subject = 'Invitation to join '.$publisher['name'].' as a Super Admin';
-    }
+    $subject = 'Invitation to join '.$publisher['name'].' as '.get_user_types($role['role'], true);
 
     $expiration_time = time() + (60 * $env['email_expiration_time']);
 

@@ -91,7 +91,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Email Address *</label>
-                    <input name="contact-email" type="email" placeholder="you@yoursite.com" class="form-control" required>
+                    <input name="contact-email" type="email" class="form-control" required>
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -103,7 +103,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label>Message: *</label>
-                    <textarea class="form-control" name="contact-message" rows="10" placeholder="How can we help?" required></textarea>
+                    <textarea class="form-control" name="contact-message" rows="10" required></textarea>
                   </div>
                 </div>
                 <div class="col-12">

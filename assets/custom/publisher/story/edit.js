@@ -373,9 +373,6 @@ $(function() {
         required: true,
         checkUrl: true
       },
-      cid: {
-        required: true
-      },
       thumb_image: {
         required: true
       },

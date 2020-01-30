@@ -13,7 +13,7 @@
 
                       <li class="nav-item"><a class="pisen-nav-link latest_menu <?php echo $current_page === 'latest' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>">Latest</a></li>
                       <li class="nav-item"><a class="pisen-nav-link popular_menu <?php echo $current_page === 'popular' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
-                      <li class="nav-item"><a class="pisen-nav-link channel_menu <?php echo $current_page === 'channels' ? 'active' : ''; ?>" href="#">Channels</a><i class="submenu-opener fas fa-plus"></i>
+                      <li class="nav-item"><a class="pisen-nav-link channel_menu submenu-opener <?php echo $current_page === 'channels' ? 'active' : ''; ?>" href="#">Channels</a>
                         <ul class="sub-menu">
                           <?php
                             foreach ($trendings as $key => $trending) {
@@ -26,7 +26,7 @@
                         </ul>
                       </li>
                       <!-- <li class="nav-item"><a class="pisen-nav-link <?php echo $current_page === 'contributors' ? 'active' : ''; ?>" href="<?php echo BASE_URL.'contributors' ?>">Contributors</a></li> -->
-                      <li class="nav-item"><a class="pisen-nav-link" href="#"><i class="fa fa-ellipsis-h"></i></a><i class="submenu-opener fas fa-plus"></i>
+                      <li class="nav-item"><a class="pisen-nav-link submenu-opener" href="#"><i class="fa fa-ellipsis-h"></i></a>
                         <ul class="sub-menu">
                           <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'aboutus' ?>">About Us</a></li>
                           <li class="sub-menu_item"><a class="sub-menu-link" href="<?php echo BASE_URL.'contact' ?>">Contact Us</a></li>

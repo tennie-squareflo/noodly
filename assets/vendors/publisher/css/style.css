@@ -373,10 +373,10 @@ header.mobile .header-wrapper .navigation {
         header.mobile .header-wrapper .navigation ul .nav-item .pisen-nav-link:before {
           display: none; }
       header.mobile .header-wrapper .navigation ul .nav-item .submenu-opener {
-        position: absolute;
+        /* position: absolute; */
         right: 0;
         top: 5px;
-        display: inline-block; }
+        display: block; }
       header.mobile .header-wrapper .navigation ul .nav-item .sub-menu {
         margin-top: 20px;
         position: unset;

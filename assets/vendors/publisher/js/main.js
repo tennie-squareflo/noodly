@@ -125,7 +125,6 @@ jQuery(document).ready(function($) {
 	// Mobile submenu open
 	$('.submenu-opener').on('click', function(event) {
 		event.preventDefault();
-		$(this).toggleClass('fa-plus fa-minus');
 		$(this).next().slideToggle()
 	});
 	// Click to open sidebar menu

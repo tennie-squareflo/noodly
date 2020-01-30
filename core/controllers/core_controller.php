@@ -131,7 +131,7 @@ class Core_Controller {
     $user = $this->user_model->get_one($uuid);
     $publisher = $this->publisher_model->get_one($pid);
     $env = $this->environment_model->get_env($pid);
-    $role = $this->match_user_role->get_one(array('uuid' => $uuid, 'pid' => $pid));
+    $role = $this->match_user_role_model->get_one(array('uuid' => $uuid, 'pid' => $pid));
 
     $to = $user['email'];
     $from = $publisher['email'];

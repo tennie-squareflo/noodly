@@ -59,15 +59,14 @@ function load_more() {
 
       $(newBlock).insertBefore($('#insert-post-here'));
       
-      setTimeout(() => {
-        imagesLoaded('.blog-masonry_wrapper').always(function() {
+      var $container = $('.blog-masonry_wrapper');
+        $container.imagesLoaded().done(function() {
           console.log('imageloaded');
           $container.css('height', 'auto');
             $container.masonry({
               itemSelector: '.post-block',
           });
         });
-      }, 500);
       
       $('#loading').hide();
 

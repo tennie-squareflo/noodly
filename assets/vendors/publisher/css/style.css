@@ -3888,6 +3888,11 @@ footer.v2 {
       outline: 0;
       box-shadow: 0; }
 
+
+#main {
+  padding-top: 150px; }
+
+
 @media (max-width: 576px) {
   #main {
     padding-top: 105px;
@@ -3903,6 +3908,9 @@ footer.v2 {
       margin-bottom: 30px; } }
 
 @media (min-width: 576px) and (max-width: 767px) {
+  #main {
+    padding-top: 105px;
+  }
   .main-coming-soon {
     display: block;
     margin: 70px 0; }
@@ -3912,6 +3920,9 @@ footer.v2 {
       margin-bottom: 30px; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  #main {
+    padding-top: 105px;
+  }
   .main-coming-soon .coming-soon #countdown .countdown-number b {
     font-size: 35px; } }
 
@@ -3924,8 +3935,3 @@ footer.v2 {
     margin: 0 -30px;
   }
 }
-
-
-
-#main {
-  padding-top: 150px; }

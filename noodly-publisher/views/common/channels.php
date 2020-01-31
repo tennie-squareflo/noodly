@@ -12,7 +12,7 @@
 							</div>
 						  </div>
 						</div>
-						<div class="col-12 col-md-6 col-xl-7">
+						<!-- <div class="col-12 col-md-6 col-xl-7">
 						  <div class="product-detail_filter">
 							&nbsp
 							<div class="sort">
@@ -26,42 +26,25 @@
 							  </div>
 						  </div>
 						</div>
-					  </div>
+					  </div> -->
 					</div>
 					<div class="products-bottom">
 					  <div class="row">
             <?php
               foreach ($channels as $key => $channel) {
-            ?>
-						<div class="col-md-4 col-lg-3 col-xl">
-						  <div class="product-block"><a class="product-img" href="<?php echo BASE_URL.'channel/'.$channel['slug']; ?>">
-              <?php
-                if (empty($channel['image'])
-                  || !file_exists(ASSETS_URL.'media/sections/'.$channel['image'])) {
-              ?>
-                  <img src="https://afinda.vn/html/Pisen/assets/images/products/1.png"
-                />
-              <?php
-                } else {
-              ?>
-                <img src="<?php echo ASSETS_URL;?>media/sections/<?php echo $channel['image'];?>"
-                />
-              <?php
-                }
-                ?>
-              
-              <div class="product-select">
-								<button class="add-cart"><i class="icon_bag_alt"></i></button>
-							  </div></a>
-							<div class="product-detail">
-							  <div class="product-name"><a href="#"><?php echo $channel['storiescount']; ?> Stories</a></div>
+						?>
+							<div class="col-6 col-md-4 col-lg-3 col-xl">
+								<div class="card" style="width: 100%;">
+									<div class="card-body">
+										<h5 class="card-title"><?php echo $channel['name']; ?> </h5>
+										<p class="card-text"><i><?php echo $channel['storiescount']; ?> Stories</i></p><br>
+										<a class="btn btn- btn-sm" href="<?php echo BASE_URL.'channel/'.$channel['slug']; ?>">View</a> &nbsp; <a class="btn btn-light btn-sm" href="#"><i class="fas fa-rss"></i> Subscribe</a>
+									</div>
+								</div>
 							</div>
-						  </div>
-            </div>
-              <?php } ?>
-						
-				 
-				</div>
-			  </div>
+						<?php 
+							}
+						?>
+							</div>
 			</div>
 		  </section><!--End shop-->

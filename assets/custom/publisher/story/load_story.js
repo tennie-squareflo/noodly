@@ -23,7 +23,6 @@ $(function() {
 });
 
 function load_more() {
-  console.log('load_more');
   $.ajax({
     url: BASE_URL + `get_stories`,
     type: 'post',
@@ -62,6 +61,7 @@ function load_more() {
       
       var $container = $('.blog-masonry_wrapper');
       $container.imagesLoaded( function() {
+        console.log('images loaded');
           $container.masonry({
             itemSelector: '.post-block',
         });

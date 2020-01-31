@@ -145,11 +145,11 @@ jQuery(document).ready(function($) {
               const html =
               res.hashtags.map(
                 item =>
-                  `<a href="${BASE_URL}hash/${item}" class="search-link"><div class="tag">#</div>${item.substr(1)}</a>`
+                  `<a href="${BASE_URL}hash/${item}" class="search-link"><div class="tag">#</div>&nbsp;${item.substr(1)}</a>`
               ).join('') +
               res.channels.map(
                 item =>
-                  `<a href="${BASE_URL}channel/${item.slug}" class="search-link"><div class="tag">C</div>${item.name}</a>`
+                  `<a href="${BASE_URL}channel/${item.slug}" class="search-link"><div class="tag">C</div>&nbsp;${item.name}</a>`
 							).join('');
 							$('#global-search-result').html(html);
             }
@@ -229,13 +229,13 @@ jQuery(document).ready(function($) {
    		Masonry layout init
 	*************************************/
 
-  var $container = $(".blog-masonry_wrapper");
+  // var $container = $(".blog-masonry_wrapper");
 
-  $container.imagesLoaded(function() {
-    $container.masonry({
-      itemSelector: ".post-block"
-    });
-  });
+  // $container.imagesLoaded(function() {
+  //   $container.masonry({
+  //     itemSelector: ".post-block"
+  //   });
+  // });
   /************************************
    		Click to scroll up init
 	*************************************/

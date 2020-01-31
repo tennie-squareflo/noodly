@@ -218,18 +218,18 @@ class Database
             self::set('num_rows', mysqli_num_rows($result));
         }
         if ($return) {
-            if (preg_match('/LIMIT 1/', $qry)) {
-                $data = mysqli_fetch_assoc($result);
-                mysqli_free_result($result);
-                return $data;
-            } else {
+            // if (preg_match('/LIMIT 1/', $qry)) {
+            //     $data = mysqli_fetch_assoc($result);
+            //     mysqli_free_result($result);
+            //     return $data;
+            // } else {
                 $data = array();
                 while ($row = mysqli_fetch_assoc($result)) {
                     $data[] = $row;
                 }
                 mysqli_free_result($result);
                 return $data;
-            }
+            // }
         }
         return true;
     }

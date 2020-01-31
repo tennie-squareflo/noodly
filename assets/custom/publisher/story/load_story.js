@@ -25,7 +25,14 @@ $(function() {
 function load_more() {
   console.log('load_more');
   $.ajax({
-    url: BASE_URL + `get_stories/${current_page}/${key}/${limit}/${count}`,
+    url: BASE_URL + `get_stories`,
+    type: 'post',
+    data: {
+      by: current_page,
+      key: key,
+      limit: limit,
+      start: count
+    },
     dataType: "JSON",
     success: function(res) {
       let newBlock = res.map(item => {

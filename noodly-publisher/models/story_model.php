@@ -132,14 +132,14 @@ class Story_Model extends Core_Model{
 
   function get_prev_story($sid, $pid) {
     $query = "SELECT * FROM stories WHERE sid > ".$sid." AND pid = ".$pid." AND status='PUBLISHED' ORDER BY sid ASC LIMIT 1";
-    return $this->db->query($query, true);
-
+    $res = $this->db->query($query, true);
+    return count($res) ? $res[0] : array();
   }
 
   function get_next_story($sid, $pid) {
     $query = "SELECT * FROM stories WHERE sid < ".$sid." AND pid = ".$pid." AND status='PUBLISHED' ORDER BY sid ASC LIMIT 1";
-    return $this->db->query($query, true);
-
+    $res = $this->db->query($query, true);
+    return count($res) ? $res[0] : array();
   }
 
   function increase_client_view($sid) {

@@ -96,8 +96,13 @@ class Index_Controller extends Auth_Controller {
     $this->load_view('common/signup', $this->view_data); 
   }
 
-  function get_stories($by, $key, $limit, $start) {
+  function get_stories() {
     $this->load_model('story');
+    $by = $_POST['by'];
+    $key = $_POST['key'];
+    $limit = $_POST['limit'];
+    $start = $_POST['start'];
+    $stories = array();
     switch($by) {
       case 'latest':
         $stories = $this->story_model->get_published_recent_stories($this->pid, 0, $limit, $start);

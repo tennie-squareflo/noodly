@@ -22,7 +22,7 @@
     <div class="navbar-container bg-primary">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" data-sticky="top">
         <div class="container">
-          <a class="navbar-brand fade-page" href="index.html">
+          <a class="navbar-brand fade-page" href="<?php echo BASE_URL; ?>">
             <img src="<?php echo ASSETS_URL; ?>custom/admin/homepage/img/logo.png"  height="40px" alt="Leap">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">

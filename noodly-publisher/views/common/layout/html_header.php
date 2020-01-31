@@ -4,8 +4,20 @@
     <title><?php echo $publisher['name'] ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <meta name="keywords" content="blog, business, clean, clear, cooporate, creative, design web, flat, marketing, minimal, portfolio, shop, shopping, unique">
-    <meta name="author" content="PISEN | Deer Creative Theme">
+    <!-- Meta data -->
+    <?php
+      if (!empty($post)) :
+    ?>
+    <meta name="title" content="<?php echo $post['title'].' - '.$publisher['name'];?>">
+    <meta name="description" content="<?php echo $post['summary'];?>">
+    <meta name="date" content="<?php echo $post['created_at'];?>">
+    <meta name="keywords" content="<?php echo str_replace('#', '', $post['hashtags']); ?>">
+    <meta name="image" content="<?php echo BASE_URL.ASSETS_URL.'media/stories/'.$post['cover_image'];?>">
+    <?php
+      endif;
+    ?>
+    
+
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/slick.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/jquery-ui.css">

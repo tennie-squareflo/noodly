@@ -84,7 +84,7 @@ $(function() {
               break;
             case 'image':
               newSection = $(`
-              <div class="">
+              <div class="d-flex flex-column align-items-center">
                   <img class="img-fluid" src="${ASSETS_URL + 'media/stories/' + res.content}" alt="post image" onError="this.src='${ASSETS_URL + 'media/images/no-image-found.png'}';">
                   <div class="blog-pragraph image-caption">${res.caption ? res.caption : ''}</div>
               </div>
@@ -114,7 +114,10 @@ $(function() {
 
 function showBio() {
   const text = $('#author-bio').data('text');
-  if (showFullBio) {
+  if (text.length < 60) {
+    $('#author-bio').html(text);
+  }
+  else if (showFullBio) {
     $('#author-bio').html(text + '<a class="text-primary btn" onclick="lessBio()">Less</a>');
   } else {
     $('#author-bio').html(text.substr(0, 60) + '<a class="text-primary btn" onclick="fullBio()">More</a>');

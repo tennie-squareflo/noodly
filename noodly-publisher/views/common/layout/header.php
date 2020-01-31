@@ -5,13 +5,15 @@
           <div class="container">
             <div class="header-menu">
               <div class="row no-gutters align-items-center justify-content-center">
-                <div class="d-xl-none col-4 col-sm-4 col-xs-2 col-md-4"><div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div></div>
-                <div class="col-4 col-md-4 col-xs-8 text-center"><a class="logo" href="<?php echo BASE_URL; ?>"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
-                <div class="col-4 col-md-4 col-xs-2">
+                <div class="d-xl-none d-xxl-none d-xxxl-none col-4 col-sm-4 col-xs-2 col-md-4">
+                    <div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div>
+                </div>
+                <div class="col-0 col-xs-8 col-sm-4 col-md-4 d-xl-none d-xxl-none d-xxxl-none text-center"><a class="logo" href="<?php echo BASE_URL; ?>"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
+                <div class="d-sm-none d-xs-none d-md-none d-lg-none col-4 col-md-2 col-xs-8"><a class="logo" href="<?php echo BASE_URL; ?>"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
+                <div class="col-8 col-xl-8 col-lg-4 col-md-4 col-sm-4 col-xs-2">
                   <div class="mobile-menu"><a href="#" id="showMenu"><i class="fas fa-bars"></i></a></div>
                   <nav class="navigation">
                     <ul>
-
                       <li class="nav-item"><a class="pisen-nav-link latest_menu <?php echo $current_page === 'latest' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>">Latest</a></li>
                       <li class="nav-item"><a class="pisen-nav-link popular_menu <?php echo $current_page === 'popular' ? 'active' : ''; ?>" href="<?php echo BASE_URL; ?>popular">Popular</a></li>
                       <li class="nav-item"><a class="pisen-nav-link channel_menu submenu-opener <?php echo $current_page === 'channels' ? 'active' : ''; ?>" href="#">Channels</a>

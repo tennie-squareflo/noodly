@@ -239,8 +239,7 @@ header {
             transition: all 0.4s cubic-bezier(0.22, 0.68, 0, 1.71); }
           header .header-wrapper .header-menu ul .nav-item .pisen-nav-link.active:before {
             width: calc(100% - 50px); }
-        header .header-wrapper .header-menu ul .nav-item .submenu-opener {
-          display: none; }
+        
         header .header-wrapper .header-menu ul .nav-item .sub-menu {
           opacity: 0;
           visibility: hidden;
@@ -299,7 +298,7 @@ header {
           margin: 0 20px;
           font-size: 16px;
           color: #a4a8b0; }
-        header .header-wrapper .menu-function #search .search-btn {
+        header .header-wrapper #search .search-btn {
           font-size: 16px;
           color: #1d2c44;
           line-height: 1;
@@ -3891,7 +3890,6 @@ footer.v2 {
 
 @media (max-width: 576px) {
   .post-block .img-fluid {
-    margin: 0 -42px;
     width: 100vw !important;
     max-width: none;
   }
@@ -3899,6 +3897,8 @@ footer.v2 {
     margin: 0 -30px;
   }
 }
+
+
 
 #main {
   padding-top: 150px; }

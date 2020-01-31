@@ -68,7 +68,7 @@
     </div>
     <div class="post-author-detail">
       <div class="row no-gutters align-items-start">
-        <div class="col-xs-3 col-sm-3 col-md-2">
+        <div class="col-xs-3 col-sm-3 col-md-2 mr-4">
           <div class="author-avatar">
           <?php
             if (empty($author['avatar']) || (empty($_SESSION['user']['avatar']))
@@ -86,7 +86,7 @@
             ?>
           </div>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9">
+        <div class="flex-grow-1">
           <div class="author-info">
             <h5><?php echo $author['firstname'].' '.$author['lastname']; ?></h5>
             <div class="author-social">
@@ -131,7 +131,7 @@
               </a>
               <?php } ?>
             </div>
-            <p data-text="<?php echo $author['shortbio']; ?>" id="author-bio"></p>
+            <p class="d-sm-none d-xs-none" data-text="<?php echo $author['shortbio']; ?>" id="author-bio"></p>
             <button class="normal-btn">Subscribe</button>
           </div>
         </div>

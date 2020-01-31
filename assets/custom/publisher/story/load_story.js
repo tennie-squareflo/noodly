@@ -59,12 +59,15 @@ function load_more() {
 
       $(newBlock).insertBefore($('#insert-post-here'));
       
-      var $container = $('.blog-masonry_wrapper');
-      $container.imagesLoaded().always(function() {
-          $container.masonry({
-            itemSelector: '.post-block',
+      setTimeout(() => {
+        var $container = $('.blog-masonry_wrapper');
+        $container.imagesLoaded().always(function() {
+            $container.masonry({
+              itemSelector: '.post-block',
+          });
         });
-      });
+      }, 500);
+      
       $('#loading').hide();
 
       count += res.length;

@@ -59,16 +59,12 @@ function load_more() {
 
       $(newBlock).insertBefore($('#insert-post-here'));
       
-      setTimeout(() => {
-        imagesLoaded('.blog-masonry_wrapper').always(function() {
-          console.log('imageloaded');
-          
-            $container.masonry({
-              itemSelector: '.post-block',
-          });
+      var $container = $('.blog-masonry_wrapper');
+      $container.imagesLoaded( function() {
+          $container.masonry({
+            itemSelector: '.post-block',
         });
-      }, 500);
-      
+      });
       $('#loading').hide();
 
       count += res.length;

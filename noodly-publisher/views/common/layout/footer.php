@@ -1,7 +1,7 @@
 <footer>
         <div class="container">
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 d-xs-none d-sm-none">
               <div class="row">
                 <div class="col-sm-6 col-md-3 col-lg-4">
                   <div class="footer-links">
@@ -14,7 +14,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-sm-6 col-md-3 col-lg-4">
+                <div class="col-sm-6 col-md-3 col-lg-4 d-sm-none">
                   <div class="footer-links">
                     <h5 class="footer-link--title">Contributors</h5>
                     <ul>
@@ -28,7 +28,7 @@
                 <?php
                   
                 ?>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-12 col-md-6 col-lg-4 d-sm-none">
                   <div class="footer-contact">
                     <h5 class="footer-link--title">Contact us</h5>
                     <div class="contact-method">

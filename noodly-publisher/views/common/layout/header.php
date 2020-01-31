@@ -5,8 +5,9 @@
           <div class="container">
             <div class="header-menu">
               <div class="row no-gutters align-items-center justify-content-center">
+                <div class="col-0 col-sm-4 col-xs-4"><div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div></div>
                 <div class="col-4 col-md-2"><a class="logo" href="<?php echo BASE_URL; ?>"><img src="<?php echo ASSETS_URL;?>media/logos/<?php echo $publisher['logo'];?>" alt="logo" width="170px"></a></div>
-                <div class="col-8 col-md-8">
+                <div class="col-4 col-md-8">
                   <div class="mobile-menu"><a href="#" id="showMenu"><i class="fas fa-bars"></i></a></div>
                   <nav class="navigation">
                     <ul>
@@ -41,7 +42,7 @@
                 <div class="col-0 col-xl-2">
                   <div class="menu-function">
                     <div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>

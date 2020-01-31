@@ -60,7 +60,7 @@ function load_more() {
       $(newBlock).insertBefore($('#insert-post-here'));
       
       var $container = $('.blog-masonry_wrapper');
-      $container.imagesLoaded( function() {
+      $container.imagesLoaded().done(function() {
         console.log('images loaded');
           $container.masonry({
             itemSelector: '.post-block',

@@ -88,6 +88,8 @@
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/numscroller-1.0.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.countdown.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/main.js"></script>
+      <script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
+	  </script> <!--end::Debounce Plugin -->
 
       <script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
 	</script> 

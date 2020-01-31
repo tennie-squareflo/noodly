@@ -1081,8 +1081,35 @@ footer.v2 {
   height: 100vh;
   background-color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  padding: 100px 0;
+}
+
+#global-search-result {
+  width: 50vw;
+  margin: 20px 10px;
+  
+  flex: 1;
+  overflow: auto;
+}
+#global-search-result .search-link {
+  color: #1d2c44;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+#global-search-result .search-link .tag {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  background-color: #eeeeee;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
   #search-full #exit-search-box {
     background-color: transparent;
     border: 0;

@@ -47,7 +47,7 @@
       <div class="container">
         <div class="row align-items-center min-vh-50">
           <div class="col-lg-12 text-center text-lg-left mb-4 mb-lg-0">
-            <h1 class="display-3">Digital publishing, perfected.</h1>
+            <h1 class="display-3">Online publishing, perfected.</h1>
             <div class="my-4">
               <p class="lead">Noodly is the perfect, <strong>white-label</strong>, multi-contributor platform for digital publishers.
             </div>

@@ -146,4 +146,18 @@ class Story_Model extends Core_Model{
     $query = "UPDATE stories SET client_view = client_view + 1 WHERE sid = $sid";
     return $this->db->query($query);
   }
+
+  function search_hashtags($search, $pid) {
+    $stories = $this->db->query("SELECT * FROM stories WHERE hashtags like '%$search%' and pid = '$pid'", true);
+    $result = array();
+    foreach($stories as $story) {
+      $hashtags = explode(' ', $story['hashtags']);
+      foreach($hashtags as $hashtag) {
+        if (strstr($hashtag, $search) !== FALSE && !in_array($hashtag, $result)) {
+          $result[] = $hashtag;
+        }
+      }
+    }
+    return $result;
+  }
 }

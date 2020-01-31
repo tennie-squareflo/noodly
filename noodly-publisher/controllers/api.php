@@ -86,4 +86,15 @@ class Api_Controller extends Core_Controller {
       $this->response(array('status' => 'fail', 'message' => 'Message sending is failed. Please try again.'), 500);
     }
   }
+
+  // global searc
+  public function search($search) {
+    $this->load_model('story');
+    $this->load_model('category');
+
+    $hashtags = $this->story_model->search_hashtags($search, $this->pid);
+    $channels = $this->category_model->search_channels($search, $this->pid);
+
+    $this->response(array('hashtags' => $hashtags, 'channels' => $channels));
+  }
 }

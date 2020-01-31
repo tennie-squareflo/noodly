@@ -52,4 +52,8 @@ class Category_Model extends Core_Model {
   function slug_exists($slug) {
     return $this->count(array('slug' => $slug)) > 0;
   }
+
+  function search_channels($search, $pid) {
+    return $this->db->query("SELECT * from categories WHERE name like '%$search%' and pid ='$pid'", true);
+  }
 }

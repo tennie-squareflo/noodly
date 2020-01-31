@@ -1,7 +1,7 @@
 "use strict";
 const limit = 12;
 let count = 0;
-let end = false;
+let loading = false;
 
 $(function() {
 
@@ -12,17 +12,19 @@ $(function() {
 	// Each time the user scrolls
 	win.scroll(function() {
 		// End of the document reached?
-		if ($(document).height() - win.height() == win.scrollTop()) {
-			$('#loading').show();
-      if (end === false) {
+		if ($(document).height() - win.height() <= win.scrollTop() + 60) {
+      $('#loading').show();
+      if (!loading) {
         load_more();
       }
+        
 		}
   });
   
 });
 
 function load_more() {
+  loading = true;
   $.ajax({
     url: BASE_URL + `get_stories`,
     type: 'post',
@@ -66,6 +68,7 @@ function load_more() {
         });
       });
       $('#loading').hide();
+      loading = false;
 
       count += res.length;
       if (res.length === 0) {

@@ -63,6 +63,7 @@ function load_more() {
       
       var $container = $('.blog-masonry_wrapper');
       $container.imagesLoaded( function() {
+        console.log($container.find('.post-block').length);
           $container.masonry({
             itemSelector: '.post-block',
         });

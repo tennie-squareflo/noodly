@@ -71,9 +71,6 @@ function load_more() {
       loading = false;
 
       count += res.length;
-      if (res.length === 0) {
-        end = true;
-      }
     }
   });
 }

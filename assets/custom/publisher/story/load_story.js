@@ -12,7 +12,7 @@ $(function() {
 	// Each time the user scrolls
 	win.scroll(function() {
 		// End of the document reached?
-		if ($(document).height() - win.height() <= win.scrollTop() + 60) {
+		if ($(document).height() - win.height() == win.scrollTop()) {
       $('#loading').show();
       if (!loading) {
         load_more();
@@ -64,9 +64,11 @@ function load_more() {
       var $container = $('.blog-masonry_wrapper');
       $container.imagesLoaded( function() {
         console.log($container.find('.post-block').length);
+
           $container.masonry({
             itemSelector: '.post-block',
         });
+        $container.masonry('reloadItems');
       });
       $('#loading').hide();
       loading = false;

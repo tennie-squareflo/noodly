@@ -13,6 +13,7 @@ class Database
     private static $where;
     private static $limit;
     private static $order;
+    private static $offset;
 
     public function __construct($host, $user, $pass, $db)
     {
@@ -138,6 +139,11 @@ class Database
         return $this;
     }
 
+    public function offset($offset) {
+        self::$offset = 'OFFSET '.$offset;
+        return $this;
+    }
+
     /**
      * MySQL Order By method
      */
@@ -187,10 +193,15 @@ class Database
             $extra .= ' ' . self::$limit;
         }
 
+        if (!empty(self::$offset)) {
+            $extra .= ' ' .self::$offset;
+        }
+
         // cleanup
         self::$where = null;
         self::$order = null;
         self::$limit = null;
+        self::$offset = null;
         return $extra;
     }
 
@@ -233,6 +244,7 @@ class Database
             }
             $select = substr($cols, 0, -1);
         }
+        $is_one = self::$limit === 'LIMIT 1';
         $sql = sprintf("SELECT %s FROM %s%s", $select, $table, self::extra());
         self::set('last_query', $sql);
 
@@ -244,7 +256,8 @@ class Database
             self::set('num_rows', $num_rows);
             if ($num_rows === 0) {
                 $data = array();
-            } elseif (preg_match('/LIMIT 1/', $sql)) {
+            //} elseif (preg_match('/LIMIT 1/', $sql)) {
+            } elseif ($is_one) {
                 $data = mysqli_fetch_assoc($result);
             } else {
                 $data = array();

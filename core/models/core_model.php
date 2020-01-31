@@ -22,7 +22,7 @@ class Core_Model {
     $this->db->rollback();
   }
 
-  function get($select, $where = array(), $limit = 0, $by = '', $order_type = 'DESC') {
+  function get($select, $where = array(), $limit = 0, $start = 0, $by = '', $order_type = 'DESC') {
     if (isset($where)) {
       if (!is_array($where)) {
         $this->db->where(array($this->pk => $where));
@@ -32,6 +32,7 @@ class Core_Model {
     }
     if ($limit > 0) {
       $this->db->limit($limit);
+      $this->db->offset($start);
     }
     if ($by) {
       $this->db->order_by($by, $order_type);

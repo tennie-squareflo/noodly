@@ -34,10 +34,10 @@ class Story_Model extends Core_Model{
     if ($uuid !== 0) {
       $this->db->where(array('uuid' => $uuid));
     }
-    return $this->get($select, array(), $limit, 'sid');
+    return $this->get($select, array(), $limit, 0, 'sid');
   }
 
-  function get_published_channel_stories($pid =0, $uuid = 0, $cid = 0, $limit = 0) {
+  function get_published_channel_stories($pid =0, $uuid = 0, $cid = 0, $limit = 12, $start = 0) {
     $select = "
       stories.sid,
       stories.cid,
@@ -49,7 +49,8 @@ class Story_Model extends Core_Model{
       (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = stories.uuid) username,
       (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername,
       stories.status,
-      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
+      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) cname,
+      (SELECT categories.channel_color FROM categories WHERE categories.cid = stories.cid) channel_color
     ";
     $this->db->where(array('status' => 'PUBLISHED'));
     if ($pid !== 0) {
@@ -59,10 +60,10 @@ class Story_Model extends Core_Model{
       $this->db->where(array('uuid' => $uuid));
     }
     $this->db->where(array('cid' => $cid));
-    return $this->get($select, array(), $limit, 'sid');
+    return $this->get($select, array(), $limit, $start, 'sid');
   }
 
-  function get_published_recent_stories($pid = 0, $uuid = 0, $limit = 0) {
+  function get_published_recent_stories($pid = 0, $uuid = 0, $limit = 12, $start = 0) {
     $select = "
       stories.sid,
       stories.cid,
@@ -74,7 +75,8 @@ class Story_Model extends Core_Model{
       (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) FROM users WHERE users.uuid = stories.uuid) username,
       (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername,
       stories.status,
-      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
+      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) cname,
+      (SELECT categories.channel_color FROM categories WHERE categories.cid = stories.cid) channel_color
     ";
     $this->db->where(array('status' => 'PUBLISHED'));
     if ($pid !== 0) {
@@ -84,26 +86,40 @@ class Story_Model extends Core_Model{
       $this->db->where(array('uuid' => $uuid));
     }
     $this->db->order_by('created_at', 'DESC');
-    return $this->get($select, array(), $limit, 'sid');
+    return $this->get($select, array(), $limit, $start, 'sid');
   }
 
-  function get_published_popular_stories($pid = 0, $uuid = 0, $limit = 0) {
+  function get_published_popular_stories($pid = 0, $uuid = 0, $limit = 12, $start = 0) {
     $query = "SELECT stories.sid, stories.cid, stories.title, stories.visits, stories.url, 
     stories.thumb_image, stories.created_at, 
     (SELECT concat(users.firstname, ' ', ifnull(users.lastname, '')) 
     FROM users WHERE users.uuid = stories.uuid) username, 
     (SELECT publishers.name FROM publishers where publishers.pid = stories.pid) publishername, 
     stories.status, 
-    (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname 
+    (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) cname,
+    (SELECT categories.channel_color FROM categories WHERE categories.cid = stories.cid) channel_color
     FROM stories 
     WHERE 
       `status`='PUBLISHED'"
       .(($pid !== 0) ? " AND `pid` = $pid" : "")
       .(($uuid !== 0) ? " AND `uuid` = $uuid" : "")
-    ." AND `created_at` BETWEEN (NOW() - INTERVAL 14 DAY) AND NOW() ORDER BY `visits` DESC, `sid` DESC";
+    ." AND `created_at` BETWEEN (NOW() - INTERVAL 14 DAY) AND NOW() ORDER BY `visits` DESC, `sid` DESC LIMIT $limit OFFSET $start";
     
     return $this->db->query($query, true);
     //return $this->get($select, array(), $limit, 'sid');
+  }
+  function get_stories_by_hashtag($pid, $uuid, $hashtag, $limit = 12, $start = 0) {
+    $condition = '';
+    if ($pid) {
+      $condition .= " AND pid = '$pid'";
+    }
+    if ($uuid) {
+      $condition .= " AND uuid = '$uuid'";
+    }
+    return $this->db->query("SELECT stories.*, 
+    (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) cname,
+    (SELECT categories.channel_color FROM categories WHERE categories.cid = stories.cid) channel_color 
+    FROM stories WHERE hashtags like '%#$hashtag%' AND status='PUBLISHED' $condition LIMIT $limit OFFSET $start", true);
   }
   
   function slug_exists($slug) {
@@ -130,16 +146,4 @@ class Story_Model extends Core_Model{
     $query = "UPDATE stories SET client_view = client_view + 1 WHERE sid = $sid";
     return $this->db->query($query);
   }
-
-  function get_stories_by_hashtag($pid, $uuid, $hashtag) {
-    $condition = '';
-    if ($pid) {
-      $condition .= " AND pid = '$pid'";
-    }
-    if ($uuid) {
-      $condition .= " AND uuid = '$uuid'";
-    }
-    return $this->db->query("SELECT * FROM stories WHERE hashtags like '%#$hashtag%' AND status='PUBLISHED' $condition", true);
-  }
-
 }

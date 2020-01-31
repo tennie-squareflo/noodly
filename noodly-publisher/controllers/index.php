@@ -10,10 +10,11 @@ class Index_Controller extends Auth_Controller {
     $this->load_model('category');
     $this->load_model('story');
     $this->load_model('publisher');
+    $this->view_data['script_files'] = array('custom/publisher/story/load_story.js');
     $this->view_data['current_page'] = 'latest';
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
-    $this->view_data['stories'] = $this->story_model->get_published_recent_stories($this->pid, 0);
+    $this->view_data['key'] = 'latest';
     $this->load_view('common/stories', $this->view_data);
   }
 
@@ -39,12 +40,12 @@ class Index_Controller extends Auth_Controller {
 
   function popular() {
     $this->load_model('category');
-    $this->load_model('story');
     $this->load_model('publisher');
+    $this->view_data['script_files'] = array('custom/publisher/story/load_story.js');
     $this->view_data['current_page'] = 'popular';
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
-    $this->view_data['stories'] = $this->story_model->get_published_popular_stories($this->pid, 0);
+    $this->view_data['key'] = 'popular';
     $this->load_view('common/stories', $this->view_data);
   }
 
@@ -67,25 +68,25 @@ class Index_Controller extends Auth_Controller {
 
   function channel_view($slug) {
     $this->load_model('category');
-    $this->load_model('story');
     $this->load_model('publisher');
     $this->view_data['current_page'] = 'channels';
+    $this->view_data['script_files'] = array('custom/publisher/story/load_story.js');
     $channel = $this->category_model->get_one(array('slug' => $slug));
     $this->view_data['current_channel'] = $channel;
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
-    $this->view_data['stories'] = $this->story_model->get_published_channel_stories($this->pid, 0, $channel['cid']);
+    $this->view_data['key'] = $channel['cid'];
     $this->load_view('common/stories', $this->view_data);
   }
 
   function hashtag_view($hash) {
     $this->load_model('category');
-    $this->load_model('story');
     $this->load_model('publisher');
-    $this->view_data['current_page'] = 'channels';
+    $this->view_data['current_page'] = 'hashtags';
+    $this->view_data['script_files'] = array('custom/publisher/story/load_story.js');
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
-    $this->view_data['stories'] = $this->story_model->get_stories_by_hashtag($this->pid, 0, $hash);
+    $this->view_data['key'] = $hash;
     $this->load_view('common/stories', $this->view_data);
   }
   
@@ -93,5 +94,24 @@ class Index_Controller extends Auth_Controller {
     $this->load_model('category');
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);
     $this->load_view('common/signup', $this->view_data); 
+  }
+
+  function get_stories($by, $key, $limit, $start) {
+    $this->load_model('story');
+    switch($by) {
+      case 'latest':
+        $stories = $this->story_model->get_published_recent_stories($this->pid, 0, $limit, $start);
+      break;
+      case 'popular':
+        $stories = $this->story_model->get_published_popular_stories($this->pid, 0, $limit, $start);
+      break;
+      case 'hashtag':
+        $stories = $this->story_model->get_stories_by_hashtag($this->pid, 0, $key, $limit, $start);
+      break;
+      case 'channels':
+        $stories = $this->story_model->get_published_channel_stories($this->pid, 0, $key, $limit, $start);
+      break;
+    }
+    $this->response($stories, 200);
   }
 } 

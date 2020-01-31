@@ -148,7 +148,7 @@ class Story_Controller extends Auth_Controller {
               $new_story_data['first_pid'] = 0;
             }
             $this->story_model->update($new_story_data, $main_data['id']);
-            $existing_blocks = $this->paragraph_model->get('*', array('sid' => $main_data['id']), 0, 'pid', 'ASC');
+            $existing_blocks = $this->paragraph_model->get('*', array('sid' => $main_data['id']), 0, 0, 'pid', 'ASC');
             $blocks_data = array();
             $deleteids = array();
             for ($i = 0; $i < max(count($existing_blocks), count($other_data)); $i++) {

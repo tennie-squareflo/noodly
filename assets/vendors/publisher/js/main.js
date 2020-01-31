@@ -171,7 +171,8 @@ jQuery(document).ready(function($) {
 	/************************************
    		Masonry layout init
 	*************************************/
-	var $container = $('.blog-masonry_wrapper')
+	
+	var $container = $('.blog-masonry_wrapper');
 
 	$container.imagesLoaded( function() {
 	  	$container.masonry({

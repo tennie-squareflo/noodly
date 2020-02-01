@@ -67,10 +67,5 @@
 	}
 ?>
 
-	<script>
-		var KThemeMode = 'released';
-		const BASE_URL = "<?php echo BASE_URL; ?>";
-		const ASSETS_URL = "<?php echo ASSETS_URL; ?>";
-	</script><!-- end::Body -->
 </body>
 </html>

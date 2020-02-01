@@ -142,12 +142,10 @@ class Slim_Image_Uploader {
 
     // resize image
     if ($max_width > 0) {
-        var_dump($response);
         $simple_image = new Simple_Image;
         $file_name = ASSETS_PATH.'media/stories/'.$response['file'];
         $simple_image->load($file_name);
         if ($simple_image->getWidth() > $max_width) {
-            var_dump('resized');
             $simple_image->resizeToWidth($max_width);
             $simple_image->save($file_name, $simple_image->getImageType());
         }

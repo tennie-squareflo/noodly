@@ -2,9 +2,10 @@
 class Slim_Image_Uploader {
   function __construct() {
     require_once(CORE_PATH.'third-parties/slim/slim.php');
+    require_once(CORE_PATH.'libraries/simple_image.php');
   }
 
-  function image_upload($filename, $path) {
+  function image_upload($filename, $path, $max_width = 0) {
 
     // Get posted data, if something is wrong, exit
     try {
@@ -137,6 +138,19 @@ class Slim_Image_Uploader {
     else {
         $response['file'] = isset($output) ? $output['name'] : $input['name'];
         $response['path'] = isset($output) ? $output['path'] : $input['path'];
+    }
+
+    // resize image
+    if ($max_width > 0) {
+        var_dump($response);
+        $simple_image = new Simple_Image;
+        $file_name = ASSETS_PATH.'media/stories/'.$response['file'];
+        $simple_image->load($file_name);
+        if ($simple_image->getWidth() > $max_width) {
+            var_dump('resized');
+            $simple_image->resizeToWidth($max_width);
+            $simple_image->save($file_name, $simple_image->getImageType());
+        }
     }
 
     // Return results as JSON String

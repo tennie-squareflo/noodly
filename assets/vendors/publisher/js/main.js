@@ -232,7 +232,7 @@ jQuery(document).ready(function($) {
   // var $container = $(".blog-masonry_wrapper");
 
   // $container.imagesLoaded(function() {
-  //   $container.masonry({
+  //   $container.masonry({   
   //     itemSelector: ".post-block"
   //   });
   // });

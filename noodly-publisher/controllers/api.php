@@ -12,7 +12,22 @@ class Api_Controller extends Core_Controller {
 
   public function story_image_upload($type) {
     $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload($type, ASSETS_PATH.'media/stories/');
+    $max_size = 0;
+    switch ($type) {
+      case 'thumb_image':
+        $max_size = 800;
+      break;
+      case 'cover_image':
+        $max_size = 1200;
+      break;
+      case 'content':
+        $max_size = 1000;
+      break;
+      default:
+        $max_size = 0;
+      break;
+    }
+    $this->slim_image_uploader->image_upload($type, ASSETS_PATH.'media/stories/', $max_size);
   }
 
   public function section_image_upload($type) {

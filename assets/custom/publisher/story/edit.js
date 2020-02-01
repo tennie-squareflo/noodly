@@ -136,7 +136,8 @@ const quillSettings = {
 
 const setValidation = (element, isValid) => {
   if (isValid) {
-    const error = $('<span id="summary-error">This field is required.</span>');
+    if (!$(element).hasClass('is-invalid')) {
+      const error = $('<span id="summary-error">This field is required.</span>');
     error.addClass("invalid-feedback");
     error.addClass("text-right");
     error.addClass("px-3");
@@ -144,6 +145,7 @@ const setValidation = (element, isValid) => {
       .closest(".form-group")
       .append(error);
     $(element).addClass("is-invalid");
+    }
   } else {
     $(element).removeClass("is-invalid");
     $(element)
@@ -385,7 +387,7 @@ $(function() {
       first_paragraph: {
         required: true
       }
-    }
+    },
   });
 
   $(".save-button").click(() => {
@@ -462,6 +464,24 @@ const submitForm = type => {
   const valid = isStoryFormValid();
 
   if (!valid) {
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: "toast-top-right",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "1000",
+      timeOut: "5000",
+      extendedTimeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+    toastr.error(`Complete the fields below`);
     return;
   }
 

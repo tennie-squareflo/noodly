@@ -255,7 +255,7 @@
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td class="pc-fb-font" colspan="2" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444" valign="top">Hi <?php echo $client['firstname']; ?>. <?php echo $private_message; ?>&nbsp;<br><br><?php echo $message; ?></td>
+                                        <td class="pc-fb-font" colspan="2" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444" valign="top"><?php echo $private_message; ?>&nbsp;<br></td>
                                       </tr>
                                       <tr>
                                         <td colspan="2" height="22" style="line-height: 1px; font-size: 1px;">&nbsp;</td>

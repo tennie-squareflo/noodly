@@ -23,6 +23,10 @@ class Core_Controller {
       $this->pid = $publisher['pid'];
       $this->view_data['publisher'] = $publisher;
     }
+
+    $this->load_model('environment');
+    $this->view_data['_env'] = $this->environment_model->get_env($this->pid);
+    
   }
 
   function load_view($filename, $vars = array(), $return = false) {
@@ -183,7 +187,7 @@ class Core_Controller {
     $this->load_helper('string');
 
     $publisher = $this->publisher_model->get_one($pid);
-    $env = $this->environment_model->get_env();
+    $env = $this->environment_model->get_env($pid);
 
     $to = $user['email'];
     $from = $publisher['email'];

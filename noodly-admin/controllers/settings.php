@@ -9,28 +9,43 @@ class Settings_Controller extends Admin_Controller {
 
   function index() {
     $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/admin/settings/settings.js');
-    $view_data['_env'] = $this->environment_model->get_env();
+    $view_data['script_files'] = array('custom/common/settings/settings.js');
     $this->load_view('settings/settings', $view_data);
   }
 
+  function logo() {
+    $this->view_data['script_files'] = array('custom/common/settings/logo.js');
+    $this->load_view('settings/logo', $this->view_data);
+  }
+  
+  function website() {
+    $this->view_data['script_files'] = array('custom/common/settings/website.js');
+    $this->load_view('settings/website', $this->view_data);
+  }
+  function notification() {
+    $this->view_data['script_files'] = array('custom/common/settings/notification.js');
+    $this->load_view('settings/notification', $this->view_data);
+  }
+  function about() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'vendors/custom/quill/quill.min.js', 'custom/common/settings/about.js');
+    $this->load_view('settings/about', $this->view_data);
+  }
+
+  function about_image_upload() {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload('about_image', ASSETS_PATH.'media/images/');
+  }
+
   function edit() {
-    $new_data = array(
-      'email_expiration_time' => $_POST['email_expiration_time'],
-      'email_background_color' => $_POST['email_background_color'],
-      'email_foreground_color' => $_POST['email_foreground_color'],
-      'email_background_image' => !empty($_POST['email_background_image']) ? json_decode($_POST['email_background_image'])->file : '',
-      'email_new_user_title' => $_POST['email_new_user_title'],
-      'email_new_user_message' => $_POST['email_new_user_message'],
-      'email_new_role_title' => $_POST['email_new_role_title'],
-      'email_new_role_message' => $_POST['email_new_role_message'],
-      'email_invitation_title' => $_POST['email_invitation_title'],
-      'email_invitation_message' => $_POST['email_invitation_message'],
-    );
-    if ($this->environment_model->update_env($new_data)) {
-      $this->response(array('code' => 0, 'message' => 'Settings updated successfully!'));
-    } else {
-      $this->response(array('code' => 1, 'message' => 'Settings update failed!'), 500);
+    try {
+      if (!empty($_POST['about_image'])) {
+        $_POST['about_image'] = json_decode($_POST['about_image'])->file;
+      }
+      $this->environment_model->update_env($_POST);
+      $this->response(array('message' => 'Settings updated successfully!'));
+    } catch(Exception $e) {
+      $this->response(array('message' => 'Error occured! Please try again.'), 500);
     }
   }
 

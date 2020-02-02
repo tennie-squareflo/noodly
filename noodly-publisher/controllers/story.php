@@ -329,7 +329,7 @@ class Story_Controller extends Auth_Controller {
 
     $author = $this->user_model->get_one($author_id);
     $client = $this->client_model->get_one($client_id);
-    $env = $this->environment_model->get_env();
+    $env = $this->environment_model->get_env($this->pid);
 
     $view_data = array();
     $subject = "$author[firstname] sent you a private draft - ".date('g:i a m/d/Y');
@@ -360,7 +360,7 @@ class Story_Controller extends Auth_Controller {
     $author = $this->user_model->get_one($uuid);
     $admins = $this->publisher_model->get_admins($pid);
     $story = $this->story_model->get_one($sid);
-    $env = $this->environment_model->get_env();
+    $env = $this->environment_model->get_env($pid);
     $expiration_time = time() + (60 * $env['email_expiration_time']);
     
     foreach ($admins as $admin) {

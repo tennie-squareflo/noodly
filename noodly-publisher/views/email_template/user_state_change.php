@@ -279,7 +279,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="padding: 13px 17px; border-radius: 8px; background-color: #41dc84" bgcolor="#41dc84" valign="top" align="center">
-                                                  <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Log In Now</span></a>
+                                                  <a class="pc-fb-font" href="http://noodly.io" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Contact Admin</span></a>
                                                 </td>
                                               </tr>
                                             </tbody>

@@ -41,6 +41,7 @@
 														<label class="col-12 col-form-label">Logo for Light Background</label>
 														<div class="col-12">
                               <div class="slim"
+															data-container-type="light-back-logo"
                                 data-service="<?php echo BASE_URL; ?>settings/logo_upload/light_back_logo"
 																data-push="true"
                                 data-did-throw-error="handleError">
@@ -59,6 +60,8 @@
 														<label class="col-12 col-form-label">Logo for Dark Background</label>
 														<div class="col-12">
                               <div class="slim"
+																data-container-type="dark-back-logo"
+
                                 data-service="<?php echo BASE_URL; ?>settings/logo_upload/dark_back_logo"
 																data-push="true"
                                 data-did-throw-error="handleError">
@@ -77,6 +80,7 @@
 														<label class="col-12 col-form-label">Favicon</label>
 														<div class="col-12">
                               <div class="slim"
+																data-container-type="favicon"
                                 data-service="<?php echo BASE_URL; ?>settings/logo_upload/favicon"
 																data-push="true"
                                 data-did-throw-error="handleError">

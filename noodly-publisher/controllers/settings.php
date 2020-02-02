@@ -20,7 +20,8 @@ class Settings_Controller extends Auth_Controller {
   }
 
   function logo() {
-    $this->view_data['script_files'] = array('custom/common/settings/logo.js');
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/common/settings/logo.js');
     $this->load_view('/admin/admin/settings/logo', $this->view_data);
   }
   

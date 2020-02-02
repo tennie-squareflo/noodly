@@ -76,7 +76,7 @@ class Admin_Controller extends Auth_Controller {
 
     $user = $this->user_model->get_one($id);
     $publisher = $this->publisher_model->get_one($pid);
-    $env = $this->environment_model->get_env();
+    $env = $this->environment_model->get_env($pid);
     $role = $this->user_model->get_role($id, $pid);
 
     $subject = 'Invitation to join '.$publisher['name'].' as '.get_user_types($role['role'], true);

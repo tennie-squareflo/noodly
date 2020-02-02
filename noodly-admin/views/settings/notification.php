@@ -6,7 +6,7 @@
 			<!-- begin:: Content Head -->
 			<div class="k-content__head	k-grid__item">
 				<div class="k-content__head-main">
-					<h3 class="k-content__head-title">Website Settings</h3>
+					<h3 class="k-content__head-title">Notification Settings</h3>
 				
 				</div>
 				<div class="k-content__head-toolbar">
@@ -37,23 +37,30 @@
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 													
 													<div class="form-group">
-														<label class="col-12 col-form-label">Website Primary Color</label>
+														<label class="col-12 col-form-label">User Invite Message</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_primary_color" type="color" value="<?php echo $_env['website_primary_color']; ?>">
+															<input class="form-control" placeholder="" name="user_invite" type="text" value="<?php echo $_env['user_invite']; ?>">
 														</div>
                           </div>
 
-                          <div class="form-group">
-														<label class="col-12 col-form-label">Website Secondary Color</label>
+													<div class="form-group">
+														<label class="col-12 col-form-label">User Welcome Message</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_secondary_color" type="color" value="<?php echo $_env['website_secondary_color']; ?>">
+															<input class="form-control" placeholder="" name="user_welcome" type="text" value="<?php echo $_env['user_welcome']; ?>">
 														</div>
                           </div>
 
-                          <div class="form-group">
-														<label class="col-12 col-form-label">Website Button Color</label>
+													<div class="form-group">
+														<label class="col-12 col-form-label">New Story Message</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_button_color" type="color" value="<?php echo $_env['website_button_color']; ?>">
+															<input class="form-control" placeholder="" name="new_story_posted" type="text" value="<?php echo $_env['new_story_posted']; ?>">
+														</div>
+                          </div>
+
+													<div class="form-group">
+														<label class="col-12 col-form-label">Client Private Draft Message</label>
+														<div class="col-12">
+															<input class="form-control" placeholder="" name="client_private_draft" type="text" value="<?php echo $_env['client_private_draft']; ?>">
 														</div>
                           </div>
 

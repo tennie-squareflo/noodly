@@ -108,6 +108,11 @@
 		}
 	}
 ?>
+	<script type="text/javascript">
+		function onImageLoadError() {
+			this.src = ASSETS_URL + 'media/default/no-image-found.png';
+		}
+	</script>
     </div>
   </body>
 </html>

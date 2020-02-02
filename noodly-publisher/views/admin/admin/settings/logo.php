@@ -6,7 +6,7 @@
 			<!-- begin:: Content Head -->
 			<div class="k-content__head	k-grid__item">
 				<div class="k-content__head-main">
-					<h3 class="k-content__head-title">Website Settings</h3>
+					<h3 class="k-content__head-title">Logo Settings</h3>
 				
 				</div>
 				<div class="k-content__head-toolbar">
@@ -37,26 +37,33 @@
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
 													
 													<div class="form-group">
-														<label class="col-12 col-form-label">Website Primary Color</label>
+														<label class="col-12 col-form-label">Login logo size</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_primary_color" type="color" value="<?php echo $_env['website_primary_color']; ?>">
+															<input class="form-control" placeholder="30px" name="login_logo_size" type="text" value="<?php echo $_env['login_logo_size']; ?>">
 														</div>
                           </div>
 
                           <div class="form-group">
-														<label class="col-12 col-form-label">Website Secondary Color</label>
+														<label class="col-12 col-form-label">Admin logo size</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_secondary_color" type="color" value="<?php echo $_env['website_secondary_color']; ?>">
+															<input class="form-control" placeholder="30px" name="admin_logo_size" type="text" value="<?php echo $_env['admin_logo_size']; ?>">
 														</div>
                           </div>
 
                           <div class="form-group">
-														<label class="col-12 col-form-label">Website Button Color</label>
+														<label class="col-12 col-form-label">Website logo size</label>
 														<div class="col-12">
-															<input class="form-control" placeholder="" name="website_button_color" type="color" value="<?php echo $_env['website_button_color']; ?>">
+															<input class="form-control" placeholder="30px" name="website_logo_size" type="text" value="<?php echo $_env['website_logo_size']; ?>">
 														</div>
                           </div>
 
+                          <div class="form-group">
+														<label class="col-12 col-form-label">Email logo size</label>
+														<div class="col-12">
+															<input class="form-control" placeholder="30px" name="email_logo_size" type="text" value="<?php echo $_env['email_logo_size']; ?>">
+														</div>
+                          </div>
+                          
 												</div>
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>

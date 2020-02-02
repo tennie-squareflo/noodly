@@ -1,27 +1,10 @@
 <?php
-require_once(ADMIN_PATH.'core/admin_controller.php');
+require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
-class Publishers_Controller extends Admin_Controller {
+class Publishers_Controller extends Auth_Controller {
   function __construct() {
     parent::__construct();
     $this->load_model('publisher');
-  }
-  function index() {
-    $view_data['script_files'] = array('custom/admin/publisher-register/publisher.js');
-    $view_data['publishers'] = $this->publisher_model->get_publishers();
-    $this->load_view('publishers/publishers', $view_data);
-  }
-
-  function edit($id = 0) {
-    $view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
-    $view_data['script_files'] = array('custom/admin/publisher-register/register.js');
-    $view_data['publisher_id'] = intval($id);
-    if ($id != 0) {
-      $view_data['publisher'] = $this->publisher_model->get_one(intval($id));
-    } else {
-      $view_data['publisher'] = array();
-    }
-    $this->load_view('publishers/edit_publisher', $view_data);
   }
 
   function action($action) {

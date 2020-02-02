@@ -25,6 +25,10 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscriptions</span></a>
+          </li>
+
+          <li aria-haspopup="true" class="k-menu__item">
             <a class="k-menu__link" href="<?php echo BASE_URL; ?>admin"><i class="k-menu__link-icon fa fa-user-astronaut"></i><span class="k-menu__link-text">Admins</span></a>
           </li>
 
@@ -47,6 +51,10 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscriptions</span></a>
+          </li>
+
+          <li aria-haspopup="true" class="k-menu__item">
             <a class="k-menu__link" href="<?php echo BASE_URL; ?>message"><i class="k-menu__link-icon fa fa-envelope"></i><span class="k-menu__link-text">Messages</span></a>
           </li>
       <?php
@@ -58,10 +66,6 @@
       <li aria-haspopup="true" class="k-menu__item">
         <a class="k-menu__link" href="<?php echo BASE_URL; ?>my-account"><i class="k-menu__link-icon fa fa-user"></i><span class="k-menu__link-text">My Account</span></a>
       </li>
-
-      <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscriptions</span></a>
-          </li>
 
       <li aria-haspopup="true" class="k-menu__item">
         <a class="k-menu__link" href="<?php echo BASE_URL; ?>login"><i class="k-menu__link-icon fa fa-lock"></i><span class="k-menu__link-text">Log Out</span></a>

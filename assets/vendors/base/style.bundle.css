@@ -37585,7 +37585,7 @@ td>.k-radio.k-radio--single {
 
 .k-login-v2 .k-login-v2__body .k-login-v2__body-wrapper .k-login-v2__body-container .k-login-v2__body-action .btn {
     padding: 1rem 3.5rem;
-    border-radius: 60px;
+    /* border-radius: 60px; */
     color: #fff;
     font-size: 1.1rem
 }
@@ -60766,8 +60766,8 @@ input:-webkit-autofill:active {
 
 .btn-brand {
     color: #fff;
-    background-color: #5c4de5;
-    border-color: #5c4de5
+    background-color: #1dc9b7;
+    border-color: #1dc9b7;
 }
 
 .btn-brand:hover {
@@ -87333,7 +87333,7 @@ td>.k-radio.k-radio--single {
 
 .k-login-v2 .k-login-v2__body .k-login-v2__body-wrapper .k-login-v2__body-container .k-login-v2__body-action .btn {
     padding: 1rem 3.5rem;
-    border-radius: 60px;
+    /* border-radius: 60px; */
     color: #fff;
     font-size: 1.1rem
 }

@@ -49,7 +49,17 @@
 
     <style>
       header .header-wrapper .header-menu ul .nav-item .pisen-nav-link:before {
+        background-color: <?php echo $_env['website_primary_color'];?>;
+      }
+      a {
         color: <?php echo $_env['website_primary_color'];?>;
+      }
+      footer form .email-form button:hover {
+        color: <?php echo $_env['website_primary_color'];?>;
+      }
+      .normal-btn {
+        background-color: <?php echo $_env['website_primary_color'];?>;
+        border-color: <?php echo $_env['website_primary_color'];?>;
       }
     </style>
   </head>

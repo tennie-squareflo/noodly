@@ -12,6 +12,11 @@
     <link rel="preload" as="font" href="<?php echo ASSETS_URL; ?>custom/admin/homepage/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/55a4c8757d.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" type="image/jpg" href="<?php echo ASSETS_URL; ?>/media/logos/favico.jpg" />
+    <style>
+      .bg-primary {
+        background-color: #656565 !important;
+      }
+    </style>
   </head>
 
   <body>

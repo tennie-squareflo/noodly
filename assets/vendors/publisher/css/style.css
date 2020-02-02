@@ -3897,6 +3897,12 @@ footer.v2 {
   #main {
     padding-top: 105px;
   }
+  .author-info .normal-btn {
+    margin-top: 30px;
+  }
+  .contact {
+    padding-top: 35px;
+  }
   .main-coming-soon {
     display: block;
     margin-top: 70px; }
@@ -3911,6 +3917,12 @@ footer.v2 {
   #main {
     padding-top: 105px;
   }
+  .contact {
+    padding-top: 35px;
+  }
+  .author-info .normal-btn {
+    margin-top: 30px;
+  }
   .main-coming-soon {
     display: block;
     margin: 70px 0; }
@@ -3922,6 +3934,9 @@ footer.v2 {
 @media (min-width: 768px) and (max-width: 991px) {
   #main {
     padding-top: 105px;
+  }
+  .contact {
+    padding-top: 35px;
   }
   .main-coming-soon .coming-soon #countdown .countdown-number b {
     font-size: 35px; } }

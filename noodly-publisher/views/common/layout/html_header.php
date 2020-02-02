@@ -46,4 +46,10 @@
     ?>
 
     <link href="<?php echo ASSETS_URL;?>media/logos/<?php echo $_env['favicon']; ?>" rel="shortcut icon">
+
+    <style>
+      header .header-wrapper .header-menu ul .nav-item .pisen-nav-link:before {
+        color: <?php echo $_env['website_primary_color'];?>;
+      }
+    </style>
   </head>

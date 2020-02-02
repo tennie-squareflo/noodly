@@ -25,7 +25,7 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscriptions</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscribers</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
@@ -51,7 +51,7 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscriptions</span></a>
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>subscriptions"><i class="k-menu__link-icon fa fa-newspaper"></i><span class="k-menu__link-text">Subscribers</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">

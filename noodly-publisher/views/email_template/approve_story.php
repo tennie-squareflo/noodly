@@ -1,3 +1,9 @@
+<?php
+  $message = $env['client_private_draft'];
+  $message = str_replace('[author]', $author['firstname'], $message);
+  $message = str_replace('[publisher_name]', $publisher['name'], $message);
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -10,7 +16,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <title></title>
   <style type="text/css">
-    @media screen {           
+    @media screen {
       @font-face {
         font-family: 'Fira Sans';
         font-style: normal;
@@ -142,27 +148,48 @@
       display: none !important;
     }
 
+    @media screen and (min-width: 621px) {
+      .pc-email-container {
+        width: 620px !important;
+      }
+    }
+
     @media screen and (max-width:620px) {
-      .pc-sm-p-34-30-55 {
-        padding: 34px 30px 55px !important
+      .pc-sm-p-20 {
+        padding: 20px !important
+      }
+      .pc-sm-p-35-30 {
+        padding: 35px 30px !important
+      }
+      .pc-sm-p-35-30-30 {
+        padding: 35px 30px 30px !important
       }
     }
 
     @media screen and (max-width:525px) {
+      .pc-xs-p-10 {
+        padding: 10px !important
+      }
+      .pc-xs-p-25-20 {
+        padding: 25px 20px !important
+      }
+      .pc-xs-br-disabled br {
+        display: none !important
+      }
       .pc-xs-p-25-20-20 {
         padding: 25px 20px 20px !important
       }
-      .pc-xs-h-53 {
-        height: 53px !important
+      .pc-xs-fs-24 {
+        font-size: 24px !important
+      }
+      .pc-xs-lh-34 {
+        line-height: 34px !important
       }
       .pc-xs-fs-30 {
         font-size: 30px !important
       }
       .pc-xs-lh-42 {
         line-height: 42px !important
-      }
-      .pc-xs-br-disabled br {
-        display: none !important
       }
     }
   </style>
@@ -176,7 +203,7 @@
   <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 </head>
 <body style="width: 100% !important; margin: 0; padding: 0; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #f4f4f4" class="">
-  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;"></span>
+  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
   <table class="pc-email-body" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed;">
     <tbody>
       <tr>
@@ -187,7 +214,7 @@
             </v:background>
             <![endif]-->
           <!--[if (gte mso 9)|(IE)]><table width="620" align="center" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td width="620" align="center" valign="top"><![endif]-->
-          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; ">
+          <table class="pc-email-container" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto; max-width: 620px;">
             <tbody>
               <tr>
                 <td align="left" valign="top" style="padding: 0 10px;">
@@ -198,72 +225,64 @@
                       </tr>
                     </tbody>
                   </table>
-                  <!-- BEGIN MODULE: Header 2 -->
-                  <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
                     <tbody>
                       <tr>
-                        <td <?php echo $env['email_background_image'] !== '' ? "background='".PROTOCOL.'://'.$server.ASSETS_URL.'media/email_background/'.$env['email_background_image']."'" : "" ?> bgcolor="<?php echo $env['email_background_color']; ?>" align="center" valign="top" style="background-position: top center; background-size: cover; border-radius: 8px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
-                          <!--[if gte mso 9]>
-            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
-                <v:fill type="frame" src="images/header-2-image-2.jpg" color="#1B1B1B"></v:fill>
-                <v:textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">
-                    <div style="font-size: 0; line-height: 0;">
-                        <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center">
-                            <tr>
-                                <td style="font-size: 14px; line-height: 1.5;" valign="top">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
-                                        <tr>
-                                            <td colspan="3" height="34" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="40" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
-                                            <td valign="top" align="left">
-            <![endif]-->
-                          <!--[if !gte mso 9]><!-->
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                        <td valign="top">
+                          <!-- BEGIN MODULE: Menu 6 -->
+                          <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-34-30-55 pc-xs-p-25-20-20" style="padding: 34px 40px 55px;" valign="top">
-                                  <!--<![endif]-->
+                                <td class="pc-sm-p-20 pc-xs-p-10" bgcolor="#ffffff" valign="top" style="padding: 25px 30px; background-color: #ffffff">
+                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                    <tbody>
+                                      <tr>
+                                        <td align="center" valign="top" style="padding: 10px;">
+                                        <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($publisher['logo']) ? 'logo-on-light-background.png' : $publisher['logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- END MODULE: Menu 6 -->
+                          <!-- BEGIN MODULE: Content 15 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                              <tr>
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td valign="top" align="center">
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
-                                        </td>
+                                        <td class="pc-fb-font" colspan="2" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444" valign="top">Hi <?php echo $client['firstname']; ?>. <?php echo $private_message; ?>&nbsp;<br><br><?php echo $message; ?></td>
                                       </tr>
                                       <tr>
-                                        <td class="pc-xs-h-53" height="61" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+                                        <td colspan="2" height="22" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
                                       </tr>
                                     </tbody>
                                     <tbody>
                                       <tr>
-                                        <td class="pc-fb-font" style="text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; letter-spacing: -0.2px; color: <?php echo $env['email_foreground_color'];?>;" valign="top">
-                                        <?php 
-                                        echo "<p>".str_replace("\n", "<br/>", $message)."</p>";
-                                        echo "<hr/>";
-                                        echo "<h1>$title</h1>";
-                                        echo "<p>$summary</p>";
-                                        ?>
-                                        <hr/>
-                                        <p>
-                                          Click on the button below to view a private draft of this story and either choose to publish or reject the story. 
-                                        </p>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td height="24" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                      </tr>
-                                    </tbody>
-                                    <tbody>
-                                      <tr>
-                                        <td style="padding: 5px 0;" valign="top" align="center">
-                                          <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                        <td width="8%" valign="middle" style="padding-right: 10px;">
+                                          <table border="0" cellpadding="0" cellspacing="0" width="40" role="presentation">
                                             <tbody>
                                               <tr>
-                                                <td style="border-radius: 8px; padding: 13px 17px; background-color: #5654dd" bgcolor="#5654dd" valign="top" align="center">
-                                                  <a href="<?php echo PROTOCOL;?>://<?php echo $accept_url;?>" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: <?php echo $env['email_foreground_color'];?>; display: block;">Approve Story</a>
+                                                <td valign="top">
+                                                  <img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/avatars/'.$author['avatar']; ?>" onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000';" width="40" alt="" style="max-width: 100%; height: auto; border: 0; text-decoration: none; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; display: block;">
                                                 </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </td>
+                                        <td valign="middle" width="92%">
+                                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                            <tbody>
+                                              <tr>
+                                                <td class="pc-fb-font" valign="top" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 21px; letter-spacing: -0.1px; color: #1B1B1B;"><?php echo $author['firstname'].' '.$author['lastname']; ?></td>
+                                              </tr>
+                                              <tr>
+                                                <td class="pc-fb-font" valign="top" style="padding-top: 1px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; line-height: 20px; letter-spacing: -0.2px; color: #444444"><?php echo $role; ?></td>
                                               </tr>
                                             </tbody>
                                           </table>
@@ -271,18 +290,95 @@
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <!--[if !gte mso 9]><!-->
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                          <!--<![endif]-->
-                          <!--[if gte mso 9]>
+                          <!-- END MODULE: Content 15 -->
+                          <!-- BEGIN MODULE: Call to Action 6 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                              <tr>
+                                <td background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/stories/'.$story['cover_image']; ?>" bgcolor="#1B1B1B" align="center" valign="top" style="background-color: #1B1B1B; background-image: url('images/cta-6-image-1.jpg'); background-position: center; background-size: cover">
+                                  <!--[if gte mso 9]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
+                <v:fill type="frame" src="images/cta-6-image-1.jpg" color="#1B1B1B"></v:fill>
+                <v:textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">
+                    <div style="font-size: 0; line-height: 0;">
+                        <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center">
+                            <tr>
+                                <td style="font-size: 14px; line-height: 1.5;" valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                        <tr>
+                                            <td colspan="3" height="42" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="40" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
+                                            <td valign="top" align="left">
+            <![endif]-->
+                                  <!--[if !gte mso 9]><!-->
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                    <tbody>
+                                      <tr>
+                                        <td class="pc-sm-p-35-30-30 pc-xs-p-25-20-20" style="padding: 42px 40px 35px;" valign="top">
+                                          <!--<![endif]-->
+                                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                            <tbody>
+                                              <tr>
+                                                <td class="pc-fb-font" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; line-height: 20px; color: #40BE65; text-align: center;" valign="top"><?php echo $story['categoryname']; ?></td>
+                                              </tr>
+                                              <tr>
+                                                <td height="12" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                              </tr>
+                                            </tbody>
+                                            <tbody>
+                                              <tr>
+                                                <td class="pc-xs-fs-24 pc-xs-lh-34 pc-fb-font" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 900; line-height: 46px; letter-spacing: -0.6px; color: #ffffff; text-align: center;" valign="top">
+                                                  <?php echo $story['title']; ?>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td height="10" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                              </tr>
+                                            </tbody>
+                                            <tbody>
+                                              <tr>
+                                                <td class="pc-fb-font" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; color: #ffffff; text-align: center;" valign="top">
+                                                <?php echo $story['summary']; ?>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td height="25" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+                                              </tr>
+                                            </tbody>
+                                            <tbody>
+                                              <tr>
+                                                <td style="padding: 5px 0;" valign="top" align="center">
+                                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                    <tbody>
+                                                      <tr>
+                                                        <td style="padding: 13px 17px; border-radius: 8px; background-color: #0e79d1" bgcolor="#0e79d1" valign="top" align="center">
+                                                          <a href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">VIEW PRIVATE DRAFT</a>
+                                                        </td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                          <!--[if !gte mso 9]><!-->
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!--<![endif]-->
+                                  <!--[if gte mso 9]>
                                             </td>
                                             <td width="40" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" height="55" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+                                            <td colspan="3" height="35" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
                                         </tr>
                                     </table>
                                 </td>
@@ -292,11 +388,92 @@
                 </v:textbox>
             </v:rect>
             <![endif]-->
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- END MODULE: Call to Action 6 -->
+                          <!-- BEGIN MODULE: Call to Action 1 -->
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                              <tr>
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                    <tbody>
+                                      <tr>
+                                        <td class="pc-xs-fs-30 pc-xs-lh-42 pc-fb-font" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 900; line-height: 46px; letter-spacing: -0.6px; color: #151515; text-align: center" valign="top">What do you think?</td>
+                                      </tr>
+                                      <tr>
+                                        <td height="10" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                      </tr>
+                                    </tbody>
+                                    <tbody>
+                                      <tr>
+                                        <td class="pc-fb-font" style="font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 28px; color: #444444; text-align: center" valign="top">
+                                          Co-ordinate campaigns and product launches, <br>with improved overall communication.
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td height="11" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                      </tr>
+                                    </tbody>
+                                    <tbody>
+                                      <tr>
+                                        <td style="font-size: 0; text-align: center;" valign="top">
+                                          <!--[if (gte mso 9)|(IE)]><table border="0" cellspacing="0" cellpadding="0" align="center" role="presentation"><tr><td valign="top"><![endif]-->
+                                          <!-- <div style="display: inline-block; vertical-align: top;">
+                                            <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                              <tbody>
+                                                <tr>
+                                                  <td style="padding: 8px;" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td style="padding: 13px 17px; border-radius: 8px; background-color: #41dc84" bgcolor="#41dc84" valign="top" align="center">
+                                                            <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Pay To Publish</span></a>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div> -->
+                                          <!--[if (gte mso 9)|(IE)]></td><td valign="top"><![endif]-->
+                                          <!-- <div style="display: inline-block; vertical-align: top;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                              <tbody>
+                                                <tr>
+                                                  <td style="padding: 8px;" valign="top">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td style="padding: 13px 17px; border-radius: 8px; background-color: #fe3939" bgcolor="#fe3939" valign="top" align="center">
+                                                            <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Reject It</span></a>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div> -->
+                                          <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- END MODULE: Call to Action 1 -->
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <!-- END MODULE: Header 2 -->
                   <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tbody>
                       <tr>

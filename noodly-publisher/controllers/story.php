@@ -325,16 +325,16 @@ class Story_Controller extends Auth_Controller {
     $this->load_model('user');
     $this->load_model('environment');
     $this->load_model('client');
+    $this->load_model('story');
     $this->load_library('encryption', true);
 
     $author = $this->user_model->get_one($author_id);
     $client = $this->client_model->get_one($client_id);
     $env = $this->environment_model->get_env($this->pid);
+    $story = $this->story_model->get_one_story(array('url' => $slug));
 
     $view_data = array();
     $subject = "$author[firstname] sent you a private draft - ".date('g:i a m/d/Y');
-    $view_data['title'] = $title;
-    $view_data['summary'] = $summary;
 
     $token = array(
       'slug' => $slug,
@@ -344,7 +344,10 @@ class Story_Controller extends Auth_Controller {
 
     $link = "/accept/approve_story/".Encryption::encrypt($token);
     $view_data['client'] = $client;
-    $view_data['message'] = $message;
+    $view_data['private_message'] = $message;
+    $view_data['author'] = $author;
+    $view_data['story'] = $story;
+    $view_data['role'] = $_SESSION['user']['role'] === 'admin' ? 'Admin' : 'Contributor';
     $this->send_grid_mail($client, $this->pid, $subject, $link, 'approve_story', $view_data);
   }
 
@@ -359,7 +362,7 @@ class Story_Controller extends Auth_Controller {
 
     $author = $this->user_model->get_one($uuid);
     $admins = $this->publisher_model->get_admins($pid);
-    $story = $this->story_model->get_one($sid);
+    $story = $this->story_model->get_one_story($sid);
     $env = $this->environment_model->get_env($pid);
     $expiration_time = time() + (60 * $env['email_expiration_time']);
     
@@ -376,7 +379,8 @@ class Story_Controller extends Auth_Controller {
       
       $link = "/accept/story/".Encryption::encrypt($token);
       $view_data['admin_name'] = $admin['firstname'];
-      $view_data['message'] = "$author[firstname] has just submitted a new story entitled $story[title]";
+      $view_data['author'] = $author;
+      $view_data['story'] = $story;
       $this->send_email($admin['uuid'], $pid, $subject, $link, 'post_story', $view_data);
     }
   }

@@ -1,3 +1,10 @@
+<?php
+  $message = $env['user_invite'];
+  $message = str_replace('[publisher_name]', $publisher['name'], $message);
+  $message = str_replace('[role]', empty($role) ? 'Super Admin' : ($role['role'] === 'admin' ? 'Admin' : 'Contributor'), $message);
+  $message = str_replace('a Admin', 'an Admin', $message);
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -219,7 +226,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)"  background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/email_background/'.$env['email_background_image']; ?>" bgcolor="<?php echo $env['email_background_image']; ?>">  
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)">
                     <tbody>
                       <tr>
                         <td valign="top">
@@ -227,12 +234,12 @@
                           <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-20 pc-xs-p-10" valign="top" style="padding: 25px 30px; ">
+                                <td class="pc-sm-p-20 pc-xs-p-10" bgcolor="#ffffff" valign="top" style="padding: 25px 30px; background-color: #ffffff">
                                   <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                                     <tbody>
                                       <tr>
                                         <td align="center" valign="top" style="padding: 10px;">
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$env['email_logo']; ?>" width="<?php echo $env['email_logo_size'];?>" alt="" style="height: auto; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($publisher['logo']) ? 'logo-on-light-background.png' : $publisher['logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -246,13 +253,13 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px; " valign="top">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
                                         <td class="pc-fb-font" colspan="2" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444" valign="top">
-                                          <div style="text-align: center;">Hi Erin!</div>
-                                          <div style="text-align: center;">You're invited to join&nbsp;YQR Daily&nbsp;as a Admin. Please click on the button below to setup your profile.</div>
+                                          <div style="text-align: center;">Hi <?php echo $user['firstname']; ?>!</div>
+                                          <div style="text-align: center;"><?php echo $message; ?></div>
                                         </td>
                                       </tr>
                                       <tr>
@@ -279,7 +286,7 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
@@ -288,7 +295,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="padding: 13px 17px; border-radius: 8px; background-color: #41dc84" bgcolor="#41dc84" valign="top" align="center">
-                                                  <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Accept Invitation and Complete Your Profile</span></a>
+                                                  <a class="pc-fb-font" href="<?php echo $accept_url; ?>" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Accept Invitation and Complete Your Profile</span></a>
                                                 </td>
                                               </tr>
                                             </tbody>
@@ -306,7 +313,7 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; " valign="top">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px 30px 32px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                   </table>
                                 </td>

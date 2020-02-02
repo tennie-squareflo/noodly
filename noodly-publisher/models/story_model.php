@@ -14,6 +14,14 @@ class Story_Model extends Core_Model{
     return $this->count();
   }
 
+  function get_one_story($where) {
+    $select ="
+      stories.*,
+      (SELECT categories.name FROM categories WHERE categories.cid = stories.cid) categoryname
+    ";
+    return $this->get($select, $where, 1);
+  }
+
   function get_recent_stories($pid = 0, $uuid = 0, $limit = 0) {
     $select = "
       stories.sid,

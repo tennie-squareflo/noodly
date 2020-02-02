@@ -35,6 +35,13 @@
 											<div class="k-section k-section--first">
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
+
+													<div class="form-group">
+														<label class="col-12 col-form-label">Expiry</label>
+														<div class="col-12">
+															<input class="form-control" placeholder="" name="email_expiration_time" type="text" value="<?php echo $_env['email_expiration_time']; ?>">
+														</div>
+                          </div>
 													
 													<div class="form-group">
 														<label class="col-12 col-form-label">User Invite Message</label>

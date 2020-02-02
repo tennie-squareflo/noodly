@@ -3,6 +3,9 @@
 $(function() {
   $("#settings-form").validate({
     rules: {
+      email_expiration_time: {
+        required: true
+      },
       user_invite: {
         required: true
       },

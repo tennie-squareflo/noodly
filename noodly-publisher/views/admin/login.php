@@ -35,7 +35,7 @@
 								</div>
 								<!--begin::Action-->
 								<div class="k-login-v2__body-action k-login-v2__body-action--brand">
-									<a class="k-link k-link--brand" href="#">Forgot Password ?</a> <button class="btn btn-brand btn-elevate" type="submit">Sign In</button>
+									<a class="k-link k-link--brand" href="#">Forgot Password ?</a> <button class="btn btn-success btn-elevate" type="submit">Sign In</button>
 								</div><!--end::Action-->
 							</form><!--end::Form-->
 							<!--begin::Separator-->

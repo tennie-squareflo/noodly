@@ -145,7 +145,7 @@ jQuery(document).ready(function($) {
               const html =
               res.hashtags.map(
                 item =>
-                  `<a href="${BASE_URL}hash/${item}" class="search-link"><div class="tag">#</div>&nbsp;${item.substr(1)}</a>`
+                  `<a href="${BASE_URL}hash/${item.substr(1)}" class="search-link"><div class="tag">#</div>&nbsp;${item.substr(1)}</a>`
               ).join('') +
               res.channels.map(
                 item =>

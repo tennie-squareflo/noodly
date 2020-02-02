@@ -110,7 +110,7 @@ class Index_Controller extends Auth_Controller {
       case 'popular':
         $stories = $this->story_model->get_published_popular_stories($this->pid, 0, $limit, $start);
       break;
-      case 'hashtag':
+      case 'hashtags':
         $stories = $this->story_model->get_stories_by_hashtag($this->pid, 0, $key, $limit, $start);
       break;
       case 'channels':

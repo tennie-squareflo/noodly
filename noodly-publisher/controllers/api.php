@@ -2,7 +2,7 @@
 
 class Api_Controller extends Core_Controller {
   function __construct() {
-    parent::__construct(PUBLISHER_DOMAIN);
+    parent::__construct();
   }
 
   public function avatar_upload() {

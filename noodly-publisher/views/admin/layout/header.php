@@ -38,8 +38,8 @@
         <a href="#"
           ><img
             alt="Logo"
-            src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['adminlogo'];?>"
-            width="100px"
+            src="<?php echo ASSETS_URL;?>/media/logos/<?php echo (empty($_env['dark_back_logo']) ? 'logo-on-dark-background.png' : $_env['dark_back_logo']);?>"
+            height="<?php echo $_env['admin_logo_size']; ?>"
         /></a>
       </div>
       <div class="k-header-mobile__toolbar">
@@ -72,8 +72,8 @@
               <a href="#"
                 ><img
                   alt="Logo"
-                  src="<?php echo ASSETS_URL;?>/media/logos/<?php echo $publisher['adminlogo'];?>"
-                  width="130px"
+                  src="<?php echo ASSETS_URL;?>/media/logos/<?php echo (empty($_env['dark_back_logo']) ? 'logo-on-dark-background.png' : $_env['dark_back_logo']);?>"
+                  height="<?php echo $_env['admin_logo_size']; ?>"
               /></a>
             </div>
             <div class="k-aside__brand-tools">

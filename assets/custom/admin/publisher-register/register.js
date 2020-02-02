@@ -155,27 +155,5 @@ $(function() {
   $("#save-btn").click(() => {
     $("#register-form").submit();
   });
-  setTimeout(() => {
-    $("#register-form")
-      .find('input[name="logo"]')
-      .val(
-        $("#register-form")
-          .find('input[type="file"]')
-          .attr("data-value")
-      );
-    $("#register-form")
-      .find('input[name="adminlogo"]')
-      .val(
-        $("#register-form")
-          .find('input[type="file"]')
-          .attr("data-value")
-      );
-      $("#register-form")
-      .find('input[name="favicon"]')
-      .val(
-        $("#register-form")
-          .find('input[type="file"]')
-          .attr("data-value")
-      );
-  }, 500);
+  
 });

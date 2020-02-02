@@ -42,7 +42,7 @@
 															<input class="form-control" placeholder="" name="website_primary_color" type="color" value="<?php echo $_env['website_primary_color']; ?>">
 														</div>
                           </div>
-
+<!-- 
                           <div class="form-group">
 														<label class="col-12 col-form-label">Website Secondary Color</label>
 														<div class="col-12">
@@ -55,7 +55,7 @@
 														<div class="col-12">
 															<input class="form-control" placeholder="" name="website_button_color" type="color" value="<?php echo $_env['website_button_color']; ?>">
 														</div>
-                          </div>
+                          </div> -->
 
 												</div>
 											</div>

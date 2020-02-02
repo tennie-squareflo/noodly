@@ -65,60 +65,6 @@
 															</div>
 														</div>
 													</div>
-
-													<div class="form-group">
-														<label class="col-3 col-form-label">Logo</label>
-														<div class="col-9">
-                              <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>publishers/logo_upload"
-																data-push="true"
-                                data-did-throw-error="handleError">
-                                <input type="file" name="logo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['logo'].'"}' : ''; ?>'/>
-                                <?php
-                                  if (count($publisher)) {
-                                ?>
-                                <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" alt="">
-                                <?php
-                                  }?>
-                              </div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label class="col-5 col-form-label">Admin Logo</label>
-														<div class="col-9">
-                              <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>publishers/admin_logo_upload"
-																data-push="true"
-                                data-did-throw-error="handleError">
-                                <input type="file" name="adminlogo" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['adminlogo'].'"}' : ''; ?>'/>
-                                <?php
-                                  if (count($publisher)) {
-                                ?>
-                                <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['adminlogo']; ?>" alt="">
-                                <?php
-                                  }?>
-                              </div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label class="col-3 col-form-label">Favicon</label>
-														<div class="col-9">
-                              <div class="slim"
-                                data-service="<?php echo BASE_URL; ?>publishers/favicon_upload"
-																data-push="true"
-                                data-did-throw-error="handleError">
-                                <input type="file" name="favicon" data-value='<?php echo count($publisher) ? '{"file": "'.$publisher['favicon'].'"}' : ''; ?>'/>
-                                <?php
-                                  if (count($publisher)) {
-                                ?>
-                                <img src="<?php echo ASSETS_URL.'media/logos/'.$publisher['favicon']; ?>" alt="">
-                                <?php
-                                  }?>
-                              </div>
-														</div>
-													</div>
 													
 													<div class="form-group">
 														<label class="col-5 col-form-label">Phone #</label>

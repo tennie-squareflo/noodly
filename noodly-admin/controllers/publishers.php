@@ -33,9 +33,6 @@ class Publishers_Controller extends Admin_Controller {
         $new_data = array(
           'name' => test_input($_POST['name']),
           'domain' => test_input(empty($_POST['domain']) ? '' : $_POST['domain']),
-          'logo' => !empty($_POST['logo']) ? json_decode($_POST['logo'])->file : '',
-          'adminlogo' => !empty($_POST['adminlogo']) ? json_decode($_POST['adminlogo'])->file : '',
-          'favicon' => !empty($_POST['favicon']) ? json_decode($_POST['favicon'])->file : '',
           'phonenumber' => test_input($_POST['phone']),
           'email' => test_input($_POST['email']),
           'country' => test_input($_POST['country']),
@@ -84,18 +81,5 @@ class Publishers_Controller extends Admin_Controller {
         }
         break;
     }
-  }
-
-  function logo_upload() {
-    $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('logo', ASSETS_PATH.'media/logos/');
-  }
-  function admin_logo_upload() {
-    $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('adminlogo', ASSETS_PATH.'media/logos/');
-  }
-  function favicon_upload() {
-    $this->load_library('slim_image_uploader');
-    $this->slim_image_uploader->image_upload('favicon', ASSETS_PATH.'media/logos/');
   }
 }

@@ -62,10 +62,9 @@
                             </div>
 
 												</div>
-													
+													<!--
 													<div class="row new-form-row" data-type="video">
                             <div class="col-lg-12">
-                              <!--begin::Portlet-->
                               <div class="k-portlet" id="k_page_portlet">
                                 <div class="k-portlet__body">
                                     <div class="row">
@@ -87,7 +86,6 @@
 
 												<div class="row new-form-row" data-type="image">
 													<div class="col-lg-12">
-														<!--begin::Portlet-->
 														<div class="k-portlet" id="k_page_portlet">
 															<div class="k-portlet__body">
                                 <div class="row">
@@ -119,6 +117,7 @@
 														</div>
 													</div>
 						            			</div>
+                              -->
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											

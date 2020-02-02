@@ -229,7 +229,7 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" align="center">
-                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$publisher['logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.$env['light_back_logo']; ?>" width="130" height="" alt="" style="max-width: 100%; height: auto; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: <?php echo $env['email_foreground_color'];?>;"></a>
                                         </td>
                                       </tr>
                                       <tr>

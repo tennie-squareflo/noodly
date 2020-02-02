@@ -6,12 +6,12 @@ $(function() {
       website_primary_color: {
         required: true
       },
-      website_secondary_color: {
-        required: true
-      },
-      website_button_color: {
-        required: true
-      }
+      // website_secondary_color: {
+      //   required: true
+      // },
+      // website_button_color: {
+      //   required: true
+      // }
     },
     submitHandler: function(form) {
       $.ajax({

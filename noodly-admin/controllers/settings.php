@@ -14,13 +14,13 @@ class Settings_Controller extends Admin_Controller {
   }
 
   function publisher() {
-    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $this->view_data['script_files'] = array('custom/common/settings/publisher.js');
     $this->load_view('settings/publisher', $this->view_data);
   }
 
   function logo() {
-    $this->view_data['script_files'] = array('custom/common/settings/logo.js');
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('vendors/custom/slim/slim.kickstart.min.js', 'custom/common/settings/logo.js');
     $this->load_view('settings/logo', $this->view_data);
   }
   
@@ -48,6 +48,15 @@ class Settings_Controller extends Admin_Controller {
       if (!empty($_POST['about_image'])) {
         $_POST['about_image'] = json_decode($_POST['about_image'])->file;
       }
+      if (!empty($_POST['light_back_logo'])) {
+        $_POST['light_back_logo'] = json_decode($_POST['light_back_logo'])->file;
+      }
+      if (!empty($_POST['dark_back_logo'])) {
+        $_POST['dark_back_logo'] = json_decode($_POST['dark_back_logo'])->file;
+      }
+      if (!empty($_POST['favicon'])) {
+        $_POST['favicon'] = json_decode($_POST['favicon'])->file;
+      }
       $this->environment_model->update_env($_POST);
       $this->response(array('message' => 'Settings updated successfully!'));
     } catch(Exception $e) {
@@ -58,5 +67,12 @@ class Settings_Controller extends Admin_Controller {
   function email_background_upload() {
     $this->load_library('slim_image_uploader');
     $this->slim_image_uploader->image_upload('email_background_image', ASSETS_PATH.'media/email_background/');
+  }
+
+
+
+  function logo_upload($type) {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload($type, ASSETS_PATH.'media/logos/');
   }
 }

@@ -1,6 +1,29 @@
 "use strict";
 
 $(function() {
+  setTimeout(() => {
+    $("#settings-form")
+      .find('input[name="light_back_logo"]')
+      .val(
+        $("#settings-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+    $("#settings-form")
+      .find('input[name="dark_back_logo"]')
+      .val(
+        $("#settings-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+      $("#settings-form")
+      .find('input[name="favicon"]')
+      .val(
+        $("#settings-form")
+          .find('input[type="file"]')
+          .attr("data-value")
+      );
+  }, 500);
   $("#settings-form").validate({
     rules: {
       login_logo_size: {

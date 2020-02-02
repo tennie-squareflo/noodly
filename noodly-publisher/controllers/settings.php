@@ -48,7 +48,16 @@ class Settings_Controller extends Auth_Controller {
       if (!empty($_POST['about_image'])) {
         $_POST['about_image'] = json_decode($_POST['about_image'])->file;
       }
-      $this->environment_model->update_env($_POST, $this->pid);
+      if (!empty($_POST['light_back_logo'])) {
+        $_POST['light_back_logo'] = json_decode($_POST['light_back_logo'])->file;
+      }
+      if (!empty($_POST['dark_back_logo'])) {
+        $_POST['dark_back_logo'] = json_decode($_POST['dark_back_logo'])->file;
+      }
+      if (!empty($_POST['favicon'])) {
+        $_POST['favicon'] = json_decode($_POST['favicon'])->file;
+      }
+      $this->environment_model->update_env($_POST);
       $this->response(array('message' => 'Settings updated successfully!'));
     } catch(Exception $e) {
       $this->response(array('message' => 'Error occured! Please try again.'), 500);
@@ -58,5 +67,12 @@ class Settings_Controller extends Auth_Controller {
   function email_background_upload() {
     $this->load_library('slim_image_uploader');
     $this->slim_image_uploader->image_upload('email_background_image', ASSETS_PATH.'media/email_background/');
+  }
+
+
+
+  function logo_upload($type) {
+    $this->load_library('slim_image_uploader');
+    $this->slim_image_uploader->image_upload($type, ASSETS_PATH.'media/logos/');
   }
 }

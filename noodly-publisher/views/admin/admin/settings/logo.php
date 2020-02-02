@@ -35,6 +35,62 @@
 											<div class="k-section k-section--first">
 												<div class="k-section__body">
 													<h3 class="k-section__title k-section__title-lg">&nbsp;</h3>
+
+
+													<div class="form-group">
+														<label class="col-12 col-form-label">Logo for Light Background</label>
+														<div class="col-12">
+                              <div class="slim"
+                                data-service="<?php echo BASE_URL; ?>settings/logo_upload/light_back_logo"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="light_back_logo" data-value='<?php echo !empty($_env['light_back_logo']) ? '{"file": "'.$_env['light_back_logo'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (!empty($_env['light_back_logo'])) {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/logos/'.$_env['light_back_logo']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-12 col-form-label">Logo for Dark Background</label>
+														<div class="col-12">
+                              <div class="slim"
+                                data-service="<?php echo BASE_URL; ?>settings/logo_upload/dark_back_logo"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="dark_back_logo" data-value='<?php echo !empty($_env['dark_back_logo']) ? '{"file": "'.$_env['dark_back_logo'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (!empty($_env['dark_back_logo'])) {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/logos/'.$_env['dark_back_logo']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-12 col-form-label">Favicon</label>
+														<div class="col-12">
+                              <div class="slim"
+                                data-service="<?php echo BASE_URL; ?>settings/logo_upload/favicon"
+																data-push="true"
+                                data-did-throw-error="handleError">
+                                <input type="file" name="favicon" data-value='<?php echo !empty($_env['favicon']) ? '{"file": "'.$_env['favicon'].'"}' : ''; ?>'/>
+                                <?php
+                                  if (!empty($_env['favicon'])) {
+                                ?>
+                                <img src="<?php echo ASSETS_URL.'media/logos/'.$_env['favicon']; ?>" alt="">
+                                <?php
+                                  }?>
+                              </div>
+														</div>
+													</div>
+													
 													
 													<div class="form-group">
 														<label class="col-12 col-form-label">Login logo size</label>

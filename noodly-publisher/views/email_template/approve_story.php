@@ -238,7 +238,7 @@
                                     <tbody>
                                       <tr>
                                         <td align="center" valign="top" style="padding: 10px;">
-                                        <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($publisher['logo']) ? 'logo-on-light-background.png' : $publisher['logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
+                                        <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($env['light_back_logo']) ? 'logo-on-light-background.png' : $env['light_back_logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
                                         </td>
                                       </tr>
                                     </tbody>

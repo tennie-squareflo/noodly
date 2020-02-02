@@ -44,4 +44,6 @@
         }
       }
     ?>
+
+    <link href="<?php echo ASSETS_URL;?>media/logos/<?php echo $_env['favicon']; ?>" rel="shortcut icon">
   </head>

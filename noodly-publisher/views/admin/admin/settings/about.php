@@ -62,10 +62,9 @@
                             </div>
 
 												</div>
-													
+<!-- 													
 													<div class="row new-form-row" data-type="video">
                             <div class="col-lg-12">
-                              <!--begin::Portlet-->
                               <div class="k-portlet" id="k_page_portlet">
                                 <div class="k-portlet__body">
                                     <div class="row">
@@ -87,7 +86,56 @@
 
 												<div class="row new-form-row" data-type="image">
 													<div class="col-lg-12">
-														<!--begin::Portlet-->
+														<div class="k-portlet" id="k_page_portlet">
+															<div class="k-portlet__body">
+                                <div class="row">
+                                  <div class="col-xl-12">
+                                    <div class="form-group form-group-last">
+                                      <div class="col-12 k-section__content k-section__content--border">
+                                        <div class="handle">
+                                          <label for="exampleTextarea">about us</label>
+                                        </div>
+                                        <div class="slim"
+                                          data-service="<?php echo BASE_URL; ?>settings/about_image_upload"
+                                          data-push="true"
+                                          data-ratio="1:1"
+                                          data-size="240,240"
+                                          data-did-throw-error="handleError">
+                                          <input type="file" name="about_image" data-value='<?php echo !empty($_env['about_image']) ? '{"file": "'.$_env['about_image'].'"}' : ''; ?>'/>
+                                          <?php
+                                            if (!empty($_env['about_image'])) {
+                                          ?>
+                                          <img src="<?php echo ASSETS_URL.'media/images/'.$_env['about_image']; ?>" alt="">
+                                          <?php
+                                            }?>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+													<div class="row new-form-row" data-type="video">
+                            <div class="col-lg-12">
+                              <div class="k-portlet" id="k_page_portlet">
+                                <div class="k-portlet__body">
+                                    <div class="row">
+                                      <div class="col-xl-12">
+                                        <div class="form-group form-group-last">
+                                          <div class="col-12 k-section__content k-section__content--border">
+                                            <div class="handle">
+                                              <label for="exampleTextarea">Video URL</label>
+                                            </div>
+                                            <input class="form-control" type="text" placeholder="http://youtube.com/" name="about_video" value="<?php echo $_env['about_video'] ?>">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+						            	</div>
+
+												<div class="row new-form-row" data-type="image">
+													<div class="col-lg-12">
 														<div class="k-portlet" id="k_page_portlet">
 															<div class="k-portlet__body">
                                 <div class="row">
@@ -119,6 +167,10 @@
 														</div>
 													</div>
 						            			</div>
+															</div>
+														</div>
+													</div>
+						            			</div> -->
 											</div>
 											<div class="k-separator k-separator--border-dashed k-separator--space-lg"></div>
 											

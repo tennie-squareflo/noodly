@@ -8,7 +8,7 @@
 				<!--begin::Heade-->
 				<div class="k-login-v2__head">
 					<div class="k-login-v2__head-logo">
-						<!-- <a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>"></a> -->
+						<!-- <a href="#"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/'.(empty($_env['light_back_logo']) ? 'logo-on-light-background.png' : $_env['light_back_logo']);?>"></a> -->
 					</div>
 				</div><!--begin::Head-->
 			</div><!--end::Item-->
@@ -18,7 +18,7 @@
 				<div class="k-login-v2__body">
 					<!--begin::Wrapper-->
 					<div class="k-login-v2__body-wrapper">
-					<a href="#"><img alt="" width="160px" src="<?php echo ASSETS_URL.'media/logos/'.$publisher['logo'];?>" style="padding-bottom: 30px;"></a>
+					<a href="#"><img alt="" width="160px" src="<?php echo ASSETS_URL.'media/logos/'.(empty($_env['light_back_logo']) ? 'logo-on-light-background.png' : $_env['light_back_logo']);?>" style="padding-bottom: 30px;"></a>
 						<div class="k-login-v2__body-container">
 							<div class="k-login-v2__body-title">
 								<h3> </h3>

@@ -53,6 +53,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 		}
 	?>
 
-	<link href="<?php echo ASSETS_URL;?>media/logos/favicon.ico" rel="shortcut icon">
+	<link href="<?php echo ASSETS_URL;?>media/logos/<?php echo $_env['favicon']; ?>" rel="shortcut icon">
 </head><!-- end::Head -->
 <!-- begin::Body -->

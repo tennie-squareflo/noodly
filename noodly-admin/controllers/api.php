@@ -38,11 +38,17 @@ class Api_Controller extends Core_Controller {
       'message' => $_POST['contact-message'],
       'created_at' => date('Y-m-d H:i:s')
     );
+    $subject = $_POST['firstname']." sent you a message - ".date('Y-m-d H:i:s');
+    $link = '/messages';
+    $view_data = array();
+    $view_data['message'] = $_POST['contact-message'];
 
     try {
       foreach ($admins as $admin) {
         $new_data['admin_uuid'] = $admin['uuid'];
         $this->message_model->create($new_data);
+
+        $this->send_email($admin['uuid'], 0, $subject, $link, 'send_message', $view_data);
       }      
       $this->response(array('status' => 'success', 'message' => 'Message is sent successfully!'), 200);
     } catch (Exception $e) {

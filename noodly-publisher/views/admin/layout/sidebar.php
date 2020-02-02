@@ -17,11 +17,11 @@
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">
-            <a class="k-menu__link" href="<?php echo BASE_URL; ?>contributor"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Contributors</span></a>
-          </li>
-
-          <li aria-haspopup="true" class="k-menu__item">
             <a class="k-menu__link" href="<?php echo BASE_URL; ?>channels"><i class="k-menu__link-icon fa fa-list"></i><span class="k-menu__link-text">Channels</span></a>
+          </li>
+          
+          <li aria-haspopup="true" class="k-menu__item">
+            <a class="k-menu__link" href="<?php echo BASE_URL; ?>contributor"><i class="k-menu__link-icon fa fa-users"></i><span class="k-menu__link-text">Contributors</span></a>
           </li>
 
           <li aria-haspopup="true" class="k-menu__item">

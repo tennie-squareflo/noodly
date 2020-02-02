@@ -167,6 +167,9 @@
 /************************************
    Header
 *************************************/
+.h-100 {
+  height: 100%;
+}
 header {
   position: fixed;
   top: 0;
@@ -177,7 +180,8 @@ header {
   header .header-wrapper {
     box-shadow: 0px 4px 18px 0 rgba(32, 45, 73, 0.1);
     background-color: #fff;
-    padding: 25px 0;
+    padding: 0px 0;
+    max-height: 105px;
     transition: .4s ease; }
     header .header-wrapper .logo {
       display: inline-block; }

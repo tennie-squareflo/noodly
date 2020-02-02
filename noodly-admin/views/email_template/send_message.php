@@ -1,11 +1,3 @@
-<?php
-  $message = $env['user_welcome'];
-  $message = str_replace('[publisher_name]', $publisher['name'], $message);
-  $message = str_replace('[role]', empty($role) ? 'Super Admin' : ($role['role'] === 'admin' ? 'Admin' : 'Contributor'), $message);
-  $message = str_replace('a Admin', 'an Admin', $message);
-?>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -163,6 +155,9 @@
       .pc-sm-p-35-30 {
         padding: 35px 30px !important
       }
+      .pc-sm-p-35-30-30 {
+        padding: 35px 30px 30px !important
+      }
     }
 
     @media screen and (max-width:525px) {
@@ -174,6 +169,15 @@
       }
       .pc-xs-br-disabled br {
         display: none !important
+      }
+      .pc-xs-p-25-20-20 {
+        padding: 25px 20px 20px !important
+      }
+      .pc-xs-fs-24 {
+        font-size: 24px !important
+      }
+      .pc-xs-lh-34 {
+        line-height: 34px !important
       }
       .pc-xs-fs-30 {
         font-size: 30px !important
@@ -227,7 +231,7 @@
                                     <tbody>
                                       <tr>
                                         <td align="center" valign="top" style="padding: 10px;">
-                                        <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($env['light_back_logo']) ? 'logo-on-light-background.png' : $env['light_back_logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
+                                          <a href="<?php echo PROTOCOL;?>://<?php echo $domain; ?>" style="text-decoration: none;"><img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/logos/'.(empty($env['light_back_logo']) ? 'logo-on-light-background.png' : $env['light_back_logo']); ?>" alt="" style="height: <?php echo $env['email_logo_size'];?>; max-width: 100%; border: 0; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; color: #1B1B1B; font-size: 14px;"></a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -237,31 +241,38 @@
                             </tbody>
                           </table>
                           <!-- END MODULE: Menu 6 -->
-                          <!-- BEGIN MODULE: Content 14 -->
+                          <!-- BEGIN MODULE: Content 15 -->
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" valign="top" bgcolor="#ffffff" style="padding: 40px; background-color: #ffffff;">
-                                  <table border="0" cellpadding="0" cellspacing="0" style="text-align: center;" width="100%" align="center" role="presentation">
+                                <td class="pc-sm-p-35-30 pc-xs-p-25-20" style="padding: 40px; background-color: #ffffff" valign="top" bgcolor="#ffffff">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                                     <tbody>
                                       <tr>
-                                        <td class="pc-fb-font" valign="top" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444">
-                                          <div style="text-align: center;">Hi <?php echo $user['firstname']; ?>!</div>
+                                        <td class="pc-fb-font" colspan="2" style="line-height: 28px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; letter-spacing: -0.2px; color: #444444" valign="top">
                                           <div style="text-align: center;"><?php echo $message; ?></div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                        <td colspan="2" height="22" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
                                       </tr>
                                     </tbody>
                                     <tbody>
+                                      <tr>
+                                        <td valign="middle" width="92%">
+                                          <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                            <tbody>
+                                            </tbody>
+                                          </table>
+                                        </td>
+                                      </tr>
                                     </tbody>
                                   </table>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                          <!-- END MODULE: Content 14 -->
+                          <!-- END MODULE: Content 15 -->
                           <!-- BEGIN MODULE: Call to Action 1 -->
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
@@ -275,7 +286,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="padding: 13px 17px; border-radius: 8px; background-color: #41dc84" bgcolor="#41dc84" valign="top" align="center">
-                                                  <a class="pc-fb-font" href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>Log In Now</span></a>
+                                                  <a class="pc-fb-font" href="<?php echo $accept_url; ?>" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">&nbsp;<span>View Messages</span></a>
                                                 </td>
                                               </tr>
                                             </tbody>

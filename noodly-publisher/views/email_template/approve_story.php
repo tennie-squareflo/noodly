@@ -203,7 +203,6 @@
   <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 </head>
 <body style="width: 100% !important; margin: 0; padding: 0; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #f4f4f4" class="">
-  <span style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
   <table class="pc-email-body" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed;">
     <tbody>
       <tr>
@@ -299,7 +298,7 @@
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
                             <tbody>
                               <tr>
-                                <td background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/stories/'.$story['cover_image']; ?>" bgcolor="#1B1B1B" align="center" valign="top" style="background-color: #1B1B1B; background-image: url('images/cta-6-image-1.jpg'); background-position: center; background-size: cover">
+                                <td background="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/stories/'.$story['cover_image']; ?>" bgcolor="#1B1B1B" align="center" valign="top" style="background-color: #1B1B1B; background-position: center; background-size: cover">
                                   <!--[if gte mso 9]>
             <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 600px;">
                 <v:fill type="frame" src="images/cta-6-image-1.jpg" color="#1B1B1B"></v:fill>
@@ -358,7 +357,7 @@
                                                     <tbody>
                                                       <tr>
                                                         <td style="padding: 13px 17px; border-radius: 8px; background-color: #0e79d1" bgcolor="#0e79d1" valign="top" align="center">
-                                                          <a href="http://example.com" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">VIEW PRIVATE DRAFT</a>
+                                                          <a href="<?php echo $accept_url; ?>" style="line-height: 1.5; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff;">VIEW PRIVATE DRAFT</a>
                                                         </td>
                                                       </tr>
                                                     </tbody>

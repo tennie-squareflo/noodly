@@ -2,9 +2,9 @@
     <div id="main">
       <header>
         <div class="header-wrapper">
-          <div class="container">
-            <div class="header-menu">
-              <div class="row no-gutters align-items-center justify-content-center">
+          <div class="container h-100">
+            <div class="header-menu h-100">
+              <div class="row no-gutters align-items-center justify-content-center h-100">
                 <div class="d-xl-none d-xxl-none d-xxxl-none col-4 col-sm-4 col-xs-2 col-md-4">
                     <div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div>
                 </div>

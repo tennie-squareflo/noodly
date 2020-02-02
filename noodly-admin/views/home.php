@@ -11,7 +11,7 @@
     <link rel="preload" as="font" href="<?php echo ASSETS_URL; ?>custom/admin/homepage/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="<?php echo ASSETS_URL; ?>custom/admin/homepage/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/55a4c8757d.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/jpg" href="<?php echo ASSETS_URL; ?>/media/logos/favico.jpg" />
+    <link rel="shortcut icon" type="image/png" href="<?php echo ASSETS_URL; ?>/media/logos/favico.png" />
     <style>
       .bg-primary {
         background-color: #656565 !important;
@@ -121,7 +121,7 @@
                   <div class="d-none alert alert-danger" role="alert" data-error-message>
                     Please fill all fields correctly.
                   </div>
-                  <button type="submit" class="btn btn-primary btn-loading" data-loading-text="Sending">
+                  <button type="submit" class="btn btn-primary btn-loading" data-loading-text="Sending" style="background-color: #1dc9b7; border-color: #1dc9b7;">
                     <img class="icon" src="<?php echo ASSETS_URL; ?>custom/admin/homepage/img/icons/theme/code/loading.svg" alt="loading icon" data-inject-svg />
                     <span>Send!</span>
                   </button>

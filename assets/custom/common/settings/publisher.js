@@ -48,27 +48,9 @@ $(function() {
         required: true,
         checkDomain: true
       },
-      phone: {
-        required: true
-      },
       email: {
         required: true,
         email: true
-      },
-      country: {
-        required: true
-      },
-      state: {
-        required: true
-      },
-      address1: {
-        required: true
-      },
-      city: {
-        required: true
-      },
-      zipcode: {
-        required: true
       }
     },
     messages: {

@@ -50,6 +50,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 		}
 	?>
 
-	<link rel="shortcut icon" type="image/jpg" href="<?php echo ASSETS_URL; ?>/media/logos/favico.jpg" />
+	<link rel="shortcut icon" type="image/png" href="<?php echo ASSETS_URL; ?>/media/logos/favico.png" />
 </head><!-- end::Head -->
 <!-- begin::Body -->

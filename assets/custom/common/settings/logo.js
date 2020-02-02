@@ -6,6 +6,7 @@ $(function() {
       .find('input[name="light_back_logo"]')
       .val(
         $("#settings-form")
+          .find('[data-container-type="light-back-logo"]')
           .find('input[type="file"]')
           .attr("data-value")
       );
@@ -13,6 +14,7 @@ $(function() {
       .find('input[name="dark_back_logo"]')
       .val(
         $("#settings-form")
+          .find('[data-container-type="dark-back-logo"]')
           .find('input[type="file"]')
           .attr("data-value")
       );
@@ -20,6 +22,7 @@ $(function() {
       .find('input[name="favicon"]')
       .val(
         $("#settings-form")
+          .find('[data-container-type="favicon"]')
           .find('input[type="file"]')
           .attr("data-value")
       );

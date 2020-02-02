@@ -34,6 +34,7 @@
                     <div class="contact-method">
                       <p><?php echo $publisher['name']; ?></p>
                       <p><?php echo $publisher['address1'].'<br/>'.$publisher['city'].', '.$publisher['zipcode']; ?></p>
+                      <p><?php echo $publisher['phonenumber']; ?></p>
                       <p><?php echo '<a href="'.BASE_URL.'contact">Email Us</a>'; ?></p>
                     </div>
                     <div class="social-contact">

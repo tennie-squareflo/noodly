@@ -83,6 +83,7 @@ class Index_Controller extends Auth_Controller {
     $this->load_model('category');
     $this->load_model('publisher');
     $this->view_data['current_page'] = 'hashtags';
+    $this->view_data['current_hashtag'] = $hash;
     $this->view_data['script_files'] = array('custom/publisher/story/load_story.js');
     $this->view_data['categories'] = $this->category_model->get_categories($this->pid, 0);
     $this->view_data['trendings'] = $this->category_model->get_channels($this->pid, 'most_popular', 5);

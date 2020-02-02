@@ -58,7 +58,7 @@ class Settings_Controller extends Auth_Controller {
       if (!empty($_POST['favicon'])) {
         $_POST['favicon'] = json_decode($_POST['favicon'])->file;
       }
-      $this->environment_model->update_env($_POST);
+      $this->environment_model->update_env($_POST, $this->pid);
       $this->response(array('message' => 'Settings updated successfully!'));
     } catch(Exception $e) {
       $this->response(array('message' => 'Error occured! Please try again.'), 500);

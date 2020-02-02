@@ -401,9 +401,6 @@ $(function() {
       cover_image: {
         required: true
       },
-      summary: {
-        required: true
-      },
       first_paragraph: {
         required: true
       }

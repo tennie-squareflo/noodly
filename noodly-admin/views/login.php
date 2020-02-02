@@ -8,7 +8,7 @@
 				<!--begin::Heade-->
 				<div class="k-login-v2__head">
 					<div class="k-login-v2__head-logo">
-						<a href="<?php echo BASE_URL; ?>"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png"></a>
+						<!-- <a href="<?php echo BASE_URL; ?>"><img alt="" height="40px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png"></a> -->
 					</div>
 				</div><!--begin::Head-->
 			</div><!--end::Item-->
@@ -18,9 +18,10 @@
 				<div class="k-login-v2__body">
 					<!--begin::Wrapper-->
 					<div class="k-login-v2__body-wrapper">
+						<a href="#"><img alt="" width="160px" src="<?php echo ASSETS_URL.'media/logos/';?>logo-1.png" style="padding-bottom: 30px;"></a>
 						<div class="k-login-v2__body-container">
 							<div class="k-login-v2__body-title">
-								<h3>Login</h3>
+								<h3></h3>
 							</div><!--begin::Form-->
 							<form action="#" autocomplete="off" class="k-login-v2__body-form k-form k-login-v2__body-form--border" id="login-form">
 								<div class="alert alert-danger" id="error-message" role="alert">
@@ -34,7 +35,7 @@
 								</div>
 								<!--begin::Action-->
 								<div class="k-login-v2__body-action k-login-v2__body-action--brand">
-									<a class="k-link k-link--brand" href="#">Forgot Password ?</a> <button class="btn btn-pill btn-brand btn-elevate" type="submit">Sign In</button>
+									<a class="k-link k-link--brand" href="#">Forgot Password ?</a> <button class="btn btn-brand btn-elevate" type="submit">Sign In</button>
 								</div><!--end::Action-->
 							</form><!--end::Form-->
 							<!--begin::Separator-->
@@ -45,7 +46,7 @@
 						</div>
 					</div><!--end::Wrapper-->
 					<!--begin::Pic-->
-					<div class="k-login-v2__body-pic"><img alt="" src="<?php echo ASSETS_URL;?>media/misc/bg_icon.svg"></div><!--begin::Pic-->
+					<!-- <div class="k-login-v2__body-pic"><img alt="" src="<?php echo ASSETS_URL;?>media/misc/bg_icon.svg"></div>begin::Pic -->
 				</div><!--begin::Body-->
 			</div><!--end::Item-->
 			<!--begin::Item-->

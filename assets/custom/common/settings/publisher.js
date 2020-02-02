@@ -82,51 +82,25 @@ $(function() {
         dataType: "json",
         method: "POST",
         success: function(res) {
-          if (res.code == 0) {
-            //location.href = 'dashboard.php';
-            toastr.options = {
-              closeButton: false,
-              debug: false,
-              newestOnTop: false,
-              progressBar: false,
-              positionClass: "toast-top-right",
-              preventDuplicates: false,
-              onclick: null,
-              showDuration: "300",
-              hideDuration: "1000",
-              timeOut: "5000",
-              extendedTimeOut: "1000",
-              showEasing: "swing",
-              hideEasing: "linear",
-              showMethod: "fadeIn",
-              hideMethod: "fadeOut"
-            };
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+          };
 
-            toastr.success(res.message);
-            setTimeout(() => {
-              location.href = BASE_URL + `publishers/edit/${res.id}`;
-            }, 3000);
-          } else {
-            toastr.options = {
-              closeButton: false,
-              debug: false,
-              newestOnTop: false,
-              progressBar: false,
-              positionClass: "toast-top-right",
-              preventDuplicates: false,
-              onclick: null,
-              showDuration: "300",
-              hideDuration: "1000",
-              timeOut: "5000",
-              extendedTimeOut: "1000",
-              showEasing: "swing",
-              hideEasing: "linear",
-              showMethod: "fadeIn",
-              hideMethod: "fadeOut"
-            };
-
-            toastr.warning(res.message);
-          }
+          toastr.success(res.message);
         },
         error: function(res) {
           toastr.options = {

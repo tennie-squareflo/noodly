@@ -63,7 +63,11 @@
 ?>
 
 	<script>
-	           var KThemeMode = 'released';
+						 var KThemeMode = 'released';
+						 
+						 function onImageLoadError() {
+							 this.src = ASSETS_URL + 'media/default/no-image-found.png';
+						 }
 	</script><!-- end::Body -->
 </body>
 </html>

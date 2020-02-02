@@ -14,11 +14,12 @@ class Core_Controller {
     $this->view_path = ($this->role === 'admin' ? ADMIN_PATH : PUBLISHER_PATH).VIEW_PATH;
     $this->load_helper('string');
 
+    $this->load_model("publisher");
     if ($role === 'admin') {
       $this->pid = 0;
+      $this->view_data['publisher'] = $this->publisher_model->get_one(0);
     } else {
       $this->publisher_domain = PUBLISHER_DOMAIN;
-      $this->load_model("publisher");
       $publisher = $this->publisher_model->get_one(array("domain" => $this->publisher_domain));
       $this->pid = $publisher['pid'];
       $this->view_data['publisher'] = $publisher;

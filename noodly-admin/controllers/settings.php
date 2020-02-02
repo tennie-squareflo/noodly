@@ -13,6 +13,12 @@ class Settings_Controller extends Admin_Controller {
     $this->load_view('settings/settings', $view_data);
   }
 
+  function publisher() {
+    $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
+    $this->view_data['script_files'] = array('custom/common/settings/publisher.js');
+    $this->load_view('settings/publisher', $this->view_data);
+  }
+
   function logo() {
     $this->view_data['script_files'] = array('custom/common/settings/logo.js');
     $this->load_view('settings/logo', $this->view_data);

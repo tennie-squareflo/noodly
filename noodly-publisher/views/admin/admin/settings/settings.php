@@ -22,6 +22,15 @@
 						<div class="k-portlet__body">
             				<table class="table">
 							  <tbody>
+									<tr>
+							      <td>
+							      	<h5 class="text-primary">Publisher</h5>
+							      	<p>Publisher Name, Domain, Etc.</p>
+							      </td>
+							      <td class="text-right">
+							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/publisher"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      </td>
+							    </tr>
 							    <tr>
 							      <td>
 							      	<h5 class="text-primary">Logos</h5>

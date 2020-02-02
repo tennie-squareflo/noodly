@@ -43,7 +43,7 @@
 <div class="container">
 
 <div class="row justify-content-center">
-  <div class="col-10 col-lg-12">
+  <div class="col-11 col-lg-12">
     <div class="post-block">
       <div class="blog-pragraph first-paragraph"> <?php echo $post['first_paragraph']; ?></div>
 

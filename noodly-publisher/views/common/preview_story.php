@@ -132,7 +132,7 @@
               <?php } ?>
             </div>
             <p class="d-sm-none d-xs-none" data-text="<?php echo $author['shortbio']; ?>" id="author-bio"></p>
-            <button class="normal-btn">Subscribe</button>
+              <button class="normal-btn" onclick="openModal('contributor', <?php echo $author['uuid'];?>);">Subscribe</button>
           </div>
         </div>
       </div>

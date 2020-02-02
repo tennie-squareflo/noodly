@@ -60,13 +60,15 @@
             </div>
             <div class="col-lg-4">
               <h5 class="footer-link--title">Subscribe To Our Mailing List </h5>
-              <form action="" method="post">
+              <form id="subscribe-pub-form" method="post">
+                <input type="hidden" name="id" value="<?php echo $publisher['pid']; ?>" />
+                <input type="hidden" name="type" value="publisher" />
                 <div class="email-form">
-                  <input class="input-form" type="text" placeholder="Enter Your First Name">
+                  <input class="input-form" name="firstname" type="text" placeholder="Enter Your First Name">
                 </div>
                 <div class="email-form">
-                  <input class="input-form" type="text" placeholder="Enter Your Email Address">
-                  <button> <a href="mailto:srdev5008@gmail.com"><i class="fas fa-paper-plane"></i></a></button>
+                  <input class="input-form" name="email" type="email" placeholder="Enter Your Email Address">
+                  <button><i class="fas fa-paper-plane"></i></button>
                 </div>
               </form>
               <p class="copyright">Copyright ©2019 <?php echo $publisher['name'] ?></p>
@@ -74,6 +76,48 @@
           </div>
         </div>
       </footer><!--End footer-->
+
+      <div class="modal" tabindex="-1" role="dialog" id="subscribe-modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Subscribe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="k-form" id="subscribe-modal-form"  method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="" />
+                <input type="hidden" name="type" value="" />
+                <div class="row">
+                  <div class="col-xl-1"></div>
+                  <div class="col-xl-10">
+                    <div class="k-section k-section--first">
+                      <div class="k-section__body">
+
+                        <div class="form-group row hidden-client-exists">
+                          <input type="text" name="firstname" class="form-control" placeholder="Enter Your First Name">
+                        </div>
+
+                        <div class="form-group row hidden-client-exists">
+                          <input type="text" name="email" class="form-control" placeholder="Enter Your Email Address">
+                        </div>
+
+                    </div>
+                    
+                  </div>
+                  <div class="col-xl-1"></div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="normal-btn" id="subscribe-btn">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <script>
       const BASE_URL = "<?php echo BASE_URL; ?>";
       const ASSETS_URL = "<?php echo ASSETS_URL; ?>";
@@ -84,20 +128,24 @@
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/plyr.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/aos.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.scrollUp.min.js"></script>
-      <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/masonry.pkgd.min.js"></script>
-      <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/imagesloaded.pkgd.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/numscroller-1.0.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.countdown.min.js"></script>
-      <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/main.js"></script>
+      <script src="<?php echo ASSETS_URL; ?>vendors/custom/components/extended/toastr.js" type="text/javascript">
+	    </script> <!--end::Toastr Plugin -->
+      
       <script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
 	  </script> <!--end::Debounce Plugin -->
+    <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/main.js"></script>
 
       <script src="<?php echo ASSETS_URL; ?>vendors/base/vendors.bundle.js" type="text/javascript">
 	</script> 
+  
 
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/masonry.pkgd.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/imagesloaded.pkgd.min.js"></script>
-      <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+
+      
+      <script src="<?php echo ASSETS_URL; ?>custom/publisher/subscription.js"></script>
       <?php
 	if (isset($script_files) && is_array($script_files)) {
 		foreach ($script_files as $file) {

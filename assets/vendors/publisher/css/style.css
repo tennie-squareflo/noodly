@@ -182,6 +182,7 @@ header {
     background-color: #fff;
     padding: 0px 0;
     max-height: 105px;
+    height: 105px;
     transition: .4s ease; }
     header .header-wrapper .logo {
       display: inline-block; }

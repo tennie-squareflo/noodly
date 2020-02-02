@@ -479,4 +479,5 @@ jQuery(document).ready(function($) {
       )
     );
   });
+
 });

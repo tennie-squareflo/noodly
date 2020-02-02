@@ -112,4 +112,28 @@ class Api_Controller extends Core_Controller {
 
     $this->response(array('hashtags' => $hashtags, 'channels' => $channels));
   }
+
+  public function subscribe_to() {
+    $this->load_model('subscription');
+    $type = $_POST['type'];
+    $new_data = array();
+    switch ($type) {
+      case 'hashtag':
+        $new_data = array(
+          'firstname' => $_POST['firstname'],
+          'email' => $_POST['email'],
+          'type' => $_POST['type'],
+          'refinfo' => $_POST['id'],
+        );
+      break;
+      default:
+        $new_data = array(
+          'firstname' => $_POST['firstname'],
+          'email' => $_POST['email'],
+          'type' => $_POST['type'],
+          'refid' => $_POST['id'],
+        );
+    }
+    $this->subscription_model->create($new_data);
+  }
 }

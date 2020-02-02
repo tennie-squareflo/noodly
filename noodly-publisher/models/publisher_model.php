@@ -11,7 +11,7 @@ class Publisher_Model extends Core_Model{
         return $this->db->where(array('pid' => $pid, 'role' => $type))->limit(1)->get('match_user_role', 'count(uuid) cnt')['cnt'];
       }
       case 'subscriber': {
-        return $this->db->where(array('refid' => $pid, 'type' => 'publisher'))->limit(1)->get('subscription', 'count(uuid) cnt')['cnt'];
+        return $this->db->where(array('refid' => $pid, 'type' => 'publisher'))->limit(1)->get('subscription', 'count(id) cnt')['cnt'];
       }
     }
   }

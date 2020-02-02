@@ -124,6 +124,7 @@ class Api_Controller extends Core_Controller {
           'email' => $_POST['email'],
           'type' => $_POST['type'],
           'refinfo' => $_POST['id'],
+          'pid' => $this->pid
         );
       break;
       default:
@@ -132,8 +133,10 @@ class Api_Controller extends Core_Controller {
           'email' => $_POST['email'],
           'type' => $_POST['type'],
           'refid' => $_POST['id'],
+          'pid' => $this->pid
         );
     }
     $this->subscription_model->create($new_data);
+    $this->response(array());
   }
 }

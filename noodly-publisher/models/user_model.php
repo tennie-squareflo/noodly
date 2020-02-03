@@ -5,7 +5,7 @@ class User_Model extends Core_Model{
   }
   
   function get_subscribers_count($uuid) {
-    return $this->db->where(array('refid' => $uuid, 'type' => 'contributor'))->limit(1)->get('subscription', 'count(uuid) cnt')['cnt'];
+    return $this->db->where(array('refid' => $uuid, 'type' => 'contributor'))->limit(1)->get('subscription', 'count(id) cnt')['cnt'];
   }
 
   function get_contributors($pid) {

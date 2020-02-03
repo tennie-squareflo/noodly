@@ -17,7 +17,8 @@
       endif;
     ?>
     
-
+    <link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"><!--RTL version:<link href="<?php echo ASSETS_URL;?>vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+	
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/slick.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>vendors/publisher/css/jquery-ui.css">

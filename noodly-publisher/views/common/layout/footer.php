@@ -97,10 +97,12 @@
                       <div class="k-section__body">
 
                         <div class="form-group row hidden-client-exists">
+                          <label for="firstname">First Name</label>
                           <input type="text" name="firstname" class="form-control" placeholder="Enter Your First Name">
                         </div>
 
                         <div class="form-group row hidden-client-exists">
+                          <label for="email">Email</label>
                           <input type="text" name="email" class="form-control" placeholder="Enter Your Email Address">
                         </div>
 
@@ -130,8 +132,8 @@
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.scrollUp.min.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/numscroller-1.0.js"></script>
       <script src="<?php echo ASSETS_URL; ?>vendors/publisher/js/jquery.countdown.min.js"></script>
-      <script src="<?php echo ASSETS_URL; ?>vendors/custom/components/extended/toastr.js" type="text/javascript">
-	    </script> <!--end::Toastr Plugin -->
+      <!-- <script src="<?php echo ASSETS_URL; ?>vendors/custom/components/extended/toastr.js" type="text/javascript">
+	    </script> end::Toastr Plugin -->
       
       <script src="<?php echo ASSETS_URL; ?>vendors/custom/jquery-debounce/jquery.debounce.js" type="text/javascript">
 	  </script> <!--end::Debounce Plugin -->

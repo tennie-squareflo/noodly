@@ -58,7 +58,7 @@ function subscribeTo(firstname, email, type, id) {
         firstname, email, type, id
       },
       dataType: "JSON",
-      success: function() {
+      success: function(res) {
         toastr.options = {
           closeButton: false,
           debug: false,
@@ -76,7 +76,6 @@ function subscribeTo(firstname, email, type, id) {
           showMethod: "fadeIn",
           hideMethod: "fadeOut"
         };
-
         toastr.success('Subscription Success');
       },
       error: function() {

@@ -57,7 +57,7 @@
 											<td>
 												<h5><?php echo $subscription['firstname']; ?></h5>
 											</td>
-											<td class=""><?php echo $subscription['email']; ?></td>
+											<td class=""><?php echo private_email($subscription['email']); ?></td>
                       <td class=""><?php echo $subscription['type']; ?></td>
                       <td class=""><?php echo $subscription['info']; ?></td>
 											<td class="text-right">

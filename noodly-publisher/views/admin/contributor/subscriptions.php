@@ -53,7 +53,7 @@
 											<td>
 												<h5><?php echo $subscription['firstname']; ?></h5>
 											</td>
-											<td class=""><?php echo $subscription['email']; ?></td>
+											<td class=""><?php echo private_email($subscription['email']); ?></td>
 											<td class="text-right">
 												<div class="btn-group" role="group">
 													<button class="btn btn-sm delete-btn" id="btnGroupDrop1" type="button" data-id="<?php echo $subscription['id']; ?>"><i class="fa fa-trash"></i></button>

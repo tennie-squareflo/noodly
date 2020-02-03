@@ -2,7 +2,7 @@
 
 class Api_Controller extends Core_Controller {
   function __construct() {
-    parent::__construct();
+    parent::__construct('publisher');
   }
 
   public function avatar_upload() {
@@ -124,6 +124,7 @@ class Api_Controller extends Core_Controller {
           'email' => $_POST['email'],
           'type' => $_POST['type'],
           'refinfo' => $_POST['id'],
+          'refid' => 0,
           'pid' => $this->pid
         );
       break;
@@ -133,10 +134,17 @@ class Api_Controller extends Core_Controller {
           'email' => $_POST['email'],
           'type' => $_POST['type'],
           'refid' => $_POST['id'],
+          'refinfo' => '',
           'pid' => $this->pid
         );
     }
-    $this->subscription_model->create($new_data);
+    $data = $this->subscription_model->get('*', array('email' => $new_data['email'], 'refid' => $new_data['refid'], 'refinfo' => $new_data['refinfo']));
+    if (count($data) > 0) {
+      $this->subscription_model->update($new_data, $data[0]['id']);
+    } else {
+      $this->subscription_model->create($new_data);
+    }
+    
     $this->response(array());
   }
 }

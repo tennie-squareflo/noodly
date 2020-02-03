@@ -60,3 +60,8 @@ function time_diff_format($str_time) {
     return date('Y-m-d', strtotime($str_time));
   }
 }
+
+function private_email($email) {
+  $parts = explode('@', $email);
+  return substr($parts[0], 0, 2).'*****@'.$parts[1];
+}

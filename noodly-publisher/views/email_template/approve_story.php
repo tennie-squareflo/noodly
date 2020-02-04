@@ -268,7 +268,7 @@
                                             <tbody>
                                               <tr>
                                                 <td valign="top">
-                                                  <img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/avatars/'.$author['avatar']; ?>" onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000';" width="40" alt="" style="max-width: 100%; height: auto; border: 0; text-decoration: none; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; display: block;">
+                                                  <img src="<?php echo PROTOCOL.'://'.$server.ASSETS_URL.'media/avatars/'.$author['avatar']; ?>" onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000';" width="40" alt="" style="max-width: 100%; height: auto; border: 0; text-decoration: none; line-height: 100%; outline: 0; -ms-interpolation-mode: bicubic; display: block;" style="border-radius: 50%;">
                                                 </td>
                                               </tr>
                                             </tbody>

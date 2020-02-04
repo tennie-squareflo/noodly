@@ -24,47 +24,47 @@
 							  <tbody>
 									<tr>
 							      <td>
-							      	<h5 class="text-primary">Publisher</h5>
+							      	<h5>Publisher</h5>
 							      	<p>Publisher Name, Domain, Etc.</p>
 							      </td>
 							      <td class="text-right">
-							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/publisher"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/publisher"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
 							    <tr>
 							      <td>
-							      	<h5 class="text-primary">Logos</h5>
+							      	<h5>Logos</h5>
 							      	<p>Login, Admin Area, Website, About us, Etc.</p>
 							      </td>
 							      <td class="text-right">
-							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/logo"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/logo"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
 							    <tr>
 							      <td>
-							      	<h5 class="text-primary">Website</h5>
+							      	<h5>Website</h5>
 							      	<p>Colours, Etc.</p>
 							      </td>
 							      <td class="text-right">
-							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/website"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/website"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
 							    <tr>
 							      <td>
-							      	<h5 class="text-primary">Notification</h5>
+							      	<h5>Notification</h5>
 							      	<p>Logo, Messages, Etc.</p>
 							      </td>
 							      <td class="text-right">
-							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/notification"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/notification"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
 							    <tr>
 							      <td>
-							      	<h5 class="text-primary">About Us</h5>
+							      	<h5>About Us</h5>
 							      	<p>Text, Image, Video</p>
 							      </td>
 							      <td class="text-right">
-							      	<a class="btn btn-primary" href="<?php echo BASE_URL; ?>settings/about"><i class="fa fa-pencil-alt"></i> Edit</a>
+							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/about"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
 							  </tbody>

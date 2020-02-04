@@ -385,11 +385,6 @@ class Story_Controller extends Auth_Controller {
     }
   }
 
-  function preview($slug) {
-    $this->redirect_auth();
-    $this->view_story($slug, true);
-  }
-
   function view_story($slug, $preview = false) {
     $this->load_model('story');
     $this->load_model('category');
@@ -405,6 +400,9 @@ class Story_Controller extends Auth_Controller {
       // increase client view      
       $this->story_model->increase_client_view($story['sid']);
       $this->view_data['client'] = $_SESSION['client'];
+    } else if ($story['status'] !== 'PUBLISHED') {
+      $this->redirect_auth();
+      $preview = true;
     }
     $this->show_story($story, $preview);
   }

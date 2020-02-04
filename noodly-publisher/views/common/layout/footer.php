@@ -1,7 +1,7 @@
 <footer>
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 d-xs-none d-sm-none">
+            <div class="col-lg-8 col-md-8 d-xs-none d-sm-none">
               <div class="row">
                 <div class="col-sm-6 col-md-3 col-lg-4">
                   <div class="footer-links">
@@ -58,7 +58,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-xs-1 col-sm-1 d-md-none d-lg-none d-xl-none d-xxl-none d-xxxl-none"></div>
+            <div class="col-lg-4 col-xs-10 col-sm-10 col-md-4">
               <h5 class="footer-link--title">Subscribe To Our Mailing List </h5>
               <form id="subscribe-pub-form" method="post">
                 <input type="hidden" name="id" value="<?php echo $publisher['pid']; ?>" />

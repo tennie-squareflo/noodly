@@ -1,4 +1,14 @@
 <?php
+define('STRIPE_CLIENT_ID','ca_4vLa9X60gPKVMXclqqjRhKJHj0Hv3015');
+if(ENV == 'server'){
+    define('STRIPE_PUBLIC_KEY','pk_live_XA5b5vv0ieUfb90nFr32hU0l');
+    define('STRIPE_SECRET_KEY','sk_live_giGUCzRHqHC4xawbOelWyvEY');
+} else {
+    define('STRIPE_PUBLIC_KEY','pk_test_CsuQkjR1WtKGnkOvJGfXUjZk');
+    define('STRIPE_SECRET_KEY','sk_test_Jhd28U1esmcOc5uCSZCCG1OZ');
+}
+
+
 define('COUNTRIES', serialize(array(
   "AF"=>"Afghanistan",
   "AX"=>"Åland Islands",

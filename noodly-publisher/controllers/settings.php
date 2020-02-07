@@ -2,15 +2,23 @@
 require_once(PUBLISHER_PATH.'core/auth_controller.php');
 
 class Settings_Controller extends Auth_Controller {
+  protected $db;
   function __construct() {
     parent::__construct();
+    $this->db = App::get_instance()->db;
     $this->load_model('environment');
+    $this->load_model('stripe');
+    $this->stripe_model->setParentClass($this);
   }
 
   function index() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css');
     $this->view_data['script_files'] = array('custom/common/settings/settings.js');
-    $this->load_view('/admin/admin/settings/settings', $this->view_data);
+    if ($_SESSION['user']['role'] === 'admin') { // if admin
+      $this->load_view('/admin/admin/settings/settings', $this->view_data);
+    } else {
+      $this->load_view('/admin/contributor/settings/settings', $this->view_data);
+    }
   }
 
   function publisher() {
@@ -32,6 +40,74 @@ class Settings_Controller extends Auth_Controller {
   function notification() {
     $this->view_data['script_files'] = array('custom/common/settings/notification.js');
     $this->load_view('/admin/admin/settings/notification', $this->view_data);
+  }
+  function stripe() {
+    if(isset($_GET['action']) && $_GET['action'] == 'stripe-connect-response'){
+        $dataToSave = $this->stripe_model->connect($_GET['code']);//,$_SESSION['stripe_connect_live'] == '1');
+
+        $_SESSION['settings-stripe-message'] = $this->stripe_model->getlastResponseMessage();
+        $_SESSION['settings-stripe-message-type'] = $this->stripe_model->getlastResponse();
+
+        if($_SESSION['settings-stripe-message-type']){
+            if ($_SESSION['user']['role'] === 'admin') { // if admin
+                if(!$this->stripe_model->updatePublisherStripeData($dataToSave)){
+                    $_SESSION['settings-stripe-message'] = false;
+                    $_SESSION['settings-stripe-message-type'] = 'Could not save your Stripe account. Please try again or contact us. [e.s.1]';
+                    return false;
+                }
+            } else {
+                if(!$this->stripe_model->updateUserStripeData($dataToSave)){
+                    $_SESSION['settings-stripe-message'] = false;
+                    $_SESSION['settings-stripe-message-type'] = 'Could not save your Stripe account. Please try again or contact us. [e.s.2]';
+                    return false;
+                }
+            }
+        }
+
+        header("Location: ".BASE_URL."settings/stripe");
+        exit;
+    } else if(isset($_POST['action']) && $_POST['action'] == 'stripe-connect'){
+        $this->stripe_model->forwardToConnectPage();
+    } else if(isset($_POST['action']) && $_POST['action'] == 'stripe-disconnect'){
+        //$this->stripe_model->forwardToConnectPage();
+        if($this->stripe_model->disconnect()){
+            if ($_SESSION['user']['role'] === 'admin') { // if admin
+                $b_success = $this->stripe_model->clearPublisherStripeData();
+            } else {
+                $b_success = $this->stripe_model->clearUserStripeData();
+            }
+            $this->lastResponseSuccess = $b_success;
+            $this->lastResponseMessage = $b_success ? 'Your account is now disconnected' : 'Something went wrong, please try again or contact us [e.s.d.1]';
+        }
+
+        $_SESSION['settings-stripe-message'] = $this->stripe_model->getlastResponseMessage();
+        $_SESSION['settings-stripe-message-type'] = $this->stripe_model->getlastResponse();
+
+        header("Location: ".BASE_URL."settings/stripe");
+        exit;
+    }
+
+    $this->view_data['stripe_message'] = '';
+    $this->view_data['stripe_message_type'] = false;
+    if(isset($_SESSION['settings-stripe-message'])){
+        $this->view_data['stripe_message'] = $_SESSION['settings-stripe-message'];
+        unset($_SESSION['settings-stripe-message']);
+    }
+    if(isset($_SESSION['settings-stripe-message-type'])){
+        $this->view_data['stripe_message_type'] = $_SESSION['settings-stripe-message-type'];
+        unset($_SESSION['settings-stripe-message-type']);
+    }
+
+    $this->view_data['script_files'] = array('custom/common/settings/stripe.js');
+
+    if ($_SESSION['user']['role'] === 'admin') { // if admin
+        $stripeSettings = $this->stripe_model->getStripeSettingsFromPublisher();
+    } else {
+        $stripeSettings = $this->stripe_model->getStripeSettingsFromUser();
+    }
+    $this->view_data['stripe_settings'] = $stripeSettings;
+
+    $this->load_view('/admin/admin/settings/stripe', $this->view_data);
   }
   function about() {
     $this->view_data['style_files'] = array('vendors/custom/slim/slim.min.css', 'vendors/custom/quill/quill.snow.css');

@@ -67,6 +67,15 @@
 							      	<a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/about"><i class="fa fa-pencil-alt"></i> Edit</a>
 							      </td>
 							    </tr>
+                                <tr>
+                                    <td>
+                                        <h5>Stripe</h5>
+                                        <p>Accept payments</p>
+                                    </td>
+                                    <td class="text-right">
+                                        <a class="btn btn-success" href="<?php echo BASE_URL; ?>settings/stripe"><i class="fa fa-pencil-alt"></i> Edit</a>
+                                    </td>
+                                </tr>
 							  </tbody>
 							</table>
 						</div>

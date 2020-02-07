@@ -7,6 +7,7 @@ $publisher_domain = '';
 
 $request_uri = str_replace('..', '', $request_uri);
 $request_uri = str_replace('//', '/', $request_uri);
+list($request_uri) = explode("?",$request_uri."?");
 
 foreach ($ROUTING as $key => $value) {
   if (strstr($request_uri, $key) !== FALSE) {
